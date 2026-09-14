@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d22" for="edge" attr.name="source_file" attr.type="string" />
+  <key id="d21" for="edge" attr.name="edge_type" attr.type="string" />
+  <key id="d20" for="node" attr.name="sample_type" attr.type="string" />
+  <key id="d19" for="node" attr.name="aneuploidy_score" attr.type="string" />
+  <key id="d18" for="node" attr.name="tumor_type" attr.type="string" />
+  <key id="d17" for="node" attr.name="cancer_type_detailed" attr.type="string" />
+  <key id="d16" for="node" attr.name="cancer_type" attr.type="string" />
+  <key id="d15" for="node" attr.name="oncotree_code" attr.type="string" />
+  <key id="d14" for="node" attr.name="mutation_record_count" attr.type="long" />
+  <key id="d13" for="node" attr.name="sample_id" attr.type="string" />
+  <key id="d12" for="node" attr.name="path_m_stage" attr.type="string" />
+  <key id="d11" for="node" attr.name="ajcc_pathologic_tumor_stage" attr.type="string" />
+  <key id="d10" for="node" attr.name="sex" attr.type="string" />
+  <key id="d9" for="node" attr.name="age" attr.type="string" />
+  <key id="d8" for="node" attr.name="cancer_type_acronym" attr.type="string" />
+  <key id="d7" for="node" attr.name="subtype" attr.type="string" />
+  <key id="d6" for="node" attr.name="patient_id" attr.type="string" />
+  <key id="d5" for="node" attr.name="node_type" attr.type="string" />
+  <key id="d4" for="graph" attr.name="patient_id" attr.type="string" />
+  <key id="d3" for="graph" attr.name="graph_scope" attr.type="string" />
+  <key id="d2" for="graph" attr.name="graph_generation_version" attr.type="string" />
+  <key id="d1" for="graph" attr.name="source_study" attr.type="string" />
+  <key id="d0" for="graph" attr.name="source_dataset" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="patient:TCGA-B6-A0I6">
+      <data key="d5">Patient</data>
+      <data key="d6">TCGA-B6-A0I6</data>
+      <data key="d7" />
+      <data key="d8">BRCA</data>
+      <data key="d9">49</data>
+      <data key="d10">Female</data>
+      <data key="d11">STAGE IIA</data>
+      <data key="d12">M0</data>
+    </node>
+    <node id="sample:TCGA-B6-A0I6-01">
+      <data key="d5">Sample</data>
+      <data key="d13">TCGA-B6-A0I6-01</data>
+      <data key="d6">TCGA-B6-A0I6</data>
+      <data key="d14">0</data>
+      <data key="d15">IDC</data>
+      <data key="d16">Breast Cancer</data>
+      <data key="d17">Breast Invasive Ductal Carcinoma</data>
+      <data key="d18">Infiltrating Ductal Carcinoma</data>
+      <data key="d19" />
+      <data key="d20">Primary</data>
+    </node>
+    <edge source="patient:TCGA-B6-A0I6" target="sample:TCGA-B6-A0I6-01" id="has_sample:TCGA-B6-A0I6-01">
+      <data key="d21">has_sample</data>
+      <data key="d22">data_clinical_sample.txt</data>
+    </edge>
+    <data key="d0">cBioPortal BRCA TCGA PanCancer Atlas 2018</data>
+    <data key="d1">brca_tcga_pan_can_atlas_2018</data>
+    <data key="d2">0.1.0</data>
+    <data key="d3">single_patient</data>
+    <data key="d4">TCGA-B6-A0I6</data>
+  </graph>
+</graphml>

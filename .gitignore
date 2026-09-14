@@ -1,0 +1,14 @@
+# Supplied raw cBioPortal source data is intentionally local-only (about 1.5 GB).
+brca_tcga_pan_can_atlas_2018/
+
+# Python build/test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Local editor/OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
