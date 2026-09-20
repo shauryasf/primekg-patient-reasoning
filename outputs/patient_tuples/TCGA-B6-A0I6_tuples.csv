@@ -1,0 +1,6 @@
+head_type,head_id,relation,tail_type,tail_id,tail_name,attributes
+patient,patient:TCGA-B6-A0I6,has_tumor_stage,clinical_concept,ajcc_pathologic_tumor_stage:STAGE_IIA,STAGE IIA,{}
+patient,patient:TCGA-B6-A0I6,has_path_m_stage,clinical_concept,path_m_stage:M0,M0,{}
+sample,sample:TCGA-B6-A0I6-01,has_oncotree_code,clinical_concept,oncotree_code:IDC,IDC,{}
+sample,sample:TCGA-B6-A0I6-01,has_sample_type,clinical_concept,sample_type:Primary,Primary,{}
+patient,patient:TCGA-B6-A0I6,has_sample,sample,sample:TCGA-B6-A0I6-01,TCGA-B6-A0I6-01,"{""source_file"": ""data_clinical_sample.txt""}"

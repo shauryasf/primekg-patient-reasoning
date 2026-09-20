@@ -44,8 +44,10 @@ cna_fields:
   - Entrez_Gene_Id
   - discrete_sample_value
 cna_policy:
-  include_values: [-2, -1, 1, 2]
+  include_values: [-2, 2]
   exclude_neutral_value: 0
+
+gene_panel: config/gene_panel_500.json
 outcome_fields_excluded_from_evidence:
   - OS_STATUS
   - OS_MONTHS

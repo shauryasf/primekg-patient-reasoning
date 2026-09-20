@@ -74,3 +74,74 @@ def graph_summary(graph: nx.MultiDiGraph) -> dict[str, object]:
         "genes": sum(1 for _, data in graph.nodes(data=True) if data.get("node_type") == "Gene"),
         "mutation_edges": edge_counts["has_mutation"], "cna_edges": edge_counts["has_CNA"],
     }
+
+
+def to_kg_tuples(graph: nx.MultiDiGraph) -> pd.DataFrame:
+    """Convert the NetworkX graph to a flattened Knowledge Graph tuple DataFrame."""
+    import json
+    tuples = []
+    
+    # Node attributes extraction helper
+    def get_name(node_data):
+        if node_data.get("node_type") == "Patient": return node_data.get("patient_id")
+        if node_data.get("node_type") == "Sample": return node_data.get("sample_id")
+        if node_data.get("node_type") == "Gene": return node_data.get("gene_symbol")
+        return ""
+        
+    for u, data in graph.nodes(data=True):
+        u_type = data.get("node_type", "unknown").lower()
+        if u_type == "patient":
+            # Link patient to its clinical attributes as separate concepts
+            for attr in ["subtype", "ajcc_pathologic_tumor_stage", "path_m_stage"]:
+                val = data.get(attr)
+                if val and val not in ["", "NA", "Unknown"]:
+                    tuples.append({
+                        "head_type": "patient", "head_id": u,
+                        "relation": f"has_{attr.replace('ajcc_pathologic_', '')}",
+                        "tail_type": "clinical_concept", "tail_id": f"{attr}:{val.replace(' ', '_')}", "tail_name": val,
+                        "attributes": "{}"
+                    })
+        elif u_type == "sample":
+            # Link sample to sample attributes
+            for attr in ["oncotree_code", "sample_type"]:
+                val = data.get(attr)
+                if val and val not in ["", "NA", "Unknown"]:
+                    tuples.append({
+                        "head_type": "sample", "head_id": u,
+                        "relation": f"has_{attr}",
+                        "tail_type": "clinical_concept", "tail_id": f"{attr}:{val.replace(' ', '_')}", "tail_name": val,
+                        "attributes": "{}"
+                    })
+
+    # Process edges
+    for u, v, data in graph.edges(data=True):
+        u_data = graph.nodes[u]
+        v_data = graph.nodes[v]
+        
+        h_type = u_data.get("node_type", "unknown").lower()
+        t_type = v_data.get("node_type", "unknown").lower()
+        
+        h_name = get_name(u_data)
+        t_name = get_name(v_data)
+        
+        rel = data.get("edge_type", "connected_to")
+        
+        # Make relation specific for CNA
+        if rel == "has_CNA":
+            cat = data.get("cna_category", "alteration")
+            rel = f"has_{cat}"
+            
+        # Clean attributes for JSON metadata
+        meta = {k: v for k, v in data.items() if k not in ["edge_type", "key"]}
+        
+        tuples.append({
+            "head_type": h_type,
+            "head_id": u,
+            "relation": rel,
+            "tail_type": t_type,
+            "tail_id": v,
+            "tail_name": t_name,
+            "attributes": json.dumps(meta)
+        })
+        
+    return pd.DataFrame(tuples)

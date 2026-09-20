@@ -1,0 +1,2502 @@
+{
+  "PIK3CA": {
+    "entrez_id": 5290.0,
+    "alteration_score": 383,
+    "is_known_driver": true
+  },
+  "TP53": {
+    "entrez_id": 7157.0,
+    "alteration_score": 357,
+    "is_known_driver": true
+  },
+  "CCND1": {
+    "entrez_id": 595.0,
+    "alteration_score": 164,
+    "is_known_driver": true
+  },
+  "MYC": {
+    "entrez_id": 4609.0,
+    "alteration_score": 164,
+    "is_known_driver": true
+  },
+  "GATA3": {
+    "entrez_id": 2625.0,
+    "alteration_score": 163,
+    "is_known_driver": true
+  },
+  "ERBB2": {
+    "entrez_id": 2064.0,
+    "alteration_score": 156,
+    "is_known_driver": true
+  },
+  "CDH1": {
+    "entrez_id": 999.0,
+    "alteration_score": 153,
+    "is_known_driver": true
+  },
+  "FGFR1": {
+    "entrez_id": 2260.0,
+    "alteration_score": 141,
+    "is_known_driver": true
+  },
+  "KMT2C": {
+    "entrez_id": 58508.0,
+    "alteration_score": 123,
+    "is_known_driver": true
+  },
+  "PTEN": {
+    "entrez_id": 5728.0,
+    "alteration_score": 119,
+    "is_known_driver": true
+  },
+  "MAP3K1": {
+    "entrez_id": 4214.0,
+    "alteration_score": 105,
+    "is_known_driver": true
+  },
+  "NF1": {
+    "entrez_id": 4763.0,
+    "alteration_score": 75,
+    "is_known_driver": true
+  },
+  "RB1": {
+    "entrez_id": 5925.0,
+    "alteration_score": 70,
+    "is_known_driver": true
+  },
+  "MAP2K4": {
+    "entrez_id": 6416.0,
+    "alteration_score": 69,
+    "is_known_driver": true
+  },
+  "RUNX1": {
+    "entrez_id": 861.0,
+    "alteration_score": 68,
+    "is_known_driver": true
+  },
+  "BRCA2": {
+    "entrez_id": 675.0,
+    "alteration_score": 51,
+    "is_known_driver": true
+  },
+  "ARID1A": {
+    "entrez_id": 8289.0,
+    "alteration_score": 49,
+    "is_known_driver": true
+  },
+  "BRCA1": {
+    "entrez_id": 672.0,
+    "alteration_score": 48,
+    "is_known_driver": true
+  },
+  "ATM": {
+    "entrez_id": 472.0,
+    "alteration_score": 48,
+    "is_known_driver": true
+  },
+  "FOXA1": {
+    "entrez_id": 3169.0,
+    "alteration_score": 48,
+    "is_known_driver": true
+  },
+  "AKT1": {
+    "entrez_id": 207.0,
+    "alteration_score": 44,
+    "is_known_driver": true
+  },
+  "PIK3R1": {
+    "entrez_id": 5295.0,
+    "alteration_score": 44,
+    "is_known_driver": true
+  },
+  "CBFB": {
+    "entrez_id": 865.0,
+    "alteration_score": 42,
+    "is_known_driver": true
+  },
+  "EGFR": {
+    "entrez_id": 1956.0,
+    "alteration_score": 42,
+    "is_known_driver": true
+  },
+  "ESR1": {
+    "entrez_id": 2099.0,
+    "alteration_score": 39,
+    "is_known_driver": true
+  },
+  "SF3B1": {
+    "entrez_id": 23451.0,
+    "alteration_score": 29,
+    "is_known_driver": true
+  },
+  "BAP1": {
+    "entrez_id": 8314.0,
+    "alteration_score": 16,
+    "is_known_driver": true
+  },
+  "TTN": {
+    "entrez_id": 7273.0,
+    "alteration_score": 233,
+    "is_known_driver": false
+  },
+  "SNAP47": {
+    "entrez_id": 116841.0,
+    "alteration_score": 199,
+    "is_known_driver": false
+  },
+  "RYR2": {
+    "entrez_id": 6262.0,
+    "alteration_score": 195,
+    "is_known_driver": false
+  },
+  "CSMD3": {
+    "entrez_id": 114788.0,
+    "alteration_score": 186,
+    "is_known_driver": false
+  },
+  "FLG": {
+    "entrez_id": 2312.0,
+    "alteration_score": 178,
+    "is_known_driver": false
+  },
+  "SHANK2": {
+    "entrez_id": 22941.0,
+    "alteration_score": 168,
+    "is_known_driver": false
+  },
+  "QSOX1": {
+    "entrez_id": 5768.0,
+    "alteration_score": 168,
+    "is_known_driver": false
+  },
+  "ANO1": {
+    "entrez_id": 55107.0,
+    "alteration_score": 166,
+    "is_known_driver": false
+  },
+  "TRPS1": {
+    "entrez_id": 7227.0,
+    "alteration_score": 166,
+    "is_known_driver": false
+  },
+  "FER1L6": {
+    "entrez_id": 654463.0,
+    "alteration_score": 165,
+    "is_known_driver": false
+  },
+  "PKHD1L1": {
+    "entrez_id": 93035.0,
+    "alteration_score": 165,
+    "is_known_driver": false
+  },
+  "PPFIA1": {
+    "entrez_id": 8500.0,
+    "alteration_score": 164,
+    "is_known_driver": false
+  },
+  "USH2A": {
+    "entrez_id": 7399.0,
+    "alteration_score": 163,
+    "is_known_driver": false
+  },
+  "COL14A1": {
+    "entrez_id": 7373.0,
+    "alteration_score": 163,
+    "is_known_driver": false
+  },
+  "VPS13B": {
+    "entrez_id": 157680.0,
+    "alteration_score": 162,
+    "is_known_driver": false
+  },
+  "ORAOV1": {
+    "entrez_id": 0.0,
+    "alteration_score": 162,
+    "is_known_driver": false
+  },
+  "OBSCN": {
+    "entrez_id": 84033.0,
+    "alteration_score": 161,
+    "is_known_driver": false
+  },
+  "POU5F1B": {
+    "entrez_id": 5462.0,
+    "alteration_score": 161,
+    "is_known_driver": false
+  },
+  "TG": {
+    "entrez_id": 7038.0,
+    "alteration_score": 160,
+    "is_known_driver": false
+  },
+  "MIR1204": {
+    "entrez_id": 100302185.0,
+    "alteration_score": 158,
+    "is_known_driver": false
+  },
+  "CASC8": {
+    "entrez_id": 727677.0,
+    "alteration_score": 157,
+    "is_known_driver": false
+  },
+  "FGF3": {
+    "entrez_id": 2248.0,
+    "alteration_score": 156,
+    "is_known_driver": false
+  },
+  "FGF4": {
+    "entrez_id": 2249.0,
+    "alteration_score": 156,
+    "is_known_driver": false
+  },
+  "CCAT2": {
+    "entrez_id": 101805488.0,
+    "alteration_score": 156,
+    "is_known_driver": false
+  },
+  "FGF19": {
+    "entrez_id": 9965.0,
+    "alteration_score": 156,
+    "is_known_driver": false
+  },
+  "PVT1": {
+    "entrez_id": 5820.0,
+    "alteration_score": 155,
+    "is_known_driver": false
+  },
+  "CSMD1": {
+    "entrez_id": 64478.0,
+    "alteration_score": 155,
+    "is_known_driver": false
+  },
+  "LINC00536": {
+    "entrez_id": 100859921.0,
+    "alteration_score": 155,
+    "is_known_driver": false
+  },
+  "EIF3H": {
+    "entrez_id": 8667.0,
+    "alteration_score": 154,
+    "is_known_driver": false
+  },
+  "RAB11FIP1": {
+    "entrez_id": 80223.0,
+    "alteration_score": 153,
+    "is_known_driver": false
+  },
+  "ANO1-AS2": {
+    "entrez_id": 100009613.0,
+    "alteration_score": 152,
+    "is_known_driver": false
+  },
+  "ATAD2": {
+    "entrez_id": 29028.0,
+    "alteration_score": 152,
+    "is_known_driver": false
+  },
+  "FAM91A1": {
+    "entrez_id": 157769.0,
+    "alteration_score": 152,
+    "is_known_driver": false
+  },
+  "MUC16": {
+    "entrez_id": 94025.0,
+    "alteration_score": 152,
+    "is_known_driver": false
+  },
+  "SLC30A8": {
+    "entrez_id": 169026.0,
+    "alteration_score": 152,
+    "is_known_driver": false
+  },
+  "SPTA1": {
+    "entrez_id": 6708.0,
+    "alteration_score": 151,
+    "is_known_driver": false
+  },
+  "CTTN": {
+    "entrez_id": 2017.0,
+    "alteration_score": 151,
+    "is_known_driver": false
+  },
+  "TMEM75": {
+    "entrez_id": 641384.0,
+    "alteration_score": 151,
+    "is_known_driver": false
+  },
+  "UBR5": {
+    "entrez_id": 51366.0,
+    "alteration_score": 150,
+    "is_known_driver": false
+  },
+  "KIAA0196": {
+    "entrez_id": 0.0,
+    "alteration_score": 150,
+    "is_known_driver": false
+  },
+  "HMCN1": {
+    "entrez_id": 83872.0,
+    "alteration_score": 150,
+    "is_known_driver": false
+  },
+  "MIR1205": {
+    "entrez_id": 100302161.0,
+    "alteration_score": 150,
+    "is_known_driver": false
+  },
+  "TBC1D31": {
+    "entrez_id": 93594.0,
+    "alteration_score": 150,
+    "is_known_driver": false
+  },
+  "MIR1208": {
+    "entrez_id": 100302281.0,
+    "alteration_score": 149,
+    "is_known_driver": false
+  },
+  "MIR1207": {
+    "entrez_id": 100302175.0,
+    "alteration_score": 149,
+    "is_known_driver": false
+  },
+  "RAD21": {
+    "entrez_id": 5885.0,
+    "alteration_score": 149,
+    "is_known_driver": false
+  },
+  "FADD": {
+    "entrez_id": 8772.0,
+    "alteration_score": 149,
+    "is_known_driver": false
+  },
+  "MIR1206": {
+    "entrez_id": 100302170.0,
+    "alteration_score": 148,
+    "is_known_driver": false
+  },
+  "CCAT1": {
+    "entrez_id": 100507056.0,
+    "alteration_score": 148,
+    "is_known_driver": false
+  },
+  "MTSS1": {
+    "entrez_id": 9788.0,
+    "alteration_score": 148,
+    "is_known_driver": false
+  },
+  "MIR548K": {
+    "entrez_id": 100313770.0,
+    "alteration_score": 148,
+    "is_known_driver": false
+  },
+  "RIMS2": {
+    "entrez_id": 9699.0,
+    "alteration_score": 148,
+    "is_known_driver": false
+  },
+  "ASAP1": {
+    "entrez_id": 50807.0,
+    "alteration_score": 148,
+    "is_known_driver": false
+  },
+  "UTP23": {
+    "entrez_id": 84294.0,
+    "alteration_score": 147,
+    "is_known_driver": false
+  },
+  "WHSC1L1": {
+    "entrez_id": 0.0,
+    "alteration_score": 147,
+    "is_known_driver": false
+  },
+  "ENPP2": {
+    "entrez_id": 5168.0,
+    "alteration_score": 147,
+    "is_known_driver": false
+  },
+  "FAM72C": {
+    "entrez_id": 554282.0,
+    "alteration_score": 146,
+    "is_known_driver": false
+  },
+  "SAMD12": {
+    "entrez_id": 401474.0,
+    "alteration_score": 146,
+    "is_known_driver": false
+  },
+  "EXT1": {
+    "entrez_id": 2131.0,
+    "alteration_score": 146,
+    "is_known_driver": false
+  },
+  "FAM84B": {
+    "entrez_id": 0.0,
+    "alteration_score": 146,
+    "is_known_driver": false
+  },
+  "TNFRSF11B": {
+    "entrez_id": 4982.0,
+    "alteration_score": 146,
+    "is_known_driver": false
+  },
+  "RNU6-83P": {
+    "entrez_id": 100873782.0,
+    "alteration_score": 145,
+    "is_known_driver": false
+  },
+  "HAS2": {
+    "entrez_id": 3037.0,
+    "alteration_score": 145,
+    "is_known_driver": false
+  },
+  "PCAT1": {
+    "entrez_id": 100750225.0,
+    "alteration_score": 145,
+    "is_known_driver": false
+  },
+  "ZFPM2": {
+    "entrez_id": 23414.0,
+    "alteration_score": 145,
+    "is_known_driver": false
+  },
+  "PRNCR1": {
+    "entrez_id": 101867536.0,
+    "alteration_score": 145,
+    "is_known_driver": false
+  },
+  "GSDMC": {
+    "entrez_id": 56169.0,
+    "alteration_score": 144,
+    "is_known_driver": false
+  },
+  "SRGAP2D": {
+    "entrez_id": 100996712.0,
+    "alteration_score": 144,
+    "is_known_driver": false
+  },
+  "TRIB1": {
+    "entrez_id": 10221.0,
+    "alteration_score": 144,
+    "is_known_driver": false
+  },
+  "ZHX2": {
+    "entrez_id": 22882.0,
+    "alteration_score": 144,
+    "is_known_driver": false
+  },
+  "ANXA13": {
+    "entrez_id": 312.0,
+    "alteration_score": 144,
+    "is_known_driver": false
+  },
+  "AARD": {
+    "entrez_id": 441376.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "ADCY8": {
+    "entrez_id": 114.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "ERLIN2": {
+    "entrez_id": 11160.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "FAM83A": {
+    "entrez_id": 84985.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "COL22A1": {
+    "entrez_id": 169044.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "KLHL38": {
+    "entrez_id": 340359.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "MTBP": {
+    "entrez_id": 27085.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "NSMCE2": {
+    "entrez_id": 286053.0,
+    "alteration_score": 143,
+    "is_known_driver": false
+  },
+  "TAF2": {
+    "entrez_id": 6873.0,
+    "alteration_score": 142,
+    "is_known_driver": false
+  },
+  "ZHX1": {
+    "entrez_id": 11244.0,
+    "alteration_score": 142,
+    "is_known_driver": false
+  },
+  "TRMT12": {
+    "entrez_id": 55039.0,
+    "alteration_score": 142,
+    "is_known_driver": false
+  },
+  "MAL2": {
+    "entrez_id": 114569.0,
+    "alteration_score": 142,
+    "is_known_driver": false
+  },
+  "LYST": {
+    "entrez_id": 1130.0,
+    "alteration_score": 141,
+    "is_known_driver": false
+  },
+  "NOV": {
+    "entrez_id": 0.0,
+    "alteration_score": 141,
+    "is_known_driver": false
+  },
+  "RAD21-AS1": {
+    "entrez_id": 644660.0,
+    "alteration_score": 141,
+    "is_known_driver": false
+  },
+  "AHCTF1": {
+    "entrez_id": 25909.0,
+    "alteration_score": 141,
+    "is_known_driver": false
+  },
+  "MIR3610": {
+    "entrez_id": 100500914.0,
+    "alteration_score": 141,
+    "is_known_driver": false
+  },
+  "TRAPPC9": {
+    "entrez_id": 83696.0,
+    "alteration_score": 141,
+    "is_known_driver": false
+  },
+  "FAM49B": {
+    "entrez_id": 0.0,
+    "alteration_score": 141,
+    "is_known_driver": false
+  },
+  "MED30": {
+    "entrez_id": 90390.0,
+    "alteration_score": 140,
+    "is_known_driver": false
+  },
+  "LINC00861": {
+    "entrez_id": 100130231.0,
+    "alteration_score": 140,
+    "is_known_driver": false
+  },
+  "ZNF572": {
+    "entrez_id": 137209.0,
+    "alteration_score": 140,
+    "is_known_driver": false
+  },
+  "SNTB1": {
+    "entrez_id": 6641.0,
+    "alteration_score": 140,
+    "is_known_driver": false
+  },
+  "TMEM65": {
+    "entrez_id": 157378.0,
+    "alteration_score": 140,
+    "is_known_driver": false
+  },
+  "MRPL13": {
+    "entrez_id": 28998.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "FAM135B": {
+    "entrez_id": 51059.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "BAG4": {
+    "entrez_id": 9530.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "COLEC10": {
+    "entrez_id": 10584.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "ASH2L": {
+    "entrez_id": 9070.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "ZNF703": {
+    "entrez_id": 80139.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "NDUFB9": {
+    "entrez_id": 4715.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "PROSC": {
+    "entrez_id": 0.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "PLEC": {
+    "entrez_id": 5339.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "RNF139": {
+    "entrez_id": 11236.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "NOTCH2": {
+    "entrez_id": 4853.0,
+    "alteration_score": 139,
+    "is_known_driver": false
+  },
+  "KCNQ3": {
+    "entrez_id": 3786.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "TATDN1": {
+    "entrez_id": 83940.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "LRP12": {
+    "entrez_id": 29967.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "SQLE": {
+    "entrez_id": 6713.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "DEPTOR": {
+    "entrez_id": 64798.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "GPR124": {
+    "entrez_id": 0.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "MYEOV": {
+    "entrez_id": 26579.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "PHF20L1": {
+    "entrez_id": 51105.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "SAMD12-AS1": {
+    "entrez_id": 552860.0,
+    "alteration_score": 138,
+    "is_known_driver": false
+  },
+  "FBXO32": {
+    "entrez_id": 114907.0,
+    "alteration_score": 137,
+    "is_known_driver": false
+  },
+  "PDE4DIP": {
+    "entrez_id": 9659.0,
+    "alteration_score": 137,
+    "is_known_driver": false
+  },
+  "HHLA1": {
+    "entrez_id": 10086.0,
+    "alteration_score": 137,
+    "is_known_driver": false
+  },
+  "BRF2": {
+    "entrez_id": 55290.0,
+    "alteration_score": 137,
+    "is_known_driver": false
+  },
+  "FER1L6-AS2": {
+    "entrez_id": 157376.0,
+    "alteration_score": 137,
+    "is_known_driver": false
+  },
+  "FER1L6-AS1": {
+    "entrez_id": 439941.0,
+    "alteration_score": 136,
+    "is_known_driver": false
+  },
+  "DSCC1": {
+    "entrez_id": 79075.0,
+    "alteration_score": 136,
+    "is_known_driver": false
+  },
+  "GOT1L1": {
+    "entrez_id": 137362.0,
+    "alteration_score": 136,
+    "is_known_driver": false
+  },
+  "KIF26B": {
+    "entrez_id": 55083.0,
+    "alteration_score": 136,
+    "is_known_driver": false
+  },
+  "LOC728024": {
+    "entrez_id": 728024.0,
+    "alteration_score": 136,
+    "is_known_driver": false
+  },
+  "WDYHV1": {
+    "entrez_id": 0.0,
+    "alteration_score": 136,
+    "is_known_driver": false
+  },
+  "FMN2": {
+    "entrez_id": 56776.0,
+    "alteration_score": 136,
+    "is_known_driver": false
+  },
+  "SYBU": {
+    "entrez_id": 55638.0,
+    "alteration_score": 135,
+    "is_known_driver": false
+  },
+  "hsa-mir-548d-1": {
+    "entrez_id": NaN,
+    "alteration_score": 135,
+    "is_known_driver": false
+  },
+  "C8orf76": {
+    "entrez_id": 84933.0,
+    "alteration_score": 135,
+    "is_known_driver": false
+  },
+  "DENND3": {
+    "entrez_id": 22898.0,
+    "alteration_score": 135,
+    "is_known_driver": false
+  },
+  "RNF139-AS1": {
+    "entrez_id": 101927612.0,
+    "alteration_score": 135,
+    "is_known_driver": false
+  },
+  "ADRB3": {
+    "entrez_id": 155.0,
+    "alteration_score": 135,
+    "is_known_driver": false
+  },
+  "DERL1": {
+    "entrez_id": 79139.0,
+    "alteration_score": 135,
+    "is_known_driver": false
+  },
+  "FAM83A-AS1": {
+    "entrez_id": 100131726.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "CPSF1": {
+    "entrez_id": 29894.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "STAR": {
+    "entrez_id": 6770.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "MIR6844": {
+    "entrez_id": 102466200.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "LSM1": {
+    "entrez_id": 27257.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "MIR4663": {
+    "entrez_id": 100616260.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "ZHX1-C8orf76": {
+    "entrez_id": 100533106.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "GRHL2": {
+    "entrez_id": 79977.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "HAS2-AS1": {
+    "entrez_id": 594842.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "LINC00964": {
+    "entrez_id": 157381.0,
+    "alteration_score": 134,
+    "is_known_driver": false
+  },
+  "OXR1": {
+    "entrez_id": 55074.0,
+    "alteration_score": 133,
+    "is_known_driver": false
+  },
+  "EPPK1": {
+    "entrez_id": 83481.0,
+    "alteration_score": 133,
+    "is_known_driver": false
+  },
+  "RNF19A": {
+    "entrez_id": 25897.0,
+    "alteration_score": 133,
+    "is_known_driver": false
+  },
+  "DDHD2": {
+    "entrez_id": 23259.0,
+    "alteration_score": 133,
+    "is_known_driver": false
+  },
+  "EIF4EBP1": {
+    "entrez_id": 1978.0,
+    "alteration_score": 132,
+    "is_known_driver": false
+  },
+  "KCNU1": {
+    "entrez_id": 157855.0,
+    "alteration_score": 132,
+    "is_known_driver": false
+  },
+  "GRB7": {
+    "entrez_id": 2886.0,
+    "alteration_score": 132,
+    "is_known_driver": false
+  },
+  "ZFAT": {
+    "entrez_id": 57623.0,
+    "alteration_score": 132,
+    "is_known_driver": false
+  },
+  "RGS22": {
+    "entrez_id": 26166.0,
+    "alteration_score": 132,
+    "is_known_driver": false
+  },
+  "NKAIN3": {
+    "entrez_id": 286183.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "MROH5": {
+    "entrez_id": 389690.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "PPAPDC1B": {
+    "entrez_id": 0.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "ZFHX4": {
+    "entrez_id": 79776.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "EFR3A": {
+    "entrez_id": 23167.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "ASAP1-IT2": {
+    "entrez_id": 100507117.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "CACNA1E": {
+    "entrez_id": 777.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "LINC00977": {
+    "entrez_id": 728724.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "PTK2": {
+    "entrez_id": 5747.0,
+    "alteration_score": 131,
+    "is_known_driver": false
+  },
+  "ASAP1-IT1": {
+    "entrez_id": 29065.0,
+    "alteration_score": 130,
+    "is_known_driver": false
+  },
+  "MIR5194": {
+    "entrez_id": 100847051.0,
+    "alteration_score": 130,
+    "is_known_driver": false
+  },
+  "IKZF3": {
+    "entrez_id": 22806.0,
+    "alteration_score": 130,
+    "is_known_driver": false
+  },
+  "AGO2": {
+    "entrez_id": 27161.0,
+    "alteration_score": 130,
+    "is_known_driver": false
+  },
+  "NDRG1": {
+    "entrez_id": 10397.0,
+    "alteration_score": 130,
+    "is_known_driver": false
+  },
+  "RP11-554A11.8": {
+    "entrez_id": 338694.0,
+    "alteration_score": 129,
+    "is_known_driver": false
+  },
+  "CDK12": {
+    "entrez_id": 51755.0,
+    "alteration_score": 129,
+    "is_known_driver": false
+  },
+  "RNF5P1": {
+    "entrez_id": 286140.0,
+    "alteration_score": 129,
+    "is_known_driver": false
+  },
+  "FLG2": {
+    "entrez_id": 388698.0,
+    "alteration_score": 129,
+    "is_known_driver": false
+  },
+  "TMEM71": {
+    "entrez_id": 137835.0,
+    "alteration_score": 129,
+    "is_known_driver": false
+  },
+  "RECQL4": {
+    "entrez_id": 9401.0,
+    "alteration_score": 129,
+    "is_known_driver": false
+  },
+  "NID1": {
+    "entrez_id": 4811.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "ANKRD46": {
+    "entrez_id": 157567.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "WISP1": {
+    "entrez_id": 0.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "NUDCD1": {
+    "entrez_id": 84955.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "TACC1": {
+    "entrez_id": 6867.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "CYP11B2": {
+    "entrez_id": 1585.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "DPYS": {
+    "entrez_id": 1807.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "ACTN2": {
+    "entrez_id": 88.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "PCNXL2": {
+    "entrez_id": 0.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "OC90": {
+    "entrez_id": 729330.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "LETM2": {
+    "entrez_id": 137994.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "ASH1L": {
+    "entrez_id": 55870.0,
+    "alteration_score": 128,
+    "is_known_driver": false
+  },
+  "RUNX1T1": {
+    "entrez_id": 862.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "BAI1": {
+    "entrez_id": 0.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "CEP170": {
+    "entrez_id": 9859.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "KHDRBS3": {
+    "entrez_id": 10656.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "ARID4B": {
+    "entrez_id": 51742.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "SNX31": {
+    "entrez_id": 169166.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "ANGPT1": {
+    "entrez_id": 284.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "PPP1R1B": {
+    "entrez_id": 84152.0,
+    "alteration_score": 127,
+    "is_known_driver": false
+  },
+  "CDC42BPA": {
+    "entrez_id": 8476.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "SIPA1L2": {
+    "entrez_id": 57568.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "ZNF623": {
+    "entrez_id": 9831.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "ATP6V1C1": {
+    "entrez_id": 528.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "KLF10": {
+    "entrez_id": 7071.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "ABRA": {
+    "entrez_id": 137735.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "SLA": {
+    "entrez_id": 6503.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "MIR2053": {
+    "entrez_id": 100302225.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "STARD3": {
+    "entrez_id": 10948.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "CYP11B1": {
+    "entrez_id": 1584.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "DNAH14": {
+    "entrez_id": 127602.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "MROH1": {
+    "entrez_id": 727957.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "HRNR": {
+    "entrez_id": 388697.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "ZNF251": {
+    "entrez_id": 90987.0,
+    "alteration_score": 126,
+    "is_known_driver": false
+  },
+  "SLC45A4": {
+    "entrez_id": 57210.0,
+    "alteration_score": 125,
+    "is_known_driver": false
+  },
+  "FZD6": {
+    "entrez_id": 8323.0,
+    "alteration_score": 125,
+    "is_known_driver": false
+  },
+  "RAD54B": {
+    "entrez_id": 25788.0,
+    "alteration_score": 125,
+    "is_known_driver": false
+  },
+  "LRRC6": {
+    "entrez_id": 0.0,
+    "alteration_score": 125,
+    "is_known_driver": false
+  },
+  "PGAP3": {
+    "entrez_id": 93210.0,
+    "alteration_score": 125,
+    "is_known_driver": false
+  },
+  "NCALD": {
+    "entrez_id": 83988.0,
+    "alteration_score": 125,
+    "is_known_driver": false
+  },
+  "ZNF34": {
+    "entrez_id": 80778.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "ARHGAP39": {
+    "entrez_id": 80728.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "ZNF16": {
+    "entrez_id": 7564.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "KCNK9": {
+    "entrez_id": 51305.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "TSNARE1": {
+    "entrez_id": 203062.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "HEATR1": {
+    "entrez_id": 55127.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "SPAG1": {
+    "entrez_id": 6674.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "MIEN1": {
+    "entrez_id": 84299.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "PARP10": {
+    "entrez_id": 84875.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "OPLAH": {
+    "entrez_id": 26873.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "KCNV1": {
+    "entrez_id": 27012.0,
+    "alteration_score": 124,
+    "is_known_driver": false
+  },
+  "TCAP": {
+    "entrez_id": 8557.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "SHANK2-AS1": {
+    "entrez_id": 100874198.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "PNMT": {
+    "entrez_id": 5409.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "TARBP1": {
+    "entrez_id": 6894.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "NLRP3": {
+    "entrez_id": 114548.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "DCSTAMP": {
+    "entrez_id": 81501.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "GPAA1": {
+    "entrez_id": 8733.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "ZNF7": {
+    "entrez_id": 7553.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "ST3GAL1": {
+    "entrez_id": 6482.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "FBXO43": {
+    "entrez_id": 286151.0,
+    "alteration_score": 123,
+    "is_known_driver": false
+  },
+  "PLD5": {
+    "entrez_id": 200150.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "TONSL": {
+    "entrez_id": 4796.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "DCAF13": {
+    "entrez_id": 25879.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "YWHAZ": {
+    "entrez_id": 7534.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "SLC25A32": {
+    "entrez_id": 81034.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "TCHH": {
+    "entrez_id": 7062.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "GPR20": {
+    "entrez_id": 2843.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "ZP4": {
+    "entrez_id": 57829.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "ODF1": {
+    "entrez_id": 4956.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "AZIN1": {
+    "entrez_id": 51582.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "HSF1": {
+    "entrez_id": 3297.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "C8orf86": {
+    "entrez_id": 389649.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "ZFAT-AS1": {
+    "entrez_id": 594840.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "SLC39A4": {
+    "entrez_id": 55630.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "SHARPIN": {
+    "entrez_id": 81858.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "GPT": {
+    "entrez_id": 2875.0,
+    "alteration_score": 122,
+    "is_known_driver": false
+  },
+  "EIF3E": {
+    "entrez_id": 3646.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "CYHR1": {
+    "entrez_id": 50626.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "ZFP41": {
+    "entrez_id": 286128.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "ADCK5": {
+    "entrez_id": 203054.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "ZNF250": {
+    "entrez_id": 58500.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "MIR4728": {
+    "entrez_id": 100616132.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "ZNF695": {
+    "entrez_id": 57116.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "PABPC1": {
+    "entrez_id": 26986.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "MIR7848": {
+    "entrez_id": 102466865.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "MIR4471": {
+    "entrez_id": 100616451.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "ANK1": {
+    "entrez_id": 286.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "C8orf31": {
+    "entrez_id": 0.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "BAALC": {
+    "entrez_id": 79870.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "FBXL6": {
+    "entrez_id": 26233.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "SETDB1": {
+    "entrez_id": 9869.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "NACAP1": {
+    "entrez_id": 0.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "DGAT1": {
+    "entrez_id": 8694.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "SMYD3": {
+    "entrez_id": 64754.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "KIAA1429": {
+    "entrez_id": 0.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "SCRIB": {
+    "entrez_id": 23513.0,
+    "alteration_score": 121,
+    "is_known_driver": false
+  },
+  "TOP1MT": {
+    "entrez_id": 116447.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "TPCN2": {
+    "entrez_id": 219931.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "MFSD3": {
+    "entrez_id": 113655.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "RRM2B": {
+    "entrez_id": 50484.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "ADAM9": {
+    "entrez_id": 8754.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "SCRT1": {
+    "entrez_id": 83482.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "UNC5D": {
+    "entrez_id": 137970.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "ZC3H3": {
+    "entrez_id": 23144.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "RHPN1": {
+    "entrez_id": 114822.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "ZNF252P": {
+    "entrez_id": 286101.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "EEF1D": {
+    "entrez_id": 1936.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "KIFC2": {
+    "entrez_id": 90990.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "GRINA": {
+    "entrez_id": 2907.0,
+    "alteration_score": 120,
+    "is_known_driver": false
+  },
+  "C8orf33": {
+    "entrez_id": 65265.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "EMC2": {
+    "entrez_id": 9694.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "ZNF517": {
+    "entrez_id": 340385.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "CYC1": {
+    "entrez_id": 1537.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "TSTA3": {
+    "entrez_id": 0.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "POLR2K": {
+    "entrez_id": 5440.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "RGS7": {
+    "entrez_id": 6000.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "MIR30D": {
+    "entrez_id": 407033.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "LY6D": {
+    "entrez_id": 8581.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "PTP4A3": {
+    "entrez_id": 11156.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "TMEM74": {
+    "entrez_id": 157753.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "ADAM32": {
+    "entrez_id": 203102.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "HNRNPU": {
+    "entrez_id": 3192.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "HPYR1": {
+    "entrez_id": 93668.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "GON4L": {
+    "entrez_id": 54856.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "SLC52A2": {
+    "entrez_id": 79581.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "NFASC": {
+    "entrez_id": 23114.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "MIR30B": {
+    "entrez_id": 407030.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "COMMD5": {
+    "entrez_id": 28991.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "NEUROD2": {
+    "entrez_id": 4761.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "C1orf101": {
+    "entrez_id": 0.0,
+    "alteration_score": 119,
+    "is_known_driver": false
+  },
+  "VPS28": {
+    "entrez_id": 51160.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "LYNX1": {
+    "entrez_id": 66004.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "PLEKHA2": {
+    "entrez_id": 59339.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "MAPK15": {
+    "entrez_id": 225689.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "CTHRC1": {
+    "entrez_id": 115908.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "PLXNA2": {
+    "entrez_id": 5362.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "LRRC24": {
+    "entrez_id": 441381.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "JRK": {
+    "entrez_id": 8629.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "GLI4": {
+    "entrez_id": 2738.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "PUF60": {
+    "entrez_id": 22827.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "KIAA1875": {
+    "entrez_id": 0.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "hsa-mir-151": {
+    "entrez_id": NaN,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "BAALC-AS1": {
+    "entrez_id": 100499183.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "EBAG9": {
+    "entrez_id": 9166.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "ESRP1": {
+    "entrez_id": 54845.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "LINC01591": {
+    "entrez_id": 286094.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "PPP1R16A": {
+    "entrez_id": 84988.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "RSPO2": {
+    "entrez_id": 340419.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "NAPRT1": {
+    "entrez_id": 0.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "NRBP2": {
+    "entrez_id": 340371.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "ITGA10": {
+    "entrez_id": 8515.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "SPATC1": {
+    "entrez_id": 375686.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "GSDMB": {
+    "entrez_id": 55876.0,
+    "alteration_score": 118,
+    "is_known_driver": false
+  },
+  "BCL9": {
+    "entrez_id": 607.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "CDH17": {
+    "entrez_id": 1015.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "MIR3151": {
+    "entrez_id": 100422992.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "LINC01300": {
+    "entrez_id": 731779.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "ZPBP2": {
+    "entrez_id": 124626.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "TRHR": {
+    "entrez_id": 7201.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "GSDMD": {
+    "entrez_id": 79792.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "BAALCOS": {
+    "entrez_id": 157556.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "EXOSC4": {
+    "entrez_id": 54512.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "MROH6": {
+    "entrez_id": 642475.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "AKT3": {
+    "entrez_id": 10000.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "TARS2": {
+    "entrez_id": 80222.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "MIR4472-1": {
+    "entrez_id": 100616268.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "LINC00051": {
+    "entrez_id": 619434.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "RPL8": {
+    "entrez_id": 6132.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "LRRC14": {
+    "entrez_id": 9684.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "hsa-mir-1302-7": {
+    "entrez_id": NaN,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "ZNF252P-AS1": {
+    "entrez_id": 286103.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "MIR5680": {
+    "entrez_id": 100847001.0,
+    "alteration_score": 117,
+    "is_known_driver": false
+  },
+  "MIR6850": {
+    "entrez_id": 102465978.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MAF1": {
+    "entrez_id": 84232.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "hsa-mir-548a-3": {
+    "entrez_id": NaN,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "SCXB": {
+    "entrez_id": 642658.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "LY6K": {
+    "entrez_id": 54742.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "ZNF669": {
+    "entrez_id": 79862.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR6848": {
+    "entrez_id": 102465511.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "ATP1A4": {
+    "entrez_id": 480.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "KAT6A": {
+    "entrez_id": 7994.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "hsa-mir-1273": {
+    "entrez_id": NaN,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "CDC42P3": {
+    "entrez_id": 100128627.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "HTRA4": {
+    "entrez_id": 203100.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR6846": {
+    "entrez_id": 102465509.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "LOC100133669": {
+    "entrez_id": 100133669.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "TMEM249": {
+    "entrez_id": 340393.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "TONSL-AS1": {
+    "entrez_id": 100287098.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "ENY2": {
+    "entrez_id": 56943.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "OR14C36": {
+    "entrez_id": 127066.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "OR2T34": {
+    "entrez_id": 127068.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "CHRAC1": {
+    "entrez_id": 54108.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR7112-2": {
+    "entrez_id": 102465906.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR6893": {
+    "entrez_id": 102466271.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "LY6H": {
+    "entrez_id": 4062.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "ENSA": {
+    "entrez_id": 2029.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "C8orf82": {
+    "entrez_id": 414919.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "BOP1": {
+    "entrez_id": 23246.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "FAM203A": {
+    "entrez_id": 51236.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "INTS8": {
+    "entrez_id": 55656.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR6849": {
+    "entrez_id": 102466749.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR1234": {
+    "entrez_id": 100302196.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "SCXA": {
+    "entrez_id": 100129885.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "OR2T2": {
+    "entrez_id": 401992.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR939": {
+    "entrez_id": 100126351.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "FOXH1": {
+    "entrez_id": 8928.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "WDR64": {
+    "entrez_id": 128025.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "SDCCAG8": {
+    "entrez_id": 10806.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "ARC": {
+    "entrez_id": 23237.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR6847": {
+    "entrez_id": 102465510.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "PYCRL": {
+    "entrez_id": 0.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MIR7705": {
+    "entrez_id": 102466854.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "MATN2": {
+    "entrez_id": 4147.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "OR2L2": {
+    "entrez_id": 26246.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "OR2L13": {
+    "entrez_id": 284521.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "TMED10P1": {
+    "entrez_id": 286102.0,
+    "alteration_score": 116,
+    "is_known_driver": false
+  },
+  "ZNF696": {
+    "entrez_id": 79943.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "TIGD5": {
+    "entrez_id": 84948.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "MTR": {
+    "entrez_id": 4548.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "ADAM2": {
+    "entrez_id": 2515.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "STK3": {
+    "entrez_id": 6788.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "CNST": {
+    "entrez_id": 163882.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "GPIHBP1": {
+    "entrez_id": 338328.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "OR13G1": {
+    "entrez_id": 441933.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "ZNF707": {
+    "entrez_id": 286075.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "LYPD2": {
+    "entrez_id": 137797.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "LNCOC1": {
+    "entrez_id": 100288181.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "OR2G3": {
+    "entrez_id": 81469.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "hsa-mir-3164": {
+    "entrez_id": NaN,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "DPY19L4": {
+    "entrez_id": 286148.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "MIR661": {
+    "entrez_id": 724031.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "OR2T3": {
+    "entrez_id": 343173.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "ADAMTSL4": {
+    "entrez_id": 54507.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "ECM1": {
+    "entrez_id": 1893.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "MAFA": {
+    "entrez_id": 389692.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "OR2T27": {
+    "entrez_id": 403239.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "SLC35F3": {
+    "entrez_id": 148641.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "OR2W5": {
+    "entrez_id": 0.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "EXO1": {
+    "entrez_id": 9156.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "POP1": {
+    "entrez_id": 10940.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "NUP210L": {
+    "entrez_id": 91181.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "GML": {
+    "entrez_id": 2765.0,
+    "alteration_score": 115,
+    "is_known_driver": false
+  },
+  "OR14A16": {
+    "entrez_id": 284532.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "MIA3": {
+    "entrez_id": 375056.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "SLURP1": {
+    "entrez_id": 57152.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "COX6C": {
+    "entrez_id": 1345.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "IRF2BP2": {
+    "entrez_id": 359948.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "RBM34": {
+    "entrez_id": 23029.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "THEM6": {
+    "entrez_id": 51337.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "GOLPH3L": {
+    "entrez_id": 55204.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "TP53BP2": {
+    "entrez_id": 7159.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "KMO": {
+    "entrez_id": 8564.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "FLJ42969": {
+    "entrez_id": 441374.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "OR11L1": {
+    "entrez_id": 391189.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "ZNF706": {
+    "entrez_id": 51123.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "FAM83H": {
+    "entrez_id": 286077.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "PSCA": {
+    "entrez_id": 8000.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "TRIM58": {
+    "entrez_id": 25893.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "CR1": {
+    "entrez_id": 1378.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "FLAD1": {
+    "entrez_id": 80308.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "HIST2H2BE": {
+    "entrez_id": 0.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "RHPN1-AS1": {
+    "entrez_id": 78998.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "ZNF496": {
+    "entrez_id": 84838.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "ASTN1": {
+    "entrez_id": 460.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "SPRTN": {
+    "entrez_id": 83932.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "ZNF692": {
+    "entrez_id": 55657.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "OR2T1": {
+    "entrez_id": 26696.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "CA14": {
+    "entrez_id": 23632.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "LY6E": {
+    "entrez_id": 4061.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "MIR6845": {
+    "entrez_id": 102466748.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "ARNT": {
+    "entrez_id": 405.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "CCDC166": {
+    "entrez_id": 100130274.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "GNPAT": {
+    "entrez_id": 8443.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "TM2D2": {
+    "entrez_id": 83877.0,
+    "alteration_score": 114,
+    "is_known_driver": false
+  },
+  "OR2G2": {
+    "entrez_id": 81470.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "MIR937": {
+    "entrez_id": 100126338.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "CHML": {
+    "entrez_id": 1122.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "IQANK1": {
+    "entrez_id": 642571.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "RPRD2": {
+    "entrez_id": 23248.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "NBPF10": {
+    "entrez_id": 100132406.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "DISP1": {
+    "entrez_id": 84976.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "MIR7851": {
+    "entrez_id": 102467003.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "MIR4664": {
+    "entrez_id": 100616318.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "OR2G6": {
+    "entrez_id": 391211.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "OR14I1": {
+    "entrez_id": 401994.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "MRGPRF": {
+    "entrez_id": 116535.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "TXNIP": {
+    "entrez_id": 10628.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "BREA2": {
+    "entrez_id": 286076.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "ZNF124": {
+    "entrez_id": 7678.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "TFB2M": {
+    "entrez_id": 64216.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "HORMAD1": {
+    "entrez_id": 84072.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "TRIM67": {
+    "entrez_id": 440730.0,
+    "alteration_score": 113,
+    "is_known_driver": false
+  },
+  "SV2A": {
+    "entrez_id": 9900.0,
+    "alteration_score": 112,
+    "is_known_driver": false
+  },
+  "PARP1": {
+    "entrez_id": 142.0,
+    "alteration_score": 112,
+    "is_known_driver": false
+  },
+  "OR2AK2": {
+    "entrez_id": 391191.0,
+    "alteration_score": 112,
+    "is_known_driver": false
+  },
+  "ADSS": {
+    "entrez_id": 0.0,
+    "alteration_score": 112,
+    "is_known_driver": false
+  },
+  "NIPAL2": {
+    "entrez_id": 79815.0,
+    "alteration_score": 112,
+    "is_known_driver": false
+  },
+  "PGBD5": {
+    "entrez_id": 79605.0,
+    "alteration_score": 112,
+    "is_known_driver": false
+  },
+  "ORMDL3": {
+    "entrez_id": 94103.0,
+    "alteration_score": 112,
+    "is_known_driver": false
+  }
+}

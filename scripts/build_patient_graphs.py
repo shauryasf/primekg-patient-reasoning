@@ -136,29 +136,65 @@ def main() -> int:
     outputs = ROOT / "outputs"; docs = ROOT / "docs"; graphs_dir = outputs / "patient_graphs"; visualizations = outputs / "visualizations"
     for directory in [outputs, docs, graphs_dir, visualizations]: directory.mkdir(parents=True, exist_ok=True)
     load_feature_policy()  # validates that selection policy is parseable and present
+    feature_policy = load_feature_policy()
+    
+    # Load gene panel
+    gene_panel_path = ROOT / feature_policy.get("gene_panel", "config/gene_panel_500.json")
+    if gene_panel_path.exists():
+        with open(gene_panel_path, "r", encoding="utf-8") as f:
+            gene_panel = set(json.load(f).keys())
+    else:
+        gene_panel = None
+        
+    cna_policy = feature_policy.get("cna_policy", {})
+    allowed_cna_values = cna_policy.get("include_values", [-2, 2])
+
     if not args.skip_audit:
         create_dataset_audit(dataset_dir, docs, outputs)
     clinical = load_clinical_data(dataset_dir)
     linked, unmapped = link_patients_to_samples(clinical)
-    all_mutations, mutation_malformed = load_mutations(dataset_dir)
+    
+    all_mutations, mutation_malformed = load_mutations(dataset_dir, gene_panel=gene_panel)
     mutation_counts = all_mutations.groupby("Tumor_Sample_Barcode").size()
+    
+    # We don't change cna_counts here because it streams the whole matrix.
     cna_counts, _, _ = cna_call_counts_by_sample(dataset_dir)
+    
     if args.all:
         patient_ids = linked["PATIENT_ID"].sort_values().tolist()
     elif args.patient_id:
         patient_ids = list(dict.fromkeys(args.patient_id))
     else:
         patient_ids = select_representative_patients(linked, mutation_counts, cna_counts, args.sample_size)
+        
     unknown = sorted(set(patient_ids) - set(linked["PATIENT_ID"]))
     if unknown:
         raise ValueError(f"Requested patient IDs absent from linked clinical data: {unknown}")
+        
     selected_samples = linked[linked["PATIENT_ID"].isin(patient_ids)].copy()
     selected_ids = selected_samples["SAMPLE_ID"].tolist()
+    
     selected_mutations = all_mutations[all_mutations["Tumor_Sample_Barcode"].isin(selected_ids)].copy()
-    selected_cna, cna_issues = load_cna_for_samples(dataset_dir, selected_ids)
+    selected_cna, cna_issues = load_cna_for_samples(dataset_dir, selected_ids, gene_panel=gene_panel, allowed_values=allowed_cna_values)
+    
     summaries: list[dict[str, object]] = []
     failures: list[dict[str, str]] = mutation_malformed + cna_issues + [{"source": "clinical_link", "row": str(row.SAMPLE_ID), "reason": "patient mapping absent"} for row in unmapped.itertuples()]
     graphs: list[nx.MultiDiGraph] = []
+    all_tuples = []
+    
+    import shutil
+    # Delete existing old stuff and overwrite
+    if graphs_dir.exists():
+        shutil.rmtree(graphs_dir)
+    graphs_dir.mkdir(parents=True)
+    
+    tuples_dir = outputs / "patient_tuples"
+    if tuples_dir.exists():
+        shutil.rmtree(tuples_dir)
+    tuples_dir.mkdir(parents=True)
+    
+    from src.patient_graph import to_kg_tuples
+    
     for patient_id in patient_ids:
         patient_row = clinical.patients.loc[clinical.patients["PATIENT_ID"] == patient_id].iloc[0]
         samples = selected_samples[selected_samples["PATIENT_ID"] == patient_id]
@@ -167,13 +203,28 @@ def main() -> int:
         if not result.valid:
             failures.append({"source": "graph_validation", "row": patient_id, "reason": "; ".join(result.errors)})
             raise ValueError(f"Invalid graph for {patient_id}: {result.errors}")
+            
         graph_path = graphs_dir / f"{safe_filename(patient_id)}.graphml"
         nx.write_graphml(graph, graph_path)
+        
+        # Export knowledge graph tuples
+        tuples_df = to_kg_tuples(graph)
+        tuples_path = tuples_dir / f"{safe_filename(patient_id)}_tuples.csv"
+        tuples_df.to_csv(tuples_path, index=False)
+        all_tuples.append(tuples_df)
+        
         draw_patient_graph(graph, visualizations / f"{safe_filename(patient_id)}.png")
         summaries.append(graph_summary(graph))
         graphs.append(graph)
-        LOGGER.info("Wrote %s (%s nodes, %s edges)", graph_path.name, graph.number_of_nodes(), graph.number_of_edges())
+        LOGGER.info("Wrote %s (%s nodes, %s edges, %s tuples)", graph_path.name, graph.number_of_nodes(), graph.number_of_edges(), len(tuples_df))
+        
     pd.DataFrame(summaries).to_csv(outputs / "patient_summaries.csv", index=False)
+    
+    if all_tuples:
+        combined_tuples = pd.concat(all_tuples, ignore_index=True)
+        combined_tuples.to_csv(outputs / "all_patients_tuples.csv", index=False)
+        LOGGER.info("Wrote combined tuples to %s (total %s tuples)", "all_patients_tuples.csv", len(combined_tuples))
+        
     if args.combined:
         # Node IDs are intentionally globally meaningful (patient/sample IDs and
         # gene symbol+Entrez IDs), so compose preserves provenance and permits a
@@ -181,6 +232,7 @@ def main() -> int:
         combined = nx.compose_all(graphs)
         combined.graph.update({"source_dataset": "cBioPortal BRCA TCGA PanCancer Atlas 2018", "graph_scope": "selected_patients", "patient_count": len(graphs)})
         nx.write_graphml(combined, outputs / "all_patient_graphs.graphml")
+        
     write_quality_reports(outputs, clinical, linked, all_mutations, cna_counts, summaries, failures)
     write_mutation_count_validation(docs, linked, mutation_counts)
     LOGGER.info("Generated %d validated graphs for %d selected patient IDs", len(summaries), len(patient_ids))

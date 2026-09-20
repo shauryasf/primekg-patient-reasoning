@@ -14,7 +14,7 @@ MUTATION_FIELDS = [
 ]
 
 
-def load_mutations(dataset_dir: Path, sample_ids: set[str] | None = None) -> tuple[pd.DataFrame, list[dict[str, str]]]:
+def load_mutations(dataset_dir: Path, sample_ids: set[str] | None = None, gene_panel: set[str] | None = None) -> tuple[pd.DataFrame, list[dict[str, str]]]:
     """Load MAF mutation records without collapsing biologically distinct calls."""
     frame = read_cbioportal_table(dataset_dir / "data_mutations.txt", usecols=lambda c: c in MUTATION_FIELDS)
     frame["Tumor_Sample_Barcode"] = frame["Tumor_Sample_Barcode"].map(normalize_identifier)
@@ -26,6 +26,8 @@ def load_mutations(dataset_dir: Path, sample_ids: set[str] | None = None) -> tup
     frame = frame.loc[~invalid].copy()
     if sample_ids is not None:
         frame = frame[frame["Tumor_Sample_Barcode"].isin(sample_ids)].copy()
+    if gene_panel is not None:
+        frame = frame[frame["Hugo_Symbol"].isin(gene_panel)].copy()
     frame["mutation_record_id"] = [f"maf:{index}" for index in frame.index]
     return frame, malformed
 

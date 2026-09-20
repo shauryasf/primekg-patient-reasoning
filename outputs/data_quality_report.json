@@ -2,8 +2,8 @@
   "patients": 1084,
   "samples": 1084,
   "patients_with_multiple_samples": 0,
-  "mutation_records": 126252,
-  "unique_mutated_genes": 18987,
+  "mutation_records": 7315,
+  "unique_mutated_genes": 396,
   "non_neutral_cna_records": 12113291,
   "cna_samples": 1070,
   "selected_clinical_missingness": {
@@ -20,8 +20,38 @@
     "ANEUPLOIDY_SCORE": 43,
     "SAMPLE_TYPE": 0
   },
-  "generated_patient_graphs": 8,
+  "generated_patient_graphs": 1084,
   "failed_or_skipped_records": [
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0CZ-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A7-A4SC-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A07C-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-AN-A0G0-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-AR-A0TU-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-AR-A1AT-01",
+      "reason": "sample column absent"
+    },
     {
       "source": "data_cna.txt",
       "row": "TCGA-B6-A0I6-01",
@@ -29,673 +59,838 @@
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0CO-01:2283",
+      "row": "TCGA-B6-A0I8-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-BH-A0B1-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-BH-A0B8-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-BH-A0HF-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-BH-A0HL-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-BH-A0HN-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-E2-A1LS-01",
+      "reason": "sample column absent"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A04N-01:10505",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A04T-01:12373",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A04U-01:12866",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0CP-01:17407",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0CU-01:19872",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0D0-01:21740",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0EU-01:28253",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0EX-01:29732",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0SX-01:32586",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A0YH-01:40085",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A259-01:47480",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A25B-01:48362",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A25D-01:49348",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A4RY-01:57236",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A2-A4S3-01:59312",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A7-A0CE-01:60194",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A7-A4SE-01:74984",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A7-A6VW-01:78435",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A06P-01:81004",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A06Q-01:81497",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A06T-01:82483",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A06Y-01:83858",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A07F-01:87309",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A07G-01:87802",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A08B-01:96183",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A08L-01:99141",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
+    },
+    {
+      "source": "data_cna.txt",
+      "row": "TCGA-A8-A099-01:106536",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0CO-01:14068",
+      "row": "TCGA-A8-A09B-01:107522",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:27411",
+      "row": "TCGA-A8-A09C-01:108015",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:32547",
+      "row": "TCGA-A8-A09N-01:110584",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:32650",
+      "row": "TCGA-A8-A09T-01:112063",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:32651",
+      "row": "TCGA-A8-A0AB-01:117382",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:35519",
+      "row": "TCGA-AC-A2QH-01:125374",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:39043",
+      "row": "TCGA-AC-A3EH-01:127242",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:39150",
+      "row": "TCGA-AC-A3OD-01:128228",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:39196",
+      "row": "TCGA-AC-A3QP-01:128825",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:41910",
+      "row": "TCGA-AC-A3YI-01:132276",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:42082",
+      "row": "TCGA-AC-A7VB-01:139178",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:42909",
+      "row": "TCGA-AC-A8OP-01:140164",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:44848",
+      "row": "TCGA-AN-A03X-01:142032",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AN-A046-01:52539",
+      "row": "TCGA-AN-A046-01:143511",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AN-A046-01:68037",
+      "row": "TCGA-AN-A04C-01:145094",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AN-A046-01:68933",
+      "row": "TCGA-AN-A04D-01:145483",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AN-A046-01:69407",
+      "row": "TCGA-AN-A0AS-01:148545",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:77667",
+      "row": "TCGA-AN-A0AS-01:148856",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:80210",
+      "row": "TCGA-AN-A0FF-01:149920",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:82803",
+      "row": "TCGA-AN-A0FK-01:150906",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:83826",
+      "row": "TCGA-AN-A0FN-01:151892",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:85671",
+      "row": "TCGA-AN-A0XP-01:157315",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:85775",
+      "row": "TCGA-AN-A0XS-01:158405",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:86825",
+      "row": "TCGA-AO-A03N-01:161752",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:89452",
+      "row": "TCGA-AO-A0J2-01:165203",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:92338",
+      "row": "TCGA-AO-A0J4-01:166189",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:93165",
+      "row": "TCGA-AO-A0J4-01:166293",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:94061",
+      "row": "TCGA-AO-A0J5-01:166682",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:102795",
+      "row": "TCGA-AO-A0J6-01:167279",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:105209",
+      "row": "TCGA-AO-A0JB-01:169640",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:108954",
+      "row": "TCGA-AO-A12A-01:177035",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:111953",
+      "row": "TCGA-AO-A12D-01:178021",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:114182",
+      "row": "TCGA-AO-A12F-01:179007",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:114580",
+      "row": "TCGA-AO-A1KT-01:183055",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:117294",
+      "row": "TCGA-AO-A1KT-01:183366",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:117466",
+      "row": "TCGA-AQ-A54N-01:186402",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:125094",
+      "row": "TCGA-AR-A0TP-01:187985",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:127923",
+      "row": "TCGA-AR-A1AH-01:195276",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:136031",
+      "row": "TCGA-AR-A1AM-01:197741",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:137081",
+      "row": "TCGA-AR-A24T-01:208587",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:138459",
+      "row": "TCGA-AR-A24V-01:209677",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:138460",
+      "row": "TCGA-AR-A24Z-01:211156",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:138461",
+      "row": "TCGA-AR-A5QN-01:218940",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:138462",
+      "row": "TCGA-AR-A5QP-01:219433",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:138465",
+      "row": "TCGA-B6-A0I1-01:220419",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:139708",
+      "row": "TCGA-B6-A0I1-01:220523",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:150327",
+      "row": "TCGA-B6-A0I9-01:221898",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:153051",
+      "row": "TCGA-B6-A0IJ-01:225349",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:155594",
+      "row": "TCGA-B6-A0IK-01:225946",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:157700",
+      "row": "TCGA-B6-A0IQ-01:228307",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:157701",
+      "row": "TCGA-B6-A0RP-01:232744",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:158187",
+      "row": "TCGA-B6-A0RQ-01:233237",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:158290",
+      "row": "TCGA-B6-A0RS-01:233834",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:158291",
+      "row": "TCGA-B6-A0RT-01:234223",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:159210",
+      "row": "TCGA-B6-A0RU-01:234716",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:161055",
+      "row": "TCGA-B6-A0RU-01:234820",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:161159",
+      "row": "TCGA-B6-A0WX-01:237674",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:161973",
+      "row": "TCGA-B6-A0WY-01:238271",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:162209",
+      "row": "TCGA-B6-A1KI-01:242604",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:163587",
+      "row": "TCGA-B6-A409-01:246548",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:163588",
+      "row": "TCGA-B6-A40B-01:247041",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:163589",
+      "row": "TCGA-BH-A0AY-01:249610",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:163590",
+      "row": "TCGA-BH-A0B5-01:252464",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:163593",
+      "row": "TCGA-BH-A0BA-01:253943",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:164683",
+      "row": "TCGA-BH-A0BV-01:260845",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:167550",
+      "row": "TCGA-BH-A0C0-01:262428",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:167722",
+      "row": "TCGA-BH-A0C1-01:262817",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:168524",
+      "row": "TCGA-BH-A0DL-01:267358",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:168549",
+      "row": "TCGA-BH-A0DS-01:269330",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:169919",
+      "row": "TCGA-BH-A0DV-01:270212",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:170488",
+      "row": "TCGA-BH-A0E7-01:273767",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:175298",
+      "row": "TCGA-BH-A0E9-01:274156",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:175350",
+      "row": "TCGA-BH-A0GZ-01:277114",
       "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0CO-01:1605",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A0HB-01:281058",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0CO-01:18677",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A18F-01:288946",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:25180",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A18J-01:290918",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:25335",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A18P-01:293383",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:41215",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A1F5-01:302361",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:41231",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A1FC-01:304333",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:42339",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A1FE-01:305319",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:42884",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A202-01:310249",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:44279",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A28O-01:312610",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:48453",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A28Q-01:313103",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:48457",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A42T-01:314089",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-A2-A0SW-01:49710",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-BH-A6R8-01:316554",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:78981",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A12L-01:320005",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:80081",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A12N-01:321095",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:81741",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A12W-01:324546",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:81742",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A130-01:326518",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:81743",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A131-01:327011",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:81745",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A135-01:328983",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:81746",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A137-01:329476",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:83778",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A1HG-01:331448",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:86589",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A1HL-01:333316",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:88090",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A26Z-01:337260",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:88203",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-C8-A3M7-01:340711",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:88204",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A147-01:347120",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:88205",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A1JB-01:349092",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:88206",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A1X5-01:357473",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:88209",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A1X5-01:357577",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-AR-A0TS-01:100071",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A1XG-01:362403",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:100532",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A1XS-01:366451",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:100719",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A1Y2-01:370888",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:108906",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A27H-01:373249",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:109872",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A27I-01:373742",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:111717",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-D8-A27W-01:378283",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:114534",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E2-A108-01:382720",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:119663",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E2-A15A-01:396835",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-B6-A0I9-01:121095",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E2-A15C-01:397017",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:136087",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E2-A15E-01:398003",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-BH-A0GZ-01:139555",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E2-A1LK-01:419202",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:150788",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E2-A9RU-01:424028",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:152373",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E9-A1NI-01:430930",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:154365",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E9-A229-01:441283",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:154689",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E9-A22B-01:442373",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:154736",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E9-A22E-01:443255",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:154737",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E9-A22G-01:443748",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:155465",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E9-A249-01:447199",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:157176",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-E9-A54Y-01:452233",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:163474",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-EW-A1J3-01:458045",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:164438",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-EW-A1OW-01:460017",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:164439",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-EW-A1P3-01:462975",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:165261",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-EW-A1PE-01:467905",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:165262",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-EW-A6S9-01:473821",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:165320",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-GI-A2C8-01:476390",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:166855",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-GM-A3XL-01:485160",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:166871",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-LL-A5YM-01:494527",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:167359",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-LL-A5YN-01:495124",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:169445",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-LL-A6FP-01:496499",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:171351",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-OL-A66K-01:509810",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:174093",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-OL-A66N-01:510796",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:174097",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-V7-A7HQ-01:523718",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     },
     {
       "source": "data_cna.txt",
-      "row": "TCGA-HN-A2NL-01:175455",
-      "reason": "conflicting discrete CNA values for same gene/sample; excluded"
+      "row": "TCGA-WT-AB44-01:525093",
+      "reason": "duplicate exact discrete CNA call; deduplicated"
     }
   ]
 }

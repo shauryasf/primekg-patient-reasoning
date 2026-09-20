@@ -10,7 +10,7 @@ from .io_utils import normalize_gene_symbol, read_cbioportal_table
 CNA_STATES = {-2: "homozygous_deletion", -1: "hemizygous_deletion", 0: "neutral", 1: "gain", 2: "high_level_amplification"}
 
 
-def load_cna_for_samples(dataset_dir: Path, sample_ids: list[str]) -> tuple[pd.DataFrame, list[dict[str, str]]]:
+def load_cna_for_samples(dataset_dir: Path, sample_ids: list[str], gene_panel: set[str] | None = None, allowed_values: list[int] | None = None) -> tuple[pd.DataFrame, list[dict[str, str]]]:
     """Read only selected CNA columns and return one row per non-neutral gene call."""
     path = dataset_dir / "data_cna.txt"
     header = pd.read_csv(path, sep="\t", nrows=0).columns.tolist()
@@ -20,6 +20,8 @@ def load_cna_for_samples(dataset_dir: Path, sample_ids: list[str]) -> tuple[pd.D
         return pd.DataFrame(columns=["Hugo_Symbol", "Entrez_Gene_Id", "SAMPLE_ID", "cna_value", "cna_category"]), missing
     matrix = read_cbioportal_table(path, usecols=["Hugo_Symbol", "Entrez_Gene_Id", *available])
     matrix["Hugo_Symbol"] = matrix["Hugo_Symbol"].map(normalize_gene_symbol)
+    if gene_panel is not None:
+        matrix = matrix[matrix["Hugo_Symbol"].isin(gene_panel)].copy()
     long = matrix.melt(id_vars=["Hugo_Symbol", "Entrez_Gene_Id"], var_name="SAMPLE_ID", value_name="cna_value")
     numeric = pd.to_numeric(long["cna_value"], errors="coerce")
     malformed_values = long[numeric.isna() | ~numeric.isin(CNA_STATES)]
@@ -28,7 +30,12 @@ def load_cna_for_samples(dataset_dir: Path, sample_ids: list[str]) -> tuple[pd.D
     long = long.loc[~(numeric.isna() | ~numeric.isin(CNA_STATES))].copy()
     long["cna_source_row"] = long.index.astype(str)
     long["cna_value"] = pd.to_numeric(long["cna_value"], downcast="integer")
-    long = long[long["cna_value"] != 0].copy()
+    
+    if allowed_values:
+        long = long[long["cna_value"].isin(allowed_values)].copy()
+    else:
+        long = long[long["cna_value"] != 0].copy()
+        
     long = long.dropna(subset=["Hugo_Symbol"])
     identity = ["Hugo_Symbol", "Entrez_Gene_Id", "SAMPLE_ID"]
     # The source matrix contains repeated gene rows. Exact same-state calls are
