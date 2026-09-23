@@ -1,0 +1,10 @@
+{
+  "endpoint": "pfs",
+  "patients": 1083,
+  "positives": 145,
+  "negatives": 938,
+  "primekg_edges": 4570,
+  "feature_dim": 30,
+  "catalog_size": 1524,
+  "note": "Y=0 is censored at last follow-up, not lifelong disease-free confirmation. PFS months are not features."
+}

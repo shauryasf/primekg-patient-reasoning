@@ -1,6 +1,8 @@
 # Patient-specific BRCA graph construction
 
-This repository implements milestone 1 of *Uncertainty-Aware Neuro-Symbolic Reasoning over Patient-Specific Healthcare Knowledge Graphs for Explainable Cancer Diagnosis*: cBioPortal BRCA TCGA PanCancer Atlas 2018 data to validated patient-specific NetworkX graphs. It does **not** implement PrimeKG integration, a graph database, GNNs, neuro-symbolic reasoning, uncertainty inference, or prediction.
+This repository builds patient-specific BRCA graphs from the cBioPortal TCGA PanCancer Atlas 2018 study and benchmarks recurrence models on those graphs fused with PrimeKG.
+
+Milestone 1 writes validated NetworkX graphs (`Patient → Sample → Gene`) for the 500-gene panel. Milestone 2, documented in [recurrence modeling](docs/recurrence_gnn.md), adds a leakage-safe PFS label, a PrimeKG fusion, and a GCN / GATv2 / GraphSAGE / MLP comparison. It does not implement a graph database or uncertainty inference.
 
 ```mermaid
 flowchart TD
@@ -47,6 +49,21 @@ python scripts/build_patient_graphs.py --sample-size 10 --combined
 ```
 
 The default run performs a streamed audit of every requested raw table. Use `--skip-audit` only when regenerating graphs after an unchanged audit.
+
+## Recurrence benchmark
+
+The supervised target is binary `PFS_STATUS` (`1:PROGRESSION` vs `0:CENSORED`). Outcome columns stay out of the patient graph. Each labeled patient is linked to a filtered PrimeKG neighborhood on Entrez id, then classified with stratified 5-fold cross-validation:
+
+```bash
+python scripts/train_and_evaluate_gnns.py
+```
+
+Figures, fold metrics, and path explanations are written to `outputs/gnn_benchmark/`. Open [notebooks/gnn_recurrence_benchmark.ipynb](notebooks/gnn_recurrence_benchmark.ipynb) to read them. Install PyTorch from the CPU wheel index before `torch-geometric` if a CUDA wheel is not wanted:
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt
+```
 
 ## Validation and limitations
 
