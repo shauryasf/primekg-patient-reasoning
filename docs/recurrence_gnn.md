@@ -14,7 +14,18 @@ The primary label is `PFS_STATUS` from `data_clinical_patient.txt`. The public d
 
 `Y = 0` means the patient was censored at the end of follow-up. It is not a demonstration that recurrence never occurred later. `PFS_MONTHS` is not a feature: follow-up time would leak information about who was observed long enough to record an event.
 
-`NEW_TUMOR_EVENT_AFTER_INITIAL_TREATMENT` (`Yes` → 1, `No` → 0, blank dropped) is only a sensitivity analysis. The full four-model cross-validation uses PFS. The sensitivity reruns the winning architecture on the complete cases for the new-tumor column.
+That censoring is why a binary model on raw `PFS_STATUS` sits near AUROC 0.5. The improved endpoint `pfs_36m` asks a different question: did progression occur by 36 months?
+
+| Situation | `pfs_36m` |
+| --- | --- |
+| Progression at or before 36 months | 1 |
+| Progression after 36 months | 0 |
+| Censored at or after 36 months | 0 |
+| Censored before 36 months, or missing time | dropped |
+
+`PFS_MONTHS` is read only to apply that window. It is not copied into the clinical block, the MLP matrix, or the graph. A patient censored at month 10 is excluded rather than labeled disease-free.
+
+`NEW_TUMOR_EVENT_AFTER_INITIAL_TREATMENT` (`Yes` → 1, `No` → 0, blank dropped) is only a sensitivity analysis. The original four-model cross-validation uses raw PFS. The 36-month run compares a clinical logistic regression with the same four architectures and skips that sensitivity.
 
 Overall survival, disease-specific survival, and disease-free survival columns are never encoded. `src/labels.py` lists them in `OUTCOME_FIELDS`, and `assert_no_outcome_leakage` rejects those names in the feature vector.
 
@@ -53,7 +64,27 @@ The MLP baseline receives the same clinical block and a 500-gene alteration mult
 - GATv2 (four heads, attention aligned with `edge_index`)
 - GraphSAGE
 
-Graph models use three layers of width 64, dropout 0.3, and a readout that concatenates the patient node with global mean and max pooling. Training is stratified 5-fold cross-validation with an inner validation split for early stopping on AUPRC. The positive-class weight is computed on the inner training split. F1 and balanced accuracy use a threshold chosen on that validation split, then frozen for the test fold. Reported metrics are AUROC, AUPRC, F1, and balanced accuracy.
+Graph models use three layers of width 64, dropout 0.3, and a readout that concatenates the patient node with mean and max pooling over the patient and altered genes. Unaltered pathway neighbors still pass messages, and they are left out of the pool. A linear head on the 19 clinical fields is added to the graph score. The graph classifier starts at zero and is multiplied by a gate that starts near 0.12, so optimization begins from the clinical score. The MLP uses the same clinical head, with the 500-gene multi-hot behind the same gate. `clinical_lr` is logistic regression on those 19 fields alone, with the clinical block standardized inside each training fold.
+
+Training is stratified 5-fold cross-validation with an inner validation split for early stopping on AUPRC. The positive-class weight is computed on the inner training split. F1 and balanced accuracy use a threshold chosen on that validation split, then frozen for the test fold. Reported metrics are AUROC, AUPRC, F1, and balanced accuracy.
+
+On 498 patients with a known 36-month window (89 progressions), stratified 5-fold results are:
+
+| Model | AUROC | AUPRC |
+| --- | --- | --- |
+| Clinical logistic regression | 0.703 ± 0.081 | 0.463 ± 0.133 |
+| GCN | 0.680 ± 0.076 | 0.396 ± 0.091 |
+| GraphSAGE | 0.650 ± 0.045 | 0.379 ± 0.091 |
+| GATv2 | 0.631 ± 0.046 | 0.355 ± 0.060 |
+| MLP (clinical head + gene multi-hot) | 0.562 ± 0.098 | 0.262 ± 0.064 |
+
+The prevalence, which is the AUPRC of a random ranking, is 89/498 = 0.179. The clinical model is the best of this run. GCN is close and does not beat age, sex, subtype, stage, and M stage. The gene multi-hot MLP is worse than the clinical linear model: the extra alteration features add noise. The earlier raw-PFS GraphSAGE result was AUROC 0.542 and AUPRC 0.216 on 1,083 patients. Most of the gain here is the cleaner label plus a model that actually uses the clinical block, not a new PrimeKG signal.
+
+The raw-PFS artifacts remain in `outputs/gnn_benchmark/`. The 36-month comparison is written to `outputs/gnn_benchmark_36m/` by:
+
+```bash
+python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --skip-sensitivity --output-dir outputs/gnn_benchmark_36m
+```
 
 ## Explanations
 

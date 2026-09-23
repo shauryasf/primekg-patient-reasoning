@@ -6,6 +6,7 @@ recurrence was ruled out for the rest of their life.
 """
 from __future__ import annotations
 
+import math
 from pathlib import Path
 
 import pandas as pd
@@ -36,7 +37,8 @@ CLINICAL_FEATURE_FIELDS = (
 
 PFS_POSITIVE = "1:PROGRESSION"
 PFS_NEGATIVE = "0:CENSORED"
-ENDPOINTS = ("pfs", "new_tumor_event")
+LANDMARK_MONTHS = 36
+ENDPOINTS = ("pfs", "new_tumor_event", "pfs_36m")
 
 
 def parse_pfs_status(value: object) -> int | None:
@@ -65,11 +67,50 @@ def parse_new_tumor_event(value: object) -> int | None:
     return None
 
 
+def parse_months(value: object) -> float | None:
+    """Parse a follow-up time. Non-numeric tokens are missing."""
+    if value is None or (isinstance(value, float) and math.isnan(value)):
+        return None
+    try:
+        months = float(value)
+    except (TypeError, ValueError):
+        text = normalize_identifier(value)
+        if text is None:
+            return None
+        try:
+            months = float(text)
+        except ValueError:
+            return None
+    if not math.isfinite(months):
+        return None
+    return months
+
+
+def landmark_pfs_label(status: object, months: object, horizon: float = LANDMARK_MONTHS) -> int | None:
+    """Progression by ``horizon`` months.
+
+    ``PFS_MONTHS`` is used only to decide whether the event window was observed.
+    It is not returned as a feature. Censoring before the horizon is missing,
+    not a negative. Progression after the horizon is event-free at the horizon.
+    """
+    parsed = parse_pfs_status(status)
+    observed = parse_months(months)
+    if parsed is None or observed is None:
+        return None
+    if parsed == 1 and observed <= horizon:
+        return 1
+    if (parsed == 1 and observed > horizon) or (parsed == 0 and observed >= horizon):
+        return 0
+    return None
+
+
 def _parser_for(endpoint: str):
     if endpoint == "pfs":
         return "PFS_STATUS", parse_pfs_status
     if endpoint == "new_tumor_event":
         return "NEW_TUMOR_EVENT_AFTER_INITIAL_TREATMENT", parse_new_tumor_event
+    if endpoint == "pfs_36m":
+        return "PFS_STATUS", parse_pfs_status
     raise ValueError(f"Unknown endpoint {endpoint!r}; expected one of {ENDPOINTS}")
 
 
@@ -78,16 +119,23 @@ def labels_from_patients(patients: pd.DataFrame, endpoint: str = "pfs") -> pd.Da
     column, parser = _parser_for(endpoint)
     if column not in patients.columns:
         raise KeyError(f"{column} is not in the clinical patient table")
+    if endpoint == "pfs_36m" and "PFS_MONTHS" not in patients.columns:
+        raise KeyError("PFS_MONTHS is required to define the 36-month label and is not a model feature")
     rows: list[dict[str, object]] = []
     for record in patients.itertuples(index=False):
-        raw = getattr(record, column)
-        label = parser(raw)
-        if label is None:
-            continue
         patient_id = normalize_identifier(getattr(record, "PATIENT_ID"))
         if patient_id is None:
             continue
-        rows.append({"PATIENT_ID": patient_id, "y": int(label), "endpoint": endpoint, "source_value": str(raw)})
+        raw = getattr(record, column)
+        if endpoint == "pfs_36m":
+            label = landmark_pfs_label(raw, getattr(record, "PFS_MONTHS", None), LANDMARK_MONTHS)
+            source = f"{raw}|{getattr(record, 'PFS_MONTHS', None)}"
+        else:
+            label = parser(raw)
+            source = str(raw)
+        if label is None:
+            continue
+        rows.append({"PATIENT_ID": patient_id, "y": int(label), "endpoint": endpoint, "source_value": source})
     frame = pd.DataFrame(rows, columns=["PATIENT_ID", "y", "endpoint", "source_value"])
     if frame["PATIENT_ID"].duplicated().any():
         raise ValueError("Recurrence labels must contain one row per patient")

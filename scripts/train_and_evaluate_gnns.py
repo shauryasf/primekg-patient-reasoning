@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import torch
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     average_precision_score,
     balanced_accuracy_score,
@@ -27,12 +28,14 @@ from sklearn.metrics import (
     roc_curve,
 )
 from sklearn.model_selection import StratifiedKFold, train_test_split
+from sklearn.preprocessing import StandardScaler
 from torch_geometric.loader import DataLoader
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from src.dataset_fusion import (
+    CLINICAL_DIM,
     FEATURE_DIM,
     build_cohort,
     load_gene_panel,
@@ -43,10 +46,17 @@ from src.dataset_fusion import (
 from src.downloads import ensure_brca_dataset, ensure_primekg_csv
 from src.explain import enumerate_explanation_paths, score_edges
 from src.gnn_models import MODEL_NAMES, build_model
-from src.labels import load_recurrence_labels
+from src.labels import LANDMARK_MONTHS, load_recurrence_labels
 
 LOGGER = logging.getLogger("train_gnns")
-COLORS = {"mlp": "#4C78A8", "gcn": "#F58518", "gatv2": "#54A24B", "graphsage": "#E45756"}
+COLORS = {
+    "clinical_lr": "#72B7B2",
+    "mlp": "#4C78A8",
+    "gcn": "#F58518",
+    "gatv2": "#54A24B",
+    "graphsage": "#E45756",
+}
+COMPARISON_MODELS = ("clinical_lr",) + MODEL_NAMES
 
 
 def set_seed(seed: int) -> None:
@@ -72,7 +82,14 @@ def _loss_fn(y_train: np.ndarray) -> torch.nn.Module:
 
 
 def _graph_logits(model, batch) -> torch.Tensor:
-    return model(batch.x, batch.edge_index, batch.emb_id, batch.is_patient, batch.batch)
+    return model(
+        batch.x,
+        batch.edge_index,
+        batch.emb_id,
+        batch.is_patient,
+        batch.batch,
+        focus=getattr(batch, "focus", None),
+    )
 
 
 def _run_graphs(model, graphs, indices, y, loss_fn, optimizer=None) -> float:
@@ -168,7 +185,13 @@ def cross_validate(model_name: str, cohort, folds: int, epochs: int, patience: i
             train_idx, test_size=0.15, stratify=cohort.y[train_idx], random_state=seed + fold
         )
         features = standardize_ages(cohort.graphs, cohort.mlp_x, train_idx)
-        model = build_model(model_name, FEATURE_DIM, cohort.catalog_size, features.shape[1])
+        model = build_model(
+            model_name,
+            FEATURE_DIM,
+            cohort.catalog_size,
+            features.shape[1],
+            mlp_clinical_dim=CLINICAL_DIM,
+        )
         optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-4)
         loss_fn = _loss_fn(cohort.y[inner_train])
         best_state, best_score, wait = None, -1.0, 0
@@ -224,6 +247,49 @@ def cross_validate(model_name: str, cohort, folds: int, epochs: int, patience: i
     }
 
 
+def cross_validate_clinical_lr(cohort, folds: int, seed: int) -> dict[str, object]:
+    """Logistic regression on the 19 clinical fields. Alterations and PrimeKG are unused."""
+    splitter = StratifiedKFold(n_splits=folds, shuffle=True, random_state=seed)
+    rows = []
+    oof_prob = np.full(len(cohort.y), np.nan)
+    oof_pred = np.full(len(cohort.y), -1)
+    oof_threshold = np.full(len(cohort.y), np.nan)
+    train_folds = []
+    clinical = cohort.mlp_x[:, :CLINICAL_DIM].astype(np.float64)
+    for fold, (train_idx, test_idx) in enumerate(splitter.split(np.zeros(len(cohort.y)), cohort.y)):
+        inner_train, validation = train_test_split(
+            train_idx, test_size=0.15, stratify=cohort.y[train_idx], random_state=seed + fold
+        )
+        scaler = StandardScaler()
+        train_x = scaler.fit_transform(np.nan_to_num(clinical[inner_train], nan=0.0))
+        model = LogisticRegression(max_iter=500, class_weight="balanced")
+        model.fit(train_x, cohort.y[inner_train])
+        val_prob = model.predict_proba(scaler.transform(np.nan_to_num(clinical[validation], nan=0.0)))[:, 1]
+        test_prob = model.predict_proba(scaler.transform(np.nan_to_num(clinical[test_idx], nan=0.0)))[:, 1]
+        threshold = best_f1_threshold(cohort.y[validation], val_prob)
+        rows.append(_metric_row("clinical_lr", cohort.endpoint, fold, cohort.y[test_idx], test_prob, threshold))
+        train_folds.append(np.array(train_idx))
+        oof_prob[test_idx] = test_prob
+        oof_pred[test_idx] = (test_prob >= threshold).astype(int)
+        oof_threshold[test_idx] = threshold
+        LOGGER.info(
+            "clinical_lr fold %d %s AUROC %.3f AUPRC %.3f",
+            fold,
+            cohort.endpoint,
+            rows[-1]["auroc"],
+            rows[-1]["auprc"],
+        )
+    return {
+        "rows": rows,
+        "histories": [],
+        "states": [],
+        "train_indices": train_folds,
+        "oof_prob": oof_prob,
+        "oof_pred": oof_pred,
+        "oof_threshold": oof_threshold,
+    }
+
+
 def _summary(frame: pd.DataFrame) -> pd.DataFrame:
     metrics = ["auroc", "auprc", "f1", "balanced_accuracy"]
     rows = []
@@ -236,8 +302,8 @@ def _summary(frame: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def _plot_curves(oof: pd.DataFrame, output_dir: Path) -> None:
-    primary = oof[oof["endpoint"] == "pfs"]
+def _plot_curves(oof: pd.DataFrame, output_dir: Path, endpoint: str) -> None:
+    primary = oof[oof["endpoint"] == endpoint]
     fig, axis = plt.subplots(figsize=(6.2, 5))
     for model, color in COLORS.items():
         group = primary[primary["model"] == model]
@@ -248,7 +314,7 @@ def _plot_curves(oof: pd.DataFrame, output_dir: Path) -> None:
     axis.plot([0, 1], [0, 1], linestyle="--", color="#888888")
     axis.set_xlabel("False positive rate")
     axis.set_ylabel("True positive rate")
-    axis.set_title("PFS recurrence ROC (out-of-fold)")
+    axis.set_title(f"{endpoint} ROC (out-of-fold)")
     axis.legend(frameon=False)
     fig.tight_layout()
     fig.savefig(output_dir / "roc_curves.png", dpi=160)
@@ -265,15 +331,17 @@ def _plot_curves(oof: pd.DataFrame, output_dir: Path) -> None:
     axis.axhline(prevalence, linestyle="--", color="#888888", label=f"prevalence {prevalence:.3f}")
     axis.set_xlabel("Recall")
     axis.set_ylabel("Precision")
-    axis.set_title("PFS recurrence precision-recall (out-of-fold)")
+    axis.set_title(f"{endpoint} precision-recall (out-of-fold)")
     axis.legend(frameon=False)
     fig.tight_layout()
     fig.savefig(output_dir / "pr_curves.png", dpi=160)
     plt.close(fig)
 
 
-def _plot_bars(summary: pd.DataFrame, output_dir: Path) -> None:
-    primary = summary[summary["endpoint"] == "pfs"]
+def _plot_bars(summary: pd.DataFrame, output_dir: Path, endpoint: str) -> None:
+    primary = summary[summary["endpoint"] == endpoint].copy()
+    order = [model for model in COMPARISON_MODELS if model in set(primary["model"])]
+    primary = primary.set_index("model").loc[order].reset_index()
     fig, axis = plt.subplots(figsize=(7.2, 4.6))
     positions = np.arange(len(primary))
     width = 0.36
@@ -282,7 +350,7 @@ def _plot_bars(summary: pd.DataFrame, output_dir: Path) -> None:
     axis.set_xticks(positions, primary["model"])
     axis.set_ylim(0, 1)
     axis.set_ylabel("Score")
-    axis.set_title("5-fold mean ± std on PFS")
+    axis.set_title(f"5-fold mean ± std on {endpoint}")
     axis.legend(frameon=False)
     fig.tight_layout()
     fig.savefig(output_dir / "comparison_bars.png", dpi=160)
@@ -310,12 +378,14 @@ def _plot_loss(histories: dict[str, list[list[dict]]], output_dir: Path) -> None
     plt.close(fig)
 
 
-def _plot_confusion(y_true: np.ndarray, y_pred: np.ndarray, model: str, output_dir: Path) -> None:
+def _plot_confusion(y_true: np.ndarray, y_pred: np.ndarray, model: str, output_dir: Path, endpoint: str) -> None:
     matrix = confusion_matrix(y_true, y_pred, labels=[0, 1])
     fig, axis = plt.subplots(figsize=(4.6, 4.2))
     image = axis.imshow(matrix, cmap="Blues")
     axis.set_xticks([0, 1], ["Pred 0", "Pred 1"])
-    axis.set_yticks([0, 1], ["Censored", "Progression"])
+    negative = "Event-free at 36m" if endpoint == "pfs_36m" else "Censored"
+    positive = "Progression by 36m" if endpoint == "pfs_36m" else "Progression"
+    axis.set_yticks([0, 1], [negative, positive])
     for row in range(2):
         for col in range(2):
             axis.text(col, row, str(matrix[row, col]), ha="center", va="center")
@@ -333,7 +403,13 @@ def _explain(model_name: str, result: dict, cohort, output_dir: Path, limit: int
     for index in chosen:
         fold = next(fold for fold, train_idx in enumerate(result["train_indices"]) if index not in set(int(item) for item in train_idx.tolist()))
         standardize_ages(cohort.graphs, cohort.mlp_x, result["train_indices"][fold])
-        model = build_model(model_name, FEATURE_DIM, cohort.catalog_size, cohort.mlp_x.shape[1])
+        model = build_model(
+            model_name,
+            FEATURE_DIM,
+            cohort.catalog_size,
+            cohort.mlp_x.shape[1],
+            mlp_clinical_dim=CLINICAL_DIM,
+        )
         model.load_state_dict(result["states"][fold])
         model.eval()
         data = cohort.graphs[index]
@@ -391,14 +467,22 @@ def _prepare_cohort(dataset_dir: Path, endpoint: str, panel, prime_frame):
     return cohort
 
 
+def _run_model(model_name: str, cohort, folds: int, epochs: int, patience: int, seed: int) -> dict[str, object]:
+    if model_name == "clinical_lr":
+        return cross_validate_clinical_lr(cohort, folds, seed)
+    return cross_validate(model_name, cohort, folds, epochs, patience, seed)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dataset-dir", type=Path, default=None)
+    parser.add_argument("--endpoint", choices=("pfs", "pfs_36m", "new_tumor_event"), default="pfs")
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--patience", type=int, default=6)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--explain-n", type=int, default=8)
+    parser.add_argument("--skip-sensitivity", action="store_true")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "outputs" / "gnn_benchmark")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -411,16 +495,24 @@ def main() -> int:
     prime_csv = ensure_primekg_csv()
     prime_frame = load_primekg_slice(prime_csv, panel_entrez)
     LOGGER.info("PrimeKG slice edges: %d", len(prime_frame))
-    cohort = _prepare_cohort(dataset_dir, "pfs", panel, prime_frame)
+    endpoint = args.endpoint
+    cohort = _prepare_cohort(dataset_dir, endpoint, panel, prime_frame)
+    if endpoint == "pfs_36m":
+        note = (
+            f"Y=1 is progression by {LANDMARK_MONTHS} months. "
+            "Patients censored earlier are dropped. PFS months define the window and are not features."
+        )
+    else:
+        note = "Y=0 is censored at last follow-up, not lifelong disease-free confirmation. PFS months are not features."
     audit = {
-        "endpoint": "pfs",
+        "endpoint": endpoint,
         "patients": int(len(cohort.y)),
         "positives": int(cohort.y.sum()),
         "negatives": int((cohort.y == 0).sum()),
         "primekg_edges": int(len(prime_frame)),
         "feature_dim": FEATURE_DIM,
         "catalog_size": int(cohort.catalog_size),
-        "note": "Y=0 is censored at last follow-up, not lifelong disease-free confirmation. PFS months are not features.",
+        "note": note,
     }
     (output_dir / "label_audit.json").write_text(json.dumps(audit, indent=2), encoding="utf-8")
 
@@ -428,8 +520,8 @@ def main() -> int:
     histories = {}
     fold_rows = []
     oof_frames = []
-    for model_name in MODEL_NAMES:
-        result = cross_validate(model_name, cohort, args.folds, args.epochs, args.patience, args.seed)
+    for model_name in COMPARISON_MODELS:
+        result = _run_model(model_name, cohort, args.folds, args.epochs, args.patience, args.seed)
         results[model_name] = result
         histories[model_name] = result["histories"]
         fold_rows.extend(result["rows"])
@@ -437,7 +529,7 @@ def main() -> int:
             pd.DataFrame(
                 {
                     "patient_id": cohort.patient_ids,
-                    "endpoint": "pfs",
+                    "endpoint": endpoint,
                     "model": model_name,
                     "y": cohort.y,
                     "probability": result["oof_prob"],
@@ -447,26 +539,30 @@ def main() -> int:
             )
         )
     summary = _summary(pd.DataFrame(fold_rows))
-    primary = summary[summary["endpoint"] == "pfs"].sort_values(["auprc_mean", "auroc_mean"], ascending=False)
+    primary = summary[summary["endpoint"] == endpoint].sort_values(["auprc_mean", "auroc_mean"], ascending=False)
     best_model = str(primary.iloc[0]["model"])
-    LOGGER.info("Best PFS model by mean AUPRC: %s", best_model)
+    graph_primary = primary[primary["model"].isin(MODEL_NAMES)]
+    explain_model = str(graph_primary.iloc[0]["model"]) if not graph_primary.empty else best_model
+    LOGGER.info("Best %s model by mean AUPRC: %s", endpoint, best_model)
 
-    sensitivity = _prepare_cohort(dataset_dir, "new_tumor_event", panel, prime_frame)
-    sensitive = cross_validate(best_model, sensitivity, args.folds, args.epochs, args.patience, args.seed)
-    fold_rows.extend(sensitive["rows"])
-    oof_frames.append(
-        pd.DataFrame(
-            {
-                "patient_id": sensitivity.patient_ids,
-                "endpoint": "new_tumor_event",
-                "model": best_model,
-                "y": sensitivity.y,
-                "probability": sensitive["oof_prob"],
-                "prediction": sensitive["oof_pred"],
-                "threshold": sensitive["oof_threshold"],
-            }
+    run_sensitivity = endpoint == "pfs" and not args.skip_sensitivity and explain_model in MODEL_NAMES
+    if run_sensitivity:
+        sensitivity = _prepare_cohort(dataset_dir, "new_tumor_event", panel, prime_frame)
+        sensitive = cross_validate(explain_model, sensitivity, args.folds, args.epochs, args.patience, args.seed)
+        fold_rows.extend(sensitive["rows"])
+        oof_frames.append(
+            pd.DataFrame(
+                {
+                    "patient_id": sensitivity.patient_ids,
+                    "endpoint": "new_tumor_event",
+                    "model": explain_model,
+                    "y": sensitivity.y,
+                    "probability": sensitive["oof_prob"],
+                    "prediction": sensitive["oof_pred"],
+                    "threshold": sensitive["oof_threshold"],
+                }
+            )
         )
-    )
     fold_frame = pd.DataFrame(fold_rows)
     summary = _summary(fold_frame)
     fold_frame.to_csv(output_dir / "metrics_folds.csv", index=False)
@@ -474,27 +570,29 @@ def main() -> int:
     oof = pd.concat(oof_frames, ignore_index=True)
     oof.to_csv(output_dir / "oof_predictions.csv", index=False)
     (output_dir / "loss_history.json").write_text(json.dumps(histories), encoding="utf-8")
-    _plot_curves(oof, output_dir)
-    _plot_bars(summary, output_dir)
+    _plot_curves(oof, output_dir, endpoint)
+    _plot_bars(summary, output_dir, endpoint)
     _plot_loss(histories, output_dir)
-    best_oof = oof[(oof["model"] == best_model) & (oof["endpoint"] == "pfs")]
-    _plot_confusion(best_oof["y"].to_numpy(), best_oof["prediction"].to_numpy(), best_model, output_dir)
-    explanations = _explain(best_model, results[best_model], cohort, output_dir, args.explain_n)
-    winning = summary[(summary["model"] == best_model) & (summary["endpoint"] == "pfs")].iloc[0]
-    sensitive_row = summary[(summary["model"] == best_model) & (summary["endpoint"] == "new_tumor_event")]
+    best_oof = oof[(oof["model"] == best_model) & (oof["endpoint"] == endpoint)]
+    _plot_confusion(best_oof["y"].to_numpy(), best_oof["prediction"].to_numpy(), best_model, output_dir, endpoint)
+    explanations = _explain(explain_model, results[explain_model], cohort, output_dir, args.explain_n)
+    winning = summary[(summary["model"] == best_model) & (summary["endpoint"] == endpoint)].iloc[0]
+    sensitive_row = summary[(summary["model"] == explain_model) & (summary["endpoint"] == "new_tumor_event")]
     lines = [
         "# GNN recurrence benchmark",
         "",
-        f"Primary endpoint PFS. Best model by mean AUPRC: **{best_model}**.",
+        f"Primary endpoint {endpoint}. Best model by mean AUPRC: **{best_model}**.",
         f"AUROC {winning['auroc_mean']:.3f} ± {winning['auroc_std']:.3f}; AUPRC {winning['auprc_mean']:.3f} ± {winning['auprc_std']:.3f}.",
         "",
-        "Y=0 means censored at last follow-up. Age was z-scored inside each training fold. Outcome columns were not graph features.",
+        note,
+        "",
+        "Graph and MLP scores add a clinical linear head to the alteration or graph score. Pooling uses the patient and altered genes.",
         "",
     ]
     if not sensitive_row.empty:
         row = sensitive_row.iloc[0]
         lines.append(
-            f"Sensitivity on NEW_TUMOR_EVENT_AFTER_INITIAL_TREATMENT with {best_model}: "
+            f"Sensitivity on NEW_TUMOR_EVENT_AFTER_INITIAL_TREATMENT with {explain_model}: "
             f"AUROC {row['auroc_mean']:.3f} ± {row['auroc_std']:.3f}; AUPRC {row['auprc_mean']:.3f} ± {row['auprc_std']:.3f}."
         )
     lines.append(f"Explanation paths written: {len(explanations)}.")

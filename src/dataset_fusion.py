@@ -546,10 +546,15 @@ def assemble_fused_graph(
         edge_index=edge_index,
         emb_id=torch.tensor([int(node["emb"]) for node in nodes], dtype=torch.long),
         is_patient=torch.tensor([node["type"] == "patient" for node in nodes], dtype=torch.bool),
+        focus=torch.tensor(
+            [node["type"] == "patient" or bool(node["altered"]) for node in nodes],
+            dtype=torch.bool,
+        ),
         rel_code=torch.tensor([RELATION_TO_CODE[relation] for relation in relations], dtype=torch.long),
         is_reverse=torch.tensor(reverses, dtype=torch.bool),
         y=torch.tensor([float(label)], dtype=torch.float),
         raw_age=torch.tensor([age], dtype=torch.float),
+        raw_clinical=torch.tensor(clinical, dtype=torch.float),
     )
     data.num_nodes = len(nodes)
     grafted = sorted(entrez for entrez in gene_ids if entrez not in seeds)
@@ -604,24 +609,37 @@ def mlp_feature_matrix(clinical_rows: list[dict | pd.Series], sample_genes_by_pa
 
 
 def standardize_ages(graphs: list[Data], mlp_x: np.ndarray, train_indices: np.ndarray) -> np.ndarray:
-    """Z-score age from the training fold only. Other nodes keep a zero clinical block."""
-    ages = []
-    for index in train_indices:
-        age = float(graphs[int(index)].raw_age.view(-1)[0])
-        if not math.isnan(age):
-            ages.append(age)
-    mean = float(np.mean(ages)) if ages else 0.0
-    std = float(np.std(ages)) if ages else 1.0
-    if std == 0:
-        std = 1.0
-    for graph in graphs:
-        age = float(graph.raw_age.view(-1)[0])
-        graph.x[0, AGE_FEATURE_INDEX] = 0.0 if math.isnan(age) else (age - mean) / std
+    """Z-score the clinical block from the training fold only.
+
+    Age is read from ``raw_age`` / the original MLP matrix, and the other clinical
+    fields are read from ``raw_clinical``. Message-passing nodes other than the
+    patient keep a zero clinical block. Outcome columns are not in this block.
+    """
+    if graphs and hasattr(graphs[0], "raw_clinical"):
+        raw = np.vstack([graph.raw_clinical.detach().cpu().numpy() for graph in graphs]).astype(np.float64)
+    else:
+        raw = np.zeros((len(graphs), CLINICAL_DIM), dtype=np.float64)
+        for index, graph in enumerate(graphs):
+            age = float(graph.raw_age.view(-1)[0])
+            raw[index, 0] = np.nan if math.isnan(age) else age
+            raw[index, 1:] = graph.x[0, AGE_FEATURE_INDEX + 1 : AGE_FEATURE_INDEX + CLINICAL_DIM].detach().cpu().numpy()
+    train = raw[np.asarray(train_indices)]
+    mean = np.nanmean(train, axis=0)
+    std = np.nanstd(train, axis=0)
+    mean = np.where(np.isfinite(mean), mean, 0.0)
+    std = np.where(np.isfinite(std) & (std > 0), std, 1.0)
+    filled = np.where(np.isnan(raw), mean, raw)
+    scaled_clinical = ((filled - mean) / std).astype(np.float32)
+    for graph, row in zip(graphs, scaled_clinical):
+        graph.x[0, AGE_FEATURE_INDEX : AGE_FEATURE_INDEX + CLINICAL_DIM] = torch.tensor(row)
     scaled = mlp_x.copy()
-    column = scaled[:, MLP_AGE_INDEX].astype(np.float64)
-    missing = np.isnan(column)
-    column[missing] = mean
-    scaled[:, MLP_AGE_INDEX] = ((column - mean) / std).astype(np.float32)
+    clinical = scaled[:, :CLINICAL_DIM].astype(np.float64)
+    clinical_mean = np.nanmean(clinical[np.asarray(train_indices)], axis=0)
+    clinical_std = np.nanstd(clinical[np.asarray(train_indices)], axis=0)
+    clinical_mean = np.where(np.isfinite(clinical_mean), clinical_mean, 0.0)
+    clinical_std = np.where(np.isfinite(clinical_std) & (clinical_std > 0), clinical_std, 1.0)
+    clinical = np.where(np.isnan(clinical), clinical_mean, clinical)
+    scaled[:, :CLINICAL_DIM] = ((clinical - clinical_mean) / clinical_std).astype(np.float32)
     return scaled
 
 

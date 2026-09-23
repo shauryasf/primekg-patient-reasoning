@@ -125,6 +125,7 @@ def attention_edge_scores(model: nn.Module, data) -> tuple[torch.Tensor, str] | 
             data.emb_id,
             data.is_patient,
             return_attention=True,
+            focus=getattr(data, "focus", None),
         )
     if not attentions:
         return None
@@ -144,8 +145,8 @@ def gnnexplainer_edge_scores(model: nn.Module, data, epochs: int = 80) -> torch.
             super().__init__()
             self.inner = inner
 
-        def forward(self, x, edge_index, node_emb_index=None, is_patient=None, batch=None):
-            return self.inner(x, edge_index, node_emb_index, is_patient, batch).view(-1, 1)
+        def forward(self, x, edge_index, node_emb_index=None, is_patient=None, batch=None, focus=None):
+            return self.inner(x, edge_index, node_emb_index, is_patient, batch, focus=focus).view(-1, 1)
 
     wrapper = _Logits(model)
     wrapper.eval()
@@ -163,6 +164,7 @@ def gnnexplainer_edge_scores(model: nn.Module, data, epochs: int = 80) -> torch.
             data.edge_index,
             node_emb_index=data.emb_id,
             is_patient=data.is_patient,
+            focus=getattr(data, "focus", None),
         )
     except Exception:
         return None
