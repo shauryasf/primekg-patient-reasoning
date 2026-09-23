@@ -58,7 +58,7 @@ The supervised target is binary `PFS_STATUS` (`1:PROGRESSION` vs `0:CENSORED`). 
 python scripts/train_and_evaluate_gnns.py
 ```
 
-Figures, fold metrics, and path explanations are written to `outputs/gnn_benchmark/`. Open [notebooks/gnn_recurrence_benchmark.ipynb](notebooks/gnn_recurrence_benchmark.ipynb) to read them. Install PyTorch from the CPU wheel index before `torch-geometric` if a CUDA wheel is not wanted:
+Figures, fold metrics, and path explanations are written to `outputs/gnn_benchmark/`. The mentor walkthrough, with those plots already embedded, is [notebooks/recurrence_gnn_milestone_demonstration.ipynb](notebooks/recurrence_gnn_milestone_demonstration.ipynb). Install PyTorch from the CPU wheel index before `torch-geometric` if a CUDA wheel is not wanted:
 
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cpu
