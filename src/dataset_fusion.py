@@ -42,6 +42,8 @@ RELATION_NAMES = (
     "drug_protein",
 )
 RELATION_TO_CODE = {name: index for index, name in enumerate(RELATION_NAMES)}
+OBSERVED_RELATIONS = RELATION_NAMES[:4]
+PRIMEKG_RELATIONS = RELATION_NAMES[4:]
 TYPE_DIM = len(NODE_TYPES)
 AGE_FEATURE_INDEX = TYPE_DIM
 CLINICAL_DIM = 1 + 1 + len(SUBTYPES) + len(STAGES) + len(M_STAGES)
@@ -339,6 +341,107 @@ class PrimeSlice:
         return slice_
 
 
+@dataclass
+class FusionConfig:
+    """Candidate PrimeKG depth and graph-structure-learning switches.
+
+    ``fixed_hops`` is the baseline neighborhood. ``max_candidate_hops`` is only
+    the upper bound GSL is allowed to see. Neither number is the GNN depth.
+    """
+
+    mode: str = "fixed"
+    fixed_hops: int = 2
+    max_candidate_hops: int = 3
+    gsl_enabled: bool = False
+    gsl_threshold: float = 0.5
+    gsl_hard_prune: bool = False
+    gsl_patient_context: bool = True
+    gsl_node_scores: bool = False
+    gsl_hidden: int = 32
+    gsl_relation_dim: int = 8
+    gsl_temperature: float = 1.0
+
+    @property
+    def candidate_hops(self) -> int:
+        if self.gsl_enabled or self.mode == "gsl":
+            return int(self.max_candidate_hops)
+        return int(self.fixed_hops)
+
+
+def load_fusion_config(policy: dict | None = None) -> FusionConfig:
+    raw = dict((policy if policy is not None else load_feature_policy()).get("primekg_fusion") or {})
+    allowed = set(FusionConfig.__dataclass_fields__)
+    return FusionConfig(**{key: value for key, value in raw.items() if key in allowed})
+
+
+@dataclass
+class PrimeNeighborhood:
+    gene_hops: dict[str, int]
+    pathway_hops: dict[str, int]
+    drug_hops: dict[str, int]
+    disease_hops: dict[str, int]
+    ppi_partners: set[str]
+
+
+def expand_primekg_neighborhood(
+    seeds: set[str],
+    prime: PrimeSlice,
+    panel_entrez: set[str],
+    max_hops: int,
+) -> PrimeNeighborhood:
+    """Bounded PrimeKG candidate search.
+
+    Protein-protein genes are added only as direct panel neighbors of an altered
+    gene. A partner's own protein neighbors are not crawled. Pathway, drug, and
+    disease links can continue out to ``max_hops``.
+    """
+    hops = max(int(max_hops), 0)
+    gene_hops = {entrez: 0 for entrez in seeds}
+    ppi_partners: set[str] = set()
+    if hops >= 1:
+        for seed in seeds:
+            for partner in prime.ppi.get(seed, set()):
+                if partner not in panel_entrez or partner in seeds:
+                    continue
+                ppi_partners.add(partner)
+                gene_hops[partner] = min(gene_hops.get(partner, hops + 1), 1)
+    pathway_hops: dict[str, int] = {}
+    drug_hops: dict[str, int] = {}
+    disease_hops: dict[str, int] = {}
+    if hops == 0:
+        return PrimeNeighborhood(gene_hops, pathway_hops, drug_hops, disease_hops, ppi_partners)
+    changed = True
+    while changed:
+        changed = False
+        for gene, gene_hop in list(gene_hops.items()):
+            next_hop = gene_hop + 1
+            if next_hop > hops:
+                continue
+            for pathway_id in prime.gene_pathways.get(gene, set()):
+                if pathway_hops.get(pathway_id, hops + 1) > next_hop:
+                    pathway_hops[pathway_id] = next_hop
+                    changed = True
+            for drug_id in prime.gene_drugs.get(gene, set()):
+                if drug_hops.get(drug_id, hops + 1) > next_hop:
+                    drug_hops[drug_id] = next_hop
+                    changed = True
+            for disease_id in prime.gene_diseases.get(gene, set()):
+                if disease_hops.get(disease_id, hops + 1) > next_hop:
+                    disease_hops[disease_id] = next_hop
+                    changed = True
+        for pathway_id, pathway_hop in list(pathway_hops.items()):
+            next_hop = pathway_hop + 1
+            if next_hop > hops:
+                continue
+            for gene in prime.pathway_genes.get(pathway_id, set()):
+                if gene not in panel_entrez:
+                    continue
+                if gene_hops.get(gene, hops + 1) > next_hop:
+                    gene_hops[gene] = next_hop
+                    changed = True
+    return PrimeNeighborhood(gene_hops, pathway_hops, drug_hops, disease_hops, ppi_partners)
+
+
 def _gene_and_other(x_type, x_entrez, x_id, x_name, y_type, y_entrez, y_id, y_name):
     if x_type == "gene" and x_entrez:
         return x_entrez, y_type, y_id, y_name
@@ -377,6 +480,7 @@ def assemble_fused_graph(
     panel: dict[str, dict[str, object]],
     catalog: dict[str, int],
     label: int,
+    max_hops: int = 2,
 ) -> tuple[Data, dict[str, object]]:
     """Build one homogeneous PyG graph. ``label`` is stored as ``data.y`` only."""
     altered: dict[str, dict[str, object]] = {}
@@ -398,15 +502,13 @@ def assemble_fused_graph(
                 sample_edges.append((sample_id, entrez, "has_homozygous_deletion"))
 
     seeds = set(altered)
-    partners = set().union(*(prime.ppi.get(entrez, set()) for entrez in seeds)) if seeds else set()
-    partners &= {str(info["entrez"]) for info in panel.values() if info.get("entrez")}
-    seed_pathways = set().union(*(prime.gene_pathways.get(entrez, set()) for entrez in seeds)) if seeds else set()
-    bridge = set().union(*(prime.pathway_genes.get(pathway, set()) for pathway in seed_pathways)) if seed_pathways else set()
-    context = seeds | partners
-    pathway_ids = set().union(*(prime.gene_pathways.get(entrez, set()) for entrez in context)) if context else set()
-    drug_ids = set().union(*(prime.gene_drugs.get(entrez, set()) for entrez in context)) if context else set()
-    disease_ids = set().union(*(prime.gene_diseases.get(entrez, set()) for entrez in context)) if context else set()
-    gene_ids = sorted(seeds | partners | bridge, key=lambda entrez: (_symbol_for(entrez, altered, panel), entrez))
+    panel_entrez = {str(info["entrez"]) for info in panel.values() if info.get("entrez")}
+    neighborhood = expand_primekg_neighborhood(seeds, prime, panel_entrez, max_hops)
+    gene_ids = sorted(neighborhood.gene_hops, key=lambda entrez: (_symbol_for(entrez, altered, panel), entrez))
+    pathway_ids = set(neighborhood.pathway_hops)
+    drug_ids = set(neighborhood.drug_hops)
+    disease_ids = set(neighborhood.disease_hops)
+    context = seeds | neighborhood.ppi_partners
 
     nodes: list[dict[str, object]] = [
         {
@@ -495,19 +597,21 @@ def assemble_fused_graph(
     targets: list[int] = []
     relations: list[str] = []
     reverses: list[bool] = []
+    hops: list[int] = []
 
-    def add_edge(src: int, dst: int, relation: str) -> None:
+    def add_edge(src: int, dst: int, relation: str, hop: int) -> None:
         sources.extend((src, dst))
         targets.extend((dst, src))
         relations.extend((relation, relation))
         reverses.extend((False, True))
+        hops.extend((int(hop), int(hop)))
 
     patient_index = 0
     for sample_id in sorted(sample_genes):
-        add_edge(patient_index, index[f"sample:{sample_id}"], "has_sample")
+        add_edge(patient_index, index[f"sample:{sample_id}"], "has_sample", 0)
     for sample_id, entrez, relation in sample_edges:
         symbol = _symbol_for(entrez, altered, panel)
-        add_edge(index[f"sample:{sample_id}"], index[f"gene:{symbol}:{entrez}"], relation)
+        add_edge(index[f"sample:{sample_id}"], index[f"gene:{symbol}:{entrez}"], relation, 0)
     gene_set = set(gene_ids)
     seen_ppi: set[tuple[str, str]] = set()
     for entrez in gene_ids:
@@ -520,20 +624,21 @@ def assemble_fused_graph(
             seen_ppi.add(pair)
             left = index[f"gene:{_symbol_for(pair[0], altered, panel)}:{pair[0]}"]
             right = index[f"gene:{_symbol_for(pair[1], altered, panel)}:{pair[1]}"]
-            add_edge(left, right, "protein_protein")
+            edge_hop = max(neighborhood.gene_hops.get(pair[0], 0), neighborhood.gene_hops.get(pair[1], 0), 1)
+            add_edge(left, right, "protein_protein", edge_hop)
     for entrez in gene_ids:
         symbol = _symbol_for(entrez, altered, panel)
         gene_index = index[f"gene:{symbol}:{entrez}"]
+        gene_hop = neighborhood.gene_hops.get(entrez, 0)
         for pathway_id in prime.gene_pathways.get(entrez, set()):
             if pathway_id in pathway_ids:
-                add_edge(gene_index, index[f"pathway:{pathway_id}"], "pathway_protein")
-        if entrez in context:
-            for drug_id in prime.gene_drugs.get(entrez, set()):
-                if drug_id in drug_ids:
-                    add_edge(gene_index, index[f"drug:{drug_id}"], "drug_protein")
-            for disease_id in prime.gene_diseases.get(entrez, set()):
-                if disease_id in disease_ids:
-                    add_edge(gene_index, index[f"disease:{disease_id}"], "disease_protein")
+                add_edge(gene_index, index[f"pathway:{pathway_id}"], "pathway_protein", max(gene_hop, neighborhood.pathway_hops[pathway_id]))
+        for drug_id in prime.gene_drugs.get(entrez, set()):
+            if drug_id in drug_ids:
+                add_edge(gene_index, index[f"drug:{drug_id}"], "drug_protein", max(gene_hop, neighborhood.drug_hops[drug_id]))
+        for disease_id in prime.gene_diseases.get(entrez, set()):
+            if disease_id in disease_ids:
+                add_edge(gene_index, index[f"disease:{disease_id}"], "disease_protein", max(gene_hop, neighborhood.disease_hops[disease_id]))
 
     if not sources:
         # A labeled patient with no sample still needs a valid empty edge index.
@@ -551,6 +656,7 @@ def assemble_fused_graph(
             dtype=torch.bool,
         ),
         rel_code=torch.tensor([RELATION_TO_CODE[relation] for relation in relations], dtype=torch.long),
+        hop=torch.tensor(hops, dtype=torch.long),
         is_reverse=torch.tensor(reverses, dtype=torch.bool),
         y=torch.tensor([float(label)], dtype=torch.float),
         raw_age=torch.tensor([age], dtype=torch.float),
@@ -565,6 +671,8 @@ def assemble_fused_graph(
         "node_names": [str(node["name"]) for node in nodes],
         "altered": [bool(node["altered"]) for node in nodes],
         "relations": relations,
+        "edge_hops": hops,
+        "max_hops": int(max_hops),
         "grafted_entrez": grafted,
         "stored_fields": list(CLINICAL_FEATURE_FIELDS),
         "y": int(label),
@@ -692,8 +800,10 @@ def build_cohort(
     labels: pd.DataFrame,
     prime_frame: pd.DataFrame,
     panel: dict[str, dict[str, object]] | None = None,
+    fusion: FusionConfig | None = None,
 ) -> FusedCohort:
     panel = panel or load_gene_panel()
+    fusion = fusion or load_fusion_config()
     panel_symbols = sorted(panel)
     prime = PrimeSlice.from_frame(prime_frame)
     catalog = build_catalog(panel, prime)
@@ -722,7 +832,16 @@ def build_cohort(
             continue
         row = patients.loc[patient_id]
         sample_genes = {sample_id: by_sample.get(sample_id, {}) for sample_id in samples}
-        graph, meta = assemble_fused_graph(patient_id, row, sample_genes, prime, panel, catalog, int(label_map[patient_id]))
+        graph, meta = assemble_fused_graph(
+            patient_id,
+            row,
+            sample_genes,
+            prime,
+            panel,
+            catalog,
+            int(label_map[patient_id]),
+            max_hops=fusion.candidate_hops,
+        )
         graphs.append(graph)
         metas.append(meta)
         clinical_rows.append(row)

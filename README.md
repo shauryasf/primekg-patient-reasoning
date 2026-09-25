@@ -60,6 +60,8 @@ python scripts/train_and_evaluate_gnns.py
 
 The mentor notebook is [notebooks/recurrence_gnn_milestone_demonstration.ipynb](notebooks/recurrence_gnn_milestone_demonstration.ipynb). It shows only the models that read the patient graph, calls **GCN** the best of those three, and includes the cause-chain figure. On the 36-month label GCN reaches AUROC 0.680 ± 0.076 and AUPRC 0.396 ± 0.091. Plots and path tables are in `outputs/gnn_benchmark_36m/`.
 
+PrimeKG depth is configured in `config/features.yaml` under `primekg_fusion`. `fixed_hops: 2` is the original neighborhood. `mode: gsl` retrieves `max_candidate_hops` and learns a patient-specific weight on those edges. See [graph structure learning](docs/graph_structure_learning.md).
+
 ```bash
 python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --skip-sensitivity --output-dir outputs/gnn_benchmark_36m
 ```

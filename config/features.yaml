@@ -48,6 +48,22 @@ cna_policy:
   exclude_neutral_value: 0
 
 gene_panel: config/gene_panel_500.json
+
+# PrimeKG candidate depth is separate from the 3 GNN message-passing layers.
+# fixed: use fixed_hops (1, 2, or 3). 0 keeps the patient graph only.
+# gsl: retrieve max_candidate_hops, then learn an edge weight inside that bound.
+primekg_fusion:
+  mode: fixed
+  fixed_hops: 2
+  max_candidate_hops: 3
+  gsl_enabled: false
+  gsl_threshold: 0.5
+  gsl_hard_prune: false
+  gsl_patient_context: true
+  gsl_node_scores: false
+  gsl_hidden: 32
+  gsl_relation_dim: 8
+  gsl_temperature: 1.0
 outcome_fields_excluded_from_evidence:
   - OS_STATUS
   - OS_MONTHS
