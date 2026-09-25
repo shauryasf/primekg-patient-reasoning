@@ -43,6 +43,20 @@ python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --skip-sensitivity 
 
 GSL writes `gsl_edges.csv` for the explained patients. Each row has the source, relation, destination, original hop, learned score, and whether the optional threshold would keep it.
 
+## Trained 36-month run
+
+`outputs/gnn_benchmark_gsl` is a 5-fold run of the same models as the fixed K=2 benchmark, with `mode: gsl` and `max_candidate_hops: 3`. Soft weights were used in training. Hard pruning stayed off. `gsl_edges.csv` is the GraphSAGE scorer on the explained progression cases (the best graph model by mean AUPRC).
+
+| Model | AUROC | AUPRC |
+| --- | --- | --- |
+| clinical_lr | 0.703 ± 0.081 | 0.463 ± 0.133 |
+| graphsage | 0.660 ± 0.116 | 0.383 ± 0.103 |
+| gatv2 | 0.627 ± 0.062 | 0.366 ± 0.091 |
+| gcn | 0.609 ± 0.080 | 0.316 ± 0.111 |
+| mlp | 0.562 ± 0.098 | 0.262 ± 0.064 |
+
+On the explained patients, observed patient edges stay at score 1. PrimeKG edges at hop 1 have mean score 0.44 and 52% would pass a 0.5 threshold. Hop 2 has mean score 0.24 and none pass 0.5. Hop 3 has mean score 0.23 and 19% would pass 0.5. That threshold is a report cutoff, not a training prune.
+
 ## What this does not claim
 
-Retrieving three hops does not mean the model uses three hops. A high score on a 1-hop edge and a low score on a 3-hop edge is an effective neighborhood, and that distribution has to be counted from a trained `gsl_edges.csv`. This repository does not yet report those percentages because the GSL model has not been trained on the cohort. The unit tests check shapes, the panel bound, relation labels, patient conditioning, and that the loss reaches the scorer.
+Retrieving three hops does not mean the model uses three hops. The clinical logistic regression still has the highest mean AUPRC on this endpoint. GraphSAGE and GATv2 are close to their fixed K=2 numbers; GCN is lower than the fixed K=2 GCN (AUPRC 0.396). The unit tests check shapes, the panel bound, relation labels, patient conditioning, and that the loss reaches the scorer.
