@@ -63,7 +63,7 @@ primekg_fusion:
   gsl_node_scores: false
   gsl_hidden: 32
   gsl_relation_dim: 8
-  gsl_temperature: 1.0
+  gsl_temperature: 4.0
   # Hops up to fixed_hops start fully open. Farther candidate hops start mostly closed
   # and can open per patient. The structure learner uses a lower learning rate.
   gsl_open_logit: 4.0

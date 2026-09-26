@@ -359,7 +359,7 @@ class FusionConfig:
     gsl_node_scores: bool = False
     gsl_hidden: int = 32
     gsl_relation_dim: int = 8
-    gsl_temperature: float = 1.0
+    gsl_temperature: float = 4.0
     gsl_open_logit: float = 4.0
     gsl_closed_logit: float = -2.0
     gsl_learning_rate: float = 1e-4

@@ -82,8 +82,12 @@ class EdgeStructureLearner(nn.Module):
         # 2 * sigmoid(0) is 1, and the slope there is not zero, unlike clamp(..., max=1).
         edge_factor = 2.0 * torch.sigmoid((delta + self.relation_logit[relation_codes]) / temperature)
         hop_logit = self.hop_bias[hop_values] + self.patient_hop(patient_hidden).gather(1, hop_values.view(-1, 1)).view(-1)
-        hop_gate = torch.sigmoid(hop_logit)
-        self.last_hop_gate = hop_gate
+        soft_gate = torch.sigmoid(hop_logit)
+        # Hard off until the patient gate crosses 0.5, with a straight-through slope
+        # so a closed hop does not leak messages the way a soft 0.12 weight does.
+        opened = (soft_gate > 0.5).to(dtype=soft_gate.dtype)
+        hop_gate = opened + soft_gate - soft_gate.detach()
+        self.last_hop_gate = soft_gate
         keep = min(max(int(self.config.fixed_hops), 0), self.n_hops - 1)
         inside_prior = (hop_values >= 1) & (hop_values <= keep)
         learned = torch.where(inside_prior, edge_factor, hop_gate * edge_factor)
