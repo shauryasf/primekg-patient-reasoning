@@ -20,13 +20,13 @@ Protein-protein expansion still starts only at altered genes and still stops at 
 
 ## Learned weights
 
-For a PrimeKG edge the score is
+A global search over K is feasible, but it picks one depth for the whole cohort. The scorer instead starts from the fixed neighborhood and learns a patient-specific exception.
 
-`sigmoid(MLP([source, destination, relation embedding, patient clinical vector, hop]) / temperature)`.
+Hops `1..fixed_hops` start at weight 1. That is the same graph as `mode: fixed` with that K. A farther hop, up to `max_candidate_hops`, starts at `sigmoid(gsl_closed_logit)` (about 0.12 with the default -2) and a patient-specific head can open it. The edge and relation residual is `2 * sigmoid(logit)`, which is also 1 at the zero start and can move either way. Observed patient edges stay at 1.
 
-Edges that were observed in the patient (sample, mutation, amplification, deletion) stay at weight 1. They are not PrimeKG hypotheses.
+The first GSL run did not do this. A free sigmoid on `[source, destination, relation, patient, hop]` started near 0.5 and then drove every 2-hop edge below 0.5, including the pathway and drug edges the fixed K=2 model was using. GCN AUPRC fell from 0.396 to 0.316. Hop is no longer an input the MLP can use to shut a whole ring off. It is only the prior gate above.
 
-The score multiplies the message in GCN, GraphSAGE, and GATv2. Training uses that soft weight so the scorer receives gradient from the same loss as the GNN. A threshold is applied only when `gsl_hard_prune` is true and the model is in eval mode.
+The score multiplies the message in GCN, GraphSAGE, and GATv2. The structure parameters use `gsl_learning_rate` and no weight decay, so the prior does not get pulled back to zero. A threshold is applied only when `gsl_hard_prune` is true and the model is in eval mode.
 
 `gsl_patient_context: false` drops the patient vector. That is the ablation for a score that ignores which patient the edge was attached to. `gsl_node_scores: true` also multiplies by a learned destination-node score.
 

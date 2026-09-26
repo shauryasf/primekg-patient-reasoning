@@ -101,10 +101,39 @@ class StructureLearningTests(unittest.TestCase):
         self.assertTrue(all(row["relation"] in meta["relations"] for row in report))
         self.assertTrue(any(row["knowledge"] and row["hop"] >= 1 for row in report))
 
+    def test_kept_hops_start_open_and_the_extra_hop_starts_closed(self):
+        data, _ = _graph([("ERBB2", "2064")], 3)
+        config = FusionConfig(mode="gsl", gsl_enabled=True, fixed_hops=2, gsl_patient_context=True, gsl_hidden=8, gsl_relation_dim=4)
+        learner = EdgeStructureLearner(config)
+        weight = learner(data.x, data.edge_index, data.rel_code, data.is_patient, data.hop)
+        knowledge = data.rel_code >= 4
+        near = knowledge & (data.hop <= 2)
+        far = knowledge & (data.hop >= 3)
+        self.assertGreater(int(near.sum()), 0)
+        self.assertGreater(int(far.sum()), 0)
+        self.assertTrue(torch.allclose(weight[near], torch.ones(int(near.sum()))))
+        self.assertLess(float(weight[far].detach().mean()), 0.2)
+        self.assertTrue(torch.allclose(weight[far], learner.last_hop_gate[far]))
+        weight[far].sum().backward()
+        self.assertIsNotNone(learner.hop_bias.grad)
+        self.assertGreater(float(learner.hop_bias.grad[3].abs()), 0)
+
     def test_patient_context_changes_primekg_scores(self):
         config = FusionConfig(mode="gsl", gsl_enabled=True, gsl_patient_context=True, gsl_hidden=8, gsl_relation_dim=4)
-        torch.manual_seed(7)
         learner = EdgeStructureLearner(config)
+        hidden = int(config.gsl_hidden)
+        # Open a single path from the first clinical feature to the edge logit.
+        torch.nn.init.zeros_(learner.patient_encoder.weight)
+        torch.nn.init.zeros_(learner.patient_encoder.bias)
+        torch.nn.init.zeros_(learner.edge_mlp[0].weight)
+        torch.nn.init.zeros_(learner.edge_mlp[0].bias)
+        torch.nn.init.zeros_(learner.edge_mlp[-1].weight)
+        torch.nn.init.zeros_(learner.edge_mlp[-1].bias)
+        with torch.no_grad():
+            learner.patient_encoder.weight[0, 0] = 1
+            learner.edge_mlp[0].bias.fill_(1)
+            learner.edge_mlp[0].weight[:, -hidden] = 1
+            learner.edge_mlp[-1].weight[0, 0] = 1
         first, _ = self._data("30")
         second, _ = self._data("90")
         # Put the age difference on every feature of the patient node so the context encoder sees it.
@@ -138,5 +167,7 @@ class StructureLearningTests(unittest.TestCase):
         logit = model(batch.x, batch.edge_index, batch.emb_id, batch.is_patient, batch.batch, rel_code=batch.rel_code, hop=batch.hop, focus=batch.focus)
         self.assertEqual(tuple(logit.shape), (2,))
         logit.sum().backward()
-        self.assertIsNotNone(model.gsl.edge_mlp[0].weight.grad)
-        self.assertGreater(float(model.gsl.edge_mlp[0].weight.grad.abs().sum()), 0)
+        self.assertIsNotNone(model.gsl.edge_mlp[-1].bias.grad)
+        self.assertGreater(float(model.gsl.edge_mlp[-1].bias.grad.abs()), 0)
+        self.assertIsNotNone(model.gsl.relation_logit.grad)
+        self.assertGreater(float(model.gsl.relation_logit.grad.abs().sum()), 0)
