@@ -197,7 +197,19 @@ def cross_validate(model_name: str, cohort, folds: int, epochs: int, patience: i
             mlp_clinical_dim=CLINICAL_DIM,
             fusion=fusion,
         )
-        optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-4)
+        gsl = getattr(model, "gsl", None)
+        if gsl is None:
+            optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-4)
+        else:
+            gsl_ids = {id(parameter) for parameter in gsl.parameters()}
+            graph_parameters = [parameter for parameter in model.parameters() if id(parameter) not in gsl_ids]
+            optimizer = torch.optim.Adam(
+                [
+                    {"params": graph_parameters, "lr": 1e-3},
+                    {"params": list(gsl.parameters()), "lr": float(fusion.gsl_learning_rate) if fusion is not None else 1e-4, "weight_decay": 0.0},
+                ],
+                weight_decay=1e-4,
+            )
         loss_fn = _loss_fn(cohort.y[inner_train])
         best_state, best_score, wait = None, -1.0, 0
         history = []
@@ -482,7 +494,7 @@ def _write_gsl_report(model_name: str, result: dict, cohort, output_dir: Path, l
         weight = model.edge_weights(data.x, data.edge_index, data.rel_code, data.is_patient, data.hop, None)
         if weight is None:
             continue
-        for row in edge_report(data, cohort.metas[index], weight, fusion.gsl_threshold):
+        for row in edge_report(data, cohort.metas[index], weight, fusion.gsl_threshold, model.gsl.last_hop_gate):
             row["patient_id"] = cohort.patient_ids[index]
             kept_rows.append(row)
     if kept_rows:

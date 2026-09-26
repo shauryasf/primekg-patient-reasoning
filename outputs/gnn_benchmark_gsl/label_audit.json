@@ -1,0 +1,13 @@
+{
+  "endpoint": "pfs_36m",
+  "patients": 498,
+  "positives": 89,
+  "negatives": 409,
+  "primekg_edges": 4570,
+  "feature_dim": 30,
+  "catalog_size": 1524,
+  "fusion_mode": "gsl",
+  "candidate_hops": 3,
+  "gsl_enabled": true,
+  "note": "Y=1 is progression by 36 months. Patients censored earlier are dropped. PFS months define the window and are not features."
+}

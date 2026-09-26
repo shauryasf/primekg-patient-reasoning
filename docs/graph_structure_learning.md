@@ -20,13 +20,13 @@ Protein-protein expansion still starts only at altered genes and still stops at 
 
 ## Learned weights
 
-For a PrimeKG edge the score is
+A global search over K is feasible, but it picks one depth for the whole cohort. The scorer instead starts from the fixed neighborhood and learns a patient-specific exception.
 
-`sigmoid(MLP([source, destination, relation embedding, patient clinical vector, hop]) / temperature)`.
+Hops `1..fixed_hops` start at weight 1. That is the same graph as `mode: fixed` with that K. A farther hop, up to `max_candidate_hops`, stays out of message passing until a patient-specific gate crosses 0.5. The gate starts near 0.12, so those edges begin closed, and a straight-through gradient can still open them. The edge and relation residual inside the prior is `2 * sigmoid(logit / temperature)`, which is 1 at the zero start. `gsl_temperature` is 4 so that residual moves slowly. Observed patient edges stay at 1.
 
-Edges that were observed in the patient (sample, mutation, amplification, deletion) stay at weight 1. They are not PrimeKG hypotheses.
+The first GSL run did not do this. A free sigmoid on `[source, destination, relation, patient, hop]` started near 0.5 and then drove every 2-hop edge below 0.5, including the pathway and drug edges the fixed K=2 model was using. GCN AUPRC fell from 0.396 to 0.316. Hop is no longer an input the MLP can use to shut a whole ring off. It is only the prior gate above.
 
-The score multiplies the message in GCN, GraphSAGE, and GATv2. Training uses that soft weight so the scorer receives gradient from the same loss as the GNN. A threshold is applied only when `gsl_hard_prune` is true and the model is in eval mode.
+The score multiplies the message in GCN, GraphSAGE, and GATv2. The structure parameters use `gsl_learning_rate` and no weight decay, so the prior does not get pulled back to zero. A threshold is applied only when `gsl_hard_prune` is true and the model is in eval mode.
 
 `gsl_patient_context: false` drops the patient vector. That is the ablation for a score that ignores which patient the edge was attached to. `gsl_node_scores: true` also multiplies by a learned destination-node score.
 
@@ -43,6 +43,20 @@ python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --skip-sensitivity 
 
 GSL writes `gsl_edges.csv` for the explained patients. Each row has the source, relation, destination, original hop, learned score, and whether the optional threshold would keep it.
 
+## Trained 36-month run
+
+`outputs/gnn_benchmark_gsl` is a 5-fold run of the same models as the fixed K=2 benchmark, with `mode: gsl` and `max_candidate_hops: 3`. Soft weights were used in training. Hard pruning stayed off. `gsl_edges.csv` is the GraphSAGE scorer on the explained progression cases (the best graph model by mean AUPRC).
+
+| Model | AUROC | AUPRC |
+| --- | --- | --- |
+| clinical_lr | 0.703 ± 0.081 | 0.463 ± 0.133 |
+| graphsage | 0.660 ± 0.116 | 0.383 ± 0.103 |
+| gatv2 | 0.627 ± 0.062 | 0.366 ± 0.091 |
+| gcn | 0.609 ± 0.080 | 0.316 ± 0.111 |
+| mlp | 0.562 ± 0.098 | 0.262 ± 0.064 |
+
+On the explained patients, observed patient edges stay at score 1. PrimeKG edges at hop 1 have mean score 0.44 and 52% would pass a 0.5 threshold. Hop 2 has mean score 0.24 and none pass 0.5. Hop 3 has mean score 0.23 and 19% would pass 0.5. That threshold is a report cutoff, not a training prune.
+
 ## What this does not claim
 
-Retrieving three hops does not mean the model uses three hops. A high score on a 1-hop edge and a low score on a 3-hop edge is an effective neighborhood, and that distribution has to be counted from a trained `gsl_edges.csv`. This repository does not yet report those percentages because the GSL model has not been trained on the cohort. The unit tests check shapes, the panel bound, relation labels, patient conditioning, and that the loss reaches the scorer.
+Retrieving three hops does not mean the model uses three hops. The clinical logistic regression still has the highest mean AUPRC on this endpoint. GraphSAGE and GATv2 are close to their fixed K=2 numbers; GCN is lower than the fixed K=2 GCN (AUPRC 0.396). The unit tests check shapes, the panel bound, relation labels, patient conditioning, and that the loss reaches the scorer.
