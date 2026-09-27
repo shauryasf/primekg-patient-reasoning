@@ -5,7 +5,37 @@ import torch
 from torch import nn
 from torch_geometric.nn import GATv2Conv, GCNConv, SAGEConv, global_max_pool, global_mean_pool
 
-from .dataset_fusion import AGE_FEATURE_INDEX, CLINICAL_DIM
+from .dataset_fusion import AGE_FEATURE_INDEX, CLINICAL_DIM, FusionConfig, load_fusion_config
+from .gsl import EdgeStructureLearner
+
+
+class WeightedSAGEConv(SAGEConv):
+    """GraphSAGE whose neighbor messages are multiplied by a per-edge weight."""
+
+    def forward(self, x, edge_index, edge_weight=None, size=None):
+        self._gsl_weight = edge_weight
+        return SAGEConv.forward(self, x, edge_index, size=size)
+
+    def message(self, x_j):
+        weight = getattr(self, "_gsl_weight", None)
+        if weight is None:
+            return x_j
+        return x_j * weight.view(-1, 1)
+
+
+class WeightedGATv2Conv(GATv2Conv):
+    """GATv2 whose messages are scaled by a learned PrimeKG edge weight."""
+
+    def forward(self, x, edge_index, edge_weight=None, return_attention_weights=None):
+        self._gsl_weight = edge_weight
+        return super().forward(x, edge_index, return_attention_weights=return_attention_weights)
+
+    def message(self, x_j, alpha):
+        message = x_j * alpha.unsqueeze(-1)
+        weight = getattr(self, "_gsl_weight", None)
+        if weight is None:
+            return message
+        return message * weight.view(-1, *([1] * (message.dim() - 1)))
 
 MODEL_NAMES = ("mlp", "gcn", "gatv2", "graphsage")
 
@@ -71,6 +101,7 @@ class PatientGNN(nn.Module):
         layers: int = 3,
         dropout: float = 0.3,
         heads: int = 4,
+        fusion: FusionConfig | None = None,
     ) -> None:
         super().__init__()
         if architecture not in {"gcn", "gatv2", "graphsage"}:
@@ -85,15 +116,29 @@ class PatientGNN(nn.Module):
             if architecture == "gcn":
                 convs.append(GCNConv(dim_in, hidden))
             elif architecture == "graphsage":
-                convs.append(SAGEConv(dim_in, hidden))
+                convs.append(WeightedSAGEConv(dim_in, hidden))
             else:
-                convs.append(GATv2Conv(dim_in, hidden, heads=heads, concat=False, dropout=dropout, add_self_loops=False))
+                convs.append(WeightedGATv2Conv(dim_in, hidden, heads=heads, concat=False, dropout=dropout, add_self_loops=False))
         self.convs = nn.ModuleList(convs)
+        self.gsl = EdgeStructureLearner(fusion) if fusion is not None and (fusion.gsl_enabled or fusion.mode == "gsl") else None
         self.classifier = nn.Linear(hidden * 3, 1)
         self.clinical_head = nn.Linear(CLINICAL_DIM, 1)
         self.residual_gate = nn.Parameter(torch.tensor(-2.0))
         nn.init.zeros_(self.classifier.weight)
         nn.init.zeros_(self.classifier.bias)
+
+    def edge_weights(
+        self,
+        x: torch.Tensor,
+        edge_index: torch.Tensor,
+        rel_code: torch.Tensor | None,
+        is_patient: torch.Tensor,
+        hop: torch.Tensor | None,
+        batch: torch.Tensor | None,
+    ) -> torch.Tensor | None:
+        if self.gsl is None or rel_code is None:
+            return None
+        return self.gsl(x, edge_index, rel_code, is_patient, hop, batch)
 
     def encode(
         self,
@@ -101,15 +146,18 @@ class PatientGNN(nn.Module):
         edge_index: torch.Tensor,
         node_emb_index: torch.Tensor,
         return_attention: bool = False,
+        edge_weight: torch.Tensor | None = None,
     ) -> torch.Tensor | tuple[torch.Tensor, list[torch.Tensor]]:
         hidden = torch.cat([self.embedding(node_emb_index), x], dim=-1)
         attentions: list[torch.Tensor] = []
         for layer, conv in enumerate(self.convs):
             if return_attention and isinstance(conv, GATv2Conv):
-                hidden, (_, alpha) = conv(hidden, edge_index, return_attention_weights=True)
+                hidden, (_, alpha) = conv(hidden, edge_index, edge_weight=edge_weight, return_attention_weights=True)
                 attentions.append(alpha.mean(dim=-1))
+            elif isinstance(conv, GCNConv):
+                hidden = conv(hidden, edge_index, edge_weight=edge_weight)
             else:
-                hidden = conv(hidden, edge_index)
+                hidden = conv(hidden, edge_index, edge_weight=edge_weight)
             if layer + 1 < len(self.convs):
                 hidden = torch.relu(hidden)
                 hidden = torch.nn.functional.dropout(hidden, p=self.dropout, training=self.training)
@@ -162,11 +210,14 @@ class PatientGNN(nn.Module):
         batch: torch.Tensor | None = None,
         return_attention: bool = False,
         focus: torch.Tensor | None = None,
+        rel_code: torch.Tensor | None = None,
+        hop: torch.Tensor | None = None,
     ) -> torch.Tensor | tuple[torch.Tensor, list[torch.Tensor]]:
+        edge_weight = self.edge_weights(x, edge_index, rel_code, is_patient, hop, batch)
         if return_attention:
-            hidden, attentions = self.encode(x, edge_index, node_emb_index, return_attention=True)
+            hidden, attentions = self.encode(x, edge_index, node_emb_index, return_attention=True, edge_weight=edge_weight)
             return self._logits(x, hidden, is_patient, batch, focus), attentions
-        hidden = self.encode(x, edge_index, node_emb_index, return_attention=False)
+        hidden = self.encode(x, edge_index, node_emb_index, return_attention=False, edge_weight=edge_weight)
         return self._logits(x, hidden, is_patient, batch, focus)
 
 
@@ -176,7 +227,8 @@ def build_model(
     num_embeddings: int,
     mlp_in_dim: int,
     mlp_clinical_dim: int = 0,
+    fusion: FusionConfig | None = None,
 ) -> nn.Module:
     if name == "mlp":
         return TabularMLP(mlp_in_dim, clinical_dim=mlp_clinical_dim)
-    return PatientGNN(name, feature_dim, num_embeddings)
+    return PatientGNN(name, feature_dim, num_embeddings, fusion=fusion if fusion is not None else load_fusion_config())

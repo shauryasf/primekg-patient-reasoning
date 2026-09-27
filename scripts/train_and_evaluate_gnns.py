@@ -38,11 +38,13 @@ from src.dataset_fusion import (
     CLINICAL_DIM,
     FEATURE_DIM,
     build_cohort,
+    load_fusion_config,
     load_gene_panel,
     load_primekg_slice,
     relations_from_codes,
     standardize_ages,
 )
+from src.gsl import edge_report
 from src.downloads import ensure_brca_dataset, ensure_primekg_csv
 from src.explain import enumerate_explanation_paths, score_edges
 from src.gnn_models import MODEL_NAMES, build_model
@@ -89,6 +91,8 @@ def _graph_logits(model, batch) -> torch.Tensor:
         batch.is_patient,
         batch.batch,
         focus=getattr(batch, "focus", None),
+        rel_code=getattr(batch, "rel_code", None),
+        hop=getattr(batch, "hop", None),
     )
 
 
@@ -173,7 +177,7 @@ def _metric_row(model: str, endpoint: str, fold: int, y_true: np.ndarray, probab
     return row
 
 
-def cross_validate(model_name: str, cohort, folds: int, epochs: int, patience: int, seed: int) -> dict[str, object]:
+def cross_validate(model_name: str, cohort, folds: int, epochs: int, patience: int, seed: int, fusion=None) -> dict[str, object]:
     splitter = StratifiedKFold(n_splits=folds, shuffle=True, random_state=seed)
     rows, histories, states, train_folds = [], [], [], []
     oof_prob = np.full(len(cohort.y), np.nan)
@@ -191,8 +195,21 @@ def cross_validate(model_name: str, cohort, folds: int, epochs: int, patience: i
             cohort.catalog_size,
             features.shape[1],
             mlp_clinical_dim=CLINICAL_DIM,
+            fusion=fusion,
         )
-        optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-4)
+        gsl = getattr(model, "gsl", None)
+        if gsl is None:
+            optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-4)
+        else:
+            gsl_ids = {id(parameter) for parameter in gsl.parameters()}
+            graph_parameters = [parameter for parameter in model.parameters() if id(parameter) not in gsl_ids]
+            optimizer = torch.optim.Adam(
+                [
+                    {"params": graph_parameters, "lr": 1e-3},
+                    {"params": list(gsl.parameters()), "lr": float(fusion.gsl_learning_rate) if fusion is not None else 1e-4, "weight_decay": 0.0},
+                ],
+                weight_decay=1e-4,
+            )
         loss_fn = _loss_fn(cohort.y[inner_train])
         best_state, best_score, wait = None, -1.0, 0
         history = []
@@ -396,7 +413,7 @@ def _plot_confusion(y_true: np.ndarray, y_pred: np.ndarray, model: str, output_d
     plt.close(fig)
 
 
-def _explain(model_name: str, result: dict, cohort, output_dir: Path, limit: int) -> pd.DataFrame:
+def _explain(model_name: str, result: dict, cohort, output_dir: Path, limit: int, fusion=None) -> pd.DataFrame:
     order = np.argsort(-result["oof_prob"])
     chosen = [int(index) for index in order if cohort.y[int(index)] == 1 and not np.isnan(result["oof_prob"][int(index)])][:limit]
     rows = []
@@ -409,6 +426,7 @@ def _explain(model_name: str, result: dict, cohort, output_dir: Path, limit: int
             cohort.catalog_size,
             cohort.mlp_x.shape[1],
             mlp_clinical_dim=CLINICAL_DIM,
+            fusion=fusion,
         )
         model.load_state_dict(result["states"][fold])
         model.eval()
@@ -457,20 +475,43 @@ def _explain(model_name: str, result: dict, cohort, output_dir: Path, limit: int
             )
     frame = pd.DataFrame(rows)
     frame.to_csv(output_dir / "explanations.csv", index=False)
+    if rows and fusion is not None and (fusion.gsl_enabled or fusion.mode == "gsl"):
+        _write_gsl_report(model_name, result, cohort, output_dir, limit, fusion)
     return frame
 
 
-def _prepare_cohort(dataset_dir: Path, endpoint: str, panel, prime_frame):
+def _write_gsl_report(model_name: str, result: dict, cohort, output_dir: Path, limit: int, fusion) -> None:
+    order = np.argsort(-result["oof_prob"])
+    chosen = [int(index) for index in order if cohort.y[int(index)] == 1 and not np.isnan(result["oof_prob"][int(index)])][:limit]
+    kept_rows = []
+    for index in chosen:
+        fold = next(fold for fold, train_idx in enumerate(result["train_indices"]) if index not in set(int(item) for item in train_idx.tolist()))
+        standardize_ages(cohort.graphs, cohort.mlp_x, result["train_indices"][fold])
+        model = build_model(model_name, FEATURE_DIM, cohort.catalog_size, cohort.mlp_x.shape[1], mlp_clinical_dim=CLINICAL_DIM, fusion=fusion)
+        model.load_state_dict(result["states"][fold])
+        model.eval()
+        data = cohort.graphs[index]
+        weight = model.edge_weights(data.x, data.edge_index, data.rel_code, data.is_patient, data.hop, None)
+        if weight is None:
+            continue
+        for row in edge_report(data, cohort.metas[index], weight, fusion.gsl_threshold, model.gsl.last_hop_gate):
+            row["patient_id"] = cohort.patient_ids[index]
+            kept_rows.append(row)
+    if kept_rows:
+        pd.DataFrame(kept_rows).to_csv(output_dir / "gsl_edges.csv", index=False)
+
+
+def _prepare_cohort(dataset_dir: Path, endpoint: str, panel, prime_frame, fusion=None):
     labels = load_recurrence_labels(dataset_dir, endpoint)
-    cohort = build_cohort(dataset_dir, labels, prime_frame, panel)
+    cohort = build_cohort(dataset_dir, labels, prime_frame, panel, fusion=fusion)
     LOGGER.info("%s cohort: %d patients, %d positives", endpoint, len(cohort.y), int(cohort.y.sum()))
     return cohort
 
 
-def _run_model(model_name: str, cohort, folds: int, epochs: int, patience: int, seed: int) -> dict[str, object]:
+def _run_model(model_name: str, cohort, folds: int, epochs: int, patience: int, seed: int, fusion=None) -> dict[str, object]:
     if model_name == "clinical_lr":
         return cross_validate_clinical_lr(cohort, folds, seed)
-    return cross_validate(model_name, cohort, folds, epochs, patience, seed)
+    return cross_validate(model_name, cohort, folds, epochs, patience, seed, fusion=fusion)
 
 
 def main() -> int:
@@ -483,6 +524,9 @@ def main() -> int:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--explain-n", type=int, default=8)
     parser.add_argument("--skip-sensitivity", action="store_true")
+    parser.add_argument("--fusion-mode", choices=("fixed", "gsl"), default=None)
+    parser.add_argument("--fixed-hops", type=int, choices=(0, 1, 2, 3), default=None)
+    parser.add_argument("--max-candidate-hops", type=int, default=None)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "outputs" / "gnn_benchmark")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -496,7 +540,15 @@ def main() -> int:
     prime_frame = load_primekg_slice(prime_csv, panel_entrez)
     LOGGER.info("PrimeKG slice edges: %d", len(prime_frame))
     endpoint = args.endpoint
-    cohort = _prepare_cohort(dataset_dir, endpoint, panel, prime_frame)
+    fusion = load_fusion_config()
+    if args.fusion_mode is not None:
+        fusion.mode = args.fusion_mode
+        fusion.gsl_enabled = args.fusion_mode == "gsl"
+    if args.fixed_hops is not None:
+        fusion.fixed_hops = args.fixed_hops
+    if args.max_candidate_hops is not None:
+        fusion.max_candidate_hops = args.max_candidate_hops
+    cohort = _prepare_cohort(dataset_dir, endpoint, panel, prime_frame, fusion)
     if endpoint == "pfs_36m":
         note = (
             f"Y=1 is progression by {LANDMARK_MONTHS} months. "
@@ -512,6 +564,9 @@ def main() -> int:
         "primekg_edges": int(len(prime_frame)),
         "feature_dim": FEATURE_DIM,
         "catalog_size": int(cohort.catalog_size),
+        "fusion_mode": fusion.mode,
+        "candidate_hops": int(fusion.candidate_hops),
+        "gsl_enabled": bool(fusion.gsl_enabled or fusion.mode == "gsl"),
         "note": note,
     }
     (output_dir / "label_audit.json").write_text(json.dumps(audit, indent=2), encoding="utf-8")
@@ -521,7 +576,7 @@ def main() -> int:
     fold_rows = []
     oof_frames = []
     for model_name in COMPARISON_MODELS:
-        result = _run_model(model_name, cohort, args.folds, args.epochs, args.patience, args.seed)
+        result = _run_model(model_name, cohort, args.folds, args.epochs, args.patience, args.seed, fusion)
         results[model_name] = result
         histories[model_name] = result["histories"]
         fold_rows.extend(result["rows"])
@@ -548,7 +603,7 @@ def main() -> int:
     run_sensitivity = endpoint == "pfs" and not args.skip_sensitivity and explain_model in MODEL_NAMES
     if run_sensitivity:
         sensitivity = _prepare_cohort(dataset_dir, "new_tumor_event", panel, prime_frame)
-        sensitive = cross_validate(explain_model, sensitivity, args.folds, args.epochs, args.patience, args.seed)
+        sensitive = cross_validate(explain_model, sensitivity, args.folds, args.epochs, args.patience, args.seed, fusion)
         fold_rows.extend(sensitive["rows"])
         oof_frames.append(
             pd.DataFrame(
@@ -575,7 +630,7 @@ def main() -> int:
     _plot_loss(histories, output_dir)
     best_oof = oof[(oof["model"] == best_model) & (oof["endpoint"] == endpoint)]
     _plot_confusion(best_oof["y"].to_numpy(), best_oof["prediction"].to_numpy(), best_model, output_dir, endpoint)
-    explanations = _explain(explain_model, results[explain_model], cohort, output_dir, args.explain_n)
+    explanations = _explain(explain_model, results[explain_model], cohort, output_dir, args.explain_n, fusion)
     winning = summary[(summary["model"] == best_model) & (summary["endpoint"] == endpoint)].iloc[0]
     sensitive_row = summary[(summary["model"] == explain_model) & (summary["endpoint"] == "new_tumor_event")]
     lines = [

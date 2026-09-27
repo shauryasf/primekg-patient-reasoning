@@ -58,7 +58,13 @@ The supervised target is binary `PFS_STATUS` (`1:PROGRESSION` vs `0:CENSORED`). 
 python scripts/train_and_evaluate_gnns.py
 ```
 
-The mentor notebook is [notebooks/recurrence_gnn_milestone_demonstration.ipynb](notebooks/recurrence_gnn_milestone_demonstration.ipynb). It shows only the models that read the patient graph, calls **GCN** the best of those three, and includes the cause-chain figure. On the 36-month label GCN reaches AUROC 0.680 ± 0.076 and AUPRC 0.396 ± 0.091. Plots and path tables are in `outputs/gnn_benchmark_36m/`.
+The mentor notebook is [notebooks/recurrence_gnn_milestone_demonstration.ipynb](notebooks/recurrence_gnn_milestone_demonstration.ipynb). It shows only the models that read the patient graph. On the fixed 2-hop graph **GCN** is the best of those three, at AUROC 0.680 ± 0.076 and AUPRC 0.396 ± 0.091; the plots and path tables are in `outputs/gnn_benchmark_36m/`.
+
+The notebook then compares that fixed layout with graph structure learning, documented in [graph structure learning](docs/graph_structure_learning.md). `outputs/gnn_benchmark_gsl` is the first GSL run, whose free edge weights switched the hop-2 ring off. The GSL run with the hop prior wrote to `outputs/gnn_benchmark_gsl_prior`, which is not part of this repository, so that column is quoted from that run's own report and is marked as such in the notebook. Regenerate the comparison figure with:
+
+```bash
+python scripts/plot_gsl_hop_prior.py
+```
 
 ```bash
 python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --skip-sensitivity --output-dir outputs/gnn_benchmark_36m
