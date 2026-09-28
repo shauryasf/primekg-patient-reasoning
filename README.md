@@ -66,6 +66,12 @@ The notebook then compares that fixed layout with graph structure learning, docu
 python scripts/plot_gsl_hop_prior.py
 ```
 
+The notebook closes with two figures. The first is one patient's graph fused with PrimeKG, drawn by `scripts/plot_fused_graph_example.py` from the walks the fixed 2-hop run stores for that patient. The second is the single highest-`path_score` walk in `outputs/gnn_benchmark_gsl/explanations.csv`, drawn by:
+
+```bash
+python scripts/plot_top_path.py
+```
+
 ```bash
 python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --skip-sensitivity --output-dir outputs/gnn_benchmark_36m
 ```
