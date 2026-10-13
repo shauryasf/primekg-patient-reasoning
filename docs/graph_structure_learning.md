@@ -28,6 +28,8 @@ The first GSL run did not do this. A free sigmoid on `[source, destination, rela
 
 The score multiplies the message in GCN, GraphSAGE, and GATv2. The structure parameters use `gsl_learning_rate` and no weight decay, so the prior does not get pulled back to zero. A threshold is applied only when `gsl_hard_prune` is true and the model is in eval mode.
 
+R-GCN, RGAT, GIN, and the graph transformer are not in that list because their PyG convolutions take no `edge_weight` argument at all. `PatientGNN` raises when `mode: gsl` is combined with one of them, so a GSL run cannot silently train on unweighted messages and then report a learned structure.
+
 `gsl_patient_context: false` drops the patient vector. That is the ablation for a score that ignores which patient the edge was attached to. `gsl_node_scores: true` also multiplies by a learned destination-node score.
 
 The scorer never reads `PFS_STATUS`, `PFS_MONTHS`, or any other outcome column.

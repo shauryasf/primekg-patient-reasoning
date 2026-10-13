@@ -60,6 +60,20 @@ python scripts/train_and_evaluate_gnns.py
 
 The mentor notebook is [notebooks/recurrence_gnn_milestone_demonstration.ipynb](notebooks/recurrence_gnn_milestone_demonstration.ipynb). It shows only the models that read the patient graph. On the fixed 2-hop graph **GCN** is the best of those three, at AUROC 0.680 ± 0.076 and AUPRC 0.396 ± 0.091; the plots and path tables are in `outputs/gnn_benchmark_36m/`.
 
+The benchmark supports seven graph architectures — GCN, GraphSAGE, GATv2, R-GCN, RGAT, GIN, and a graph transformer — and can optimise the concordance index rather than only cross-entropy. The default benchmark is intentionally limited to GraphSAGE and R-GCN so patient-graph experiments finish quickly:
+
+```bash
+python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --loss cindex --rank-by cindex \
+  --skip-sensitivity --output-dir outputs/gnn_benchmark_36m_cindex
+python scripts/compare_benchmark_runs.py
+```
+
+`--loss cindex` trains on a differentiable C-index surrogate over comparable `(PFS_MONTHS, PFS_STATUS)`
+pairs, and `--loss cox` trains on the Breslow partial likelihood. Follow-up time and event status are targets
+only: they are never graph, clinical, or MLP features. Every fold reports AUROC, AUPRC, the C-index, F1, and
+balanced accuracy alongside each other, and the results of those runs are in
+[recurrence objectives and architectures](docs/recurrence_gnn.md#objectives).
+
 The notebook then compares that fixed layout with graph structure learning, documented in [graph structure learning](docs/graph_structure_learning.md). `outputs/gnn_benchmark_gsl` is the first GSL run, whose free edge weights switched the hop-2 ring off. The GSL run with the hop prior wrote to `outputs/gnn_benchmark_gsl_prior`, which is not part of this repository, so that column is quoted from that run's own report and is marked as such in the notebook. Regenerate the comparison figure with:
 
 ```bash

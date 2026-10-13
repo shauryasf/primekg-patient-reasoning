@@ -1,0 +1,9 @@
+{
+  "model": "CoxPH",
+  "dataset": "TCGA-BRCA",
+  "folds": 5,
+  "train_c_index_mean": 0.6535671346973881,
+  "train_c_index_std": 0.00728559458744867,
+  "test_c_index_mean": 0.6592486634806687,
+  "test_c_index_std": 0.018523834856677975
+}

@@ -1,0 +1,46 @@
+{
+  "endpoint": "pfs",
+  "patients": 1083,
+  "positives": 145,
+  "negatives": 938,
+  "primekg_edges": 4570,
+  "feature_dim": 30,
+  "catalog_size": 1524,
+  "fusion_mode": "fixed",
+  "candidate_hops": 2,
+  "gsl_enabled": false,
+  "models": [
+    "gcn",
+    "graphsage",
+    "gatv2",
+    "rgcn"
+  ],
+  "objective": {
+    "loss": "cindex",
+    "aux_bce_weight": 0.0,
+    "temperature": 1.0,
+    "batch_size": 32,
+    "early_stop": "cindex"
+  },
+  "rank_by": "cindex",
+  "survival_target": {
+    "endpoint": "pfs",
+    "patients": 1083,
+    "events": 145,
+    "censored": 938,
+    "with_follow_up_time": 1082,
+    "without_follow_up_time": 1,
+    "horizon_months": null,
+    "note": "PFS_MONTHS is the follow-up axis for the concordance objective only. It is not a feature, and a censored patient is never an earlier event."
+  },
+  "survival_pairs": {
+    "patients": 1083,
+    "with_follow_up_time": 1082,
+    "events": 145,
+    "censored": 938,
+    "comparable_pairs": 78601,
+    "comparable_pairs_per_event": 542.0758620689655
+  },
+  "c_index_note": "C-index is Harrell's concordance over comparable pairs of (PFS_MONTHS, PFS_STATUS). A censored patient is only ever the later member of a pair. Time and event are targets, never features.",
+  "note": "Y=0 is censored at last follow-up, not lifelong disease-free confirmation. PFS months are not features."
+}

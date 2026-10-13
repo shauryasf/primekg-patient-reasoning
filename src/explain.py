@@ -10,7 +10,7 @@ from collections import defaultdict
 import torch
 from torch import nn
 
-from .gnn_models import PatientGNN
+from .gnn_models import ATTENTION_ARCHITECTURES, PatientGNN
 
 TARGET_TYPES = {"pathway", "disease", "drug"}
 
@@ -114,8 +114,8 @@ def format_path(nodes: list[int], relations: list[str], node_ids: list[str], nod
 
 
 def attention_edge_scores(model: nn.Module, data) -> tuple[torch.Tensor, str] | None:
-    """Average GATv2 attention over layers. Returns None when the model is not GATv2."""
-    if not isinstance(model, PatientGNN) or model.architecture != "gatv2":
+    """Average attention over layers. Returns None when the architecture has no attention."""
+    if not isinstance(model, PatientGNN) or model.architecture not in ATTENTION_ARCHITECTURES:
         return None
     model.eval()
     with torch.no_grad():

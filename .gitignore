@@ -16,6 +16,13 @@ __pycache__/
 Thumbs.db
 .DS_Store
 
+# Large binary tools
+bin/
+*.jar
+
+# Large generated matrices (>50MB)
+outputs/gse2034_final/processed_expression.csv
+
 # Bulk individual patient outputs (1,000+ files each)
 outputs/patient_tuples/*
 !outputs/patient_tuples/TCGA-A2-A0CO_tuples.csv

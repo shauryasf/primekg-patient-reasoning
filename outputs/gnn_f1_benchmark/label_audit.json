@@ -1,0 +1,46 @@
+{
+  "endpoint": "pfs_36m",
+  "patients": 498,
+  "positives": 89,
+  "negatives": 409,
+  "primekg_edges": 4570,
+  "feature_dim": 30,
+  "catalog_size": 1524,
+  "fusion_mode": "fixed",
+  "candidate_hops": 2,
+  "gsl_enabled": false,
+  "models": [
+    "gcn",
+    "graphsage",
+    "gatv2",
+    "rgcn"
+  ],
+  "objective": {
+    "loss": "bce",
+    "aux_bce_weight": 0.0,
+    "temperature": null,
+    "batch_size": 32,
+    "early_stop": "auprc"
+  },
+  "rank_by": "auprc",
+  "survival_target": {
+    "endpoint": "pfs_36m",
+    "patients": 498,
+    "events": 89,
+    "censored": 409,
+    "with_follow_up_time": 498,
+    "without_follow_up_time": 0,
+    "horizon_months": 36.0,
+    "note": "Follow-up is administratively censored at 36 months, matching the pfs_36m label. PFS_MONTHS is a target, never a feature."
+  },
+  "survival_pairs": {
+    "patients": 498,
+    "with_follow_up_time": 498,
+    "events": 89,
+    "censored": 409,
+    "comparable_pairs": 40317,
+    "comparable_pairs_per_event": 453.0
+  },
+  "c_index_note": "C-index is Harrell's concordance over comparable pairs of (PFS_MONTHS, PFS_STATUS). A censored patient is only ever the later member of a pair. Time and event are targets, never features.",
+  "note": "Y=1 is progression by 36 months. Patients censored earlier are dropped. PFS months define the window and are not features."
+}
