@@ -86,6 +86,8 @@ The notebook closes with two figures. The first is one patient's graph fused wit
 python scripts/plot_top_path.py
 ```
 
+PrimeKG depth is configured in `config/features.yaml` under `primekg_fusion`. `fixed_hops: 2` is the original neighborhood. `mode: gsl` retrieves `max_candidate_hops` and learns a patient-specific weight on those edges. See [graph structure learning](docs/graph_structure_learning.md).
+
 ```bash
 python scripts/train_and_evaluate_gnns.py --endpoint pfs_36m --skip-sensitivity --output-dir outputs/gnn_benchmark_36m
 ```
