@@ -1,0 +1,1084 @@
+patient_id,Age at diagnosis,Sex,Race,Ethnicity,Genetic ancestry,PAM50 subtype,AJCC pathologic stage,Pathologic T,Pathologic N,Pathologic M,AJCC edition,ICD-O-3 histology,Radiation therapy,Neoadjuvant therapy,Prior diagnosis,Sample,Tumour type,OncoTree code,Aneuploidy score,"TMB (nonsyn., /Mb)",MSIsensor score
+TCGA-3C-AAAU,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE X,TX,NX,MX,6TH,8520/3,No,No,No,TCGA-3C-AAAU-01,Breast Invasive Lobular Carcinoma,ILC,19,0.8,0.55
+TCGA-3C-AALI,50,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Her2,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-3C-AALI-01,Breast Invasive Ductal Carcinoma,IDC,22,15.26666667,0.74
+TCGA-3C-AALJ,62,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-3C-AALJ-01,Breast Invasive Ductal Carcinoma,IDC,13,0.933333333,0.31
+TCGA-3C-AALK,52,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IA,T1C,N0 (I+),M0,7TH,8500/3,No,No,No,TCGA-3C-AALK-01,Breast Invasive Ductal Carcinoma,IDC,4,1.5,0.03
+TCGA-4H-AAAK,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,7TH,8520/3,No,No,No,TCGA-4H-AAAK-01,Breast Invasive Lobular Carcinoma,ILC,7,0.7,0.01
+TCGA-5L-AAT0,42,Female,White,Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,Yes,No,Yes,TCGA-5L-AAT0-01,Breast Invasive Lobular Carcinoma,ILC,3,4.6,0
+TCGA-5T-A9QA,52,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIA,T2,NX,MX,7TH,8523/3,Yes,No,No,TCGA-5T-A9QA-01,Breast Invasive Carcinoma (NOS),BRCNOS,14,1.9,0.46
+TCGA-A1-A0SB,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE I,T1C,N0,M0,6TH,8200/3,—,No,No,TCGA-A1-A0SB-01,Breast Invasive Carcinoma (NOS),BRCNOS,0,0.5,0.2
+TCGA-A1-A0SD,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-A1-A0SD-01,Breast Invasive Ductal Carcinoma,IDC,11,1.1,0.02
+TCGA-A1-A0SE,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8522/3,—,No,No,TCGA-A1-A0SE-01,Breast Invasive Carcinoma (NOS),BRCNOS,10,0.933333333,0.01
+TCGA-A1-A0SF,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-A1-A0SF-01,Breast Invasive Ductal Carcinoma,IDC,14,1.666666667,0.36
+TCGA-A1-A0SG,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8507/3,—,No,No,TCGA-A1-A0SG-01,Breast Invasive Carcinoma (NOS),BRCNOS,4,0.9,0
+TCGA-A1-A0SH,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,—,No,No,TCGA-A1-A0SH-01,Breast Invasive Ductal Carcinoma,IDC,2,3.133333333,0.02
+TCGA-A1-A0SI,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,—,No,No,TCGA-A1-A0SI-01,Breast Invasive Ductal Carcinoma,IDC,15,6.033333333,0.63
+TCGA-A1-A0SJ,39,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIIA,T3,N1A,M0,6TH,8500/3,—,No,No,TCGA-A1-A0SJ-01,Breast Invasive Ductal Carcinoma,IDC,24,1.033333333,0.37
+TCGA-A1-A0SK,54,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8013/3,—,No,No,TCGA-A1-A0SK-01,Breast Invasive Carcinoma (NOS),BRCNOS,16,2.033333333,1.02
+TCGA-A1-A0SM,77,Male,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,—,No,No,TCGA-A1-A0SM-01,Breast Invasive Ductal Carcinoma,IDC,3,0.633333333,0.12
+TCGA-A1-A0SN,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T1C,N1,MX,6TH,8500/3,—,No,No,TCGA-A1-A0SN-01,Breast Invasive Ductal Carcinoma,IDC,18,1.7,0.57
+TCGA-A1-A0SO,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,6TH,8500/3,—,No,No,TCGA-A1-A0SO-01,Breast Invasive Ductal Carcinoma,IDC,—,9.066666667,2.84
+TCGA-A1-A0SP,40,Female,—,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,—,—,Yes,TCGA-A1-A0SP-01,Breast Invasive Ductal Carcinoma,IDC,13,1.7,0.26
+TCGA-A1-A0SQ,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,MX,6TH,8500/3,—,No,No,TCGA-A1-A0SQ-01,Breast Invasive Ductal Carcinoma,IDC,3,0.766666667,0.18
+TCGA-A2-A04N,66,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,5TH,8500/3,Yes,No,No,TCGA-A2-A04N-01,Breast Invasive Ductal Carcinoma,IDC,3,1.366666667,0
+TCGA-A2-A04P,36,Female,Black or African American,—,AFR,BRCA_Basal,STAGE IIIC,T2,N3C,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A04P-01,Breast Invasive Ductal Carcinoma,IDC,9,4.266666667,1.12
+TCGA-A2-A04Q,48,Female,White,—,EUR,BRCA_Basal,STAGE IA,T1,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A04Q-01,Breast Invasive Ductal Carcinoma,IDC,11,1.566666667,0.03
+TCGA-A2-A04R,36,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IA,T1,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A04R-01,Breast Invasive Ductal Carcinoma,IDC,5,2.533333333,0.77
+TCGA-A2-A04T,62,Female,White,—,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A04T-01,Breast Invasive Ductal Carcinoma,IDC,14,2.933333333,1.39
+TCGA-A2-A04U,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I+),M0,6TH,8500/3,No,No,No,TCGA-A2-A04U-01,Breast Invasive Ductal Carcinoma,IDC,21,1.633333333,1.39
+TCGA-A2-A04V,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A04V-01,Breast Invasive Ductal Carcinoma,IDC,6,0.9,0.04
+TCGA-A2-A04W,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIB,T2,N1MI,M0,6TH,8401/3,No,No,No,TCGA-A2-A04W-01,Breast Invasive Carcinoma (NOS),BRCNOS,17,4.266666667,0.04
+TCGA-A2-A04X,34,Female,White,—,EUR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A04X-01,Breast Invasive Ductal Carcinoma,IDC,8,0.933333333,0.05
+TCGA-A2-A04Y,53,Female,White,—,EUR,BRCA_LumB,STAGE IIB,T2,N1MI,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A04Y-01,Breast Invasive Ductal Carcinoma,IDC,4,1.6,0.1
+TCGA-A2-A0CK,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N2A,M0,5TH,8520/3,Yes,No,No,TCGA-A2-A0CK-01,Breast Invasive Lobular Carcinoma,ILC,4,0.433333333,0
+TCGA-A2-A0CL,37,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Normal,STAGE IIIA,T3,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0CL-01,Breast Invasive Ductal Carcinoma,IDC,25,4.433333333,0.13
+TCGA-A2-A0CM,40,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A0CM-01,Breast Invasive Ductal Carcinoma,IDC,24,1.733333333,0.39
+TCGA-A2-A0CO,85,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T3,N0,M0,7TH,8520/3,Yes,No,No,TCGA-A2-A0CO-01,Breast Invasive Lobular Carcinoma,ILC,8,0,0.01
+TCGA-A2-A0CP,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0CP-01,Breast Invasive Ductal Carcinoma,IDC,5,1.233333333,0.04
+TCGA-A2-A0CQ,62,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IA,T1,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0CQ-01,Breast Invasive Ductal Carcinoma,IDC,5,1,0.07
+TCGA-A2-A0CR,54,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_LumA,STAGE IIB,T3,N0,M0,7TH,8520/3,No,No,No,TCGA-A2-A0CR-01,Breast Invasive Lobular Carcinoma,ILC,6,4.5,0
+TCGA-A2-A0CS,73,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IV,T4B,N3A,M1,—,8500/3,Yes,No,No,TCGA-A2-A0CS-01,Breast Invasive Ductal Carcinoma,IDC,17,1.033333333,0.27
+TCGA-A2-A0CT,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A0CT-01,Breast Invasive Ductal Carcinoma,IDC,25,2.666666667,1.11
+TCGA-A2-A0CU,73,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,6TH,8500/3,No,No,No,TCGA-A2-A0CU-01,Breast Invasive Ductal Carcinoma,IDC,20,1.433333333,0.06
+TCGA-A2-A0CV,41,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0CV-01,Breast Invasive Ductal Carcinoma,IDC,24,0.733333333,0
+TCGA-A2-A0CW,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,No,TCGA-A2-A0CW-01,Breast Invasive Ductal Carcinoma,IDC,15,2.166666667,0.32
+TCGA-A2-A0CX,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0CX-01,Breast Invasive Ductal Carcinoma,IDC,19,8.333333333,0.41
+TCGA-A2-A0CZ,46,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A0CZ-01,Breast Invasive Ductal Carcinoma,IDC,—,0.8,0.01
+TCGA-A2-A0D0,60,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A0D0-01,Breast Invasive Ductal Carcinoma,IDC,17,2.466666667,1.96
+TCGA-A2-A0D1,76,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0D1-01,Breast Invasive Ductal Carcinoma,IDC,10,1.466666667,0.63
+TCGA-A2-A0D2,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I+),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0D2-01,Breast Invasive Ductal Carcinoma,IDC,13,2.7,0.35
+TCGA-A2-A0D3,42,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A0D3-01,Breast Invasive Ductal Carcinoma,IDC,5,0.833333333,0.01
+TCGA-A2-A0D4,37,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0D4-01,Breast Invasive Ductal Carcinoma,IDC,19,1.2,0.86
+TCGA-A2-A0EM,73,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1,N0 (I-),M0,5TH,8500/3,Yes,No,No,TCGA-A2-A0EM-01,Breast Invasive Ductal Carcinoma,IDC,5,1.033333333,0.06
+TCGA-A2-A0EN,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,6TH,8520/3,Yes,No,No,TCGA-A2-A0EN-01,Breast Invasive Lobular Carcinoma,ILC,9,1.1,0
+TCGA-A2-A0EO,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0EO-01,Breast Invasive Ductal Carcinoma,IDC,22,0.933333333,0.08
+TCGA-A2-A0EP,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0 (I+),M0,6TH,8520/3,No,No,No,TCGA-A2-A0EP-01,Breast Invasive Lobular Carcinoma,ILC,—,0.3,0
+TCGA-A2-A0EQ,64,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0EQ-01,Breast Invasive Ductal Carcinoma,IDC,21,7.1,0.11
+TCGA-A2-A0ER,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IB,T1C,N1MI,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0ER-01,Breast Invasive Ductal Carcinoma,IDC,4,0.9,0.06
+TCGA-A2-A0ES,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8520/3,No,No,No,TCGA-A2-A0ES-01,Breast Invasive Lobular Carcinoma,ILC,0,0.433333333,0.04
+TCGA-A2-A0ET,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0ET-01,Breast Invasive Ductal Carcinoma,IDC,22,1.433333333,0.64
+TCGA-A2-A0EU,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0EU-01,Breast Invasive Ductal Carcinoma,IDC,26,1.466666667,0.1
+TCGA-A2-A0EV,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A0EV-01,Breast Invasive Ductal Carcinoma,IDC,15,2.1,0.2
+TCGA-A2-A0EW,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T1B,N3A,M0,6TH,8520/3,Yes,No,No,TCGA-A2-A0EW-01,Breast Invasive Lobular Carcinoma,ILC,2,0.5,0
+TCGA-A2-A0EX,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I+),M0,6TH,8520/3,No,No,No,TCGA-A2-A0EX-01,Breast Invasive Lobular Carcinoma,ILC,5,0.9,0.01
+TCGA-A2-A0EY,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0EY-01,Breast Invasive Ductal Carcinoma,IDC,23,6.133333333,0.24
+TCGA-A2-A0ST,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0ST-01,Breast Invasive Ductal Carcinoma,IDC,—,0.5,0.01
+TCGA-A2-A0SU,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,—,8500/3,No,No,No,TCGA-A2-A0SU-01,Breast Invasive Ductal Carcinoma,IDC,4,1.066666667,0.04
+TCGA-A2-A0SV,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IV,T2,N2A,M1,6TH,8500/3,Yes,No,No,TCGA-A2-A0SV-01,Breast Invasive Ductal Carcinoma,IDC,13,1.1,0.59
+TCGA-A2-A0SW,82,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IV,T2,N2,M1,—,8500/3,Yes,No,No,TCGA-A2-A0SW-01,Breast Invasive Ductal Carcinoma,IDC,13,1.733333333,1.59
+TCGA-A2-A0SX,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IA,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0SX-01,Breast Invasive Ductal Carcinoma,IDC,11,0.766666667,0.31
+TCGA-A2-A0SY,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1,M0,—,8520/3,Yes,No,No,TCGA-A2-A0SY-01,Breast Invasive Lobular Carcinoma,ILC,2,3.866666667,0
+TCGA-A2-A0T0,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A0T0-01,Breast Invasive Ductal Carcinoma,IDC,4,5.566666667,0.28
+TCGA-A2-A0T1,55,Female,American Indian or Alaska Native,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIIC,T3,N3,M0,—,8500/3,Yes,No,No,TCGA-A2-A0T1-01,Breast Invasive Ductal Carcinoma,IDC,17,0.8,0.02
+TCGA-A2-A0T2,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IV,T3,N3,M1,—,8500/3,No,No,No,TCGA-A2-A0T2-01,Breast Invasive Ductal Carcinoma,IDC,34,0.933333333,1.48
+TCGA-A2-A0T3,37,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IB,T1C,N1MI,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A0T3-01,Breast Invasive Ductal Carcinoma,IDC,31,1,0.51
+TCGA-A2-A0T4,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8520/3,No,No,No,TCGA-A2-A0T4-01,Breast Invasive Lobular Carcinoma,ILC,7,1.033333333,0.01
+TCGA-A2-A0T5,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,No,No,No,TCGA-A2-A0T5-01,Breast Invasive Ductal Carcinoma,IDC,5,0.5,0.06
+TCGA-A2-A0T6,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,—,8520/3,Yes,No,No,TCGA-A2-A0T6-01,Breast Invasive Lobular Carcinoma,ILC,6,0.566666667,0.04
+TCGA-A2-A0T7,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,—,8500/3,No,No,No,TCGA-A2-A0T7-01,Breast Invasive Ductal Carcinoma,IDC,12,0.766666667,0.02
+TCGA-A2-A0YC,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1MI,M0,—,8500/3,Yes,No,No,TCGA-A2-A0YC-01,Breast Invasive Ductal Carcinoma,IDC,4,0.766666667,0.02
+TCGA-A2-A0YD,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I+),M0,—,8520/3,No,No,No,TCGA-A2-A0YD-01,Breast Invasive Lobular Carcinoma,ILC,6,1.866666667,0.14
+TCGA-A2-A0YE,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1A,M0,—,8500/3,Yes,No,No,TCGA-A2-A0YE-01,Breast Invasive Ductal Carcinoma,IDC,24,0.933333333,1.48
+TCGA-A2-A0YF,67,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE I,T1B,N0 (I+),M0,6TH,8500/3,No,No,No,TCGA-A2-A0YF-01,Breast Invasive Ductal Carcinoma,IDC,4,0.866666667,0.17
+TCGA-A2-A0YG,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIC,T2,N3A,M0,—,8500/3,Yes,No,No,TCGA-A2-A0YG-01,Breast Invasive Ductal Carcinoma,IDC,29,1.733333333,0.29
+TCGA-A2-A0YH,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,M0,—,8500/3,Yes,No,No,TCGA-A2-A0YH-01,Breast Invasive Ductal Carcinoma,IDC,17,2.266666667,0.26
+TCGA-A2-A0YI,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I+),M0,6TH,8522/3,Yes,No,No,TCGA-A2-A0YI-01,Breast Invasive Ductal Carcinoma,IDC,4,0.4,0
+TCGA-A2-A0YJ,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIA,T3,N2A,M0,—,8500/3,Yes,No,No,TCGA-A2-A0YJ-01,Breast Invasive Ductal Carcinoma,IDC,25,2.5,0.47
+TCGA-A2-A0YK,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIA,T2,N0 (I-),M0,—,8520/3,No,No,No,TCGA-A2-A0YK-01,Breast Invasive Lobular Carcinoma,ILC,6,10.6,0
+TCGA-A2-A0YL,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N2A,M0,—,8520/3,Yes,No,No,TCGA-A2-A0YL-01,Breast Invasive Lobular Carcinoma,ILC,4,0.933333333,0
+TCGA-A2-A0YM,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-A2-A0YM-01,Breast Invasive Ductal Carcinoma,IDC,27,2.566666667,1.2
+TCGA-A2-A0YT,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIB,T4B,N2A,M0,—,8500/3,Yes,Yes,No,TCGA-A2-A0YT-01,Breast Invasive Ductal Carcinoma,IDC,25,1.933333333,0.84
+TCGA-A2-A1FV,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I+),M0,7TH,8520/3,Yes,No,No,TCGA-A2-A1FV-01,Breast Invasive Lobular Carcinoma,ILC,12,1.3,0.21
+TCGA-A2-A1FW,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N2A,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A1FW-01,Breast Invasive Ductal Carcinoma,IDC,21,2.033333333,0.89
+TCGA-A2-A1FX,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A1FX-01,Breast Invasive Ductal Carcinoma,IDC,14,0.8,0.3
+TCGA-A2-A1FZ,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,No,No,No,TCGA-A2-A1FZ-01,Breast Invasive Ductal Carcinoma,IDC,2,0.866666667,0.06
+TCGA-A2-A1G0,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A1G0-01,Breast Invasive Carcinoma (NOS),BRCNOS,16,0.666666667,0.2
+TCGA-A2-A1G1,85,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A1G1-01,Breast Invasive Ductal Carcinoma,IDC,20,0.966666667,1.11
+TCGA-A2-A1G4,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1A,M0,7TH,8500/3,No,No,Yes,TCGA-A2-A1G4-01,Breast Invasive Ductal Carcinoma,IDC,4,0.933333333,0.24
+TCGA-A2-A1G6,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIIA,T2,N2A,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A1G6-01,Breast Invasive Ductal Carcinoma,IDC,—,0.266666667,0.07
+TCGA-A2-A259,70,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-A2-A259-01,Breast Invasive Ductal Carcinoma,IDC,4,0.733333333,0.1
+TCGA-A2-A25A,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIA,T2,N0 (I-),M0,6TH,8520/3,Yes,No,Yes,TCGA-A2-A25A-01,Breast Invasive Lobular Carcinoma,ILC,5,10.1,0.08
+TCGA-A2-A25B,39,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIB,T2,N1,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A25B-01,Breast Invasive Ductal Carcinoma,IDC,—,3.266666667,0.61
+TCGA-A2-A25C,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A25C-01,Breast Invasive Ductal Carcinoma,IDC,10,1.133333333,0.98
+TCGA-A2-A25D,90,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3A,M0,7TH,8520/3,Yes,No,No,TCGA-A2-A25D-01,Breast Invasive Lobular Carcinoma,ILC,7,1.7,0
+TCGA-A2-A25E,34,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A25E-01,Breast Invasive Ductal Carcinoma,IDC,5,1.7,1.75
+TCGA-A2-A25F,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,Yes,No,No,TCGA-A2-A25F-01,Breast Invasive Ductal Carcinoma,IDC,—,0.166666667,0.55
+TCGA-A2-A3KC,55,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,—,STAGE IIB,T2,N1A,M0,7TH,8520/3,Yes,No,No,TCGA-A2-A3KC-01,Breast Invasive Lobular Carcinoma,ILC,6,0,0.01
+TCGA-A2-A3KD,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1MI,M0,7TH,8480/3,Yes,No,No,TCGA-A2-A3KD-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,5,0.233333333,0
+TCGA-A2-A3XS,62,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,—,STAGE IIIA,T1,N2A,M0,6TH,8500/3,No,No,No,TCGA-A2-A3XS-01,Breast Invasive Ductal Carcinoma,IDC,22,0,0.38
+TCGA-A2-A3XT,45,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A3XT-01,Breast Invasive Ductal Carcinoma,IDC,14,2.266666667,0.16
+TCGA-A2-A3XU,35,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE IIB,T2,N1MI,M0,6TH,8500/3,Yes,No,No,TCGA-A2-A3XU-01,Breast Invasive Ductal Carcinoma,IDC,10,0.7,0.6
+TCGA-A2-A3XV,46,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Her2,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A3XV-01,Breast Invasive Ductal Carcinoma,IDC,6,1.3,0.01
+TCGA-A2-A3XW,42,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Normal,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A3XW-01,Breast Invasive Ductal Carcinoma,IDC,—,0.266666667,0
+TCGA-A2-A3XX,49,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-A2-A3XX-01,Breast Invasive Ductal Carcinoma,IDC,23,1.1,0.21
+TCGA-A2-A3XY,49,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-A2-A3XY-01,Breast Invasive Ductal Carcinoma,IDC,8,0,0.02
+TCGA-A2-A3XZ,46,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Her2,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-A2-A3XZ-01,Breast Invasive Ductal Carcinoma,IDC,9,1.066666667,0.03
+TCGA-A2-A3Y0,57,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-A2-A3Y0-01,Breast Invasive Ductal Carcinoma,IDC,6,4.966666667,0.07
+TCGA-A2-A4RW,49,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T2,N3A,M0,7TH,8520/3,—,No,No,TCGA-A2-A4RW-01,Breast Invasive Lobular Carcinoma,ILC,5,0,0
+TCGA-A2-A4RX,67,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIA,T2,N0,M0,7TH,8575/3,—,No,No,TCGA-A2-A4RX-01,Metaplastic Breast Cancer,MBC,20,—,0.03
+TCGA-A2-A4RY,46,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T3,N3A,M0,7TH,8520/3,Yes,No,No,TCGA-A2-A4RY-01,Breast Invasive Lobular Carcinoma,ILC,0,0,0.01
+TCGA-A2-A4S0,77,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0,M0,7TH,8480/3,—,No,No,TCGA-A2-A4S0-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,0,—,0
+TCGA-A2-A4S1,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8575/3,Yes,No,No,TCGA-A2-A4S1-01,Metaplastic Breast Cancer,MBC,26,2.366666667,0.04
+TCGA-A2-A4S2,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N2,M0,7TH,8524/3,Yes,No,No,TCGA-A2-A4S2-01,Breast Invasive Lobular Carcinoma,ILC,13,0.9,0
+TCGA-A2-A4S3,59,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,—,No,No,TCGA-A2-A4S3-01,Breast Invasive Ductal Carcinoma,IDC,11,1.8,0.13
+TCGA-A7-A0CD,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,Yes,TCGA-A7-A0CD-01,Breast Invasive Ductal Carcinoma,IDC,27,0.733333333,0.63
+TCGA-A7-A0CE,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-A7-A0CE-01,Breast Invasive Ductal Carcinoma,IDC,10,6,1.68
+TCGA-A7-A0CG,78,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8522/3,Yes,No,No,TCGA-A7-A0CG-01,Breast Invasive Carcinoma (NOS),BRCNOS,7,1.566666667,0.16
+TCGA-A7-A0CH,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,No,No,No,TCGA-A7-A0CH-01,Breast Invasive Ductal Carcinoma,IDC,3,1.833333333,0.32
+TCGA-A7-A0CJ,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-A7-A0CJ-01,Breast Invasive Ductal Carcinoma,IDC,22,1.766666667,1.26
+TCGA-A7-A0D9,37,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,No,No,No,TCGA-A7-A0D9-01,Breast Invasive Ductal Carcinoma,IDC,7,1.333333333,0.34
+TCGA-A7-A0DA,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-A7-A0DA-01,Breast Invasive Ductal Carcinoma,IDC,16,5.033333333,1.1
+TCGA-A7-A0DB,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-A7-A0DB-01,Breast Invasive Ductal Carcinoma,IDC,17,1.033333333,0.64
+TCGA-A7-A0DC,63,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-A7-A0DC-01,Breast Invasive Ductal Carcinoma,IDC,—,0,—
+TCGA-A7-A13D,46,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-A7-A13D-01,Breast Invasive Ductal Carcinoma,IDC,28,2.933333333,2.07
+TCGA-A7-A13E,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,MX,—,8500/3,No,No,No,TCGA-A7-A13E-01,Breast Invasive Ductal Carcinoma,IDC,22,3.1,4.87
+TCGA-A7-A13F,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1A,M0,—,8500/3,Yes,No,No,TCGA-A7-A13F-01,Breast Invasive Ductal Carcinoma,IDC,25,2.433333333,0.27
+TCGA-A7-A13G,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8500/3,No,No,Yes,TCGA-A7-A13G-01,Breast Invasive Ductal Carcinoma,IDC,4,0.666666667,0.18
+TCGA-A7-A13H,61,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1A,MX,7TH,8520/3,No,No,No,TCGA-A7-A13H-01,Breast Invasive Lobular Carcinoma,ILC,5,—,0
+TCGA-A7-A26E,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1A,MX,7TH,8520/3,Yes,No,Yes,TCGA-A7-A26E-01,Breast Invasive Lobular Carcinoma,ILC,5,1.3,3.15
+TCGA-A7-A26F,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IA,T1,N0,M0,7TH,8575/3,Yes,No,Yes,TCGA-A7-A26F-01,Breast Invasive Carcinoma (NOS),BRCNOS,9,1.233333333,1.3
+TCGA-A7-A26G,50,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0 (I+),M0,7TH,8575/3,No,No,No,TCGA-A7-A26G-01,Breast Invasive Carcinoma (NOS),BRCNOS,10,1.5,0.77
+TCGA-A7-A26H,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1,N1A,M0,7TH,8500/3,No,No,Yes,TCGA-A7-A26H-01,Breast Invasive Ductal Carcinoma,IDC,8,3.666666667,0.18
+TCGA-A7-A26I,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,Yes,TCGA-A7-A26I-01,Breast Invasive Ductal Carcinoma,IDC,26,1.166666667,0.68
+TCGA-A7-A26J,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-A7-A26J-01,Breast Invasive Ductal Carcinoma,IDC,18,0.766666667,0.35
+TCGA-A7-A2KD,53,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIIA,T2,N2A,MX,7TH,8500/3,Yes,No,Yes,TCGA-A7-A2KD-01,Breast Invasive Ductal Carcinoma,IDC,17,1.033333333,0.11
+TCGA-A7-A3IY,71,Female,White,Not Hispanic Or Latino,EUR,—,STAGE I,T1C,N0,M0,7TH,8480/3,Yes,No,No,TCGA-A7-A3IY-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,1,—,0
+TCGA-A7-A3IZ,62,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0 (I+),M0,7TH,8520/3,Yes,No,No,TCGA-A7-A3IZ-01,Breast Invasive Lobular Carcinoma,ILC,5,0,0.02
+TCGA-A7-A3J0,62,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0,M0,7TH,8480/3,Yes,No,No,TCGA-A7-A3J0-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,11,0,0
+TCGA-A7-A3J1,63,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IA,T1C,N0,MX,7TH,8520/3,Yes,No,Yes,TCGA-A7-A3J1-01,Breast Invasive Lobular Carcinoma,ILC,6,0,0.01
+TCGA-A7-A3RF,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8480/3,Yes,No,No,TCGA-A7-A3RF-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,0,1.066666667,0.01
+TCGA-A7-A425,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,MX,7TH,8520/3,Yes,No,No,TCGA-A7-A425-01,Breast Invasive Lobular Carcinoma,ILC,25,0.933333333,0
+TCGA-A7-A426,50,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T3,N3A,MX,7TH,8520/3,Yes,No,Yes,TCGA-A7-A426-01,Breast Invasive Lobular Carcinoma,ILC,7,0,0
+TCGA-A7-A4SA,40,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1A,M0,7TH,8520/3,No,No,No,TCGA-A7-A4SA-01,Breast Invasive Lobular Carcinoma,ILC,10,0,0.03
+TCGA-A7-A4SB,56,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1MI,M0,7TH,8520/3,Yes,No,No,TCGA-A7-A4SB-01,Breast Invasive Lobular Carcinoma,ILC,18,0,0.27
+TCGA-A7-A4SC,62,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T3,N0,MX,7TH,8520/3,Yes,No,No,TCGA-A7-A4SC-01,Breast Invasive Lobular Carcinoma,ILC,—,1.8,0.01
+TCGA-A7-A4SD,52,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-A7-A4SD-01,Breast Invasive Ductal Carcinoma,IDC,20,2.966666667,0.21
+TCGA-A7-A4SE,54,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-A7-A4SE-01,Breast Invasive Ductal Carcinoma,IDC,15,6.133333333,0.28
+TCGA-A7-A4SF,54,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-A7-A4SF-01,Breast Invasive Ductal Carcinoma,IDC,22,0,0.57
+TCGA-A7-A56D,84,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-A7-A56D-01,Breast Invasive Ductal Carcinoma,IDC,14,8.266666667,0.06
+TCGA-A7-A5ZV,62,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8010/3,Yes,No,No,TCGA-A7-A5ZV-01,Breast Invasive Carcinoma (NOS),BRCNOS,19,5.4,0.91
+TCGA-A7-A5ZW,47,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIA,T1C,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-A7-A5ZW-01,Breast Invasive Ductal Carcinoma,IDC,2,0.966666667,0
+TCGA-A7-A5ZX,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3A,M0,7TH,8520/3,Yes,No,Yes,TCGA-A7-A5ZX-01,Breast Invasive Lobular Carcinoma,ILC,3,2.066666667,0
+TCGA-A7-A6VV,51,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-A7-A6VV-01,Breast Invasive Ductal Carcinoma,IDC,23,1.433333333,0.17
+TCGA-A7-A6VW,48,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-A7-A6VW-01,Breast Invasive Ductal Carcinoma,IDC,13,1.866666667,0.47
+TCGA-A7-A6VX,68,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-A7-A6VX-01,Breast Invasive Ductal Carcinoma,IDC,17,3.966666667,1.31
+TCGA-A7-A6VY,48,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE IIB,T2,N1,M0,7TH,8500/3,Yes,No,No,TCGA-A7-A6VY-01,Breast Invasive Ductal Carcinoma,IDC,7,3.166666667,0.26
+TCGA-A8-A06N,66,Female,—,—,EUR,BRCA_LumB,STAGE IIIB,T4B,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A06N-01,Breast Invasive Ductal Carcinoma,IDC,21,1.133333333,0.72
+TCGA-A8-A06O,60,Female,—,—,EUR,BRCA_LumB,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-A8-A06O-01,Breast Invasive Ductal Carcinoma,IDC,22,2.3,0.85
+TCGA-A8-A06P,63,Female,—,—,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A06P-01,Breast Invasive Ductal Carcinoma,IDC,5,1.066666667,0.04
+TCGA-A8-A06Q,63,Female,—,—,EUR,BRCA_LumB,STAGE IIIA,T3,N2,M0,5TH,8500/3,—,No,No,TCGA-A8-A06Q-01,Breast Invasive Ductal Carcinoma,IDC,20,7.2,0.37
+TCGA-A8-A06R,69,Female,—,—,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,5TH,8500/3,Yes,No,No,TCGA-A8-A06R-01,Breast Invasive Ductal Carcinoma,IDC,20,1.933333333,1.23
+TCGA-A8-A06T,75,Female,—,—,EUR,BRCA_LumA,STAGE IIIA,T3,N1A,M0,6TH,8500/3,No,No,Yes,TCGA-A8-A06T-01,Breast Invasive Ductal Carcinoma,IDC,27,0.866666667,0.2
+TCGA-A8-A06U,80,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,Yes,TCGA-A8-A06U-01,Breast Invasive Ductal Carcinoma,IDC,19,2.1,1.75
+TCGA-A8-A06X,77,Female,—,—,EUR,BRCA_LumB,STAGE IIB,T3,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A06X-01,Breast Invasive Ductal Carcinoma,IDC,11,6.166666667,0.54
+TCGA-A8-A06Y,66,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A06Y-01,Breast Invasive Ductal Carcinoma,IDC,12,0.966666667,0.87
+TCGA-A8-A06Z,84,Female,—,—,EUR,BRCA_LumB,STAGE IIB,T3,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A06Z-01,Breast Invasive Ductal Carcinoma,IDC,24,2.333333333,1.69
+TCGA-A8-A075,42,Female,—,—,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A075-01,Breast Invasive Ductal Carcinoma,IDC,19,2.5,0.47
+TCGA-A8-A076,66,Female,—,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,5TH,8500/3,No,No,No,TCGA-A8-A076-01,Breast Invasive Ductal Carcinoma,IDC,20,2.366666667,0.25
+TCGA-A8-A079,69,Female,—,—,EUR,BRCA_LumB,STAGE IIIB,T4B,N3,M0,5TH,8500/3,Yes,No,No,TCGA-A8-A079-01,Breast Invasive Ductal Carcinoma,IDC,14,2.133333333,0.95
+TCGA-A8-A07B,69,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-A8-A07B-01,Breast Invasive Ductal Carcinoma,IDC,16,2.133333333,0.68
+TCGA-A8-A07C,57,Female,—,—,EUR,—,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07C-01,Breast Invasive Ductal Carcinoma,IDC,—,4.566666667,1.74
+TCGA-A8-A07E,81,Female,—,—,EUR,BRCA_LumA,STAGE X,T4B,N3A,MX,6TH,8500/3,No,No,Yes,TCGA-A8-A07E-01,Breast Invasive Ductal Carcinoma,IDC,6,1.9,0.03
+TCGA-A8-A07F,65,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07F-01,Breast Invasive Ductal Carcinoma,IDC,22,0.933333333,0.11
+TCGA-A8-A07G,65,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07G-01,Breast Invasive Ductal Carcinoma,IDC,5,1.966666667,0.03
+TCGA-A8-A07I,69,Female,—,—,EUR,BRCA_Her2,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07I-01,Breast Invasive Ductal Carcinoma,IDC,5,1.333333333,0.43
+TCGA-A8-A07J,35,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07J-01,Breast Invasive Ductal Carcinoma,IDC,6,1.233333333,0.08
+TCGA-A8-A07L,58,Female,—,—,EUR,BRCA_LumB,STAGE IIIA,T3,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07L-01,Breast Invasive Ductal Carcinoma,IDC,5,2.666666667,1.33
+TCGA-A8-A07O,51,Female,—,—,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07O-01,Breast Invasive Ductal Carcinoma,IDC,11,1.266666667,0.07
+TCGA-A8-A07P,68,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07P-01,Breast Invasive Ductal Carcinoma,IDC,5,1.533333333,0.54
+TCGA-A8-A07R,80,Female,—,—,EUR,—,STAGE IIIC,T2,N3A,M0,6TH,8500/3,—,No,No,TCGA-A8-A07R-01,Breast Invasive Ductal Carcinoma,IDC,13,0,3.2
+TCGA-A8-A07S,73,Female,—,—,—,—,STAGE IIA,T2,N0,M0,6TH,8522/3,Yes,No,No,TCGA-A8-A07S-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,—,—
+TCGA-A8-A07U,66,Female,—,—,EUR,BRCA_Basal,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A07U-01,Breast Invasive Ductal Carcinoma,IDC,26,2.066666667,0.01
+TCGA-A8-A07W,76,Female,—,—,EUR,BRCA_LumB,STAGE IV,T2,NX,M1,6TH,8500/3,No,No,No,TCGA-A8-A07W-01,Breast Invasive Ductal Carcinoma,IDC,26,4.3,0.97
+TCGA-A8-A07Z,85,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-A8-A07Z-01,Breast Invasive Ductal Carcinoma,IDC,11,0.5,2.61
+TCGA-A8-A081,80,Female,—,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A081-01,Breast Invasive Ductal Carcinoma,IDC,22,3.666666667,0.84
+TCGA-A8-A082,58,Female,—,—,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,No,TCGA-A8-A082-01,Breast Invasive Ductal Carcinoma,IDC,5,0.666666667,0.1
+TCGA-A8-A083,67,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T3,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A083-01,Breast Invasive Ductal Carcinoma,IDC,8,0.966666667,0.2
+TCGA-A8-A085,44,Male,—,—,EUR,—,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,No,TCGA-A8-A085-01,Breast Invasive Ductal Carcinoma,IDC,4,2,0.45
+TCGA-A8-A086,59,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A086-01,Breast Invasive Ductal Carcinoma,IDC,13,0.6,0.31
+TCGA-A8-A08A,89,Female,—,—,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,5TH,8500/3,—,No,No,TCGA-A8-A08A-01,Breast Invasive Ductal Carcinoma,IDC,3,0.8,0.06
+TCGA-A8-A08B,52,Female,—,—,EUR,BRCA_Her2,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A08B-01,Breast Invasive Ductal Carcinoma,IDC,19,1.566666667,0.63
+TCGA-A8-A08C,65,Female,—,—,EUR,—,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A08C-01,Breast Invasive Ductal Carcinoma,IDC,15,—,0.16
+TCGA-A8-A08G,41,Female,—,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A08G-01,Breast Invasive Ductal Carcinoma,IDC,24,1.466666667,0.35
+TCGA-A8-A08H,66,Female,—,—,EUR,BRCA_Normal,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A08H-01,Breast Invasive Ductal Carcinoma,IDC,0,3.566666667,0.02
+TCGA-A8-A08I,53,Female,—,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A08I-01,Breast Invasive Ductal Carcinoma,IDC,19,1.133333333,1.21
+TCGA-A8-A08J,52,Female,—,—,EUR,BRCA_Her2,STAGE IV,T4B,N3,M1,6TH,8541/3,No,No,No,TCGA-A8-A08J-01,Breast Invasive Ductal Carcinoma,IDC,16,1.2,0.49
+TCGA-A8-A08L,89,Female,—,—,EUR,BRCA_Her2,STAGE IIIA,T3,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A08L-01,Breast Invasive Ductal Carcinoma,IDC,9,6.533333333,1
+TCGA-A8-A08O,45,Female,—,—,EUR,BRCA_LumA,STAGE IV,T2,N3A,M1,6TH,8500/3,No,No,No,TCGA-A8-A08O-01,Breast Invasive Ductal Carcinoma,IDC,7,0.7,0.08
+TCGA-A8-A08P,70,Female,—,—,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A08P-01,Breast Invasive Ductal Carcinoma,IDC,—,2.2,0.19
+TCGA-A8-A08R,52,Female,—,—,—,BRCA_Basal,STAGE IIB,T2,N1A,M0,6TH,8500/3,—,No,No,TCGA-A8-A08R-01,Breast Invasive Ductal Carcinoma,IDC,17,7.566666667,0.41
+TCGA-A8-A08T,64,Female,—,—,EUR,BRCA_LumA,STAGE IV,T2,N1A,M1,6TH,8500/3,No,No,No,TCGA-A8-A08T-01,Breast Invasive Ductal Carcinoma,IDC,8,1.3,0.24
+TCGA-A8-A08X,43,Female,—,—,EUR,BRCA_Her2,STAGE IIIC,T4D,N3A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A08X-01,Breast Invasive Ductal Carcinoma,IDC,23,1.1,0
+TCGA-A8-A08Z,76,Female,—,—,EUR,BRCA_LumA,STAGE IIIB,T4B,N3A,M0,6TH,8500/3,—,No,No,TCGA-A8-A08Z-01,Breast Invasive Ductal Carcinoma,IDC,6,0.966666667,0.16
+TCGA-A8-A090,74,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A090-01,Breast Invasive Ductal Carcinoma,IDC,17,1.133333333,0.5
+TCGA-A8-A091,61,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,Yes,TCGA-A8-A091-01,Breast Invasive Ductal Carcinoma,IDC,17,0.633333333,0.28
+TCGA-A8-A092,48,Female,—,—,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A092-01,Breast Invasive Ductal Carcinoma,IDC,24,2.366666667,1.22
+TCGA-A8-A093,61,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,Yes,TCGA-A8-A093-01,Breast Invasive Ductal Carcinoma,IDC,22,3.033333333,0.42
+TCGA-A8-A094,75,Female,—,—,EUR,BRCA_Her2,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A094-01,Breast Invasive Ductal Carcinoma,IDC,11,5.766666667,0.36
+TCGA-A8-A095,45,Female,—,—,EUR,BRCA_LumB,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A095-01,Breast Invasive Ductal Carcinoma,IDC,9,4.266666667,0.2
+TCGA-A8-A096,73,Female,—,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-A8-A096-01,Breast Invasive Ductal Carcinoma,IDC,2,0.966666667,0.1
+TCGA-A8-A097,65,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A097-01,Breast Invasive Ductal Carcinoma,IDC,17,3.033333333,0.29
+TCGA-A8-A099,76,Female,—,—,EUR,BRCA_LumA,STAGE X,T4B,N3A,MX,6TH,8500/3,Yes,No,No,TCGA-A8-A099-01,Breast Invasive Ductal Carcinoma,IDC,5,0.9,0.62
+TCGA-A8-A09A,40,Female,—,—,EUR,BRCA_LumA,STAGE X,T2,NX,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A09A-01,Breast Invasive Ductal Carcinoma,IDC,13,6.966666667,0.03
+TCGA-A8-A09B,58,Female,—,—,EUR,BRCA_LumA,STAGE IIIB,T4B,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A09B-01,Breast Invasive Ductal Carcinoma,IDC,26,1.333333333,0.27
+TCGA-A8-A09C,69,Female,—,—,EUR,BRCA_LumB,STAGE X,T2,N0,MX,6TH,8500/3,—,No,Yes,TCGA-A8-A09C-01,Breast Invasive Ductal Carcinoma,IDC,19,0.8,1.23
+TCGA-A8-A09D,47,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,5TH,8500/3,Yes,No,No,TCGA-A8-A09D-01,Breast Invasive Ductal Carcinoma,IDC,4,1.3,0.16
+TCGA-A8-A09G,79,Female,—,—,EUR,BRCA_Her2,STAGE IIIC,T3,N3A,M0,6TH,8500/3,—,No,No,TCGA-A8-A09G-01,Breast Invasive Ductal Carcinoma,IDC,9,8.033333333,0.11
+TCGA-A8-A09I,84,Female,—,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,Yes,TCGA-A8-A09I-01,Breast Invasive Ductal Carcinoma,IDC,16,4.3,0.21
+TCGA-A8-A09M,75,Female,—,—,EUR,BRCA_LumB,STAGE IIIC,T2,N3A,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A09M-01,Breast Invasive Ductal Carcinoma,IDC,2,4.366666667,0.31
+TCGA-A8-A09N,57,Female,—,—,EUR,BRCA_LumB,STAGE IIIC,T2,N3A,M0,6TH,8500/3,—,No,No,TCGA-A8-A09N-01,Breast Invasive Ductal Carcinoma,IDC,14,1.966666667,0.97
+TCGA-A8-A09Q,83,Female,—,—,EUR,BRCA_LumB,STAGE IIIB,T4B,N2A,M0,6TH,8500/3,No,No,No,TCGA-A8-A09Q-01,Breast Invasive Ductal Carcinoma,IDC,24,4.3,0.94
+TCGA-A8-A09R,82,Female,—,—,EUR,BRCA_LumB,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A09R-01,Breast Invasive Ductal Carcinoma,IDC,20,2.166666667,0.41
+TCGA-A8-A09T,68,Female,—,—,EUR,BRCA_LumA,STAGE X,T1C,N0,MX,6TH,8520/3,Yes,No,No,TCGA-A8-A09T-01,Breast Invasive Lobular Carcinoma,ILC,13,0.733333333,0.26
+TCGA-A8-A09V,51,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,Yes,No,No,TCGA-A8-A09V-01,Breast Invasive Lobular Carcinoma,ILC,3,1.033333333,0.18
+TCGA-A8-A09W,70,Female,—,—,EUR,BRCA_LumB,STAGE IIIB,T2,N3,M0,5TH,8520/3,—,No,No,TCGA-A8-A09W-01,Breast Invasive Lobular Carcinoma,ILC,7,2.7,0.52
+TCGA-A8-A09X,62,Female,—,—,EUR,BRCA_Her2,STAGE IIIC,T2,N3A,M0,6TH,8520/3,—,No,No,TCGA-A8-A09X-01,Breast Invasive Lobular Carcinoma,ILC,21,1.533333333,0.01
+TCGA-A8-A09Z,83,Female,—,—,EUR,BRCA_LumB,STAGE IIB,T3,N0,M0,6TH,8520/3,—,No,No,TCGA-A8-A09Z-01,Breast Invasive Lobular Carcinoma,ILC,4,36.93333333,26.38
+TCGA-A8-A0A1,84,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,—,No,No,TCGA-A8-A0A1-01,Breast Invasive Lobular Carcinoma,ILC,3,1.5,0.03
+TCGA-A8-A0A2,66,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,—,No,No,TCGA-A8-A0A2-01,Breast Invasive Lobular Carcinoma,ILC,17,0.933333333,0.12
+TCGA-A8-A0A4,73,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,No,No,No,TCGA-A8-A0A4-01,Breast Invasive Lobular Carcinoma,ILC,7,0.8,0.25
+TCGA-A8-A0A6,64,Female,—,—,EUR,BRCA_LumA,STAGE IIIC,T2,N3A,M0,6TH,8520/3,Yes,No,No,TCGA-A8-A0A6-01,Breast Invasive Lobular Carcinoma,ILC,17,0.866666667,0.12
+TCGA-A8-A0A7,57,Female,—,—,EUR,BRCA_Her2,STAGE IIB,T2,N1A,M0,6TH,8520/3,—,No,No,TCGA-A8-A0A7-01,Breast Invasive Lobular Carcinoma,ILC,15,6.5,0
+TCGA-A8-A0A9,80,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-A8-A0A9-01,Breast Invasive Ductal Carcinoma,IDC,33,1.733333333,0.3
+TCGA-A8-A0AB,54,Female,—,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,No,No,No,TCGA-A8-A0AB-01,Breast Invasive Lobular Carcinoma,ILC,17,1,0.22
+TCGA-A8-A0AD,83,Female,—,—,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8522/3,No,No,No,TCGA-A8-A0AD-01,Breast Invasive Carcinoma (NOS),BRCNOS,8,0.8,0.09
+TCGA-AC-A23C,62,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,MX,7TH,8500/3,No,No,No,TCGA-AC-A23C-01,Breast Invasive Ductal Carcinoma,IDC,4,3.733333333,0.77
+TCGA-AC-A23E,50,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,MX,7TH,8500/3,Yes,No,No,TCGA-AC-A23E-01,Breast Invasive Ductal Carcinoma,IDC,19,0.633333333,0.05
+TCGA-AC-A23G,76,Female,White,—,EUR,—,STAGE IIA,T1C,N1,MX,6TH,8520/3,No,No,No,TCGA-AC-A23G-01,Breast Invasive Lobular Carcinoma,ILC,18,—,0.01
+TCGA-AC-A23H,90,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,NX,M0,7TH,8500/3,No,No,No,TCGA-AC-A23H-01,Breast Invasive Ductal Carcinoma,IDC,16,142.6666667,0.54
+TCGA-AC-A2B8,84,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,7TH,8520/3,Yes,No,No,TCGA-AC-A2B8-01,Breast Invasive Lobular Carcinoma,ILC,3,2.766666667,0.54
+TCGA-AC-A2BK,78,Female,Black or African American,—,AFR,BRCA_Basal,STAGE IIIA,T2,N2A,MX,6TH,8500/3,Yes,No,No,TCGA-AC-A2BK-01,Breast Invasive Ductal Carcinoma,IDC,14,2.633333333,2.61
+TCGA-AC-A2BM,41,Female,Black or African American,—,AFR,BRCA_LumB,STAGE IIB,T2,N1A,MX,6TH,8500/3,No,No,No,TCGA-AC-A2BM-01,Breast Invasive Ductal Carcinoma,IDC,18,0.7,0.26
+TCGA-AC-A2FB,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,6TH,8520/3,No,No,No,TCGA-AC-A2FB-01,Breast Invasive Lobular Carcinoma,ILC,4,0.333333333,0.01
+TCGA-AC-A2FE,62,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T3,N3A,MX,6TH,8520/3,Yes,No,No,TCGA-AC-A2FE-01,Breast Invasive Lobular Carcinoma,ILC,5,0,0
+TCGA-AC-A2FF,40,Female,Asian,Not Hispanic Or Latino,SAS_ADMIX,BRCA_LumA,STAGE IIB,T2,N1,MX,6TH,8520/3,Yes,No,No,TCGA-AC-A2FF-01,Breast Invasive Lobular Carcinoma,ILC,0,0.533333333,0.21
+TCGA-AC-A2FG,79,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,MX,6TH,8520/3,No,No,No,TCGA-AC-A2FG-01,Breast Invasive Lobular Carcinoma,ILC,3,0.9,0.66
+TCGA-AC-A2FK,45,Female,White,Hispanic Or Latino,AMR,BRCA_Normal,STAGE IIIC,T2,N3A,M0,6TH,8520/3,Yes,No,No,TCGA-AC-A2FK-01,Breast Invasive Lobular Carcinoma,ILC,0,0.033333333,0
+TCGA-AC-A2FM,87,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1MI,M0,6TH,8520/3,No,No,No,TCGA-AC-A2FM-01,Breast Invasive Lobular Carcinoma,ILC,11,0,0.07
+TCGA-AC-A2FO,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,MX,6TH,8520/3,No,No,No,TCGA-AC-A2FO-01,Breast Invasive Lobular Carcinoma,ILC,2,0.8,0
+TCGA-AC-A2QH,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T3,N0,MX,7TH,8575/3,Yes,No,No,TCGA-AC-A2QH-01,Metaplastic Breast Cancer,MBC,18,0.9,1.54
+TCGA-AC-A2QI,76,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1A,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A2QI-01,Breast Invasive Lobular Carcinoma,ILC,5,—,0
+TCGA-AC-A2QJ,48,Female,White,Hispanic Or Latino,AMR,—,STAGE IIIB,T4B,N0,M0,7TH,8575/3,Yes,No,No,TCGA-AC-A2QJ-01,Metaplastic Breast Cancer,MBC,23,0,0
+TCGA-AC-A3BB,46,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIIA,T3,N2A,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A3BB-01,Breast Invasive Lobular Carcinoma,ILC,13,—,0
+TCGA-AC-A3EH,79,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T3,N3,M0,7TH,8022/3,No,No,No,TCGA-AC-A3EH-01,Breast Invasive Lobular Carcinoma,ILC,13,0,0.18
+TCGA-AC-A3HN,87,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,MX,7TH,8520/3,No,No,No,TCGA-AC-A3HN-01,Breast Invasive Lobular Carcinoma,ILC,5,0.433333333,0.02
+TCGA-AC-A3OD,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1MI,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A3OD-01,Breast Invasive Lobular Carcinoma,ILC,6,0.933333333,0.05
+TCGA-AC-A3QP,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1MI,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A3QP-01,Breast Invasive Lobular Carcinoma,ILC,2,0.733333333,0
+TCGA-AC-A3QQ,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),MX,7TH,8520/3,No,No,No,TCGA-AC-A3QQ-01,Breast Invasive Lobular Carcinoma,ILC,6,0.866666667,0.45
+TCGA-AC-A3TM,50,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1MI,M0,7TH,8520/3,Yes,No,No,TCGA-AC-A3TM-01,Breast Invasive Lobular Carcinoma,ILC,5,0,0
+TCGA-AC-A3TN,75,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T3,N0,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A3TN-01,Breast Invasive Lobular Carcinoma,ILC,4,0,0
+TCGA-AC-A3W5,65,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Her2,STAGE IIA,T2,N0,MX,7TH,8520/3,Yes,No,Yes,TCGA-AC-A3W5-01,Breast Invasive Lobular Carcinoma,ILC,23,4.033333333,0.05
+TCGA-AC-A3W6,90,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1,MX,7TH,8520/3,No,No,Yes,TCGA-AC-A3W6-01,Breast Invasive Lobular Carcinoma,ILC,6,—,0
+TCGA-AC-A3W7,66,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1A,MX,7TH,8520/3,No,No,No,TCGA-AC-A3W7-01,Breast Invasive Lobular Carcinoma,ILC,8,0,0.01
+TCGA-AC-A3YI,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIIC,T1C,N3A,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A3YI-01,Breast Invasive Lobular Carcinoma,ILC,0,0.466666667,0
+TCGA-AC-A3YJ,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),MX,7TH,8050/3,No,No,No,TCGA-AC-A3YJ-01,Breast Invasive Carcinoma (NOS),BRCNOS,1,0.566666667,0
+TCGA-AC-A4ZE,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0,M0,7TH,8520/3,No,No,No,TCGA-AC-A4ZE-01,Breast Invasive Lobular Carcinoma,ILC,7,1.5,0.43
+TCGA-AC-A5EH,76,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Her2,STAGE IIB,T2,N1MI,MX,7TH,8500/3,Yes,No,No,TCGA-AC-A5EH-01,Breast Invasive Ductal Carcinoma,IDC,25,4.3,0.08
+TCGA-AC-A5EI,88,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IB,T1C,N1MI,MX,7TH,9020/3,No,No,Yes,TCGA-AC-A5EI-01,Breast Invasive Carcinoma (NOS),BRCNOS,8,0.966666667,0.16
+TCGA-AC-A5XS,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8520/3,No,No,Yes,TCGA-AC-A5XS-01,Breast Invasive Lobular Carcinoma,ILC,9,27.13333333,0
+TCGA-AC-A5XU,74,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIB,T3,N0 (I-),MX,7TH,8500/3,Yes,No,No,TCGA-AC-A5XU-01,Breast Invasive Ductal Carcinoma,IDC,4,1.866666667,0.25
+TCGA-AC-A62V,58,Male,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IV,T2,N1A,M1,7TH,8500/3,Yes,No,No,TCGA-AC-A62V-01,Breast Invasive Ductal Carcinoma,IDC,18,2.266666667,0.07
+TCGA-AC-A62X,72,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0,MX,7TH,8500/3,No,No,Yes,TCGA-AC-A62X-01,Breast Invasive Ductal Carcinoma,IDC,29,1.766666667,0.68
+TCGA-AC-A62Y,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A62Y-01,Breast Invasive Lobular Carcinoma,ILC,22,1.9,0.02
+TCGA-AC-A6IV,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,MX,7TH,8524/3,Yes,No,No,TCGA-AC-A6IV-01,Breast Invasive Lobular Carcinoma,ILC,6,0.6,0
+TCGA-AC-A6IW,73,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0 (I-),MX,7TH,8500/3,No,No,No,TCGA-AC-A6IW-01,Breast Invasive Ductal Carcinoma,IDC,13,4.366666667,0.32
+TCGA-AC-A6IX,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3A,MX,7TH,8520/3,Yes,No,No,TCGA-AC-A6IX-01,Breast Invasive Lobular Carcinoma,ILC,5,1.633333333,0
+TCGA-AC-A6NO,43,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIB,T2,N1A,MX,7TH,8500/3,—,No,No,TCGA-AC-A6NO-01,Breast Invasive Ductal Carcinoma,IDC,8,0.866666667,0.01
+TCGA-AC-A7VB,51,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIA,T1C,N1A,MX,7TH,8500/3,Yes,No,No,TCGA-AC-A7VB-01,Breast Invasive Ductal Carcinoma,IDC,8,0.733333333,0.19
+TCGA-AC-A7VC,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T3,N0,MX,7TH,8575/3,—,No,No,TCGA-AC-A7VC-01,Metaplastic Breast Cancer,MBC,1,0.5,0.02
+TCGA-AC-A8OP,72,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IA,T1C,N0 (I-),MX,7TH,8500/3,No,No,No,TCGA-AC-A8OP-01,Breast Invasive Ductal Carcinoma,IDC,20,4.633333333,0.05
+TCGA-AC-A8OQ,72,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE IIB,T2,N1A,MX,7TH,8500/3,—,No,No,TCGA-AC-A8OQ-01,Breast Invasive Ductal Carcinoma,IDC,23,2.6,0.32
+TCGA-AC-A8OR,75,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),MX,7TH,8480/3,—,No,No,TCGA-AC-A8OR-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,1,1.933333333,0.06
+TCGA-AC-A8OS,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),MX,7TH,8520/3,—,No,No,TCGA-AC-A8OS-01,Breast Invasive Lobular Carcinoma,ILC,8,1.366666667,0.01
+TCGA-AN-A03X,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A03X-01,Breast Invasive Ductal Carcinoma,IDC,14,1.166666667,0.22
+TCGA-AN-A03Y,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A03Y-01,Breast Invasive Ductal Carcinoma,IDC,24,0.933333333,0.92
+TCGA-AN-A041,29,Female,White,Not Hispanic Or Latino,EUR_ADMIX,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-AN-A041-01,Breast Invasive Ductal Carcinoma,IDC,14,0.933333333,0.32
+TCGA-AN-A046,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A046-01,Breast Invasive Ductal Carcinoma,IDC,7,180.8333333,0.04
+TCGA-AN-A049,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,—,8500/3,—,No,No,TCGA-AN-A049-01,Breast Invasive Ductal Carcinoma,IDC,10,0.966666667,0.37
+TCGA-AN-A04A,36,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,—,No,No,TCGA-AN-A04A-01,Breast Invasive Ductal Carcinoma,IDC,14,1.366666667,0.34
+TCGA-AN-A04C,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIB,T2,N1,M0,—,8500/3,—,No,No,TCGA-AN-A04C-01,Breast Invasive Ductal Carcinoma,IDC,19,2.233333333,0.75
+TCGA-AN-A04D,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,—,8500/3,—,No,No,TCGA-AN-A04D-01,Breast Invasive Ductal Carcinoma,IDC,4,2.8,0.66
+TCGA-AN-A0AJ,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T3,N0,M0,—,8522/3,No,No,No,TCGA-AN-A0AJ-01,Breast Invasive Ductal Carcinoma,IDC,16,2.566666667,1.25
+TCGA-AN-A0AK,76,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0AK-01,Breast Invasive Ductal Carcinoma,IDC,12,37.36666667,32.92
+TCGA-AN-A0AL,41,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIB,T4,N0,M0,7TH,8500/3,No,No,No,TCGA-AN-A0AL-01,Breast Invasive Ductal Carcinoma,IDC,6,2.666666667,0.87
+TCGA-AN-A0AM,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0AM-01,Breast Invasive Ductal Carcinoma,IDC,21,2.933333333,0.09
+TCGA-AN-A0AR,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0AR-01,Breast Invasive Ductal Carcinoma,IDC,10,3.666666667,2.5
+TCGA-AN-A0AS,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,—,8500/3,No,No,No,TCGA-AN-A0AS-01,Breast Invasive Ductal Carcinoma,IDC,24,1.4,0.25
+TCGA-AN-A0AT,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0AT-01,Breast Invasive Ductal Carcinoma,IDC,8,3.933333333,1.3
+TCGA-AN-A0FD,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0FD-01,Breast Invasive Ductal Carcinoma,IDC,6,1.066666667,0.25
+TCGA-AN-A0FF,32,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IA,T1B,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0FF-01,Breast Invasive Ductal Carcinoma,IDC,4,0.666666667,0.05
+TCGA-AN-A0FJ,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IV,T2,N2,M1,—,8500/3,No,No,No,TCGA-AN-A0FJ-01,Breast Invasive Ductal Carcinoma,IDC,12,2.633333333,1.15
+TCGA-AN-A0FK,88,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T4,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0FK-01,Breast Invasive Ductal Carcinoma,IDC,23,1.166666667,0.07
+TCGA-AN-A0FL,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0FL-01,Breast Invasive Ductal Carcinoma,IDC,7,5.066666667,0.62
+TCGA-AN-A0FN,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-AN-A0FN-01,Breast Invasive Lobular Carcinoma,ILC,3,1.333333333,0.05
+TCGA-AN-A0FS,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-AN-A0FS-01,Breast Invasive Lobular Carcinoma,ILC,3,2.033333333,0.1
+TCGA-AN-A0FT,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,—,8500/3,No,No,No,TCGA-AN-A0FT-01,Breast Invasive Ductal Carcinoma,IDC,19,2.8,0.5
+TCGA-AN-A0FV,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-AN-A0FV-01,Breast Invasive Ductal Carcinoma,IDC,19,2.7,0.67
+TCGA-AN-A0FW,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,—,8500/3,No,No,No,TCGA-AN-A0FW-01,Breast Invasive Ductal Carcinoma,IDC,20,3.566666667,0.56
+TCGA-AN-A0FX,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AN-A0FX-01,Breast Invasive Ductal Carcinoma,IDC,14,4,0.53
+TCGA-AN-A0FY,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-AN-A0FY-01,Breast Invasive Ductal Carcinoma,IDC,19,1.6,1.39
+TCGA-AN-A0FZ,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,—,8500/3,No,No,No,TCGA-AN-A0FZ-01,Breast Invasive Ductal Carcinoma,IDC,16,2.233333333,0.5
+TCGA-AN-A0G0,56,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0,M0,—,8500/3,Yes,No,No,TCGA-AN-A0G0-01,Breast Invasive Ductal Carcinoma,IDC,—,1.066666667,0.73
+TCGA-AN-A0XL,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XL-01,Breast Invasive Ductal Carcinoma,IDC,13,1.1,0.09
+TCGA-AN-A0XN,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XN-01,Breast Invasive Ductal Carcinoma,IDC,12,4.866666667,0.45
+TCGA-AN-A0XO,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XO-01,Breast Invasive Ductal Carcinoma,IDC,4,1.1,0.1
+TCGA-AN-A0XP,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XP-01,Breast Invasive Ductal Carcinoma,IDC,14,0.866666667,0.03
+TCGA-AN-A0XR,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XR-01,Breast Invasive Ductal Carcinoma,IDC,6,1,0.36
+TCGA-AN-A0XS,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XS-01,Breast Invasive Ductal Carcinoma,IDC,19,0.866666667,0.04
+TCGA-AN-A0XT,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XT-01,Breast Invasive Ductal Carcinoma,IDC,9,0.366666667,0.31
+TCGA-AN-A0XU,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XU-01,Breast Invasive Ductal Carcinoma,IDC,10,3.833333333,1.04
+TCGA-AN-A0XV,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XV-01,Breast Invasive Ductal Carcinoma,IDC,2,1.066666667,0.08
+TCGA-AN-A0XW,36,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,No,No,No,TCGA-AN-A0XW-01,Breast Invasive Ductal Carcinoma,IDC,6,9.6,0.21
+TCGA-AO-A03L,34,Female,Asian,Not Hispanic Or Latino,SAS_ADMIX,BRCA_LumA,STAGE IIIA,T3,N2,M0,6TH,8500/3,Yes,No,No,TCGA-AO-A03L-01,Breast Invasive Ductal Carcinoma,IDC,23,0.933333333,0.1
+TCGA-AO-A03M,29,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-AO-A03M-01,Breast Invasive Ductal Carcinoma,IDC,14,25.26666667,0.07
+TCGA-AO-A03N,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,No,TCGA-AO-A03N-01,Breast Invasive Ductal Carcinoma,IDC,23,3,0.23
+TCGA-AO-A03O,69,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,—,8500/3,No,No,No,TCGA-AO-A03O-01,Breast Invasive Ductal Carcinoma,IDC,24,2.466666667,0.88
+TCGA-AO-A03P,54,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AO-A03P-01,Breast Invasive Ductal Carcinoma,IDC,11,1.333333333,1.02
+TCGA-AO-A03R,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIB,T2,N1A,M0,—,8500/3,Yes,No,No,TCGA-AO-A03R-01,Breast Invasive Ductal Carcinoma,IDC,8,1.233333333,0.09
+TCGA-AO-A03T,42,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-AO-A03T-01,Breast Invasive Ductal Carcinoma,IDC,6,2.966666667,0.02
+TCGA-AO-A03U,31,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE I,T1C,N0 (I-),M0,6TH,8502/3,No,No,No,TCGA-AO-A03U-01,Breast Invasive Carcinoma (NOS),BRCNOS,1,0.166666667,0.01
+TCGA-AO-A03V,41,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-AO-A03V-01,Breast Invasive Ductal Carcinoma,IDC,7,1.7,0.23
+TCGA-AO-A0J2,41,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IA,T1C,N0 (I-),M0,—,8500/3,No,No,No,TCGA-AO-A0J2-01,Breast Invasive Ductal Carcinoma,IDC,9,1.766666667,1.15
+TCGA-AO-A0J3,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1B,M0,—,8523/3,Yes,No,No,TCGA-AO-A0J3-01,Breast Invasive Carcinoma (NOS),BRCNOS,12,2.533333333,0.77
+TCGA-AO-A0J4,41,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-AO-A0J4-01,Breast Invasive Ductal Carcinoma,IDC,19,3.466666667,0.14
+TCGA-AO-A0J5,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IV,T4,N1A,M1,—,8523/3,Yes,Yes,No,TCGA-AO-A0J5-01,Breast Invasive Carcinoma (NOS),BRCNOS,3,1.766666667,0.12
+TCGA-AO-A0J6,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-AO-A0J6-01,Breast Invasive Ductal Carcinoma,IDC,5,3.333333333,0.67
+TCGA-AO-A0J7,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1,M0,—,8523/3,Yes,No,No,TCGA-AO-A0J7-01,Breast Invasive Carcinoma (NOS),BRCNOS,15,0.6,1.24
+TCGA-AO-A0J8,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,—,8520/3,Yes,No,No,TCGA-AO-A0J8-01,Breast Invasive Lobular Carcinoma,ILC,6,0.733333333,0.15
+TCGA-AO-A0J9,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3,M0,—,8520/3,Yes,No,No,TCGA-AO-A0J9-01,Breast Invasive Lobular Carcinoma,ILC,17,3.566666667,0.05
+TCGA-AO-A0JA,36,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIIC,T2,N3,M0,—,8500/3,No,No,No,TCGA-AO-A0JA-01,Breast Invasive Ductal Carcinoma,IDC,10,0.7,0.11
+TCGA-AO-A0JB,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIIA,T3,N1A,M0,—,8500/3,Yes,No,No,TCGA-AO-A0JB-01,Breast Invasive Ductal Carcinoma,IDC,7,3.133333333,0.96
+TCGA-AO-A0JC,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-AO-A0JC-01,Breast Invasive Ductal Carcinoma,IDC,—,4.566666667,0.01
+TCGA-AO-A0JD,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1A,M0,—,8500/3,Yes,No,No,TCGA-AO-A0JD-01,Breast Invasive Ductal Carcinoma,IDC,7,3.366666667,0.18
+TCGA-AO-A0JE,53,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Her2,STAGE IIIA,T2,N2A,M0,—,8500/3,Yes,No,No,TCGA-AO-A0JE-01,Breast Invasive Ductal Carcinoma,IDC,12,1.5,0.15
+TCGA-AO-A0JF,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,—,8500/3,Yes,No,No,TCGA-AO-A0JF-01,Breast Invasive Ductal Carcinoma,IDC,2,0.866666667,0
+TCGA-AO-A0JG,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,—,8523/3,Yes,No,No,TCGA-AO-A0JG-01,Breast Invasive Carcinoma (NOS),BRCNOS,6,0.533333333,0.02
+TCGA-AO-A0JI,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1,M0,—,8500/3,No,No,No,TCGA-AO-A0JI-01,Breast Invasive Ductal Carcinoma,IDC,7,0.466666667,0.28
+TCGA-AO-A0JJ,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,—,8520/3,Yes,No,No,TCGA-AO-A0JJ-01,Breast Invasive Lobular Carcinoma,ILC,4,0.5,0.03
+TCGA-AO-A0JL,59,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T2,N2A,M0,—,8500/3,Yes,No,No,TCGA-AO-A0JL-01,Breast Invasive Ductal Carcinoma,IDC,25,0,1.34
+TCGA-AO-A0JM,40,Female,—,Hispanic Or Latino,—,BRCA_LumB,STAGE IIB,T2,N1,M0,—,8500/3,Yes,No,No,TCGA-AO-A0JM-01,Breast Invasive Ductal Carcinoma,IDC,15,1.166666667,0.38
+TCGA-AO-A124,38,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,5TH,8523/3,No,No,No,TCGA-AO-A124-01,Breast Invasive Carcinoma (NOS),BRCNOS,15,4.533333333,2.42
+TCGA-AO-A125,72,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,5TH,8050/3,No,No,No,TCGA-AO-A125-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,1.033333333,0.2
+TCGA-AO-A126,39,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-AO-A126-01,Breast Invasive Ductal Carcinoma,IDC,4,0.633333333,0.16
+TCGA-AO-A128,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-AO-A128-01,Breast Invasive Ductal Carcinoma,IDC,25,27.96666667,1.03
+TCGA-AO-A129,29,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1A,M0,5TH,8500/3,Yes,No,No,TCGA-AO-A129-01,Breast Invasive Ductal Carcinoma,IDC,9,3.666666667,0.07
+TCGA-AO-A12A,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,6TH,8500/3,No,No,No,TCGA-AO-A12A-01,Breast Invasive Ductal Carcinoma,IDC,25,0.466666667,0.02
+TCGA-AO-A12B,63,Female,White,Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-AO-A12B-01,Breast Invasive Ductal Carcinoma,IDC,19,0.6,0.15
+TCGA-AO-A12D,43,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-AO-A12D-01,Breast Invasive Ductal Carcinoma,IDC,16,1.766666667,0.07
+TCGA-AO-A12E,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I+),M0,6TH,8520/3,Yes,No,No,TCGA-AO-A12E-01,Breast Invasive Lobular Carcinoma,ILC,18,0.9,0
+TCGA-AO-A12F,36,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-AO-A12F-01,Breast Invasive Ductal Carcinoma,IDC,21,1.166666667,1.59
+TCGA-AO-A12G,75,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,6TH,8022/3,No,No,No,TCGA-AO-A12G-01,Breast Invasive Carcinoma (NOS),BRCNOS,6,1.133333333,0.16
+TCGA-AO-A12H,69,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8523/3,No,No,No,TCGA-AO-A12H-01,Breast Invasive Carcinoma (NOS),BRCNOS,0,0.7,0.02
+TCGA-AO-A1KO,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIB,T3,N0 (I+),M0,6TH,8520/3,No,No,No,TCGA-AO-A1KO-01,Breast Invasive Lobular Carcinoma,ILC,—,0.166666667,0.53
+TCGA-AO-A1KP,77,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T1,N1,M0,6TH,8500/3,No,No,No,TCGA-AO-A1KP-01,Breast Invasive Ductal Carcinoma,IDC,7,0.533333333,0.23
+TCGA-AO-A1KQ,84,Male,White,Not Hispanic Or Latino,EUR,—,STAGE IIIB,T4,N1,M0,6TH,8500/3,No,No,No,TCGA-AO-A1KQ-01,Breast Invasive Ductal Carcinoma,IDC,—,0,—
+TCGA-AO-A1KR,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-AO-A1KR-01,Breast Invasive Ductal Carcinoma,IDC,13,2.133333333,0.18
+TCGA-AO-A1KS,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,7TH,8520/3,Yes,No,No,TCGA-AO-A1KS-01,Breast Invasive Lobular Carcinoma,ILC,24,1.1,0.26
+TCGA-AO-A1KT,78,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T1,N1,M0,6TH,8500/3,Yes,No,—,TCGA-AO-A1KT-01,Breast Invasive Ductal Carcinoma,IDC,11,1.166666667,0.96
+TCGA-AQ-A04H,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,MX,6TH,8500/3,Yes,No,No,TCGA-AQ-A04H-01,Breast Invasive Ductal Carcinoma,IDC,15,2,0.73
+TCGA-AQ-A04J,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I+),M0,—,8500/3,No,No,No,TCGA-AQ-A04J-01,Breast Invasive Ductal Carcinoma,IDC,5,2.3,0.01
+TCGA-AQ-A04L,48,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0 (I-),MX,5TH,8500/3,No,No,No,TCGA-AQ-A04L-01,Breast Invasive Ductal Carcinoma,IDC,19,0,1.8
+TCGA-AQ-A0Y5,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,MX,7TH,8500/3,No,Yes,Yes,TCGA-AQ-A0Y5-01,Breast Invasive Ductal Carcinoma,IDC,20,1.833333333,0.27
+TCGA-AQ-A1H2,84,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,MX,7TH,8500/3,Yes,No,No,TCGA-AQ-A1H2-01,Breast Invasive Ductal Carcinoma,IDC,10,0.8,0.19
+TCGA-AQ-A1H3,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3A,MX,7TH,8500/3,Yes,No,No,TCGA-AQ-A1H3-01,Breast Invasive Ductal Carcinoma,IDC,9,0.666666667,0.28
+TCGA-AQ-A54N,51,Female,Black or African American,Hispanic Or Latino,AFR,—,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,Yes,TCGA-AQ-A54N-01,Breast Invasive Ductal Carcinoma,IDC,23,0,1.1
+TCGA-AQ-A54O,51,Male,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,Yes,TCGA-AQ-A54O-01,Breast Invasive Ductal Carcinoma,IDC,20,0.6,0.08
+TCGA-AQ-A7U7,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,7TH,8520/3,Yes,No,Yes,TCGA-AQ-A7U7-01,Breast Invasive Lobular Carcinoma,ILC,10,1.933333333,0
+TCGA-AR-A0TP,43,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A0TP-01,Breast Invasive Ductal Carcinoma,IDC,5,1.8,1.38
+TCGA-AR-A0TQ,27,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A0TQ-01,Breast Invasive Ductal Carcinoma,IDC,11,1.066666667,0.13
+TCGA-AR-A0TR,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,—,8500/3,No,No,No,TCGA-AR-A0TR-01,Breast Invasive Ductal Carcinoma,IDC,19,1.033333333,0.26
+TCGA-AR-A0TS,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A0TS-01,Breast Invasive Ductal Carcinoma,IDC,14,2.3,0
+TCGA-AR-A0TT,53,Female,Black or African American,—,AFR_ADMIX,BRCA_LumB,STAGE IIIA,T2,N2,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A0TT-01,Breast Invasive Ductal Carcinoma,IDC,12,1.833333333,0.22
+TCGA-AR-A0TU,35,Female,—,—,EUR,—,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-AR-A0TU-01,Breast Invasive Ductal Carcinoma,IDC,—,2.066666667,1.08
+TCGA-AR-A0TV,66,Female,—,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-AR-A0TV-01,Breast Invasive Ductal Carcinoma,IDC,15,1.9,0.3
+TCGA-AR-A0TW,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1,M0,—,8500/3,No,No,No,TCGA-AR-A0TW-01,Breast Invasive Ductal Carcinoma,IDC,16,1.6,0.2
+TCGA-AR-A0TX,64,Female,—,—,EUR,BRCA_Her2,STAGE IIA,T1,N1,M0,—,8500/3,Yes,No,No,TCGA-AR-A0TX-01,Breast Invasive Ductal Carcinoma,IDC,7,9.3,0.08
+TCGA-AR-A0TY,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,—,8500/3,No,No,No,TCGA-AR-A0TY-01,Breast Invasive Ductal Carcinoma,IDC,8,2.7,0.75
+TCGA-AR-A0TZ,43,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M1,—,8500/3,Yes,No,No,TCGA-AR-A0TZ-01,Breast Invasive Ductal Carcinoma,IDC,9,1.866666667,0.45
+TCGA-AR-A0U0,73,Female,White,—,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,—,8500/3,Yes,No,No,TCGA-AR-A0U0-01,Breast Invasive Ductal Carcinoma,IDC,20,1.233333333,0.78
+TCGA-AR-A0U1,36,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A0U1-01,Breast Invasive Ductal Carcinoma,IDC,6,2.566666667,0.15
+TCGA-AR-A0U2,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,—,8500/3,Yes,No,No,TCGA-AR-A0U2-01,Breast Invasive Ductal Carcinoma,IDC,22,1.433333333,1.19
+TCGA-AR-A0U3,59,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A0U3-01,Breast Invasive Ductal Carcinoma,IDC,14,1.033333333,0.58
+TCGA-AR-A0U4,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-AR-A0U4-01,Breast Invasive Ductal Carcinoma,IDC,11,4.833333333,0.17
+TCGA-AR-A1AH,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-AR-A1AH-01,Breast Invasive Ductal Carcinoma,IDC,12,2.666666667,1.35
+TCGA-AR-A1AI,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8510/3,No,No,No,TCGA-AR-A1AI-01,Breast Invasive Ductal Carcinoma,IDC,22,2.333333333,0.79
+TCGA-AR-A1AJ,83,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AJ-01,Breast Invasive Ductal Carcinoma,IDC,33,1.4,0
+TCGA-AR-A1AK,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,6TH,8520/3,No,No,No,TCGA-AR-A1AK-01,Breast Invasive Lobular Carcinoma,ILC,14,1.933333333,0.07
+TCGA-AR-A1AL,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1,M0,6TH,8520/3,Yes,No,No,TCGA-AR-A1AL-01,Breast Invasive Lobular Carcinoma,ILC,3,0.8,0.01
+TCGA-AR-A1AM,52,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1,M0,6TH,8520/3,No,No,No,TCGA-AR-A1AM-01,Breast Invasive Lobular Carcinoma,ILC,3,—,0
+TCGA-AR-A1AN,46,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AN-01,Breast Invasive Ductal Carcinoma,IDC,9,0.833333333,0.23
+TCGA-AR-A1AO,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIA,T1,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AO-01,Breast Invasive Ductal Carcinoma,IDC,0,3,0
+TCGA-AR-A1AP,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,6TH,8500/3,No,No,No,TCGA-AR-A1AP-01,Breast Invasive Ductal Carcinoma,IDC,12,1.066666667,0.69
+TCGA-AR-A1AQ,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AQ-01,Breast Invasive Ductal Carcinoma,IDC,18,1.266666667,0.39
+TCGA-AR-A1AR,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIA,T1,N2,M0,6TH,8500/3,Yes,No,Yes,TCGA-AR-A1AR-01,Breast Invasive Ductal Carcinoma,IDC,17,1.566666667,0.03
+TCGA-AR-A1AS,54,Female,Asian,—,SAS,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AS-01,Breast Invasive Ductal Carcinoma,IDC,6,0.966666667,0.17
+TCGA-AR-A1AT,62,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0,M0,6TH,8520/3,Yes,No,No,TCGA-AR-A1AT-01,Breast Invasive Lobular Carcinoma,ILC,—,0.9,0.07
+TCGA-AR-A1AU,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AU-01,Breast Invasive Ductal Carcinoma,IDC,6,0.6,0.16
+TCGA-AR-A1AV,68,Male,White,Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AV-01,Breast Invasive Ductal Carcinoma,IDC,23,1.4,0.47
+TCGA-AR-A1AW,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AW-01,Breast Invasive Ductal Carcinoma,IDC,12,1,0.02
+TCGA-AR-A1AX,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AX-01,Breast Invasive Ductal Carcinoma,IDC,7,0.866666667,0
+TCGA-AR-A1AY,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A1AY-01,Breast Invasive Ductal Carcinoma,IDC,13,1.9,1.18
+TCGA-AR-A24H,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,5TH,8520/3,Yes,No,No,TCGA-AR-A24H-01,Breast Invasive Lobular Carcinoma,ILC,15,4.166666667,0.61
+TCGA-AR-A24K,46,Female,White,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A24K-01,Breast Invasive Ductal Carcinoma,IDC,18,0.966666667,1.28
+TCGA-AR-A24L,26,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A24L-01,Breast Invasive Ductal Carcinoma,IDC,8,1.333333333,0.09
+TCGA-AR-A24M,38,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,6TH,8522/3,Yes,No,No,TCGA-AR-A24M-01,Breast Invasive Carcinoma (NOS),BRCNOS,4,0.466666667,0.28
+TCGA-AR-A24N,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE I,T1,N0,M0,6TH,8500/3,No,No,No,TCGA-AR-A24N-01,Breast Invasive Ductal Carcinoma,IDC,3,1.066666667,0.05
+TCGA-AR-A24O,43,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N2,M0,6TH,8522/3,Yes,No,No,TCGA-AR-A24O-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,0.666666667,0.08
+TCGA-AR-A24P,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,6TH,8500/3,—,No,No,TCGA-AR-A24P-01,Breast Invasive Ductal Carcinoma,IDC,8,0.7,0.21
+TCGA-AR-A24Q,49,Female,White,—,EUR,BRCA_Basal,STAGE IIB,T3,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A24Q-01,Breast Invasive Ductal Carcinoma,IDC,16,5.433333333,0.42
+TCGA-AR-A24R,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T1,N2,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A24R-01,Breast Invasive Ductal Carcinoma,IDC,17,0.733333333,0.72
+TCGA-AR-A24S,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A24S-01,Breast Invasive Ductal Carcinoma,IDC,16,1.466666667,0.04
+TCGA-AR-A24T,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3,M0,6TH,8520/3,Yes,No,No,TCGA-AR-A24T-01,Breast Invasive Lobular Carcinoma,ILC,—,0.766666667,0.17
+TCGA-AR-A24U,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T1,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A24U-01,Breast Invasive Ductal Carcinoma,IDC,8,1.133333333,0.49
+TCGA-AR-A24V,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A24V-01,Breast Invasive Ductal Carcinoma,IDC,23,0.666666667,0.59
+TCGA-AR-A24W,55,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-AR-A24W-01,Breast Invasive Ductal Carcinoma,IDC,28,0.466666667,0.03
+TCGA-AR-A24X,52,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8522/3,No,No,No,TCGA-AR-A24X-01,Breast Invasive Carcinoma (NOS),BRCNOS,4,0.9,1.71
+TCGA-AR-A24Z,57,Female,White,—,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-AR-A24Z-01,Breast Invasive Ductal Carcinoma,IDC,18,1.433333333,1.07
+TCGA-AR-A250,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-AR-A250-01,Breast Invasive Ductal Carcinoma,IDC,19,3.933333333,1.63
+TCGA-AR-A251,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIA,T2,N2,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A251-01,Breast Invasive Ductal Carcinoma,IDC,13,5.3,1.79
+TCGA-AR-A252,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A252-01,Breast Invasive Ductal Carcinoma,IDC,16,0.466666667,0.21
+TCGA-AR-A254,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIIA,T2,N2,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A254-01,Breast Invasive Ductal Carcinoma,IDC,11,1.1,0.52
+TCGA-AR-A255,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,No,TCGA-AR-A255-01,Breast Invasive Ductal Carcinoma,IDC,25,2.233333333,1.78
+TCGA-AR-A256,45,Female,White,—,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,5TH,8500/3,No,No,No,TCGA-AR-A256-01,Breast Invasive Ductal Carcinoma,IDC,17,5.666666667,4.53
+TCGA-AR-A2LE,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,5TH,8520/3,Yes,No,No,TCGA-AR-A2LE-01,Breast Invasive Lobular Carcinoma,ILC,4,8.633333333,0.03
+TCGA-AR-A2LH,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE III,T3,N3,M0,6TH,8520/3,Yes,No,No,TCGA-AR-A2LH-01,Breast Invasive Lobular Carcinoma,ILC,3,2,0.01
+TCGA-AR-A2LJ,40,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1,MX,6TH,8520/3,Yes,No,No,TCGA-AR-A2LJ-01,Breast Invasive Lobular Carcinoma,ILC,3,0,0.01
+TCGA-AR-A2LK,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE III,T3,N2,M0,6TH,8520/3,Yes,No,No,TCGA-AR-A2LK-01,Breast Invasive Lobular Carcinoma,ILC,26,1.066666667,1.05
+TCGA-AR-A2LM,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE II,T1,N1,M0,6TH,8520/3,No,No,No,TCGA-AR-A2LM-01,Breast Invasive Lobular Carcinoma,ILC,4,0.366666667,0.13
+TCGA-AR-A2LN,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,No,No,No,TCGA-AR-A2LN-01,Breast Invasive Lobular Carcinoma,ILC,2,1.266666667,0.03
+TCGA-AR-A2LO,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8520/3,Yes,No,No,TCGA-AR-A2LO-01,Breast Invasive Lobular Carcinoma,ILC,11,0.533333333,0.09
+TCGA-AR-A2LQ,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIB,T3,N0,M0,7TH,8520/3,Yes,No,No,TCGA-AR-A2LQ-01,Breast Invasive Lobular Carcinoma,ILC,1,0.333333333,0
+TCGA-AR-A5QM,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,Yes,No,Yes,TCGA-AR-A5QM-01,Breast Invasive Lobular Carcinoma,ILC,19,0.866666667,0.04
+TCGA-AR-A5QN,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3,M0,7TH,8520/3,Yes,No,No,TCGA-AR-A5QN-01,Breast Invasive Lobular Carcinoma,ILC,6,1,0.03
+TCGA-AR-A5QP,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8520/3,Yes,No,No,TCGA-AR-A5QP-01,Breast Invasive Lobular Carcinoma,ILC,8,0.866666667,0
+TCGA-AR-A5QQ,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIA,T3,N1,M0,7TH,8575/3,Yes,No,No,TCGA-AR-A5QQ-01,Breast Invasive Carcinoma (NOS),BRCNOS,7,2.233333333,0
+TCGA-B6-A0I1,73,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE IIA,T2,N0,M0,5TH,8500/3,No,No,No,TCGA-B6-A0I1-01,Breast Invasive Ductal Carcinoma,IDC,9,1.7,0.82
+TCGA-B6-A0I2,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IA,T1C,N0 (I-),M0,4TH,8500/3,Yes,No,No,TCGA-B6-A0I2-01,Breast Invasive Ductal Carcinoma,IDC,23,1.8,0.46
+TCGA-B6-A0I5,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1B,M0,3RD,8500/3,No,No,No,TCGA-B6-A0I5-01,Breast Invasive Ductal Carcinoma,IDC,11,0.833333333,0.08
+TCGA-B6-A0I6,49,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIA,T1C,N1,M0,3RD,8500/3,No,No,No,TCGA-B6-A0I6-01,Breast Invasive Ductal Carcinoma,IDC,—,0,2.69
+TCGA-B6-A0I8,46,Female,White,Not Hispanic Or Latino,EUR,—,STAGE X,T1,NX,M0,4TH,8500/3,No,No,Yes,TCGA-B6-A0I8-01,Breast Invasive Ductal Carcinoma,IDC,—,3.733333333,0.57
+TCGA-B6-A0I9,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IV,T3,NX,M1,3RD,8500/3,Yes,No,No,TCGA-B6-A0I9-01,Breast Invasive Ductal Carcinoma,IDC,12,2.4,0.58
+TCGA-B6-A0IA,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8523/3,No,No,No,TCGA-B6-A0IA-01,Breast Invasive Carcinoma (NOS),BRCNOS,6,0.9,0.3
+TCGA-B6-A0IB,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IV,T3,N3,M1,3RD,8500/3,No,No,No,TCGA-B6-A0IB-01,Breast Invasive Ductal Carcinoma,IDC,21,2.2,0.25
+TCGA-B6-A0IC,90,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE X,T2,NX,MX,3RD,8503/3,No,No,No,TCGA-B6-A0IC-01,Breast Invasive Carcinoma (NOS),BRCNOS,4,1,0.11
+TCGA-B6-A0IE,38,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIIA,T3,N1B,M0,4TH,8520/3,Yes,No,No,TCGA-B6-A0IE-01,Breast Invasive Carcinoma (NOS),BRCNOS,12,1,0.22
+TCGA-B6-A0IG,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1B,M0,4TH,8500/3,Yes,No,No,TCGA-B6-A0IG-01,Breast Invasive Ductal Carcinoma,IDC,11,1.233333333,0.24
+TCGA-B6-A0IH,81,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1B,M0,4TH,8520/3,Yes,No,No,TCGA-B6-A0IH-01,Breast Invasive Lobular Carcinoma,ILC,27,1.233333333,0.02
+TCGA-B6-A0IJ,42,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIB,T3,N0 (I-),M0,—,8500/3,No,No,No,TCGA-B6-A0IJ-01,Breast Invasive Ductal Carcinoma,IDC,14,4.4,0.38
+TCGA-B6-A0IK,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIIB,T4,N1,M0,4TH,8500/3,No,No,No,TCGA-B6-A0IK-01,Breast Invasive Ductal Carcinoma,IDC,13,3.8,0.25
+TCGA-B6-A0IM,75,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,4TH,8523/3,No,No,No,TCGA-B6-A0IM-01,Breast Invasive Carcinoma (NOS),BRCNOS,9,0.933333333,0.17
+TCGA-B6-A0IN,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE X,T1C,NX,MX,4TH,8523/3,No,No,No,TCGA-B6-A0IN-01,Breast Invasive Carcinoma (NOS),BRCNOS,7,0.966666667,0.12
+TCGA-B6-A0IO,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,No,No,No,TCGA-B6-A0IO-01,Breast Invasive Ductal Carcinoma,IDC,21,1.933333333,0.24
+TCGA-B6-A0IP,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,—,8520/3,—,No,No,TCGA-B6-A0IP-01,Breast Invasive Lobular Carcinoma,ILC,2,1.2,0.01
+TCGA-B6-A0IQ,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIA,T3,N1B,M0,4TH,8500/3,Yes,No,No,TCGA-B6-A0IQ-01,Breast Invasive Ductal Carcinoma,IDC,14,2.166666667,0.53
+TCGA-B6-A0RE,61,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE X,TX,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-B6-A0RE-01,Breast Invasive Ductal Carcinoma,IDC,20,4.666666667,1.22
+TCGA-B6-A0RG,26,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,4TH,8500/3,No,No,No,TCGA-B6-A0RG-01,Breast Invasive Ductal Carcinoma,IDC,7,2.266666667,0.49
+TCGA-B6-A0RH,51,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-B6-A0RH-01,Breast Invasive Ductal Carcinoma,IDC,10,1.266666667,0.22
+TCGA-B6-A0RI,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T4B,N1B,M0,3RD,8500/3,Yes,No,No,TCGA-B6-A0RI-01,Breast Invasive Ductal Carcinoma,IDC,3,0.666666667,0.02
+TCGA-B6-A0RL,60,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,4TH,8500/3,No,No,No,TCGA-B6-A0RL-01,Breast Invasive Ductal Carcinoma,IDC,9,1.733333333,0.93
+TCGA-B6-A0RM,57,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE X,TX,NX,MX,4TH,8500/3,No,No,No,TCGA-B6-A0RM-01,Breast Invasive Ductal Carcinoma,IDC,4,0.933333333,0.09
+TCGA-B6-A0RN,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-B6-A0RN-01,Breast Invasive Ductal Carcinoma,IDC,4,0.833333333,0.04
+TCGA-B6-A0RO,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T4,N1A,M0,4TH,8500/3,No,No,No,TCGA-B6-A0RO-01,Breast Invasive Ductal Carcinoma,IDC,19,1.166666667,0.13
+TCGA-B6-A0RP,73,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T2,N1B,M0,4TH,8522/3,No,No,No,TCGA-B6-A0RP-01,Breast Invasive Carcinoma (NOS),BRCNOS,20,0.7,0.01
+TCGA-B6-A0RQ,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIB,T3,N0 (I-),M0,4TH,8520/3,No,No,No,TCGA-B6-A0RQ-01,Breast Invasive Lobular Carcinoma,ILC,—,1.366666667,0.02
+TCGA-B6-A0RS,38,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,3RD,8500/3,No,No,No,TCGA-B6-A0RS-01,Breast Invasive Ductal Carcinoma,IDC,13,4.633333333,0.22
+TCGA-B6-A0RT,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIA,T3,N1,M0,4TH,8500/3,Yes,No,No,TCGA-B6-A0RT-01,Breast Invasive Ductal Carcinoma,IDC,2,1.866666667,0.01
+TCGA-B6-A0RU,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IA,T1C,N0 (I-),M0,3RD,8523/3,Yes,No,No,TCGA-B6-A0RU-01,Breast Invasive Carcinoma (NOS),BRCNOS,13,1.533333333,0.25
+TCGA-B6-A0RV,42,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N2,M0,4TH,8522/3,Yes,No,No,TCGA-B6-A0RV-01,Breast Invasive Carcinoma (NOS),BRCNOS,7,1.266666667,0
+TCGA-B6-A0WS,58,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE X,T1C,NX,MX,4TH,8500/3,No,No,No,TCGA-B6-A0WS-01,Breast Invasive Ductal Carcinoma,IDC,9,0.466666667,0.12
+TCGA-B6-A0WT,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,4TH,8500/3,No,No,No,TCGA-B6-A0WT-01,Breast Invasive Ductal Carcinoma,IDC,3,0.466666667,0.05
+TCGA-B6-A0WV,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1B,M0,4TH,8500/3,No,No,No,TCGA-B6-A0WV-01,Breast Invasive Ductal Carcinoma,IDC,24,0.966666667,0.52
+TCGA-B6-A0WW,58,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE X,T2,N1B,MX,4TH,8500/3,Yes,No,No,TCGA-B6-A0WW-01,Breast Invasive Ductal Carcinoma,IDC,9,1.133333333,0.67
+TCGA-B6-A0WX,40,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIIA,T3,N1B,M0,5TH,8520/3,No,No,No,TCGA-B6-A0WX-01,Breast Invasive Carcinoma (NOS),BRCNOS,16,0.9,0.18
+TCGA-B6-A0WY,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1B,M0,4TH,8500/3,Yes,No,No,TCGA-B6-A0WY-01,Breast Invasive Ductal Carcinoma,IDC,25,1.033333333,0.08
+TCGA-B6-A0WZ,50,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE II,T2,N1B,M0,4TH,8500/3,Yes,No,No,TCGA-B6-A0WZ-01,Breast Invasive Ductal Carcinoma,IDC,11,1.866666667,0.04
+TCGA-B6-A0X0,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,4TH,8201/3,No,No,No,TCGA-B6-A0X0-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,0.633333333,0.05
+TCGA-B6-A0X1,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M1,4TH,8500/3,No,No,No,TCGA-B6-A0X1-01,Breast Invasive Ductal Carcinoma,IDC,13,2.266666667,1.54
+TCGA-B6-A0X4,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1B,M0,4TH,8500/3,No,No,No,TCGA-B6-A0X4-01,Breast Invasive Ductal Carcinoma,IDC,0,0.6,0
+TCGA-B6-A0X5,61,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIB,T2,N1B,M0,4TH,8500/3,No,No,No,TCGA-B6-A0X5-01,Breast Invasive Ductal Carcinoma,IDC,3,1.2,0.01
+TCGA-B6-A0X7,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE X,T1C,NX,MX,4TH,8500/3,Yes,No,No,TCGA-B6-A0X7-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,0.533333333,0.16
+TCGA-B6-A1KC,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-B6-A1KC-01,Breast Invasive Ductal Carcinoma,IDC,27,0.866666667,1.45
+TCGA-B6-A1KF,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,5TH,8500/3,Yes,No,No,TCGA-B6-A1KF-01,Breast Invasive Ductal Carcinoma,IDC,22,1.566666667,0.99
+TCGA-B6-A1KI,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-B6-A1KI-01,Breast Invasive Ductal Carcinoma,IDC,29,0.7,0.28
+TCGA-B6-A1KN,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIB,T4B,N1,M0,5TH,8500/3,Yes,No,No,TCGA-B6-A1KN-01,Breast Invasive Ductal Carcinoma,IDC,17,1.966666667,0.82
+TCGA-B6-A2IU,62,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,5TH,8520/3,Yes,No,No,TCGA-B6-A2IU-01,Breast Invasive Lobular Carcinoma,ILC,9,1.233333333,0.03
+TCGA-B6-A3ZX,50,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IV,T3,N1,M1,6TH,8522/3,Yes,No,No,TCGA-B6-A3ZX-01,Breast Invasive Carcinoma (NOS),BRCNOS,19,0,0
+TCGA-B6-A400,43,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-B6-A400-01,Breast Invasive Ductal Carcinoma,IDC,6,0,0.48
+TCGA-B6-A401,47,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,No,No,No,TCGA-B6-A401-01,Breast Invasive Ductal Carcinoma,IDC,24,0.633333333,0
+TCGA-B6-A402,47,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-B6-A402-01,Breast Invasive Ductal Carcinoma,IDC,17,0,0.48
+TCGA-B6-A408,55,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIIC,T2,N3A,M0,6TH,8522/3,Yes,No,No,TCGA-B6-A408-01,Breast Invasive Carcinoma (NOS),BRCNOS,21,0,0.05
+TCGA-B6-A409,44,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIIA,T1C,N2A,M0,6TH,8500/3,No,No,No,TCGA-B6-A409-01,Breast Invasive Ductal Carcinoma,IDC,30,0.966666667,0.07
+TCGA-B6-A40B,76,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1B,N0 (I-),M0,6TH,8520/3,No,No,No,TCGA-B6-A40B-01,Breast Invasive Lobular Carcinoma,ILC,7,1.366666667,0.01
+TCGA-B6-A40C,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,6TH,8520/3,Yes,No,No,TCGA-B6-A40C-01,Breast Invasive Lobular Carcinoma,ILC,8,1.133333333,0.05
+TCGA-BH-A0AU,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0AU-01,Breast Invasive Ductal Carcinoma,IDC,25,0.566666667,0.16
+TCGA-BH-A0AV,52,Female,Black or African American,—,AFR_ADMIX,BRCA_Basal,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0AV-01,Breast Invasive Ductal Carcinoma,IDC,12,1.866666667,0.11
+TCGA-BH-A0AW,56,Female,White,—,EUR,BRCA_Her2,STAGE IIA,T1C,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0AW-01,Breast Invasive Ductal Carcinoma,IDC,16,4.6,0.21
+TCGA-BH-A0AY,62,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,No,No,No,TCGA-BH-A0AY-01,Breast Invasive Ductal Carcinoma,IDC,25,3.4,0.73
+TCGA-BH-A0AZ,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1A,CM0 (I+),6TH,8500/3,No,No,No,TCGA-BH-A0AZ-01,Breast Invasive Ductal Carcinoma,IDC,3,1.933333333,0.16
+TCGA-BH-A0B0,56,Female,Black or African American,—,AFR_ADMIX,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0B0-01,Breast Invasive Ductal Carcinoma,IDC,9,2.2,0.08
+TCGA-BH-A0B1,66,Female,White,—,EUR,—,STAGE IIB,T2,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0B1-01,Breast Invasive Ductal Carcinoma,IDC,—,1.633333333,0.6
+TCGA-BH-A0B3,53,Female,White,—,EUR,BRCA_Basal,STAGE IIB,T2,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0B3-01,Breast Invasive Ductal Carcinoma,IDC,8,2.466666667,0.41
+TCGA-BH-A0B4,65,Male,White,—,EUR,—,STAGE IIIA,T2,N2,M0,—,8500/3,Yes,No,No,TCGA-BH-A0B4-01,Breast Invasive Ductal Carcinoma,IDC,4,2.166666667,0.08
+TCGA-BH-A0B5,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,6TH,8520/3,Yes,No,No,TCGA-BH-A0B5-01,Breast Invasive Lobular Carcinoma,ILC,21,2.033333333,0.18
+TCGA-BH-A0B7,42,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0B7-01,Breast Invasive Ductal Carcinoma,IDC,10,2.366666667,0.02
+TCGA-BH-A0B8,64,Female,White,—,EUR,—,STAGE I,T1B,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0B8-01,Breast Invasive Ductal Carcinoma,IDC,—,4,1.28
+TCGA-BH-A0B9,44,Female,White,—,EUR,BRCA_Basal,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0B9-01,Breast Invasive Ductal Carcinoma,IDC,8,1,0.51
+TCGA-BH-A0BA,51,Female,White,—,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,M0,—,8522/3,Yes,No,No,TCGA-BH-A0BA-01,Breast Invasive Carcinoma (NOS),BRCNOS,34,2.4,0.78
+TCGA-BH-A0BC,60,Female,White,—,EUR,BRCA_LumA,STAGE IIIC,T2,N3,M0,—,8500/3,Yes,No,No,TCGA-BH-A0BC-01,Breast Invasive Ductal Carcinoma,IDC,3,1.933333333,0.04
+TCGA-BH-A0BD,47,Female,White,—,EUR,BRCA_LumB,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BD-01,Breast Invasive Ductal Carcinoma,IDC,5,0.966666667,0.18
+TCGA-BH-A0BF,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1MI,M0,6TH,8500/3,No,No,No,TCGA-BH-A0BF-01,Breast Invasive Ductal Carcinoma,IDC,12,0.7,0.02
+TCGA-BH-A0BG,73,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE I,T1,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BG-01,Breast Invasive Ductal Carcinoma,IDC,19,1.133333333,0.7
+TCGA-BH-A0BJ,41,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0BJ-01,Breast Invasive Ductal Carcinoma,IDC,16,1.7,0.66
+TCGA-BH-A0BL,35,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-BH-A0BL-01,Breast Invasive Ductal Carcinoma,IDC,17,3.6,0.08
+TCGA-BH-A0BM,54,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,No,TCGA-BH-A0BM-01,Breast Invasive Ductal Carcinoma,IDC,4,1.733333333,0.04
+TCGA-BH-A0BO,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1B,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BO-01,Breast Invasive Ductal Carcinoma,IDC,3,1.733333333,0
+TCGA-BH-A0BP,76,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BP-01,Breast Invasive Ductal Carcinoma,IDC,15,4.633333333,0.47
+TCGA-BH-A0BQ,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-BH-A0BQ-01,Breast Invasive Ductal Carcinoma,IDC,5,1.5,0
+TCGA-BH-A0BR,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BR-01,Breast Invasive Ductal Carcinoma,IDC,12,1.7,0.09
+TCGA-BH-A0BS,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1C,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BS-01,Breast Invasive Ductal Carcinoma,IDC,2,0.433333333,0.06
+TCGA-BH-A0BT,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1MI,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BT-01,Breast Invasive Ductal Carcinoma,IDC,21,1.233333333,0.72
+TCGA-BH-A0BV,78,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,—,8500/3,No,No,No,TCGA-BH-A0BV-01,Breast Invasive Ductal Carcinoma,IDC,14,1.766666667,0.27
+TCGA-BH-A0BW,71,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BW-01,Breast Invasive Ductal Carcinoma,IDC,10,4.7,0.68
+TCGA-BH-A0BZ,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0BZ-01,Breast Invasive Ductal Carcinoma,IDC,20,8.2,0.32
+TCGA-BH-A0C0,62,Female,White,—,EUR,BRCA_LumB,STAGE IIA,T1C,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0C0-01,Breast Invasive Ductal Carcinoma,IDC,16,6.166666667,0.3
+TCGA-BH-A0C1,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N2A,M0,6TH,8520/3,Yes,No,No,TCGA-BH-A0C1-01,Breast Invasive Lobular Carcinoma,ILC,19,1.066666667,0.08
+TCGA-BH-A0C3,47,Female,White,—,EUR,BRCA_LumB,STAGE I,T1C,N0,M0,6TH,8522/3,Yes,No,No,TCGA-BH-A0C3-01,Breast Invasive Carcinoma (NOS),BRCNOS,11,0.366666667,0.05
+TCGA-BH-A0C7,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1MI,M0,6TH,8500/3,No,No,No,TCGA-BH-A0C7-01,Breast Invasive Ductal Carcinoma,IDC,19,1.433333333,0.03
+TCGA-BH-A0DD,58,Male,White,—,EUR,—,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,No,TCGA-BH-A0DD-01,Breast Invasive Ductal Carcinoma,IDC,15,0.666666667,0.28
+TCGA-BH-A0DE,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0DE-01,Breast Invasive Ductal Carcinoma,IDC,7,1.9,0.04
+TCGA-BH-A0DG,30,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0DG-01,Breast Invasive Ductal Carcinoma,IDC,2,1.133333333,0.12
+TCGA-BH-A0DH,63,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0DH-01,Breast Invasive Ductal Carcinoma,IDC,9,2.3,0.03
+TCGA-BH-A0DI,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0DI-01,Breast Invasive Ductal Carcinoma,IDC,8,1.3,0.01
+TCGA-BH-A0DK,49,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,No,No,No,TCGA-BH-A0DK-01,Breast Invasive Ductal Carcinoma,IDC,7,5.733333333,0.32
+TCGA-BH-A0DL,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8575/3,Yes,No,No,TCGA-BH-A0DL-01,Breast Invasive Carcinoma (NOS),BRCNOS,10,3.3,0.18
+TCGA-BH-A0DO,78,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,Yes,TCGA-BH-A0DO-01,Breast Invasive Ductal Carcinoma,IDC,9,0.7,0.01
+TCGA-BH-A0DP,60,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,—,8520/3,Yes,No,No,TCGA-BH-A0DP-01,Breast Invasive Lobular Carcinoma,ILC,19,1.766666667,0.14
+TCGA-BH-A0DQ,42,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,—,8500/3,Yes,No,No,TCGA-BH-A0DQ-01,Breast Invasive Ductal Carcinoma,IDC,7,2.033333333,0.03
+TCGA-BH-A0DS,71,Female,White,—,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,7TH,8500/3,Yes,No,No,TCGA-BH-A0DS-01,Breast Invasive Ductal Carcinoma,IDC,26,1.166666667,0.58
+TCGA-BH-A0DT,41,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0DT-01,Breast Invasive Ductal Carcinoma,IDC,11,0.5,0.02
+TCGA-BH-A0DV,54,Female,White,—,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0DV-01,Breast Invasive Ductal Carcinoma,IDC,4,0.566666667,0
+TCGA-BH-A0DX,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1B,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0DX-01,Breast Invasive Ductal Carcinoma,IDC,4,1.966666667,0.02
+TCGA-BH-A0DZ,43,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,—,8500/3,No,No,No,TCGA-BH-A0DZ-01,Breast Invasive Ductal Carcinoma,IDC,4,14.66666667,0.32
+TCGA-BH-A0E0,38,Female,White,—,EUR,BRCA_Basal,STAGE IIIC,T3,N3A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0E0-01,Breast Invasive Ductal Carcinoma,IDC,22,1.966666667,0.73
+TCGA-BH-A0E1,52,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,—,8500/3,No,No,No,TCGA-BH-A0E1-01,Breast Invasive Ductal Carcinoma,IDC,3,1.466666667,0.36
+TCGA-BH-A0E2,49,Female,Black or African American,—,—,BRCA_LumA,STAGE IIIA,T2,N2A,M0,—,8500/3,No,No,No,TCGA-BH-A0E2-01,Breast Invasive Ductal Carcinoma,IDC,6,1.433333333,0.64
+TCGA-BH-A0E6,69,Female,White,—,EUR,BRCA_Basal,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0E6-01,Breast Invasive Ductal Carcinoma,IDC,20,2.3,0
+TCGA-BH-A0E7,79,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0E7-01,Breast Invasive Ductal Carcinoma,IDC,4,1.366666667,0.01
+TCGA-BH-A0E9,53,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8520/3,Yes,No,No,TCGA-BH-A0E9-01,Breast Invasive Lobular Carcinoma,ILC,24,1.1,0.01
+TCGA-BH-A0EA,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,No,No,Yes,TCGA-BH-A0EA-01,Breast Invasive Ductal Carcinoma,IDC,3,0.833333333,0.05
+TCGA-BH-A0EB,69,Female,White,—,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0EB-01,Breast Invasive Ductal Carcinoma,IDC,19,1.533333333,0
+TCGA-BH-A0EE,68,Female,White,—,EUR,BRCA_Her2,STAGE IIB,T3,N0 (I-),M0,—,8500/3,No,No,No,TCGA-BH-A0EE-01,Breast Invasive Ductal Carcinoma,IDC,22,4.1,0.09
+TCGA-BH-A0EI,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0EI-01,Breast Invasive Ductal Carcinoma,IDC,6,0.533333333,0.07
+TCGA-BH-A0GY,67,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T2,N1,M0,—,8500/3,Yes,No,No,TCGA-BH-A0GY-01,Breast Invasive Ductal Carcinoma,IDC,29,1.133333333,0.4
+TCGA-BH-A0GZ,62,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0GZ-01,Breast Invasive Ductal Carcinoma,IDC,6,1.133333333,0.07
+TCGA-BH-A0H0,69,Female,White,—,EUR,BRCA_LumB,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0H0-01,Breast Invasive Ductal Carcinoma,IDC,10,0.6,0.7
+TCGA-BH-A0H3,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0H3-01,Breast Invasive Ductal Carcinoma,IDC,3,0.433333333,0.01
+TCGA-BH-A0H5,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-BH-A0H5-01,Breast Invasive Ductal Carcinoma,IDC,0,7.633333333,0
+TCGA-BH-A0H6,82,Female,White,—,EUR,BRCA_LumA,STAGE I,T1B,NX,M0,—,8500/3,Yes,No,No,TCGA-BH-A0H6-01,Breast Invasive Ductal Carcinoma,IDC,3,0.566666667,0.11
+TCGA-BH-A0H7,65,Female,White,—,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0H7-01,Breast Invasive Ductal Carcinoma,IDC,21,2.666666667,0.85
+TCGA-BH-A0H9,69,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0H9-01,Breast Invasive Ductal Carcinoma,IDC,12,2.2,0.36
+TCGA-BH-A0HA,31,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-BH-A0HA-01,Breast Invasive Ductal Carcinoma,IDC,4,11.03333333,8.53
+TCGA-BH-A0HB,55,Female,White,—,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0HB-01,Breast Invasive Ductal Carcinoma,IDC,8,1.066666667,0.25
+TCGA-BH-A0HF,77,Female,White,—,EUR,—,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0HF-01,Breast Invasive Ductal Carcinoma,IDC,—,28,0.19
+TCGA-BH-A0HI,78,Female,White,—,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0HI-01,Breast Invasive Ductal Carcinoma,IDC,2,1.033333333,0.01
+TCGA-BH-A0HK,81,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,—,8500/3,No,No,No,TCGA-BH-A0HK-01,Breast Invasive Ductal Carcinoma,IDC,5,5.7,0.63
+TCGA-BH-A0HL,56,Female,White,—,EUR,—,STAGE IIB,T2,N1A,M0,—,8503/3,No,No,No,TCGA-BH-A0HL-01,Breast Invasive Ductal Carcinoma,IDC,—,1.1,0.56
+TCGA-BH-A0HN,67,Female,White,—,EUR,—,STAGE IA,T1C,N0 (I-),M0,—,8500/3,No,No,No,TCGA-BH-A0HN-01,Breast Invasive Ductal Carcinoma,IDC,—,0.833333333,0.75
+TCGA-BH-A0HO,48,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,—,8500/3,Yes,No,No,TCGA-BH-A0HO-01,Breast Invasive Ductal Carcinoma,IDC,2,0.466666667,0.01
+TCGA-BH-A0HP,65,Female,White,—,EUR,BRCA_LumA,STAGE IIIA,T3,N2A,M0,—,8520/3,Yes,No,No,TCGA-BH-A0HP-01,Breast Invasive Lobular Carcinoma,ILC,6,7.933333333,0
+TCGA-BH-A0HQ,56,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I+),M0,—,8500/3,Yes,No,No,TCGA-BH-A0HQ-01,Breast Invasive Ductal Carcinoma,IDC,23,0.9,0.21
+TCGA-BH-A0HU,52,Female,White,—,EUR,BRCA_LumB,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0HU-01,Breast Invasive Ductal Carcinoma,IDC,9,1.066666667,0.47
+TCGA-BH-A0HW,62,Female,Asian,—,EAS,BRCA_LumB,STAGE IA,T1C,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0HW-01,Breast Invasive Ductal Carcinoma,IDC,10,1.133333333,0.32
+TCGA-BH-A0HX,54,Female,White,—,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,—,8500/3,No,No,No,TCGA-BH-A0HX-01,Breast Invasive Ductal Carcinoma,IDC,18,1.933333333,0.43
+TCGA-BH-A0HY,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-BH-A0HY-01,Breast Invasive Ductal Carcinoma,IDC,18,1.8,1.06
+TCGA-BH-A0RX,59,Female,White,—,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,—,8500/3,Yes,No,No,TCGA-BH-A0RX-01,Breast Invasive Ductal Carcinoma,IDC,—,1.3,0.01
+TCGA-BH-A0W3,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T1C,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-BH-A0W3-01,Breast Invasive Ductal Carcinoma,IDC,17,0.466666667,0.33
+TCGA-BH-A0W4,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,No,No,No,TCGA-BH-A0W4-01,Breast Invasive Ductal Carcinoma,IDC,2,1.1,0.03
+TCGA-BH-A0W5,77,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0W5-01,Breast Invasive Ductal Carcinoma,IDC,6,0.866666667,0.01
+TCGA-BH-A0W7,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-BH-A0W7-01,Breast Invasive Ductal Carcinoma,IDC,12,5.5,0.05
+TCGA-BH-A0WA,82,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE I,T1C,N0 (I-),M0,6TH,8575/3,No,No,No,TCGA-BH-A0WA-01,Invasive Breast Carcinoma,BRCA,13,2.966666667,0.54
+TCGA-BH-A18F,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-BH-A18F-01,Breast Invasive Ductal Carcinoma,IDC,21,1.566666667,0.02
+TCGA-BH-A18G,81,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IA,T1C,N0,M0,—,8500/3,Yes,No,No,TCGA-BH-A18G-01,Breast Invasive Ductal Carcinoma,IDC,1,41.83333333,26.46
+TCGA-BH-A18H,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1B,N0,M0,7TH,8500/3,Yes,No,Yes,TCGA-BH-A18H-01,Breast Invasive Ductal Carcinoma,IDC,20,1.366666667,0.04
+TCGA-BH-A18I,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,CM0 (I+),7TH,8500/3,No,No,No,TCGA-BH-A18I-01,Breast Invasive Ductal Carcinoma,IDC,5,0.833333333,0.04
+TCGA-BH-A18J,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IV,T4B,N2,M1,5TH,8500/3,—,No,No,TCGA-BH-A18J-01,Breast Invasive Ductal Carcinoma,IDC,5,2.5,0.08
+TCGA-BH-A18K,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,5TH,8500/3,—,No,No,TCGA-BH-A18K-01,Breast Invasive Ductal Carcinoma,IDC,18,1.666666667,0.3
+TCGA-BH-A18L,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1MI,M0,6TH,8500/3,—,No,No,TCGA-BH-A18L-01,Breast Invasive Ductal Carcinoma,IDC,27,1.5,0.77
+TCGA-BH-A18M,39,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1,M0,5TH,8500/3,—,No,No,TCGA-BH-A18M-01,Breast Invasive Ductal Carcinoma,IDC,4,0.566666667,0.01
+TCGA-BH-A18N,88,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N1B,M0,—,8500/3,No,No,No,TCGA-BH-A18N-01,Breast Invasive Ductal Carcinoma,IDC,23,1.033333333,0.26
+TCGA-BH-A18P,60,Female,White,—,EUR,BRCA_Her2,STAGE I,T1,N0,M0,6TH,8500/3,—,No,No,TCGA-BH-A18P-01,Breast Invasive Ductal Carcinoma,IDC,6,9.2,0.06
+TCGA-BH-A18Q,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1B,M0,—,8500/3,—,No,No,TCGA-BH-A18Q-01,Breast Invasive Ductal Carcinoma,IDC,18,2.5,1.55
+TCGA-BH-A18R,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2B,N1,M0,—,8500/3,—,No,No,TCGA-BH-A18R-01,Breast Invasive Ductal Carcinoma,IDC,4,0.966666667,0.22
+TCGA-BH-A18S,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8523/3,—,No,No,TCGA-BH-A18S-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,4,0.866666667,0.17
+TCGA-BH-A18T,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-BH-A18T-01,Breast Invasive Ductal Carcinoma,IDC,22,2.433333333,1.63
+TCGA-BH-A18U,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,M0,6TH,8500/3,—,No,No,TCGA-BH-A18U-01,Breast Invasive Ductal Carcinoma,IDC,24,4.133333333,1.48
+TCGA-BH-A18V,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A18V-01,Breast Invasive Ductal Carcinoma,IDC,16,5.933333333,1.38
+TCGA-BH-A1EN,78,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,NX,M0,5TH,8500/3,—,No,No,TCGA-BH-A1EN-01,Breast Invasive Ductal Carcinoma,IDC,24,2.133333333,0.37
+TCGA-BH-A1EO,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1,M0,5TH,8522/3,—,No,No,TCGA-BH-A1EO-01,Breast Invasive Carcinoma (NOS),BRCNOS,22,1.366666667,0.2
+TCGA-BH-A1ES,35,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1A,M0,5TH,8500/3,—,No,No,TCGA-BH-A1ES-01,Breast Invasive Ductal Carcinoma,IDC,7,0,0.25
+TCGA-BH-A1ET,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,5TH,8500/3,—,No,No,TCGA-BH-A1ET-01,Breast Invasive Ductal Carcinoma,IDC,3,0.833333333,0.06
+TCGA-BH-A1EU,83,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1,N0,M0,5TH,8500/3,—,No,No,TCGA-BH-A1EU-01,Breast Invasive Ductal Carcinoma,IDC,23,0.866666667,0.01
+TCGA-BH-A1EV,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIIA,T3,N1B,M0,5TH,8500/3,Yes,No,No,TCGA-BH-A1EV-01,Breast Invasive Ductal Carcinoma,IDC,18,2.833333333,0.41
+TCGA-BH-A1EW,38,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A1EW-01,Breast Invasive Ductal Carcinoma,IDC,15,0.466666667,0.03
+TCGA-BH-A1EX,67,Female,White,Not Hispanic Or Latino,EAS,BRCA_LumA,STAGE IIB,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A1EX-01,Breast Invasive Ductal Carcinoma,IDC,12,0.8,0.23
+TCGA-BH-A1EY,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,5TH,8500/3,No,No,No,TCGA-BH-A1EY-01,Breast Invasive Ductal Carcinoma,IDC,11,1.233333333,0.05
+TCGA-BH-A1F0,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T1A,N1C,M0,5TH,8500/3,—,No,No,TCGA-BH-A1F0-01,Breast Invasive Ductal Carcinoma,IDC,7,1.966666667,0.01
+TCGA-BH-A1F2,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIB,T4B,N1B,M0,5TH,8541/3,—,No,No,TCGA-BH-A1F2-01,Breast Invasive Ductal Carcinoma,IDC,18,1.666666667,0.34
+TCGA-BH-A1F5,62,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T1C,N1A,M0,5TH,8500/3,—,No,Yes,TCGA-BH-A1F5-01,Breast Invasive Ductal Carcinoma,IDC,—,1.033333333,0.28
+TCGA-BH-A1F6,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,—,T4D,N2A,MX,—,8500/3,—,No,No,TCGA-BH-A1F6-01,Breast Invasive Ductal Carcinoma,IDC,21,1.1,0.46
+TCGA-BH-A1F8,90,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIB,T4B,N2,M0,5TH,8500/3,—,No,No,TCGA-BH-A1F8-01,Breast Invasive Ductal Carcinoma,IDC,16,4.333333333,0.62
+TCGA-BH-A1FB,60,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FB-01,Breast Invasive Ductal Carcinoma,IDC,—,0,—
+TCGA-BH-A1FC,78,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T1C,N1B,M0,5TH,8510/3,—,No,No,TCGA-BH-A1FC-01,Breast Invasive Ductal Carcinoma,IDC,25,3.433333333,0.49
+TCGA-BH-A1FD,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE I,T1C,N0,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FD-01,Breast Invasive Ductal Carcinoma,IDC,9,0.966666667,0.29
+TCGA-BH-A1FE,31,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FE-01,Breast Invasive Ductal Carcinoma,IDC,6,0.633333333,0.03
+TCGA-BH-A1FG,88,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,NX,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FG-01,Breast Invasive Ductal Carcinoma,IDC,5,0.6,0.44
+TCGA-BH-A1FH,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IV,T2,N1B,M1,5TH,8500/3,—,No,No,TCGA-BH-A1FH-01,Breast Invasive Ductal Carcinoma,IDC,—,0.8,0.05
+TCGA-BH-A1FJ,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FJ-01,Breast Invasive Ductal Carcinoma,IDC,3,0.833333333,1.53
+TCGA-BH-A1FL,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FL-01,Breast Invasive Ductal Carcinoma,IDC,4,0.6,0.94
+TCGA-BH-A1FM,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FM-01,Breast Invasive Ductal Carcinoma,IDC,21,1.666666667,0.89
+TCGA-BH-A1FN,34,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FN-01,Breast Invasive Ductal Carcinoma,IDC,12,3.266666667,0.72
+TCGA-BH-A1FR,73,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T4B,N1A,M0,5TH,8523/3,—,No,No,TCGA-BH-A1FR-01,Breast Invasive Carcinoma (NOS),BRCNOS,—,0.466666667,0.11
+TCGA-BH-A1FU,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IA,T1C,N0,M0,5TH,8500/3,—,No,No,TCGA-BH-A1FU-01,Breast Invasive Ductal Carcinoma,IDC,26,2.733333333,0
+TCGA-BH-A201,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1,N0,M0,7TH,8500/3,Yes,No,No,TCGA-BH-A201-01,Breast Invasive Ductal Carcinoma,IDC,4,0.7,0.01
+TCGA-BH-A202,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE II,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-BH-A202-01,Breast Invasive Ductal Carcinoma,IDC,21,0.866666667,0.07
+TCGA-BH-A203,78,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIB,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A203-01,Breast Invasive Ductal Carcinoma,IDC,15,2.033333333,0.31
+TCGA-BH-A204,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A204-01,Breast Invasive Ductal Carcinoma,IDC,7,1.2,0.37
+TCGA-BH-A208,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIB,T2,N1B,M0,5TH,8500/3,—,No,No,TCGA-BH-A208-01,Breast Invasive Ductal Carcinoma,IDC,19,1.966666667,0.23
+TCGA-BH-A209,77,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumB,STAGE I,T1C,N0,M0,5TH,8510/3,—,No,No,TCGA-BH-A209-01,Breast Invasive Ductal Carcinoma,IDC,19,2.933333333,0.33
+TCGA-BH-A28O,50,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T3A,N3,M0,7TH,8520/3,Yes,No,No,TCGA-BH-A28O-01,Breast Invasive Lobular Carcinoma,ILC,2,—,0.01
+TCGA-BH-A28Q,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8520/3,No,No,No,TCGA-BH-A28Q-01,Breast Invasive Lobular Carcinoma,ILC,7,0.633333333,0.4
+TCGA-BH-A2L8,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,7TH,8520/3,No,No,No,TCGA-BH-A2L8-01,Breast Invasive Lobular Carcinoma,ILC,4,14.26666667,0.05
+TCGA-BH-A42T,75,Female,Black or African American,Not Hispanic Or Latino,—,—,STAGE IIA,T2,N0 (I+),M0,7TH,8520/3,No,No,No,TCGA-BH-A42T-01,Breast Invasive Lobular Carcinoma,ILC,11,—,0.23
+TCGA-BH-A42U,80,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Normal,STAGE IIA,T2,N0,M0,6TH,8520/3,No,No,No,TCGA-BH-A42U-01,Breast Invasive Lobular Carcinoma,ILC,—,0.633333333,0
+TCGA-BH-A42V,41,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IB,T1C,N1MI,M0,7TH,8500/3,Yes,No,No,TCGA-BH-A42V-01,Breast Invasive Ductal Carcinoma,IDC,2,1.366666667,0
+TCGA-BH-A5IZ,51,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIB,T2,N1A,CM0 (I+),7TH,8500/3,Yes,No,No,TCGA-BH-A5IZ-01,Breast Invasive Ductal Carcinoma,IDC,11,3.766666667,0.18
+TCGA-BH-A5J0,63,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-BH-A5J0-01,Breast Invasive Ductal Carcinoma,IDC,21,2.033333333,0.01
+TCGA-BH-A6R8,46,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-BH-A6R8-01,Breast Invasive Ductal Carcinoma,IDC,14,1,0.2
+TCGA-BH-A6R9,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIA,T2,N0,M0,7TH,8575/3,No,No,No,TCGA-BH-A6R9-01,Metaplastic Breast Cancer,MBC,0,0.466666667,0
+TCGA-BH-A8FY,87,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I+),M0,7TH,8520/3,No,No,Yes,TCGA-BH-A8FY-01,Breast Invasive Lobular Carcinoma,ILC,5,1.3,0
+TCGA-BH-A8FZ,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IA,T1B,N0,M0,7TH,8520/3,Yes,No,No,TCGA-BH-A8FZ-01,Breast Invasive Lobular Carcinoma,ILC,9,1.9,0
+TCGA-BH-A8G0,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8520/3,No,No,No,TCGA-BH-A8G0-01,Breast Invasive Lobular Carcinoma,ILC,2,0.366666667,0
+TCGA-BH-AB28,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1A,M0,7TH,8520/3,No,No,No,TCGA-BH-AB28-01,Breast Invasive Lobular Carcinoma,ILC,4,1.766666667,0.01
+TCGA-C8-A12K,80,Female,Asian,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIB,T2,N1,M0,6TH,8500/3,—,No,No,TCGA-C8-A12K-01,Breast Invasive Ductal Carcinoma,IDC,6,4.166666667,0.14
+TCGA-C8-A12L,67,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-C8-A12L-01,Breast Invasive Ductal Carcinoma,IDC,16,2.433333333,0.81
+TCGA-C8-A12M,70,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-C8-A12M-01,Breast Invasive Ductal Carcinoma,IDC,17,1.8,0.66
+TCGA-C8-A12N,58,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-C8-A12N-01,Breast Invasive Ductal Carcinoma,IDC,4,0.633333333,0.01
+TCGA-C8-A12O,50,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-C8-A12O-01,Breast Invasive Ductal Carcinoma,IDC,27,1.2,0.11
+TCGA-C8-A12P,55,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A12P-01,Breast Invasive Ductal Carcinoma,IDC,17,4.733333333,0.17
+TCGA-C8-A12Q,78,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIIA,T1,N2,M0,—,8500/3,No,No,No,TCGA-C8-A12Q-01,Breast Invasive Ductal Carcinoma,IDC,13,3.266666667,0.35
+TCGA-C8-A12T,43,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-C8-A12T-01,Breast Invasive Ductal Carcinoma,IDC,2,5.133333333,0.09
+TCGA-C8-A12U,46,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A12U-01,Breast Invasive Ductal Carcinoma,IDC,18,1.5,0.73
+TCGA-C8-A12V,55,Female,Asian,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A12V-01,Breast Invasive Ductal Carcinoma,IDC,—,1.433333333,0.01
+TCGA-C8-A12W,49,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIIB,T4,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A12W-01,Breast Invasive Ductal Carcinoma,IDC,27,1.733333333,0.65
+TCGA-C8-A12X,62,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8480/3,No,No,No,TCGA-C8-A12X-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,10,1.533333333,0.26
+TCGA-C8-A12Y,44,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-C8-A12Y-01,Breast Invasive Ductal Carcinoma,IDC,8,1.133333333,0.2
+TCGA-C8-A12Z,45,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A12Z-01,Breast Invasive Ductal Carcinoma,IDC,9,1.433333333,0.06
+TCGA-C8-A130,52,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIIA,T3,N2,M0,6TH,8500/3,No,No,No,TCGA-C8-A130-01,Breast Invasive Ductal Carcinoma,IDC,20,1.166666667,0.47
+TCGA-C8-A131,82,Female,Asian,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIIA,T2,N2,M0,6TH,8500/3,No,No,No,TCGA-C8-A131-01,Breast Invasive Ductal Carcinoma,IDC,21,1.933333333,0.05
+TCGA-C8-A132,56,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A132-01,Breast Invasive Ductal Carcinoma,IDC,14,2.133333333,0.02
+TCGA-C8-A133,65,Female,White,Not Hispanic Or Latino,SAS_ADMIX,BRCA_LumA,STAGE IIIA,T3,N1,M0,6TH,8523/3,—,No,No,TCGA-C8-A133-01,Breast Invasive Carcinoma (NOS),BRCNOS,0,0.8,0.01
+TCGA-C8-A134,52,Female,Asian,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A134-01,Breast Invasive Ductal Carcinoma,IDC,8,2.8,0.31
+TCGA-C8-A135,64,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A135-01,Breast Invasive Ductal Carcinoma,IDC,20,1.9,0.13
+TCGA-C8-A137,34,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A137-01,Breast Invasive Ductal Carcinoma,IDC,5,1.433333333,0.24
+TCGA-C8-A138,54,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIIA,T2,N2,M0,6TH,8500/3,No,No,No,TCGA-C8-A138-01,Breast Invasive Ductal Carcinoma,IDC,19,1.466666667,0.02
+TCGA-C8-A1HE,59,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A1HE-01,Breast Invasive Ductal Carcinoma,IDC,4,1.233333333,0.82
+TCGA-C8-A1HF,48,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_Her2,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A1HF-01,Breast Invasive Ductal Carcinoma,IDC,24,0.9,0.41
+TCGA-C8-A1HG,50,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A1HG-01,Breast Invasive Ductal Carcinoma,IDC,16,1.366666667,0.31
+TCGA-C8-A1HI,40,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIIA,T2,N2,M0,6TH,8500/3,No,Yes,No,TCGA-C8-A1HI-01,Breast Invasive Ductal Carcinoma,IDC,25,1.533333333,0.09
+TCGA-C8-A1HJ,53,Female,Asian,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,—,No,No,TCGA-C8-A1HJ-01,Breast Invasive Ductal Carcinoma,IDC,8,3.2,0.8
+TCGA-C8-A1HK,53,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A1HK-01,Breast Invasive Ductal Carcinoma,IDC,25,1.733333333,0.75
+TCGA-C8-A1HL,38,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIIA,T3,N1,M0,6TH,8480/3,No,No,Yes,TCGA-C8-A1HL-01,Breast Invasive Carcinoma (NOS),BRCNOS,12,0.9,0.26
+TCGA-C8-A1HM,74,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A1HM-01,Breast Invasive Ductal Carcinoma,IDC,23,10.43333333,0.68
+TCGA-C8-A1HN,56,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A1HN-01,Breast Invasive Ductal Carcinoma,IDC,20,1.533333333,0.3
+TCGA-C8-A1HO,34,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIIC,T3,N3,M0,6TH,8500/3,No,No,No,TCGA-C8-A1HO-01,Breast Invasive Ductal Carcinoma,IDC,5,0.933333333,0.91
+TCGA-C8-A26V,47,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIIA,T3,N2,M0,6TH,8500/3,Yes,No,No,TCGA-C8-A26V-01,Breast Invasive Ductal Carcinoma,IDC,4,2.166666667,0.02
+TCGA-C8-A26W,58,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A26W-01,Breast Invasive Ductal Carcinoma,IDC,7,1.6,0.25
+TCGA-C8-A26X,58,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIA,T1,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A26X-01,Breast Invasive Ductal Carcinoma,IDC,27,2.3,0.06
+TCGA-C8-A26Y,90,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A26Y-01,Breast Invasive Ductal Carcinoma,IDC,20,21.36666667,0.57
+TCGA-C8-A26Z,59,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A26Z-01,Breast Invasive Ductal Carcinoma,IDC,20,1.433333333,0.31
+TCGA-C8-A273,29,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A273-01,Breast Invasive Ductal Carcinoma,IDC,7,0.533333333,0.26
+TCGA-C8-A274,63,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A274-01,Breast Invasive Ductal Carcinoma,IDC,16,6.4,0.41
+TCGA-C8-A275,56,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIA,T1,N1,M0,6TH,8500/3,—,No,No,TCGA-C8-A275-01,Breast Invasive Ductal Carcinoma,IDC,5,3.533333333,0.24
+TCGA-C8-A278,61,Female,Asian,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIIA,T2,N2,M0,6TH,8500/3,No,No,No,TCGA-C8-A278-01,Breast Invasive Ductal Carcinoma,IDC,17,1.433333333,0.09
+TCGA-C8-A27A,48,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIB,T2,N1,M0,6TH,8500/3,No,No,No,TCGA-C8-A27A-01,Breast Invasive Ductal Carcinoma,IDC,16,0.8,0.81
+TCGA-C8-A27B,48,Female,Asian,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIB,T3,N0,M0,6TH,8500/3,No,No,No,TCGA-C8-A27B-01,Breast Invasive Ductal Carcinoma,IDC,14,4.1,3.02
+TCGA-C8-A3M7,60,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_LumA,STAGE IIIB,T4B,N0,M0,7TH,8520/3,Yes,No,No,TCGA-C8-A3M7-01,Breast Invasive Lobular Carcinoma,ILC,8,4.333333333,0.01
+TCGA-C8-A3M8,68,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_LumB,STAGE IA,T1C,N0,M0,7TH,8520/3,No,No,No,TCGA-C8-A3M8-01,Breast Invasive Lobular Carcinoma,ILC,9,1.433333333,0.05
+TCGA-C8-A8HP,59,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_Her2,STAGE IIIA,T2,N2,M0,7TH,8575/3,No,No,No,TCGA-C8-A8HP-01,Metaplastic Breast Cancer,MBC,10,4.866666667,0.01
+TCGA-C8-A8HQ,53,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_LumB,STAGE IIB,T2,N1,M0,7TH,8480/3,No,No,No,TCGA-C8-A8HQ-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,5,7.266666667,0.01
+TCGA-C8-A8HR,49,Female,Asian,Not Hispanic Or Latino,EAS,BRCA_Normal,STAGE IIIA,T3,N2,M0,7TH,8520/3,No,No,No,TCGA-C8-A8HR-01,Breast Invasive Lobular Carcinoma,ILC,10,1.333333333,0
+TCGA-C8-A9FZ,49,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1,M0,7TH,8524/3,Yes,No,No,TCGA-C8-A9FZ-01,Breast Invasive Carcinoma (NOS),BRCNOS,7,0.733333333,0.22
+TCGA-D8-A13Y,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IA,T1C,N0,M0,—,8500/3,No,No,No,TCGA-D8-A13Y-01,Breast Invasive Ductal Carcinoma,IDC,13,2.233333333,1.06
+TCGA-D8-A13Z,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,—,T2,N2A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A13Z-01,Breast Invasive Ductal Carcinoma,IDC,27,2.766666667,0.33
+TCGA-D8-A140,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A140-01,Breast Invasive Ductal Carcinoma,IDC,5,3.166666667,0.07
+TCGA-D8-A141,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,—,T1C,N1,M0,7TH,8500/3,No,No,No,TCGA-D8-A141-01,Breast Invasive Ductal Carcinoma,IDC,9,0.633333333,0.04
+TCGA-D8-A142,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T3,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A142-01,Breast Invasive Ductal Carcinoma,IDC,—,3.833333333,0.29
+TCGA-D8-A143,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A143-01,Breast Invasive Ductal Carcinoma,IDC,20,1.633333333,1.28
+TCGA-D8-A145,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A145-01,Breast Invasive Ductal Carcinoma,IDC,4,1.433333333,0
+TCGA-D8-A147,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,—,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A147-01,Breast Invasive Ductal Carcinoma,IDC,11,4.9,0.62
+TCGA-D8-A1J8,77,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A1J8-01,Breast Invasive Ductal Carcinoma,IDC,19,23.1,4.8
+TCGA-D8-A1J9,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1J9-01,Breast Invasive Ductal Carcinoma,IDC,10,5.966666667,0.08
+TCGA-D8-A1JA,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,—,T4B,NX,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JA-01,Breast Invasive Ductal Carcinoma,IDC,6,26.6,0.38
+TCGA-D8-A1JB,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JB-01,Breast Invasive Ductal Carcinoma,IDC,8,1.3,0.13
+TCGA-D8-A1JC,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JC-01,Breast Invasive Ductal Carcinoma,IDC,14,2.533333333,0.2
+TCGA-D8-A1JD,41,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JD-01,Breast Invasive Ductal Carcinoma,IDC,18,3.3,0.08
+TCGA-D8-A1JE,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T1C,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A1JE-01,Breast Invasive Ductal Carcinoma,IDC,24,0.933333333,0.8
+TCGA-D8-A1JF,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIIA,T1C,N2A,M0,7TH,8500/3,No,No,No,TCGA-D8-A1JF-01,Breast Invasive Ductal Carcinoma,IDC,24,1.366666667,0.19
+TCGA-D8-A1JG,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JG-01,Breast Invasive Ductal Carcinoma,IDC,25,4.466666667,0.33
+TCGA-D8-A1JH,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JH-01,Breast Invasive Ductal Carcinoma,IDC,0,0.7,0.66
+TCGA-D8-A1JI,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T1C,N1A,MX,7TH,8500/3,Yes,No,No,TCGA-D8-A1JI-01,Breast Invasive Ductal Carcinoma,IDC,9,0.8,0.29
+TCGA-D8-A1JJ,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JJ-01,Breast Invasive Ductal Carcinoma,IDC,22,2.166666667,0.05
+TCGA-D8-A1JK,90,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1JK-01,Breast Invasive Ductal Carcinoma,IDC,21,6.5,0.33
+TCGA-D8-A1JL,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1JL-01,Breast Invasive Ductal Carcinoma,IDC,23,2.933333333,0.27
+TCGA-D8-A1JM,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1JM-01,Breast Invasive Ductal Carcinoma,IDC,14,1.3,1.09
+TCGA-D8-A1JN,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,MX,7TH,8520/3,No,No,No,TCGA-D8-A1JN-01,Breast Invasive Lobular Carcinoma,ILC,7,4.1,0.28
+TCGA-D8-A1JP,73,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1JP-01,Breast Invasive Ductal Carcinoma,IDC,4,3.366666667,0.26
+TCGA-D8-A1JS,77,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8503/3,No,No,No,TCGA-D8-A1JS-01,Breast Invasive Carcinoma (NOS),BRCNOS,2,0.633333333,0.02
+TCGA-D8-A1JT,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8523/3,No,No,No,TCGA-D8-A1JT-01,Breast Invasive Carcinoma (NOS),BRCNOS,18,0.933333333,0.52
+TCGA-D8-A1JU,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1JU-01,Breast Invasive Ductal Carcinoma,IDC,4,0.433333333,0.88
+TCGA-D8-A1X5,81,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIC,T2,N3A,MX,7TH,8500/3,Yes,No,No,TCGA-D8-A1X5-01,Breast Invasive Ductal Carcinoma,IDC,20,1.566666667,0.4
+TCGA-D8-A1X6,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N2A,MX,7TH,8500/3,No,No,No,TCGA-D8-A1X6-01,Breast Invasive Ductal Carcinoma,IDC,13,1.233333333,0.03
+TCGA-D8-A1X7,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,MX,7TH,8503/3,No,No,No,TCGA-D8-A1X7-01,Breast Invasive Carcinoma (NOS),BRCNOS,4,0.666666667,0.26
+TCGA-D8-A1X8,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,M0,7TH,8520/3,Yes,No,No,TCGA-D8-A1X8-01,Breast Invasive Lobular Carcinoma,ILC,3,0.766666667,1.18
+TCGA-D8-A1X9,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1X9-01,Breast Invasive Ductal Carcinoma,IDC,4,2.8,0.41
+TCGA-D8-A1XA,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1XA-01,Breast Invasive Ductal Carcinoma,IDC,17,0.8,1.02
+TCGA-D8-A1XB,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1XB-01,Breast Invasive Ductal Carcinoma,IDC,3,1.2,0.18
+TCGA-D8-A1XC,85,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T4B,N1A,M0,7TH,8480/3,No,No,No,TCGA-D8-A1XC-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,2,0.866666667,0.29
+TCGA-D8-A1XD,36,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T1C,N2A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1XD-01,Breast Invasive Ductal Carcinoma,IDC,6,0,—
+TCGA-D8-A1XF,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1XF-01,Breast Invasive Ductal Carcinoma,IDC,25,0.933333333,1.82
+TCGA-D8-A1XG,86,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T4B,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A1XG-01,Breast Invasive Ductal Carcinoma,IDC,4,0.7,0.83
+TCGA-D8-A1XJ,76,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIIA,T3,N1A,MX,7TH,8523/3,No,No,No,TCGA-D8-A1XJ-01,Breast Invasive Carcinoma (NOS),BRCNOS,14,2.7,0.28
+TCGA-D8-A1XK,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1A,MX,7TH,8500/3,Yes,No,No,TCGA-D8-A1XK-01,Breast Invasive Ductal Carcinoma,IDC,15,32.36666667,13.12
+TCGA-D8-A1XL,34,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,MX,7TH,8500/3,Yes,No,No,TCGA-D8-A1XL-01,Breast Invasive Ductal Carcinoma,IDC,17,3.1,0.33
+TCGA-D8-A1XM,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A1XM-01,Breast Invasive Ductal Carcinoma,IDC,5,1.466666667,0
+TCGA-D8-A1XO,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8520/3,Yes,No,No,TCGA-D8-A1XO-01,Breast Invasive Lobular Carcinoma,ILC,7,0.466666667,0.02
+TCGA-D8-A1XQ,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1XQ-01,Breast Invasive Ductal Carcinoma,IDC,10,26.63333333,16.36
+TCGA-D8-A1XR,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A1XR-01,Breast Invasive Ductal Carcinoma,IDC,6,0.9,0.28
+TCGA-D8-A1XS,48,Male,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T2,N3A,M0,7TH,8507/3,Yes,No,No,TCGA-D8-A1XS-01,Breast Invasive Carcinoma (NOS),BRCNOS,8,0.733333333,0.33
+TCGA-D8-A1XT,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T1C,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A1XT-01,Breast Invasive Ductal Carcinoma,IDC,12,1.166666667,0.57
+TCGA-D8-A1XU,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1XU-01,Breast Invasive Ductal Carcinoma,IDC,19,0.8,0.03
+TCGA-D8-A1XV,84,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8480/3,No,No,No,TCGA-D8-A1XV-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,1,0.9,0
+TCGA-D8-A1XW,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A1XW-01,Breast Invasive Ductal Carcinoma,IDC,18,2.866666667,0.62
+TCGA-D8-A1XY,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8500/3,No,No,No,TCGA-D8-A1XY-01,Breast Invasive Ductal Carcinoma,IDC,25,1.433333333,0.21
+TCGA-D8-A1XZ,81,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T1C,N2A,MX,7TH,8500/3,Yes,No,No,TCGA-D8-A1XZ-01,Breast Invasive Ductal Carcinoma,IDC,18,2.4,0.2
+TCGA-D8-A1Y0,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,MX,7TH,8500/3,Yes,No,No,TCGA-D8-A1Y0-01,Breast Invasive Ductal Carcinoma,IDC,10,1.866666667,1.12
+TCGA-D8-A1Y1,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1A,MX,7TH,8500/3,No,No,No,TCGA-D8-A1Y1-01,Breast Invasive Ductal Carcinoma,IDC,21,6.8,6.24
+TCGA-D8-A1Y2,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,MX,7TH,8500/3,No,No,No,TCGA-D8-A1Y2-01,Breast Invasive Ductal Carcinoma,IDC,12,0.6,0.37
+TCGA-D8-A1Y3,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,MX,7TH,8500/3,Yes,No,No,TCGA-D8-A1Y3-01,Breast Invasive Ductal Carcinoma,IDC,22,1.666666667,1.46
+TCGA-D8-A27E,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8523/3,Yes,No,No,TCGA-D8-A27E-01,Breast Invasive Carcinoma (NOS),BRCNOS,0,0.333333333,0.01
+TCGA-D8-A27F,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A27F-01,Breast Invasive Ductal Carcinoma,IDC,7,2.033333333,0.94
+TCGA-D8-A27G,75,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,No,No,No,TCGA-D8-A27G-01,Breast Invasive Lobular Carcinoma,ILC,4,27.13333333,0.08
+TCGA-D8-A27H,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A27H-01,Breast Invasive Ductal Carcinoma,IDC,5,4.1,1.08
+TCGA-D8-A27I,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,M0,7TH,8520/3,Yes,No,No,TCGA-D8-A27I-01,Breast Invasive Lobular Carcinoma,ILC,12,0.966666667,0.09
+TCGA-D8-A27K,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-D8-A27K-01,Breast Invasive Ductal Carcinoma,IDC,5,0.7,0.05
+TCGA-D8-A27L,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,M0,7TH,8500/3,No,No,No,TCGA-D8-A27L-01,Breast Invasive Ductal Carcinoma,IDC,7,1.3,0.01
+TCGA-D8-A27M,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A27M-01,Breast Invasive Ductal Carcinoma,IDC,8,2.366666667,0.06
+TCGA-D8-A27N,36,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2A,M0,7TH,8500/3,No,No,No,TCGA-D8-A27N-01,Breast Invasive Ductal Carcinoma,IDC,8,1.366666667,0.25
+TCGA-D8-A27P,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-D8-A27P-01,Breast Invasive Ductal Carcinoma,IDC,2,0.766666667,0.06
+TCGA-D8-A27R,41,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIC,T2,N3A,M0,7TH,8500/3,Yes,No,No,TCGA-D8-A27R-01,Breast Invasive Ductal Carcinoma,IDC,21,1.133333333,0.28
+TCGA-D8-A27T,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3A,M0,7TH,8520/3,Yes,No,No,TCGA-D8-A27T-01,Breast Invasive Lobular Carcinoma,ILC,29,0.7,0.02
+TCGA-D8-A27V,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,No,No,No,TCGA-D8-A27V-01,Breast Invasive Lobular Carcinoma,ILC,13,103.0666667,0.97
+TCGA-D8-A27W,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIB,T4B,N0,M0,7TH,8480/3,Yes,No,No,TCGA-D8-A27W-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,34,1.433333333,0.06
+TCGA-D8-A3Z5,54,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T2,N3A,M0,7TH,8520/3,No,No,No,TCGA-D8-A3Z5-01,Breast Invasive Lobular Carcinoma,ILC,6,0,0
+TCGA-D8-A3Z6,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,M0,7TH,8520/3,Yes,No,No,TCGA-D8-A3Z6-01,Breast Invasive Lobular Carcinoma,ILC,10,0.833333333,0
+TCGA-D8-A4Z1,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8520/3,No,No,No,TCGA-D8-A4Z1-01,Breast Invasive Lobular Carcinoma,ILC,1,1,0
+TCGA-D8-A73U,88,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,No,No,No,TCGA-D8-A73U-01,Breast Invasive Lobular Carcinoma,ILC,12,4.133333333,0
+TCGA-D8-A73W,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1A,MX,7TH,8480/3,Yes,No,No,TCGA-D8-A73W-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,5,1.3,0
+TCGA-D8-A73X,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8211/3,Yes,No,No,TCGA-D8-A73X-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,1.033333333,0.01
+TCGA-E2-A105,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-E2-A105-01,Breast Invasive Ductal Carcinoma,IDC,6,1.8,0.21
+TCGA-E2-A107,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N2A,M0,6TH,8520/3,Yes,No,No,TCGA-E2-A107-01,Breast Invasive Lobular Carcinoma,ILC,22,0.9,0.03
+TCGA-E2-A108,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIIA,T2,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A108-01,Breast Invasive Ductal Carcinoma,IDC,9,4.533333333,0.01
+TCGA-E2-A109,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-E2-A109-01,Breast Invasive Ductal Carcinoma,IDC,16,2.1,0.77
+TCGA-E2-A10A,41,Female,White,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-E2-A10A-01,Breast Invasive Ductal Carcinoma,IDC,6,0.733333333,0.26
+TCGA-E2-A10B,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A10B-01,Breast Invasive Ductal Carcinoma,IDC,35,1.533333333,0.98
+TCGA-E2-A10C,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A10C-01,Breast Invasive Ductal Carcinoma,IDC,21,11.23333333,0.08
+TCGA-E2-A10E,64,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A10E-01,Breast Invasive Ductal Carcinoma,IDC,5,0,0.02
+TCGA-E2-A10F,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8520/3,Yes,No,No,TCGA-E2-A10F-01,Breast Invasive Lobular Carcinoma,ILC,6,0.7,0.04
+TCGA-E2-A14N,37,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14N-01,Breast Invasive Ductal Carcinoma,IDC,19,2.566666667,0.05
+TCGA-E2-A14O,76,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T3,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14O-01,Breast Invasive Ductal Carcinoma,IDC,32,1.066666667,0.97
+TCGA-E2-A14P,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIIC,T2,N3,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14P-01,Breast Invasive Ductal Carcinoma,IDC,14,2.1,0.72
+TCGA-E2-A14Q,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1MI,M0,6TH,8500/3,No,No,No,TCGA-E2-A14Q-01,Breast Invasive Ductal Carcinoma,IDC,8,0.866666667,0.07
+TCGA-E2-A14R,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14R-01,Breast Invasive Ductal Carcinoma,IDC,11,3.7,1.89
+TCGA-E2-A14S,65,Female,White,Not Hispanic Or Latino,EUR,—,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14S-01,Breast Invasive Ductal Carcinoma,IDC,8,0,0.19
+TCGA-E2-A14T,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A14T-01,Breast Invasive Ductal Carcinoma,IDC,16,1.2,0.19
+TCGA-E2-A14U,74,Female,White,Not Hispanic Or Latino,EUR_ADMIX,—,STAGE I,T1C,N0,M0,6TH,8520/3,No,No,No,TCGA-E2-A14U-01,Breast Invasive Lobular Carcinoma,ILC,3,—,0
+TCGA-E2-A14V,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14V-01,Breast Invasive Ductal Carcinoma,IDC,17,3.666666667,0.26
+TCGA-E2-A14W,78,Male,White,Not Hispanic Or Latino,—,—,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A14W-01,Breast Invasive Ductal Carcinoma,IDC,5,3.2,0.38
+TCGA-E2-A14X,55,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIIA,T2,N2,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14X-01,Breast Invasive Ductal Carcinoma,IDC,27,0.866666667,0.34
+TCGA-E2-A14Y,35,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A14Y-01,Breast Invasive Ductal Carcinoma,IDC,6,2.533333333,0.29
+TCGA-E2-A14Z,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A14Z-01,Breast Invasive Ductal Carcinoma,IDC,22,2.033333333,0.13
+TCGA-E2-A150,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A150-01,Breast Invasive Ductal Carcinoma,IDC,16,2.3,0.51
+TCGA-E2-A152,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A152-01,Breast Invasive Ductal Carcinoma,IDC,25,4.133333333,0.43
+TCGA-E2-A153,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A153-01,Breast Invasive Ductal Carcinoma,IDC,28,1.466666667,0.08
+TCGA-E2-A154,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A154-01,Breast Invasive Ductal Carcinoma,IDC,29,1.4,0.22
+TCGA-E2-A155,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,6TH,8500/3,No,No,No,TCGA-E2-A155-01,Breast Invasive Ductal Carcinoma,IDC,8,1.966666667,0.92
+TCGA-E2-A156,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A156-01,Breast Invasive Ductal Carcinoma,IDC,2,0.866666667,0.17
+TCGA-E2-A158,43,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T1C,N1MI,M0,6TH,8500/3,No,No,Yes,TCGA-E2-A158-01,Breast Invasive Ductal Carcinoma,IDC,7,3.2,1.53
+TCGA-E2-A159,50,Female,White,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A159-01,Breast Invasive Ductal Carcinoma,IDC,18,4.366666667,0.17
+TCGA-E2-A15A,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIC,T2,N3A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A15A-01,Breast Invasive Ductal Carcinoma,IDC,20,1.933333333,0.29
+TCGA-E2-A15C,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A15C-01,Breast Invasive Ductal Carcinoma,IDC,9,1.166666667,0.12
+TCGA-E2-A15D,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A15D-01,Breast Invasive Ductal Carcinoma,IDC,10,1.1,0.11
+TCGA-E2-A15E,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A15E-01,Breast Invasive Ductal Carcinoma,IDC,23,1.133333333,0.09
+TCGA-E2-A15F,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A15F-01,Breast Invasive Ductal Carcinoma,IDC,9,0.766666667,0.12
+TCGA-E2-A15G,76,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8522/3,Yes,No,No,TCGA-E2-A15G-01,Breast Invasive Carcinoma (NOS),BRCNOS,16,1.7,0.04
+TCGA-E2-A15H,38,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1MI,M0,6TH,8500/3,No,No,No,TCGA-E2-A15H-01,Breast Invasive Ductal Carcinoma,IDC,17,0.933333333,0.14
+TCGA-E2-A15I,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A15I-01,Breast Invasive Ductal Carcinoma,IDC,7,1.9,0.48
+TCGA-E2-A15J,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A15J-01,Breast Invasive Ductal Carcinoma,IDC,5,0.666666667,0.19
+TCGA-E2-A15K,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A15K-01,Breast Invasive Ductal Carcinoma,IDC,6,2.233333333,0.24
+TCGA-E2-A15L,65,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,No,No,No,TCGA-E2-A15L-01,Breast Invasive Lobular Carcinoma,ILC,3,1.266666667,0.03
+TCGA-E2-A15M,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,Yes,No,No,TCGA-E2-A15M-01,Breast Invasive Lobular Carcinoma,ILC,16,5.033333333,0.3
+TCGA-E2-A15O,89,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE I,T1C,NX,M0,7TH,8500/3,No,No,Yes,TCGA-E2-A15O-01,Breast Invasive Ductal Carcinoma,IDC,11,0.9,0.19
+TCGA-E2-A15P,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A15P-01,Breast Invasive Ductal Carcinoma,IDC,6,1.4,0.06
+TCGA-E2-A15R,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A15R-01,Breast Invasive Ductal Carcinoma,IDC,9,1.133333333,0.35
+TCGA-E2-A15S,34,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A15S-01,Breast Invasive Ductal Carcinoma,IDC,10,1.8,0.53
+TCGA-E2-A15T,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E2-A15T-01,Breast Invasive Ductal Carcinoma,IDC,5,0.8,0.15
+TCGA-E2-A1AZ,63,Female,White,Hispanic Or Latino,—,BRCA_Basal,STAGE IIB,T2,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1AZ-01,Breast Invasive Ductal Carcinoma,IDC,22,1.666666667,0.41
+TCGA-E2-A1B0,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIIA,T2,N2,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1B0-01,Breast Invasive Ductal Carcinoma,IDC,27,1.4,0.58
+TCGA-E2-A1B1,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1B1-01,Breast Invasive Ductal Carcinoma,IDC,2,1.766666667,0.01
+TCGA-E2-A1B4,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1B4-01,Breast Invasive Ductal Carcinoma,IDC,2,1.033333333,0.01
+TCGA-E2-A1B5,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,Yes,No,No,TCGA-E2-A1B5-01,Breast Invasive Lobular Carcinoma,ILC,5,2.133333333,0.88
+TCGA-E2-A1B6,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A1B6-01,Breast Invasive Ductal Carcinoma,IDC,—,1.433333333,0
+TCGA-E2-A1BC,63,Female,—,—,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8524/3,No,No,Yes,TCGA-E2-A1BC-01,Breast Invasive Ductal Carcinoma,IDC,7,2.2,1.19
+TCGA-E2-A1BD,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A1BD-01,Breast Invasive Ductal Carcinoma,IDC,20,1.266666667,0.24
+TCGA-E2-A1IE,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1IE-01,Breast Invasive Ductal Carcinoma,IDC,5,0.6,0.38
+TCGA-E2-A1IF,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,No,No,No,TCGA-E2-A1IF-01,Breast Invasive Ductal Carcinoma,IDC,6,0.633333333,0.11
+TCGA-E2-A1IG,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1MI,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1IG-01,Breast Invasive Ductal Carcinoma,IDC,4,1.433333333,0.15
+TCGA-E2-A1IH,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8520/3,No,No,No,TCGA-E2-A1IH-01,Breast Invasive Lobular Carcinoma,ILC,22,2.166666667,0.28
+TCGA-E2-A1II,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1II-01,Breast Invasive Ductal Carcinoma,IDC,18,0.933333333,0.84
+TCGA-E2-A1IJ,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8520/3,Yes,No,No,TCGA-E2-A1IJ-01,Breast Invasive Lobular Carcinoma,ILC,6,0.5,0.54
+TCGA-E2-A1IK,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1MI,M0,6TH,8500/3,No,No,No,TCGA-E2-A1IK-01,Breast Invasive Ductal Carcinoma,IDC,0,0.5,0
+TCGA-E2-A1IL,78,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8520/3,Yes,No,No,TCGA-E2-A1IL-01,Breast Invasive Lobular Carcinoma,ILC,6,0.766666667,0.14
+TCGA-E2-A1IN,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A1IN-01,Breast Invasive Ductal Carcinoma,IDC,20,5.4,1.27
+TCGA-E2-A1IO,37,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1IO-01,Breast Invasive Ductal Carcinoma,IDC,10,0.433333333,0.52
+TCGA-E2-A1IU,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (MOL+),M0,7TH,8500/3,No,No,No,TCGA-E2-A1IU-01,Breast Invasive Ductal Carcinoma,IDC,3,0.733333333,0.99
+TCGA-E2-A1L6,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1MI,M0,6TH,8500/3,No,No,No,TCGA-E2-A1L6-01,Breast Invasive Ductal Carcinoma,IDC,5,0.666666667,0.3
+TCGA-E2-A1L7,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1L7-01,Breast Invasive Ductal Carcinoma,IDC,6,2.066666667,0.93
+TCGA-E2-A1L8,52,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIB,T2,N1A,M0,6TH,8520/3,Yes,No,Yes,TCGA-E2-A1L8-01,Breast Invasive Lobular Carcinoma,ILC,20,0.9,0.53
+TCGA-E2-A1L9,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1MI,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1L9-01,Breast Invasive Ductal Carcinoma,IDC,4,0.8,0.38
+TCGA-E2-A1LA,59,Female,—,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,No,No,No,TCGA-E2-A1LA-01,Breast Invasive Ductal Carcinoma,IDC,3,2.566666667,0.24
+TCGA-E2-A1LB,41,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1LB-01,Breast Invasive Ductal Carcinoma,IDC,1,1.433333333,0.45
+TCGA-E2-A1LE,71,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T2,N3A,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1LE-01,Breast Invasive Ductal Carcinoma,IDC,13,0,0.02
+TCGA-E2-A1LG,50,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8520/3,No,No,Yes,TCGA-E2-A1LG-01,Breast Invasive Lobular Carcinoma,ILC,19,4.8,0.8
+TCGA-E2-A1LH,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE I,T1C,N0,M0,5TH,8500/3,Yes,No,No,TCGA-E2-A1LH-01,Breast Invasive Ductal Carcinoma,IDC,18,6.066666667,0.18
+TCGA-E2-A1LI,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,6TH,8500/3,Yes,No,No,TCGA-E2-A1LI-01,Breast Invasive Ductal Carcinoma,IDC,26,0.9,0.45
+TCGA-E2-A1LK,84,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIIC,T4B,N3A,M0,6TH,8500/3,No,No,No,TCGA-E2-A1LK-01,Breast Invasive Ductal Carcinoma,IDC,16,1.2,2.89
+TCGA-E2-A1LL,73,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIIA,T3,N2A,MX,6TH,8500/3,Yes,No,No,TCGA-E2-A1LL-01,Breast Invasive Ductal Carcinoma,IDC,13,1.433333333,2.8
+TCGA-E2-A1LS,46,Female,White,—,EUR,—,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-E2-A1LS-01,Breast Invasive Ductal Carcinoma,IDC,—,2.1,2.68
+TCGA-E2-A2P5,78,Female,Black or African American,Not Hispanic Or Latino,ADMIX,—,STAGE IIIC,T2,N3,M0,7TH,8520/3,Yes,No,Yes,TCGA-E2-A2P5-01,Breast Invasive Lobular Carcinoma,ILC,26,0,0.01
+TCGA-E2-A2P6,77,Female,—,Hispanic Or Latino,AMR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8520/3,No,No,No,TCGA-E2-A2P6-01,Breast Invasive Lobular Carcinoma,ILC,6,3.5,0
+TCGA-E2-A3DX,43,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T2,N3,M0,7TH,8520/3,Yes,No,No,TCGA-E2-A3DX-01,Breast Invasive Lobular Carcinoma,ILC,2,0,0.01
+TCGA-E2-A56Z,69,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A56Z-01,Breast Invasive Ductal Carcinoma,IDC,17,1.5,0.18
+TCGA-E2-A570,47,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IB,T1C,N1MI,M0,7TH,8500/3,No,No,No,TCGA-E2-A570-01,Breast Invasive Ductal Carcinoma,IDC,7,0.7,0.04
+TCGA-E2-A573,48,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A573-01,Breast Invasive Ductal Carcinoma,IDC,27,1.566666667,0.05
+TCGA-E2-A574,44,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E2-A574-01,Breast Invasive Ductal Carcinoma,IDC,27,3.033333333,1.55
+TCGA-E2-A576,69,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IA,T1C,N0,MX,7TH,8520/3,Yes,No,No,TCGA-E2-A576-01,Breast Invasive Lobular Carcinoma,ILC,10,1.466666667,0.16
+TCGA-E2-A9RU,90,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIIC,T2,N3A,MX,7TH,8500/3,Yes,No,No,TCGA-E2-A9RU-01,Breast Invasive Ductal Carcinoma,IDC,27,2.2,0.78
+TCGA-E9-A1N3,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2,M0,7TH,8522/3,No,No,No,TCGA-E9-A1N3-01,Breast Invasive Carcinoma (NOS),BRCNOS,1,0.766666667,0.03
+TCGA-E9-A1N4,41,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8520/3,Yes,No,No,TCGA-E9-A1N4-01,Breast Invasive Carcinoma (NOS),BRCNOS,6,0.666666667,0.03
+TCGA-E9-A1N5,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8522/3,No,No,No,TCGA-E9-A1N5-01,Breast Invasive Carcinoma (NOS),BRCNOS,7,1.033333333,1.19
+TCGA-E9-A1N6,52,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1N6-01,Breast Invasive Ductal Carcinoma,IDC,15,0,—
+TCGA-E9-A1N8,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A1N8-01,Breast Invasive Ductal Carcinoma,IDC,10,1.066666667,2.08
+TCGA-E9-A1N9,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8522/3,No,No,No,TCGA-E9-A1N9-01,Breast Invasive Carcinoma (NOS),BRCNOS,17,1.6,1.1
+TCGA-E9-A1NA,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8522/3,Yes,No,No,TCGA-E9-A1NA-01,Breast Invasive Carcinoma (NOS),BRCNOS,11,3,2.28
+TCGA-E9-A1NC,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,7TH,8522/3,No,No,No,TCGA-E9-A1NC-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,2.2,0.17
+TCGA-E9-A1ND,75,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T2,N1,M0,7TH,8500/3,No,No,No,TCGA-E9-A1ND-01,Breast Invasive Ductal Carcinoma,IDC,16,2.833333333,1.26
+TCGA-E9-A1NE,28,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8522/3,Yes,No,No,TCGA-E9-A1NE-01,Breast Invasive Ductal Carcinoma,IDC,4,1.666666667,0
+TCGA-E9-A1NF,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8522/3,No,No,No,TCGA-E9-A1NF-01,Breast Invasive Carcinoma (NOS),BRCNOS,21,1.7,0.77
+TCGA-E9-A1NG,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A1NG-01,Breast Invasive Ductal Carcinoma,IDC,5,0.566666667,0.05
+TCGA-E9-A1NH,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8500/3,No,No,No,TCGA-E9-A1NH-01,Breast Invasive Ductal Carcinoma,IDC,19,0.833333333,0.38
+TCGA-E9-A1NI,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8522/3,No,No,No,TCGA-E9-A1NI-01,Breast Invasive Carcinoma (NOS),BRCNOS,22,1.066666667,0.65
+TCGA-E9-A1QZ,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A1QZ-01,Breast Invasive Ductal Carcinoma,IDC,11,0.7,0.12
+TCGA-E9-A1R0,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1,M0,7TH,8500/3,No,No,No,TCGA-E9-A1R0-01,Breast Invasive Ductal Carcinoma,IDC,5,0.8,0
+TCGA-E9-A1R2,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3,MX,7TH,8500/3,Yes,No,No,TCGA-E9-A1R2-01,Breast Invasive Ductal Carcinoma,IDC,7,1.833333333,0.31
+TCGA-E9-A1R3,70,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1R3-01,Breast Invasive Ductal Carcinoma,IDC,23,0.7,0
+TCGA-E9-A1R4,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1R4-01,Breast Invasive Ductal Carcinoma,IDC,17,3.7,0.37
+TCGA-E9-A1R5,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1R5-01,Breast Invasive Ductal Carcinoma,IDC,10,1.4,0.22
+TCGA-E9-A1R6,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1R6-01,Breast Invasive Ductal Carcinoma,IDC,21,0.933333333,0.43
+TCGA-E9-A1R7,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1R7-01,Breast Invasive Ductal Carcinoma,IDC,13,1.566666667,0.96
+TCGA-E9-A1RA,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1RA-01,Breast Invasive Ductal Carcinoma,IDC,25,0.5,0.28
+TCGA-E9-A1RB,40,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A1RB-01,Breast Invasive Ductal Carcinoma,IDC,27,0.866666667,0.76
+TCGA-E9-A1RC,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T4B,N3,M0,7TH,8522/3,No,No,No,TCGA-E9-A1RC-01,Breast Invasive Carcinoma (NOS),BRCNOS,28,1.266666667,0.86
+TCGA-E9-A1RD,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A1RD-01,Breast Invasive Ductal Carcinoma,IDC,12,0.7,0.05
+TCGA-E9-A1RE,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1RE-01,Breast Invasive Ductal Carcinoma,IDC,18,1.633333333,1.16
+TCGA-E9-A1RF,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1RF-01,Breast Invasive Ductal Carcinoma,IDC,16,4.266666667,0.41
+TCGA-E9-A1RG,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T1C,N2,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1RG-01,Breast Invasive Ductal Carcinoma,IDC,20,1.1,2.11
+TCGA-E9-A1RH,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A1RH-01,Breast Invasive Ductal Carcinoma,IDC,23,2.933333333,0.33
+TCGA-E9-A1RI,43,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2,M0,7TH,8522/3,Yes,No,No,TCGA-E9-A1RI-01,Breast Invasive Carcinoma (NOS),BRCNOS,6,0.466666667,0.08
+TCGA-E9-A226,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A226-01,Breast Invasive Ductal Carcinoma,IDC,7,2.033333333,0.31
+TCGA-E9-A227,42,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A227-01,Breast Invasive Ductal Carcinoma,IDC,2,0.533333333,0.07
+TCGA-E9-A228,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1,M0,7TH,8500/3,No,No,No,TCGA-E9-A228-01,Breast Invasive Ductal Carcinoma,IDC,3,1.3,0.39
+TCGA-E9-A229,37,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A229-01,Breast Invasive Ductal Carcinoma,IDC,4,0.7,0.02
+TCGA-E9-A22A,74,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A22A-01,Breast Invasive Ductal Carcinoma,IDC,9,0.9,0.15
+TCGA-E9-A22B,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8522/3,No,No,No,TCGA-E9-A22B-01,Breast Invasive Carcinoma (NOS),BRCNOS,9,1.766666667,0.1
+TCGA-E9-A22D,38,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A22D-01,Breast Invasive Ductal Carcinoma,IDC,16,0.966666667,0.18
+TCGA-E9-A22E,56,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A22E-01,Breast Invasive Ductal Carcinoma,IDC,16,3.9,0.98
+TCGA-E9-A22G,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-E9-A22G-01,Breast Invasive Ductal Carcinoma,IDC,11,2.7,1.64
+TCGA-E9-A22H,42,Female,White,Not Hispanic Or Latino,EUR_ADMIX,BRCA_LumB,STAGE IIB,T2,N1,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A22H-01,Breast Invasive Ductal Carcinoma,IDC,4,0.866666667,0.5
+TCGA-E9-A243,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,Yes,No,No,TCGA-E9-A243-01,Breast Invasive Ductal Carcinoma,IDC,21,2.3,0.01
+TCGA-E9-A244,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,No,No,No,TCGA-E9-A244-01,Breast Invasive Ductal Carcinoma,IDC,13,2.7,1.22
+TCGA-E9-A245,47,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8500/3,No,No,No,TCGA-E9-A245-01,Breast Invasive Ductal Carcinoma,IDC,1,0.633333333,0.01
+TCGA-E9-A247,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),M0,7TH,8500/3,Yes,No,No,TCGA-E9-A247-01,Breast Invasive Ductal Carcinoma,IDC,22,1.3,3.51
+TCGA-E9-A248,51,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,No,No,No,TCGA-E9-A248-01,Breast Invasive Ductal Carcinoma,IDC,15,0.966666667,0.31
+TCGA-E9-A249,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,Yes,No,No,TCGA-E9-A249-01,Breast Invasive Ductal Carcinoma,IDC,23,0.6,0.6
+TCGA-E9-A24A,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1,M0,7TH,8500/3,Yes,No,No,TCGA-E9-A24A-01,Breast Invasive Ductal Carcinoma,IDC,6,0.733333333,0.27
+TCGA-E9-A295,71,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,7TH,8520/3,Yes,No,No,TCGA-E9-A295-01,Breast Invasive Lobular Carcinoma,ILC,23,2.933333333,0.32
+TCGA-E9-A2JS,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1,M0,7TH,8520/3,Yes,No,No,TCGA-E9-A2JS-01,Breast Invasive Lobular Carcinoma,ILC,15,1.933333333,0.81
+TCGA-E9-A2JT,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,7TH,8520/3,Yes,No,No,TCGA-E9-A2JT-01,Breast Invasive Lobular Carcinoma,ILC,0,0.7,0.08
+TCGA-E9-A3HO,49,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,7TH,8520/3,No,No,No,TCGA-E9-A3HO-01,Breast Invasive Lobular Carcinoma,ILC,11,1.833333333,0.04
+TCGA-E9-A3Q9,78,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIC,T3,N3,M0,7TH,8520/3,No,No,No,TCGA-E9-A3Q9-01,Breast Invasive Lobular Carcinoma,ILC,0,0,0.01
+TCGA-E9-A3QA,33,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,7TH,8510/3,No,No,No,TCGA-E9-A3QA-01,Breast Invasive Ductal Carcinoma,IDC,6,1.333333333,0
+TCGA-E9-A3X8,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8520/3,Yes,No,No,TCGA-E9-A3X8-01,Breast Invasive Lobular Carcinoma,ILC,22,0.866666667,0
+TCGA-E9-A54X,85,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IA,T1B,N0 (I-),M0,7TH,8480/3,No,No,No,TCGA-E9-A54X-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,9,0,0.02
+TCGA-E9-A54Y,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIIA,T2,N2,M0,7TH,8520/3,No,No,No,TCGA-E9-A54Y-01,Breast Invasive Lobular Carcinoma,ILC,9,1.2,0.71
+TCGA-E9-A5FK,60,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T2,N3,M0,7TH,8520/3,Yes,No,No,TCGA-E9-A5FK-01,Breast Invasive Lobular Carcinoma,ILC,—,0.733333333,0
+TCGA-E9-A5FL,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIB,T3,N0,M0,7TH,8575/3,No,No,No,TCGA-E9-A5FL-01,Metaplastic Breast Cancer,MBC,20,2.766666667,0.01
+TCGA-E9-A5UO,41,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8480/3,No,No,No,TCGA-E9-A5UO-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,9,0.8,0.19
+TCGA-E9-A5UP,63,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIA,T2,N0,M0,7TH,8503/3,Yes,No,No,TCGA-E9-A5UP-01,Breast Invasive Carcinoma (NOS),BRCNOS,23,0,0.24
+TCGA-E9-A6HE,45,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3,MX,7TH,8520/3,Yes,No,No,TCGA-E9-A6HE-01,Breast Invasive Lobular Carcinoma,ILC,8,0.633333333,0
+TCGA-EW-A1IW,80,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,MX,7TH,8520/3,No,No,No,TCGA-EW-A1IW-01,Breast Invasive Lobular Carcinoma,ILC,6,2.666666667,0.17
+TCGA-EW-A1IX,48,Female,Asian,Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T1B,N1A,MX,6TH,8524/3,No,No,No,TCGA-EW-A1IX-01,Breast Invasive Carcinoma (NOS),BRCNOS,3,1.066666667,0.24
+TCGA-EW-A1IY,38,Female,Asian,Not Hispanic Or Latino,—,BRCA_LumB,STAGE I,T1C,N0,MX,6TH,8500/3,No,No,No,TCGA-EW-A1IY-01,Breast Invasive Ductal Carcinoma,IDC,2,0.933333333,0.36
+TCGA-EW-A1IZ,53,Female,White,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIIA,T2,N2A,MX,7TH,8500/3,Yes,No,No,TCGA-EW-A1IZ-01,Breast Invasive Ductal Carcinoma,IDC,2,12.3,8.42
+TCGA-EW-A1J1,38,Female,White,Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A1J1-01,Breast Invasive Ductal Carcinoma,IDC,13,0.5,0.91
+TCGA-EW-A1J2,50,Female,Black or African American,Not Hispanic Or Latino,SAS,BRCA_LumA,STAGE IIB,T1C,N1MI,MX,7TH,8520/3,No,No,No,TCGA-EW-A1J2-01,Breast Invasive Lobular Carcinoma,ILC,4,1.1,0.13
+TCGA-EW-A1J3,61,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0,M0,7TH,8520/3,No,No,No,TCGA-EW-A1J3-01,Breast Invasive Lobular Carcinoma,ILC,9,0.733333333,0.18
+TCGA-EW-A1J5,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0 (I-),M0,7TH,8520/3,No,No,No,TCGA-EW-A1J5-01,Breast Invasive Lobular Carcinoma,ILC,8,12.26666667,0.24
+TCGA-EW-A1J6,70,Female,White,Hispanic Or Latino,—,BRCA_LumB,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-EW-A1J6-01,Breast Invasive Ductal Carcinoma,IDC,16,1.033333333,1.86
+TCGA-EW-A1OV,56,Female,White,Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIB,T2,N1MI,MX,6TH,8500/3,No,No,No,TCGA-EW-A1OV-01,Breast Invasive Ductal Carcinoma,IDC,18,3.3,0.96
+TCGA-EW-A1OW,58,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIA,T2,N0,MX,6TH,8090/3,Yes,No,No,TCGA-EW-A1OW-01,Breast Invasive Ductal Carcinoma,IDC,19,0,—
+TCGA-EW-A1OX,43,Female,White,Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIA,T2,N0,MX,6TH,8523/3,Yes,No,No,TCGA-EW-A1OX-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,1,0.4,1.98
+TCGA-EW-A1OY,63,Female,White,Hispanic Or Latino,—,BRCA_LumB,STAGE IIA,T2,N0,MX,6TH,8500/3,Yes,No,No,TCGA-EW-A1OY-01,Breast Invasive Ductal Carcinoma,IDC,18,1.9,1.39
+TCGA-EW-A1OZ,56,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-EW-A1OZ-01,Breast Invasive Ductal Carcinoma,IDC,16,1.766666667,3.86
+TCGA-EW-A1P0,55,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE IIB,T2,N1B,MX,6TH,8523/3,Yes,No,No,TCGA-EW-A1P0-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,0.666666667,0.37
+TCGA-EW-A1P1,68,Female,White,Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIIC,T2,N3B,MX,6TH,8500/3,Yes,No,No,TCGA-EW-A1P1-01,Breast Invasive Ductal Carcinoma,IDC,0,0.066666667,1.16
+TCGA-EW-A1P3,48,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,6TH,8500/3,No,No,Yes,TCGA-EW-A1P3-01,Breast Invasive Ductal Carcinoma,IDC,11,0.733333333,0.04
+TCGA-EW-A1P4,43,Female,White,Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8510/3,Yes,No,No,TCGA-EW-A1P4-01,Breast Invasive Ductal Carcinoma,IDC,17,1.966666667,0.97
+TCGA-EW-A1P5,77,Female,White,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A1P5-01,Breast Invasive Ductal Carcinoma,IDC,19,0.566666667,0.28
+TCGA-EW-A1P6,64,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A1P6-01,Breast Invasive Ductal Carcinoma,IDC,5,0.666666667,0.35
+TCGA-EW-A1P7,59,Female,White,Hispanic Or Latino,—,BRCA_Normal,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-EW-A1P7-01,Breast Invasive Ductal Carcinoma,IDC,1,0.666666667,1.05
+TCGA-EW-A1P8,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIIC,T2,N3B,M0,7TH,8500/3,No,No,No,TCGA-EW-A1P8-01,Breast Invasive Ductal Carcinoma,IDC,18,0.933333333,1.23
+TCGA-EW-A1PA,59,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A1PA-01,Breast Invasive Ductal Carcinoma,IDC,9,0.966666667,2.02
+TCGA-EW-A1PB,70,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIIA,T3,N1A,MX,6TH,8500/3,No,No,No,TCGA-EW-A1PB-01,Breast Invasive Ductal Carcinoma,IDC,14,4.366666667,1.08
+TCGA-EW-A1PC,66,Female,Black or African American,Not Hispanic Or Latino,—,—,STAGE IIB,T3,N0 (I-),MX,7TH,8500/3,No,No,No,TCGA-EW-A1PC-01,Breast Invasive Ductal Carcinoma,IDC,25,0,0.87
+TCGA-EW-A1PD,61,Male,White,Hispanic Or Latino,EUR,—,STAGE IIA,T1C,N1A,M0,7TH,8500/3,No,No,No,TCGA-EW-A1PD-01,Breast Invasive Ductal Carcinoma,IDC,9,2.366666667,4.09
+TCGA-EW-A1PE,56,Female,White,Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T1C,N1A,M0,7TH,8507/3,Yes,No,No,TCGA-EW-A1PE-01,Breast Invasive Ductal Carcinoma,IDC,6,0.933333333,0.44
+TCGA-EW-A1PF,50,Female,White,Hispanic Or Latino,—,—,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-EW-A1PF-01,Breast Invasive Ductal Carcinoma,IDC,8,0,—
+TCGA-EW-A1PG,53,Female,White,Hispanic Or Latino,EUR,BRCA_Normal,STAGE IIB,T2,N1A,MX,6TH,8520/3,No,No,No,TCGA-EW-A1PG-01,Breast Invasive Lobular Carcinoma,ILC,0,0.3,0.21
+TCGA-EW-A1PH,52,Female,White,Hispanic Or Latino,EUR,BRCA_Basal,STAGE IIA,T1C,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A1PH-01,Breast Invasive Ductal Carcinoma,IDC,11,1.566666667,0.74
+TCGA-EW-A2FR,59,Female,Black or African American,Not Hispanic Or Latino,SAS,BRCA_Her2,STAGE IIIC,T1B,N3A,MX,6TH,8500/3,Yes,No,No,TCGA-EW-A2FR-01,Breast Invasive Ductal Carcinoma,IDC,22,1.266666667,0.02
+TCGA-EW-A2FS,41,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1MI,MX,6TH,8500/3,Yes,No,No,TCGA-EW-A2FS-01,Breast Invasive Ductal Carcinoma,IDC,4,0.9,0.97
+TCGA-EW-A2FV,39,Female,White,Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,MX,7TH,8507/3,Yes,No,No,TCGA-EW-A2FV-01,Breast Invasive Carcinoma (NOS),BRCNOS,21,130.3,1.49
+TCGA-EW-A2FW,52,Female,White,Hispanic Or Latino,—,BRCA_LumB,STAGE IIA,T2,N0 (I-),MX,7TH,8503/3,Yes,No,No,TCGA-EW-A2FW-01,Breast Invasive Carcinoma (NOS),BRCNOS,5,0.766666667,0.25
+TCGA-EW-A3E8,60,Female,White,Hispanic Or Latino,EUR,—,STAGE IIB,T3,N0,MX,7TH,8520/3,Yes,No,No,TCGA-EW-A3E8-01,Breast Invasive Lobular Carcinoma,ILC,4,0,0
+TCGA-EW-A3U0,61,Female,Black or African American,Not Hispanic Or Latino,—,—,STAGE IIIA,T3,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A3U0-01,Breast Invasive Ductal Carcinoma,IDC,12,0,0.07
+TCGA-EW-A423,75,Female,White,Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8520/3,—,No,No,TCGA-EW-A423-01,Breast Invasive Lobular Carcinoma,ILC,28,1.466666667,0.45
+TCGA-EW-A424,51,Female,White,Hispanic Or Latino,—,—,STAGE IIIA,T3,N1,MX,7TH,8520/3,Yes,No,No,TCGA-EW-A424-01,Breast Invasive Lobular Carcinoma,ILC,4,0,0
+TCGA-EW-A6S9,34,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIA,T1C,N1,M0,7TH,8500/3,No,No,No,TCGA-EW-A6S9-01,Breast Invasive Ductal Carcinoma,IDC,4,0.833333333,0.54
+TCGA-EW-A6SA,59,Male,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE II,T2,N0 (I+),MX,7TH,8500/3,No,No,No,TCGA-EW-A6SA-01,Breast Invasive Ductal Carcinoma,IDC,16,2.233333333,0.78
+TCGA-EW-A6SB,62,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE II,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A6SB-01,Breast Invasive Ductal Carcinoma,IDC,23,2.2,0.01
+TCGA-EW-A6SC,60,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,Yes,No,No,TCGA-EW-A6SC-01,Breast Invasive Lobular Carcinoma,ILC,5,0.866666667,0
+TCGA-EW-A6SD,32,Female,Black or African American,Hispanic Or Latino,—,BRCA_Her2,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,No,TCGA-EW-A6SD-01,Breast Invasive Ductal Carcinoma,IDC,24,1.5,0.34
+TCGA-GI-A2C8,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIB,T4B,N0,MX,6TH,8500/3,Yes,Yes,No,TCGA-GI-A2C8-01,Breast Invasive Ductal Carcinoma,IDC,13,3.533333333,0.19
+TCGA-GI-A2C9,58,Female,Black or African American,Not Hispanic Or Latino,—,—,STAGE IIB,T3,N0,MX,6TH,8500/3,Yes,No,No,TCGA-GI-A2C9-01,Breast Invasive Ductal Carcinoma,IDC,8,0,0.13
+TCGA-GM-A2D9,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-GM-A2D9-01,Breast Invasive Ductal Carcinoma,IDC,5,14.56666667,0.07
+TCGA-GM-A2DA,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1B,M0,4TH,8500/3,Yes,No,No,TCGA-GM-A2DA-01,Breast Invasive Ductal Carcinoma,IDC,5,1.066666667,0.08
+TCGA-GM-A2DB,62,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-GM-A2DB-01,Breast Invasive Ductal Carcinoma,IDC,20,4.166666667,0.08
+TCGA-GM-A2DC,57,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-GM-A2DC-01,Breast Invasive Ductal Carcinoma,IDC,18,0.5,0.34
+TCGA-GM-A2DD,53,Female,White,Not Hispanic Or Latino,EUR,BRCA_Normal,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,No,No,Yes,TCGA-GM-A2DD-01,Breast Invasive Ductal Carcinoma,IDC,20,1.7,0.18
+TCGA-GM-A2DF,53,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T1C,N1A,M0,6TH,8500/3,Yes,No,No,TCGA-GM-A2DF-01,Breast Invasive Ductal Carcinoma,IDC,12,1.233333333,0.04
+TCGA-GM-A2DH,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_Her2,STAGE I,T1C,N0 (I+),M0,6TH,8500/3,No,No,No,TCGA-GM-A2DH-01,Breast Invasive Ductal Carcinoma,IDC,16,5.766666667,0.05
+TCGA-GM-A2DI,52,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I+),M0,6TH,8500/3,No,No,No,TCGA-GM-A2DI-01,Breast Invasive Ductal Carcinoma,IDC,9,2.266666667,0.14
+TCGA-GM-A2DK,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-GM-A2DK-01,Breast Invasive Ductal Carcinoma,IDC,6,0.666666667,0
+TCGA-GM-A2DL,50,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-GM-A2DL-01,Breast Invasive Ductal Carcinoma,IDC,8,1.466666667,0.23
+TCGA-GM-A2DM,57,Female,White,Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-GM-A2DM-01,Breast Invasive Ductal Carcinoma,IDC,0,0.8,0.05
+TCGA-GM-A2DN,58,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,No,No,No,TCGA-GM-A2DN-01,Breast Invasive Ductal Carcinoma,IDC,3,0.8,0.07
+TCGA-GM-A2DO,54,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumB,STAGE I,T1C,N0 (I-),M0,6TH,8520/3,Yes,No,No,TCGA-GM-A2DO-01,Breast Invasive Lobular Carcinoma,ILC,1,4.666666667,0.02
+TCGA-GM-A3NW,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,6TH,8520/3,No,No,No,TCGA-GM-A3NW-01,Breast Invasive Lobular Carcinoma,ILC,7,1.7,0.06
+TCGA-GM-A3NY,72,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1A,M0,6TH,8520/3,Yes,No,No,TCGA-GM-A3NY-01,Breast Invasive Lobular Carcinoma,ILC,4,0,0.01
+TCGA-GM-A3XG,46,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1A,M0,6TH,8520/3,Yes,No,No,TCGA-GM-A3XG-01,Breast Invasive Lobular Carcinoma,ILC,—,—,0
+TCGA-GM-A3XL,49,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0 (I-),M0,6TH,8500/3,Yes,No,No,TCGA-GM-A3XL-01,Breast Invasive Ductal Carcinoma,IDC,4,2.933333333,0.06
+TCGA-GM-A3XN,44,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T1C,N2A,M0,6TH,8520/3,Yes,No,No,TCGA-GM-A3XN-01,Breast Invasive Lobular Carcinoma,ILC,9,—,0.01
+TCGA-GM-A4E0,67,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,M0,6TH,8520/3,Yes,No,No,TCGA-GM-A4E0-01,Breast Invasive Lobular Carcinoma,ILC,7,0.7,0
+TCGA-GM-A5PV,63,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8520/3,No,No,No,TCGA-GM-A5PV-01,Breast Invasive Lobular Carcinoma,ILC,2,0.933333333,0
+TCGA-GM-A5PX,65,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1MI,M0,7TH,8520/3,No,No,No,TCGA-GM-A5PX-01,Breast Invasive Lobular Carcinoma,ILC,3,0.8,0
+TCGA-HN-A2NL,56,Female,—,—,EUR,BRCA_Basal,STAGE IIA,T2,N0,M0,6TH,8520/3,—,No,No,TCGA-HN-A2NL-01,Breast Invasive Lobular Carcinoma,ILC,11,2.433333333,2.05
+TCGA-HN-A2OB,45,Female,—,—,EUR,BRCA_LumA,STAGE IIB,T2,N1,M0,6TH,8520/3,Yes,No,No,TCGA-HN-A2OB-01,Breast Invasive Lobular Carcinoma,ILC,2,0.633333333,0
+TCGA-JL-A3YW,49,Female,Asian,Not Hispanic Or Latino,SAS,—,STAGE IIB,T2,N1,M0,7TH,8520/3,No,No,No,TCGA-JL-A3YW-01,Breast Invasive Lobular Carcinoma,ILC,15,0,0.02
+TCGA-JL-A3YX,46,Female,Asian,Not Hispanic Or Latino,SAS_ADMIX,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8520/3,No,No,No,TCGA-JL-A3YX-01,Breast Invasive Lobular Carcinoma,ILC,15,0.966666667,0.04
+TCGA-LD-A66U,44,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1MI,MX,7TH,8520/3,Yes,No,No,TCGA-LD-A66U-01,Breast Invasive Lobular Carcinoma,ILC,10,1.066666667,0
+TCGA-LD-A74U,79,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,M0,7TH,8524/3,No,No,Yes,TCGA-LD-A74U-01,Breast Invasive Carcinoma (NOS),BRCNOS,7,6.533333333,0
+TCGA-LD-A7W5,52,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIIC,T2,N3A,M0,7TH,8500/3,No,No,No,TCGA-LD-A7W5-01,Breast Invasive Ductal Carcinoma,IDC,23,1.4,0.01
+TCGA-LD-A7W6,54,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,M0,7TH,8524/3,No,No,No,TCGA-LD-A7W6-01,Breast Invasive Carcinoma (NOS),BRCNOS,4,0.966666667,0.01
+TCGA-LD-A9QF,73,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Normal,STAGE IA,T1C,N0,M0,7TH,8500/3,No,No,No,TCGA-LD-A9QF-01,Breast Invasive Ductal Carcinoma,IDC,—,0.633333333,0
+TCGA-LL-A440,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),MX,7TH,8520/3,No,No,Yes,TCGA-LL-A440-01,Breast Invasive Lobular Carcinoma,ILC,0,0.1,0
+TCGA-LL-A441,62,Female,Black or African American,Not Hispanic Or Latino,—,—,STAGE IA,T1C,N0,MX,7TH,8500/3,Yes,No,No,TCGA-LL-A441-01,Breast Invasive Ductal Carcinoma,IDC,11,0,0
+TCGA-LL-A442,56,Female,Black or African American,Not Hispanic Or Latino,AFR,—,STAGE IIA,T2,N0 (I-),MX,7TH,8500/3,No,No,Yes,TCGA-LL-A442-01,Breast Invasive Ductal Carcinoma,IDC,0,—,0
+TCGA-LL-A50Y,84,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8520/3,No,No,Yes,TCGA-LL-A50Y-01,Breast Invasive Lobular Carcinoma,ILC,4,0.8,0
+TCGA-LL-A5YL,64,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T2,N1A,MX,7TH,8520/3,Yes,No,No,TCGA-LL-A5YL-01,Breast Invasive Lobular Carcinoma,ILC,5,1.866666667,0
+TCGA-LL-A5YM,88,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumB,STAGE IIIB,T4B,NX,M0,7TH,8541/3,No,No,No,TCGA-LL-A5YM-01,Breast Invasive Ductal Carcinoma,IDC,16,0.766666667,0.2
+TCGA-LL-A5YN,46,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0 (I-),M0,7TH,8500/3,Yes,No,No,TCGA-LL-A5YN-01,Breast Invasive Ductal Carcinoma,IDC,5,0.933333333,0
+TCGA-LL-A5YO,50,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IA,T1B,N0,MX,7TH,8500/3,Yes,No,No,TCGA-LL-A5YO-01,Breast Invasive Ductal Carcinoma,IDC,—,1.366666667,0
+TCGA-LL-A5YP,49,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIB,T2,N1A,M0,7TH,8500/3,Yes,No,Yes,TCGA-LL-A5YP-01,Breast Invasive Ductal Carcinoma,IDC,16,2.133333333,0.1
+TCGA-LL-A6FP,90,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,NX,MX,7TH,8520/3,No,Yes,No,TCGA-LL-A6FP-01,Breast Invasive Lobular Carcinoma,ILC,17,1.7,0.9
+TCGA-LL-A6FQ,77,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIIA,T2,N2A,MX,7TH,8500/3,—,No,No,TCGA-LL-A6FQ-01,Breast Invasive Ductal Carcinoma,IDC,21,1.266666667,0.06
+TCGA-LL-A6FR,50,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0 (I-),MX,7TH,8500/3,Yes,No,No,TCGA-LL-A6FR-01,Breast Invasive Ductal Carcinoma,IDC,15,1.233333333,0.28
+TCGA-LL-A73Y,67,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IA,T1C,N0,MX,7TH,8500/3,No,No,No,TCGA-LL-A73Y-01,Breast Invasive Ductal Carcinoma,IDC,24,3.433333333,0.99
+TCGA-LL-A73Z,55,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Normal,STAGE IV,T1C,NX,M1,7TH,8500/3,Yes,No,No,TCGA-LL-A73Z-01,Breast Invasive Ductal Carcinoma,IDC,11,1.333333333,0
+TCGA-LL-A740,61,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IA,T1C,N0 (I-),MX,7TH,8500/3,No,No,No,TCGA-LL-A740-01,Breast Invasive Ductal Carcinoma,IDC,6,1.433333333,0
+TCGA-LL-A7SZ,49,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIB,T2,N1A,MX,7TH,8500/3,Yes,No,No,TCGA-LL-A7SZ-01,Breast Invasive Ductal Carcinoma,IDC,15,2.866666667,0
+TCGA-LL-A7T0,70,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-LL-A7T0-01,Breast Invasive Ductal Carcinoma,IDC,24,1.333333333,0.23
+TCGA-LL-A8F5,61,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0 (I-),MX,7TH,8500/3,Yes,No,No,TCGA-LL-A8F5-01,Breast Invasive Ductal Carcinoma,IDC,17,4.433333333,0.64
+TCGA-LL-A9Q3,69,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3A,MX,7TH,8520/3,Yes,No,No,TCGA-LL-A9Q3-01,Breast Invasive Lobular Carcinoma,ILC,13,1.566666667,0.07
+TCGA-LQ-A4E4,73,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIIA,T3,N1A,MX,7TH,8520/3,Yes,No,No,TCGA-LQ-A4E4-01,Breast Invasive Lobular Carcinoma,ILC,7,—,0.06
+TCGA-MS-A51U,44,Female,White,Not Hispanic Or Latino,EUR,—,STAGE IIB,T2,N1,M0,7TH,8520/3,Yes,No,No,TCGA-MS-A51U-01,Breast Invasive Lobular Carcinoma,ILC,18,0,0
+TCGA-OK-A5Q2,59,Female,—,—,—,BRCA_LumA,STAGE II,T2,N1A,MX,7TH,8520/3,—,No,No,TCGA-OK-A5Q2-01,Breast Invasive Lobular Carcinoma,ILC,3,0.866666667,0
+TCGA-OL-A5D6,71,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Normal,STAGE IIA,T2,N0,MX,6TH,8500/3,No,No,No,TCGA-OL-A5D6-01,Breast Invasive Ductal Carcinoma,IDC,4,1.133333333,0.01
+TCGA-OL-A5D7,70,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T2,N0,MX,6TH,8500/3,Yes,No,No,TCGA-OL-A5D7-01,Breast Invasive Ductal Carcinoma,IDC,14,1.766666667,0.15
+TCGA-OL-A5D8,40,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T3,N0,MX,6TH,8500/3,Yes,No,No,TCGA-OL-A5D8-01,Breast Invasive Ductal Carcinoma,IDC,5,0.8,0.06
+TCGA-OL-A5DA,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,6TH,8520/3,No,No,No,TCGA-OL-A5DA-01,Breast Invasive Lobular Carcinoma,ILC,6,2.033333333,0
+TCGA-OL-A5RU,63,Female,Black or African American,—,AFR,BRCA_LumA,STAGE IIA,T1C,N1,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A5RU-01,Breast Invasive Ductal Carcinoma,IDC,1,1.133333333,0.03
+TCGA-OL-A5RV,43,Female,Black or African American,—,—,BRCA_LumA,STAGE IIIC,T2,N3,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A5RV-01,Breast Invasive Ductal Carcinoma,IDC,2,0.366666667,0.01
+TCGA-OL-A5RW,40,Female,Black or African American,—,—,BRCA_Basal,STAGE IIA,T1C,N1,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A5RW-01,Breast Invasive Ductal Carcinoma,IDC,17,4.866666667,0.97
+TCGA-OL-A5RX,51,Female,Black or African American,—,—,BRCA_LumA,STAGE IA,T1C,N0,MX,7TH,8500/3,No,No,No,TCGA-OL-A5RX-01,Breast Invasive Ductal Carcinoma,IDC,5,0.766666667,0
+TCGA-OL-A5RY,52,Female,Black or African American,—,—,BRCA_Normal,STAGE IIA,T1C,N1,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A5RY-01,Breast Invasive Ductal Carcinoma,IDC,0,0.333333333,0
+TCGA-OL-A5RZ,57,Female,Black or African American,—,—,BRCA_Her2,STAGE IA,T1B,N0,MX,7TH,8500/3,No,No,No,TCGA-OL-A5RZ-01,Breast Invasive Ductal Carcinoma,IDC,13,3.233333333,0.31
+TCGA-OL-A5S0,66,Female,Black or African American,—,—,BRCA_Basal,STAGE IIB,T2,N1A,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A5S0-01,Breast Invasive Ductal Carcinoma,IDC,21,1.033333333,0.04
+TCGA-OL-A66H,74,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IB,T1C,N1MI,MX,7TH,8480/3,Yes,No,No,TCGA-OL-A66H-01,Breast Invasive Mixed Mucinous Carcinoma,IMMC,2,0.633333333,0
+TCGA-OL-A66I,36,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Basal,STAGE IIA,T1C,N1MI,MX,6TH,8500/3,Yes,No,No,TCGA-OL-A66I-01,Breast Invasive Ductal Carcinoma,IDC,21,1.3,0.01
+TCGA-OL-A66J,80,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE I,T1C,N0,MX,6TH,8520/3,Yes,No,No,TCGA-OL-A66J-01,Breast Invasive Lobular Carcinoma,ILC,3,1.533333333,0.05
+TCGA-OL-A66K,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8520/3,No,No,No,TCGA-OL-A66K-01,Breast Invasive Lobular Carcinoma,ILC,20,0.933333333,0.08
+TCGA-OL-A66L,71,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IA,T1C,N0,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A66L-01,Breast Invasive Ductal Carcinoma,IDC,5,1.866666667,0
+TCGA-OL-A66N,59,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIC,T3,N3,MX,7TH,8520/3,Yes,No,No,TCGA-OL-A66N-01,Breast Invasive Lobular Carcinoma,ILC,21,1.2,0
+TCGA-OL-A66O,39,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIB,T2,N1A,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A66O-01,Breast Invasive Ductal Carcinoma,IDC,6,0.933333333,0
+TCGA-OL-A66P,75,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_Her2,STAGE IIA,T2,N0,MX,7TH,8500/3,No,No,No,TCGA-OL-A66P-01,Breast Invasive Ductal Carcinoma,IDC,3,3.166666667,0
+TCGA-OL-A6VO,43,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Basal,STAGE IA,T1C,N0,MX,7TH,8500/3,Yes,No,No,TCGA-OL-A6VO-01,Breast Invasive Ductal Carcinoma,IDC,25,1.1,1.89
+TCGA-OL-A6VQ,49,Female,White,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8520/3,No,No,No,TCGA-OL-A6VQ-01,Breast Invasive Lobular Carcinoma,ILC,8,2.3,0
+TCGA-OL-A6VR,48,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IA,T1B,N0,MX,7TH,8500/3,No,No,No,TCGA-OL-A6VR-01,Breast Invasive Ductal Carcinoma,IDC,2,0.766666667,0.12
+TCGA-OL-A97C,67,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Normal,STAGE IIB,T3,N0,M0,7TH,9020/3,No,No,No,TCGA-OL-A97C-01,Breast Invasive Carcinoma (NOS),BRCNOS,8,2,0.05
+TCGA-PE-A5DC,72,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T2,N2A,M0,6TH,8520/3,Yes,No,No,TCGA-PE-A5DC-01,Breast Invasive Lobular Carcinoma,ILC,—,3.166666667,0.06
+TCGA-PE-A5DD,64,Female,Asian,Not Hispanic Or Latino,EAS_ADMIX,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,Yes,No,No,TCGA-PE-A5DD-01,Breast Invasive Lobular Carcinoma,ILC,8,1.8,0.05
+TCGA-PE-A5DE,41,Female,White,—,EUR,BRCA_LumA,STAGE IIA,T2,N0,M0,6TH,8520/3,Yes,No,No,TCGA-PE-A5DE-01,Breast Invasive Lobular Carcinoma,ILC,23,13.06666667,0.01
+TCGA-PL-A8LV,54,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIIB,T4,N0,M0,7TH,8510/3,—,No,No,TCGA-PL-A8LV-01,Breast Invasive Ductal Carcinoma,IDC,24,3.233333333,0.21
+TCGA-PL-A8LX,35,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IV,T4,N1A,M1,7TH,8500/3,No,No,No,TCGA-PL-A8LX-01,Breast Invasive Ductal Carcinoma,IDC,19,0.966666667,0.04
+TCGA-PL-A8LY,30,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Normal,STAGE IIB,T3,N0,M0,7TH,8500/3,No,No,No,TCGA-PL-A8LY-01,Breast Invasive Ductal Carcinoma,IDC,0,0.133333333,0
+TCGA-PL-A8LZ,29,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIIB,T4B,N2,M0,7TH,8500/3,No,No,No,TCGA-PL-A8LZ-01,Breast Invasive Ductal Carcinoma,IDC,21,2.7,0.03
+TCGA-S3-A6ZF,64,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumB,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-S3-A6ZF-01,Breast Invasive Ductal Carcinoma,IDC,19,1.033333333,0.22
+TCGA-S3-A6ZG,71,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumA,STAGE IIB,T2,N1,M0,7TH,8520/3,Yes,No,No,TCGA-S3-A6ZG-01,Breast Invasive Carcinoma (NOS),BRCNOS,17,1.233333333,0.05
+TCGA-S3-A6ZH,29,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIIC,T3,N3A,MX,7TH,8500/3,Yes,No,No,TCGA-S3-A6ZH-01,Breast Invasive Ductal Carcinoma,IDC,20,1.1,0.59
+TCGA-S3-AA0Z,63,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIB,T2,N1A,M0,7TH,8500/3,No,No,No,TCGA-S3-AA0Z-01,Breast Invasive Ductal Carcinoma,IDC,12,1.566666667,1.27
+TCGA-S3-AA10,65,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIA,T2,N0,M0,7TH,8500/3,No,No,No,TCGA-S3-AA10-01,Breast Invasive Ductal Carcinoma,IDC,22,4.533333333,0.53
+TCGA-S3-AA11,67,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0,M0,7TH,8500/3,Yes,No,No,TCGA-S3-AA11-01,Breast Invasive Ductal Carcinoma,IDC,1,2,0
+TCGA-S3-AA12,82,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIIA,T3,N1A,MX,7TH,8500/3,No,No,Yes,TCGA-S3-AA12-01,Breast Invasive Ductal Carcinoma,IDC,4,1.2,0.34
+TCGA-S3-AA14,47,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE I,T1,N0 (I+),CM0 (I+),7TH,8500/3,Yes,No,No,TCGA-S3-AA14-01,Breast Invasive Ductal Carcinoma,IDC,2,0.533333333,0.22
+TCGA-S3-AA15,51,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_Basal,STAGE IIB,T2,N1A,CM0 (I+),7TH,8500/3,Yes,No,No,TCGA-S3-AA15-01,Breast Invasive Ductal Carcinoma,IDC,—,1.166666667,0
+TCGA-S3-AA17,64,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_LumB,STAGE IIB,T2,N1MI,CM0 (I+),7TH,8500/3,Yes,No,Yes,TCGA-S3-AA17-01,Breast Invasive Ductal Carcinoma,IDC,9,2.966666667,0.02
+TCGA-UL-AAZ6,73,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIA,T2,N0,MX,7TH,8500/3,No,No,No,TCGA-UL-AAZ6-01,Breast Invasive Ductal Carcinoma,IDC,19,2.7,0.98
+TCGA-UU-A93S,63,Female,Black or African American,Not Hispanic Or Latino,AFR_ADMIX,BRCA_Her2,STAGE IV,T4D,N3B,M1,7TH,8500/3,No,No,No,TCGA-UU-A93S-01,Breast Invasive Ductal Carcinoma,IDC,15,4.633333333,0.48
+TCGA-V7-A7HQ,75,Female,Black or African American,Not Hispanic Or Latino,—,BRCA_LumA,STAGE IIIA,T1C,N2A,M0,6TH,8500/3,Yes,No,No,TCGA-V7-A7HQ-01,Breast Invasive Ductal Carcinoma,IDC,6,0.733333333,0.01
+TCGA-W8-A86G,66,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIA,T2A,N0 (I-),MX,7TH,8520/3,No,No,Yes,TCGA-W8-A86G-01,Breast Invasive Lobular Carcinoma,ILC,14,0.5,0
+TCGA-WT-AB41,55,Female,Black or African American,Not Hispanic Or Latino,AFR,BRCA_LumA,STAGE IIB,T2,N1MI,MX,7TH,8500/3,No,No,Yes,TCGA-WT-AB41-01,Breast Invasive Ductal Carcinoma,IDC,8,1.3,0.01
+TCGA-WT-AB44,77,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IA,T1C,N0 (I-),MX,7TH,8520/3,Yes,No,No,TCGA-WT-AB44-01,Breast Invasive Lobular Carcinoma,ILC,18,1.033333333,0.24
+TCGA-XX-A899,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T1C,N2A,MX,7TH,8520/3,Yes,No,No,TCGA-XX-A899-01,Breast Invasive Lobular Carcinoma,ILC,4,2.466666667,0
+TCGA-XX-A89A,68,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIB,T3,N0,MX,7TH,8520/3,Yes,No,No,TCGA-XX-A89A-01,Breast Invasive Lobular Carcinoma,ILC,32,5.033333333,0.01
+TCGA-Z7-A8R5,61,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumA,STAGE IIIA,T3,N1A,MX,6TH,8520/3,No,No,Yes,TCGA-Z7-A8R5-01,Breast Invasive Lobular Carcinoma,ILC,21,0.766666667,0
+TCGA-Z7-A8R6,46,Female,White,Not Hispanic Or Latino,EUR,BRCA_LumB,STAGE I,T1C,N0,M0,6TH,8022/3,No,No,No,TCGA-Z7-A8R6-01,Breast Invasive Lobular Carcinoma,ILC,14,2.1,0.15

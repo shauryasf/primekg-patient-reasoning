@@ -1,0 +1,8 @@
+01:14:23 INFO Cohort 1083 patients, 145 progressions
+01:14:28 INFO Report model: neurosymbolic_cox (within one standard error of the best (clinical_cox_19))
+01:14:30 INFO Timing on held-out progressors: {"patients": 145, "mae_months": 20.425393703981953, "median_abs_error_months": 11.578513367489753, "within_12_months": 0.5103448275862069, "window_accuracy": 0.3448275862068966, "interval_coverage": 0.593103448275862}
+01:16:17 INFO Explained fold 0 (217 patients) in 1.8 min
+01:18:07 INFO Explained fold 1 (217 patients) in 1.8 min
+01:19:51 INFO Explained fold 2 (217 patients) in 1.7 min
+01:21:31 INFO Explained fold 3 (216 patients) in 1.7 min
+01:23:11 INFO Explained fold 4 (216 patients) in 1.7 min

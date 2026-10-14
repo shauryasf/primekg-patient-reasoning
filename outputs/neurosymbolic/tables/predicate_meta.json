@@ -1,0 +1,1563 @@
+{
+ "labels": {
+  "age": "Age",
+  "aneuploidy_score": "Aneuploidy score",
+  "tmb_nonsynonymous": "TMB (nonsynonymous)",
+  "t_stage": "T stage",
+  "n_stage": "N stage",
+  "m_stage": "M stage",
+  "ajcc_stage": "AJCC stage",
+  "subtype": "PAM50 subtype",
+  "histology": "Histology",
+  "radiation_therapy": "Radiation therapy",
+  "n_altered_genes": "Altered panel genes",
+  "amp_ADAM2": "ADAM2 amplified",
+  "amp_ADAM9": "ADAM9 amplified (+2 co-altered genes)",
+  "amp_ANK1": "ANK1 amplified (+1 co-altered genes)",
+  "amp_ANKRD46": "ANKRD46 amplified (+17 co-altered genes)",
+  "mut_ARID1A": "ARID1A mutated",
+  "amp_ASAP1-IT2": "ASAP1-IT2 amplified (+24 co-altered genes)",
+  "amp_ASTN1": "ASTN1 amplified",
+  "amp_ATP1A4": "ATP1A4 amplified (+1 co-altered genes)",
+  "amp_CACNA1E": "CACNA1E amplified (+2 co-altered genes)",
+  "amp_CCND1": "CCND1 amplified (+11 co-altered genes)",
+  "amp_CDC42BPA": "CDC42BPA amplified (+6 co-altered genes)",
+  "mut_CDH1": "CDH1 mutated",
+  "del_CSMD1": "CSMD1 deleted",
+  "amp_CSMD3": "CSMD3 amplified (+15 co-altered genes)",
+  "amp_DENND3": "DENND3 amplified (+126 co-altered genes)",
+  "amp_DPY19L4": "DPY19L4 amplified (+5 co-altered genes)",
+  "amp_EIF3H": "EIF3H amplified (+13 co-altered genes)",
+  "amp_ERBB2": "ERBB2 amplified (+14 co-altered genes)",
+  "mut_ERBB2": "ERBB2 mutated",
+  "amp_ERLIN2": "ERLIN2 amplified (+8 co-altered genes)",
+  "amp_FAM72C": "FAM72C amplified (+1 co-altered genes)",
+  "amp_FAM91A1": "FAM91A1 amplified (+34 co-altered genes)",
+  "amp_FGFR1": "FGFR1 amplified (+14 co-altered genes)",
+  "amp_FLAD1": "FLAD1 amplified (+3 co-altered genes)",
+  "mut_GATA3": "GATA3 mutated",
+  "amp_GOLPH3L": "GOLPH3L amplified (+13 co-altered genes)",
+  "amp_IRF2BP2": "IRF2BP2 amplified (+17 co-altered genes)",
+  "amp_KCNU1": "KCNU1 amplified",
+  "amp_KHDRBS3": "KHDRBS3 amplified (+2 co-altered genes)",
+  "mut_KMT2C": "KMT2C mutated",
+  "mut_MAP2K4": "MAP2K4 mutated",
+  "mut_MAP3K1": "MAP3K1 mutated",
+  "amp_MIR7851": "MIR7851 amplified",
+  "amp_MYC": "MYC amplified (+27 co-altered genes)",
+  "mut_NF1": "NF1 mutated",
+  "amp_NFASC": "NFASC amplified (+2 co-altered genes)",
+  "amp_NKAIN3": "NKAIN3 amplified",
+  "amp_NOTCH2": "NOTCH2 amplified (+7 co-altered genes)",
+  "amp_PIK3CA": "PIK3CA amplified",
+  "mut_PIK3CA": "PIK3CA mutated",
+  "mut_PIK3R1": "PIK3R1 mutated",
+  "del_PTEN": "PTEN deleted",
+  "mut_PTEN": "PTEN mutated",
+  "del_RB1": "RB1 deleted",
+  "amp_RIMS2": "RIMS2 amplified (+21 co-altered genes)",
+  "amp_RNU6-83P": "RNU6-83P amplified",
+  "mut_RUNX1": "RUNX1 mutated",
+  "amp_RUNX1T1": "RUNX1T1 amplified",
+  "amp_SHANK2": "SHANK2 amplified (+1 co-altered genes)",
+  "amp_STK3": "STK3 amplified (+3 co-altered genes)",
+  "mut_TP53": "TP53 mutated",
+  "amp_TP53BP2": "TP53BP2 amplified",
+  "amp_TPCN2": "TPCN2 amplified (+3 co-altered genes)",
+  "amp_UNC5D": "UNC5D amplified",
+  "amp_USH2A": "USH2A amplified",
+  "amp_ZFHX4": "ZFHX4 amplified",
+  "amp_ZNF695": "ZNF695 amplified (+41 co-altered genes)",
+  "kg_pathway_R-HSA-111447": "altered gene in pathway 'Activation of BAD and translocation to mitochondria '",
+  "kg_pathway_R-HSA-1358803": "altered gene in pathway 'Downregulation of ERBB2:ERBB3 signaling'",
+  "kg_pathway_R-HSA-199418": "altered gene in pathway 'Negative regulation of the PI3K/AKT network'",
+  "kg_pathway_R-HSA-389357": "altered gene in pathway 'CD28 dependent PI3K/Akt signaling'",
+  "kg_pathway_R-HSA-5628897": "altered gene in pathway 'TP53 Regulates Metabolic Genes'",
+  "kg_pathway_R-HSA-6804758": "altered gene in pathway 'Regulation of TP53 Activity through Acetylation'",
+  "kg_pathway_R-HSA-69202": "altered gene in pathway 'Cyclin E associated events during G1/S transition '",
+  "kg_pathway_R-HSA-8876198": "altered gene in pathway 'RAB GEFs exchange GTP for GDP on RABs'",
+  "kg_pathway_R-HSA-8941332": "altered gene in pathway 'RUNX2 regulates genes involved in cell migration'",
+  "kg_pathway_R-HSA-9634638": "altered gene in pathway 'Estrogen-dependent nuclear events downstream of ESR-membrane signaling'",
+  "kg_pathway_R-HSA-418990": "altered gene in pathway 'Adherens junctions interactions'",
+  "kg_pathway_R-HSA-9031628": "altered gene in pathway 'NGF-stimulated transcription'",
+  "kg_pathway_R-HSA-844456": "altered gene in pathway 'The NLRP3 inflammasome'",
+  "kg_pathway_R-HSA-9660826": "altered gene in pathway 'Purinergic signaling in leishmaniasis infection'",
+  "kg_pathway_R-HSA-9707564": "altered gene in pathway 'Cytoprotection by HMOX1'",
+  "kg_pathway_R-HSA-6784531": "altered gene in pathway 'tRNA processing in the nucleus'",
+  "kg_pathway_R-HSA-196108": "altered gene in pathway 'Pregnenolone biosynthesis'",
+  "kg_pathway_R-HSA-382556": "altered gene in pathway 'ABC-family proteins mediated transport'",
+  "kg_pathway_R-HSA-5655302": "altered gene in pathway 'Signaling by FGFR1 in disease'",
+  "kg_pathway_R-HSA-8853336": "altered gene in pathway 'Signaling by plasma membrane FGFR1 fusions'",
+  "kg_pathway_R-HSA-418555": "altered gene in pathway 'G alpha (s) signalling events'",
+  "kg_pathway_R-HSA-418594": "altered gene in pathway 'G alpha (i) signalling events'",
+  "kg_pathway_R-HSA-5689901": "altered gene in pathway 'Metalloprotease DUBs'",
+  "kg_pathway_R-HSA-8980692": "altered gene in pathway 'RHOA GTPase cycle'",
+  "kg_pathway_R-HSA-983168": "altered gene in pathway 'Antigen processing: Ubiquitination & Proteasome degradation'",
+  "kg_pathway_R-HSA-381753": "altered gene in pathway 'Olfactory Signaling Pathway'",
+  "kg_pathway_R-HSA-611105": "altered gene in pathway 'Respiratory electron transport'",
+  "kg_pathway_R-HSA-6798695": "altered gene in pathway 'Neutrophil degranulation'",
+  "kg_pathway_R-HSA-8877330": "altered gene in pathway 'RUNX1 and FOXP3 control the development of regulatory T lymphocytes (Tregs)'",
+  "kg_pathway_R-HSA-3108214": "altered gene in pathway 'SUMOylation of DNA damage response and repair proteins'",
+  "kg_pathway_R-HSA-9013407": "altered gene in pathway 'RHOH GTPase cycle'",
+  "kg_pathway_R-HSA-211976": "altered gene in pathway 'Endogenous sterols'",
+  "kg_pathway_R-HSA-1650814": "altered gene in pathway 'Collagen biosynthesis and modifying enzymes'",
+  "kg_pathway_R-HSA-114608": "altered gene in pathway 'Platelet degranulation '",
+  "kg_pathway_R-HSA-1227986": "altered gene in pathway 'Signaling by ERBB2'",
+  "kg_pathway_R-HSA-1236382": "altered gene in pathway 'Constitutive Signaling by Ligand-Responsive EGFR Cancer Variants'",
+  "kg_pathway_R-HSA-445144": "altered gene in pathway 'Signal transduction by L1'",
+  "kg_pathway_R-HSA-8856828": "altered gene in pathway 'Clathrin-mediated endocytosis'",
+  "kg_pathway_R-HSA-8866910": "altered gene in pathway 'TFAP2 (AP-2) family regulates transcription of growth factors and their receptors'",
+  "kg_pathway_R-HSA-9009391": "altered gene in pathway 'Extra-nuclear estrogen signaling'",
+  "kg_pathway_R-HSA-1306955": "altered gene in pathway 'GRB7 events in ERBB2 signaling'",
+  "kg_pathway_R-HSA-1445148": "altered gene in pathway 'Translocation of SLC2A4 (GLUT4) to the plasma membrane'",
+  "kg_pathway_R-HSA-354192": "altered gene in pathway 'Integrin signaling'",
+  "kg_pathway_R-HSA-3769402": "altered gene in pathway 'Deactivation of the beta-catenin transactivating complex'",
+  "kg_pathway_R-HSA-450604": "altered gene in pathway 'KSRP (KHSRP) binds and destabilizes mRNA'",
+  "kg_pathway_R-HSA-6785807": "altered gene in pathway 'Interleukin-4 and Interleukin-13 signaling'",
+  "kg_pathway_R-HSA-5689896": "altered gene in pathway 'Ovarian tumor domain proteases'",
+  "kg_pathway_R-HSA-9018519": "altered gene in pathway 'Estrogen-dependent gene expression'",
+  "kg_pathway_R-HSA-2672351": "altered gene in pathway 'Stimuli-sensing channels'",
+  "kg_pathway_R-HSA-5654219": "altered gene in pathway 'Phospholipase C-mediated cascade: FGFR1'",
+  "kg_pathway_R-HSA-190322": "altered gene in pathway 'FGFR4 ligand binding and activation'",
+  "kg_pathway_R-HSA-375165": "altered gene in pathway 'NCAM signaling for neurite out-growth'",
+  "kg_pathway_R-HSA-72163": "altered gene in pathway 'mRNA Splicing - Major Pathway'",
+  "kg_pathway_R-HSA-6794361": "altered gene in pathway 'Neurexins and neuroligins'",
+  "kg_pathway_R-HSA-445095": "altered gene in pathway 'Interaction between L1 and Ankyrins'",
+  "kg_pathway_R-HSA-447043": "altered gene in pathway 'Neurofascin interactions'",
+  "kg_pathway_R-HSA-6809371": "altered gene in pathway 'Formation of the cornified envelope'",
+  "kg_pathway_R-HSA-6791226": "altered gene in pathway 'Major pathway of rRNA processing in the nucleolus and cytosol'",
+  "kg_pathway_R-HSA-6807505": "altered gene in pathway 'RNA polymerase II transcribes snRNA genes'",
+  "kg_pathway_R-HSA-1483166": "altered gene in pathway 'Synthesis of PA'",
+  "kg_pathway_R-HSA-9013148": "altered gene in pathway 'CDC42 GTPase cycle'",
+  "kg_pathway_R-HSA-2534343": "altered gene in pathway 'Interaction With Cumulus Cells And The Zona Pellucida'",
+  "kg_pathway_R-HSA-2467813": "altered gene in pathway 'Separation of Sister Chromatids'",
+  "kg_pathway_R-HSA-5689880": "altered gene in pathway 'Ub-specific processing proteases'",
+  "kg_pathway_R-HSA-8939236": "altered gene in pathway 'RUNX1 regulates transcription of genes involved in differentiation of HSCs'",
+  "kg_pathway_R-HSA-156827": "altered gene in pathway 'L13a-mediated translational silencing of Ceruloplasmin expression'",
+  "kg_pathway_R-HSA-1296072": "altered gene in pathway 'Voltage gated Potassium channels'",
+  "kg_pathway_R-HSA-1912408": "altered gene in pathway 'Pre-NOTCH Transcription and Translation'",
+  "kg_pathway_R-HSA-4086398": "altered gene in pathway 'Ca2+ pathway'",
+  "kg_pathway_R-HSA-5687128": "altered gene in pathway 'MAPK6/MAPK4 signaling'",
+  "kg_pathway_R-HSA-8934593": "altered gene in pathway 'Regulation of RUNX1 Expression and Activity'",
+  "kg_pathway_R-HSA-8943723": "altered gene in pathway 'Regulation of PTEN mRNA translation'",
+  "kg_pathway_R-HSA-210993": "altered gene in pathway 'Tie2 Signaling'",
+  "kg_pathway_R-HSA-447041": "altered gene in pathway 'CHL1 interactions'",
+  "kg_pathway_R-HSA-6807878": "altered gene in pathway 'COPI-mediated anterograde transport'",
+  "kg_pathway_R-HSA-212436": "altered gene in pathway 'Generic Transcription Pathway'",
+  "kg_pathway_R-HSA-9696273": "altered gene in pathway 'RND1 GTPase cycle'",
+  "kg_pathway_R-HSA-975634": "altered gene in pathway 'Retinoid metabolism and transport'",
+  "kg_pathway_R-HSA-3371453": "altered gene in pathway 'Regulation of HSF1-mediated heat shock response'",
+  "kg_pathway_R-HSA-1989781": "altered gene in pathway 'PPARA activates gene expression'",
+  "kg_pathway_R-HSA-2871796": "altered gene in pathway 'FCERI mediated MAPK activation'",
+  "kg_pathway_R-HSA-8951430": "altered gene in pathway 'RUNX3 regulates WNT signaling'",
+  "kg_pathway_R-HSA-9616222": "altered gene in pathway 'Transcriptional regulation of granulopoiesis'",
+  "kg_pathway_R-HSA-5685942": "altered gene in pathway 'HDR through Homologous Recombination (HRR)'",
+  "kg_pathway_R-HSA-5693565": "altered gene in pathway 'Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks'",
+  "kg_pathway_R-HSA-6804756": "altered gene in pathway 'Regulation of TP53 Activity through Phosphorylation'",
+  "kg_pathway_R-HSA-5578775": "altered gene in pathway 'Ion homeostasis'",
+  "kg_pathway_R-HSA-9679191": "altered gene in pathway 'Potential therapeutics for SARS'",
+  "kg_pathway_R-HSA-1474228": "altered gene in pathway 'Degradation of the extracellular matrix'",
+  "kg_pathway_R-HSA-427413": "altered gene in pathway 'NoRC negatively regulates rRNA expression'",
+  "kg_pathway_R-HSA-1660499": "altered gene in pathway 'Synthesis of PIPs at the plasma membrane'",
+  "kg_pathway_R-HSA-430116": "altered gene in pathway 'GP1b-IX-V activation signalling'",
+  "kg_pathway_R-HSA-9013026": "altered gene in pathway 'RHOB GTPase cycle'",
+  "kg_pathway_R-HSA-2022090": "altered gene in pathway 'Assembly of collagen fibrils and other multimeric structures'",
+  "kg_pathway_R-HSA-5617472": "altered gene in pathway 'Activation of anterior HOX genes in hindbrain development during early embryogenesis'",
+  "kg_pathway_R-HSA-749476": "altered gene in pathway 'RNA Polymerase III Abortive And Retractive Initiation'",
+  "kg_pathway_R-HSA-6811434": "altered gene in pathway 'COPI-dependent Golgi-to-ER retrograde traffic'",
+  "kg_pathway_R-HSA-3214841": "altered gene in pathway 'PKMTs methylate histone lysines'",
+  "kg_pathway_R-HSA-3214847": "altered gene in pathway 'HATs acetylate histones'",
+  "kg_pathway_R-HSA-8936459": "altered gene in pathway 'RUNX1 regulates genes involved in megakaryocyte differentiation and platelet function'",
+  "kg_pathway_R-HSA-1221632": "altered gene in pathway 'Meiotic synapsis'",
+  "kg_pathway_R-HSA-69231": "altered gene in pathway 'Cyclin D associated events in G1'",
+  "kg_pathway_R-HSA-3214858": "altered gene in pathway 'RMTs methylate histone arginines'",
+  "kg_pathway_R-HSA-8853884": "altered gene in pathway 'Transcriptional Regulation by VENTX'",
+  "kg_pathway_R-HSA-8878166": "altered gene in pathway 'Transcriptional regulation by RUNX2'",
+  "kg_pathway_R-HSA-8951936": "altered gene in pathway 'RUNX3 regulates p14-ARF'",
+  "kg_pathway_R-HSA-201722": "altered gene in pathway 'Formation of the beta-catenin:TCF transactivating complex'",
+  "kg_pathway_R-HSA-2559580": "altered gene in pathway 'Oxidative Stress Induced Senescence'",
+  "kg_pathway_R-HSA-977068": "altered gene in pathway 'Termination of O-glycan biosynthesis'",
+  "kg_pathway_R-HSA-5620971": "altered gene in pathway 'Pyroptosis'",
+  "kg_pathway_R-HSA-390522": "altered gene in pathway 'Striated Muscle Contraction'",
+  "kg_pathway_R-HSA-1442490": "altered gene in pathway 'Collagen degradation'",
+  "kg_pathway_R-HSA-196843": "altered gene in pathway 'Vitamin B2 (riboflavin) metabolism'",
+  "kg_pathway_R-HSA-8939243": "altered gene in pathway 'RUNX1 interacts with co-factors whose precise effect on RUNX1 targets is not known'",
+  "kg_pathway_R-HSA-193648": "altered gene in pathway 'NRAGE signals death through JNK'",
+  "kg_pathway_R-HSA-216083": "altered gene in pathway 'Integrin cell surface interactions'",
+  "kg_disease_25483": "altered gene linked to 'mammary neoplasms, animal'",
+  "kg_disease_4953": "altered gene linked to 'invasive ductal breast carcinoma'",
+  "kg_disease_5051": "altered gene linked to 'invasive lobular breast carcinoma'",
+  "kg_disease_5590": "altered gene linked to 'breast ductal adenocarcinoma'"
+ },
+ "kinds": {
+  "age": "clinical",
+  "aneuploidy_score": "clinical",
+  "tmb_nonsynonymous": "clinical",
+  "t_stage": "clinical",
+  "n_stage": "clinical",
+  "m_stage": "clinical",
+  "ajcc_stage": "clinical",
+  "subtype": "clinical",
+  "histology": "clinical",
+  "radiation_therapy": "clinical",
+  "n_altered_genes": "genomic",
+  "amp_ADAM2": "genomic",
+  "amp_ADAM9": "genomic",
+  "amp_ANK1": "genomic",
+  "amp_ANKRD46": "genomic",
+  "mut_ARID1A": "genomic",
+  "amp_ASAP1-IT2": "genomic",
+  "amp_ASTN1": "genomic",
+  "amp_ATP1A4": "genomic",
+  "amp_CACNA1E": "genomic",
+  "amp_CCND1": "genomic",
+  "amp_CDC42BPA": "genomic",
+  "mut_CDH1": "genomic",
+  "del_CSMD1": "genomic",
+  "amp_CSMD3": "genomic",
+  "amp_DENND3": "genomic",
+  "amp_DPY19L4": "genomic",
+  "amp_EIF3H": "genomic",
+  "amp_ERBB2": "genomic",
+  "mut_ERBB2": "genomic",
+  "amp_ERLIN2": "genomic",
+  "amp_FAM72C": "genomic",
+  "amp_FAM91A1": "genomic",
+  "amp_FGFR1": "genomic",
+  "amp_FLAD1": "genomic",
+  "mut_GATA3": "genomic",
+  "amp_GOLPH3L": "genomic",
+  "amp_IRF2BP2": "genomic",
+  "amp_KCNU1": "genomic",
+  "amp_KHDRBS3": "genomic",
+  "mut_KMT2C": "genomic",
+  "mut_MAP2K4": "genomic",
+  "mut_MAP3K1": "genomic",
+  "amp_MIR7851": "genomic",
+  "amp_MYC": "genomic",
+  "mut_NF1": "genomic",
+  "amp_NFASC": "genomic",
+  "amp_NKAIN3": "genomic",
+  "amp_NOTCH2": "genomic",
+  "amp_PIK3CA": "genomic",
+  "mut_PIK3CA": "genomic",
+  "mut_PIK3R1": "genomic",
+  "del_PTEN": "genomic",
+  "mut_PTEN": "genomic",
+  "del_RB1": "genomic",
+  "amp_RIMS2": "genomic",
+  "amp_RNU6-83P": "genomic",
+  "mut_RUNX1": "genomic",
+  "amp_RUNX1T1": "genomic",
+  "amp_SHANK2": "genomic",
+  "amp_STK3": "genomic",
+  "mut_TP53": "genomic",
+  "amp_TP53BP2": "genomic",
+  "amp_TPCN2": "genomic",
+  "amp_UNC5D": "genomic",
+  "amp_USH2A": "genomic",
+  "amp_ZFHX4": "genomic",
+  "amp_ZNF695": "genomic",
+  "kg_pathway_R-HSA-111447": "kg_pathway",
+  "kg_pathway_R-HSA-1358803": "kg_pathway",
+  "kg_pathway_R-HSA-199418": "kg_pathway",
+  "kg_pathway_R-HSA-389357": "kg_pathway",
+  "kg_pathway_R-HSA-5628897": "kg_pathway",
+  "kg_pathway_R-HSA-6804758": "kg_pathway",
+  "kg_pathway_R-HSA-69202": "kg_pathway",
+  "kg_pathway_R-HSA-8876198": "kg_pathway",
+  "kg_pathway_R-HSA-8941332": "kg_pathway",
+  "kg_pathway_R-HSA-9634638": "kg_pathway",
+  "kg_pathway_R-HSA-418990": "kg_pathway",
+  "kg_pathway_R-HSA-9031628": "kg_pathway",
+  "kg_pathway_R-HSA-844456": "kg_pathway",
+  "kg_pathway_R-HSA-9660826": "kg_pathway",
+  "kg_pathway_R-HSA-9707564": "kg_pathway",
+  "kg_pathway_R-HSA-6784531": "kg_pathway",
+  "kg_pathway_R-HSA-196108": "kg_pathway",
+  "kg_pathway_R-HSA-382556": "kg_pathway",
+  "kg_pathway_R-HSA-5655302": "kg_pathway",
+  "kg_pathway_R-HSA-8853336": "kg_pathway",
+  "kg_pathway_R-HSA-418555": "kg_pathway",
+  "kg_pathway_R-HSA-418594": "kg_pathway",
+  "kg_pathway_R-HSA-5689901": "kg_pathway",
+  "kg_pathway_R-HSA-8980692": "kg_pathway",
+  "kg_pathway_R-HSA-983168": "kg_pathway",
+  "kg_pathway_R-HSA-381753": "kg_pathway",
+  "kg_pathway_R-HSA-611105": "kg_pathway",
+  "kg_pathway_R-HSA-6798695": "kg_pathway",
+  "kg_pathway_R-HSA-8877330": "kg_pathway",
+  "kg_pathway_R-HSA-3108214": "kg_pathway",
+  "kg_pathway_R-HSA-9013407": "kg_pathway",
+  "kg_pathway_R-HSA-211976": "kg_pathway",
+  "kg_pathway_R-HSA-1650814": "kg_pathway",
+  "kg_pathway_R-HSA-114608": "kg_pathway",
+  "kg_pathway_R-HSA-1227986": "kg_pathway",
+  "kg_pathway_R-HSA-1236382": "kg_pathway",
+  "kg_pathway_R-HSA-445144": "kg_pathway",
+  "kg_pathway_R-HSA-8856828": "kg_pathway",
+  "kg_pathway_R-HSA-8866910": "kg_pathway",
+  "kg_pathway_R-HSA-9009391": "kg_pathway",
+  "kg_pathway_R-HSA-1306955": "kg_pathway",
+  "kg_pathway_R-HSA-1445148": "kg_pathway",
+  "kg_pathway_R-HSA-354192": "kg_pathway",
+  "kg_pathway_R-HSA-3769402": "kg_pathway",
+  "kg_pathway_R-HSA-450604": "kg_pathway",
+  "kg_pathway_R-HSA-6785807": "kg_pathway",
+  "kg_pathway_R-HSA-5689896": "kg_pathway",
+  "kg_pathway_R-HSA-9018519": "kg_pathway",
+  "kg_pathway_R-HSA-2672351": "kg_pathway",
+  "kg_pathway_R-HSA-5654219": "kg_pathway",
+  "kg_pathway_R-HSA-190322": "kg_pathway",
+  "kg_pathway_R-HSA-375165": "kg_pathway",
+  "kg_pathway_R-HSA-72163": "kg_pathway",
+  "kg_pathway_R-HSA-6794361": "kg_pathway",
+  "kg_pathway_R-HSA-445095": "kg_pathway",
+  "kg_pathway_R-HSA-447043": "kg_pathway",
+  "kg_pathway_R-HSA-6809371": "kg_pathway",
+  "kg_pathway_R-HSA-6791226": "kg_pathway",
+  "kg_pathway_R-HSA-6807505": "kg_pathway",
+  "kg_pathway_R-HSA-1483166": "kg_pathway",
+  "kg_pathway_R-HSA-9013148": "kg_pathway",
+  "kg_pathway_R-HSA-2534343": "kg_pathway",
+  "kg_pathway_R-HSA-2467813": "kg_pathway",
+  "kg_pathway_R-HSA-5689880": "kg_pathway",
+  "kg_pathway_R-HSA-8939236": "kg_pathway",
+  "kg_pathway_R-HSA-156827": "kg_pathway",
+  "kg_pathway_R-HSA-1296072": "kg_pathway",
+  "kg_pathway_R-HSA-1912408": "kg_pathway",
+  "kg_pathway_R-HSA-4086398": "kg_pathway",
+  "kg_pathway_R-HSA-5687128": "kg_pathway",
+  "kg_pathway_R-HSA-8934593": "kg_pathway",
+  "kg_pathway_R-HSA-8943723": "kg_pathway",
+  "kg_pathway_R-HSA-210993": "kg_pathway",
+  "kg_pathway_R-HSA-447041": "kg_pathway",
+  "kg_pathway_R-HSA-6807878": "kg_pathway",
+  "kg_pathway_R-HSA-212436": "kg_pathway",
+  "kg_pathway_R-HSA-9696273": "kg_pathway",
+  "kg_pathway_R-HSA-975634": "kg_pathway",
+  "kg_pathway_R-HSA-3371453": "kg_pathway",
+  "kg_pathway_R-HSA-1989781": "kg_pathway",
+  "kg_pathway_R-HSA-2871796": "kg_pathway",
+  "kg_pathway_R-HSA-8951430": "kg_pathway",
+  "kg_pathway_R-HSA-9616222": "kg_pathway",
+  "kg_pathway_R-HSA-5685942": "kg_pathway",
+  "kg_pathway_R-HSA-5693565": "kg_pathway",
+  "kg_pathway_R-HSA-6804756": "kg_pathway",
+  "kg_pathway_R-HSA-5578775": "kg_pathway",
+  "kg_pathway_R-HSA-9679191": "kg_pathway",
+  "kg_pathway_R-HSA-1474228": "kg_pathway",
+  "kg_pathway_R-HSA-427413": "kg_pathway",
+  "kg_pathway_R-HSA-1660499": "kg_pathway",
+  "kg_pathway_R-HSA-430116": "kg_pathway",
+  "kg_pathway_R-HSA-9013026": "kg_pathway",
+  "kg_pathway_R-HSA-2022090": "kg_pathway",
+  "kg_pathway_R-HSA-5617472": "kg_pathway",
+  "kg_pathway_R-HSA-749476": "kg_pathway",
+  "kg_pathway_R-HSA-6811434": "kg_pathway",
+  "kg_pathway_R-HSA-3214841": "kg_pathway",
+  "kg_pathway_R-HSA-3214847": "kg_pathway",
+  "kg_pathway_R-HSA-8936459": "kg_pathway",
+  "kg_pathway_R-HSA-1221632": "kg_pathway",
+  "kg_pathway_R-HSA-69231": "kg_pathway",
+  "kg_pathway_R-HSA-3214858": "kg_pathway",
+  "kg_pathway_R-HSA-8853884": "kg_pathway",
+  "kg_pathway_R-HSA-8878166": "kg_pathway",
+  "kg_pathway_R-HSA-8951936": "kg_pathway",
+  "kg_pathway_R-HSA-201722": "kg_pathway",
+  "kg_pathway_R-HSA-2559580": "kg_pathway",
+  "kg_pathway_R-HSA-977068": "kg_pathway",
+  "kg_pathway_R-HSA-5620971": "kg_pathway",
+  "kg_pathway_R-HSA-390522": "kg_pathway",
+  "kg_pathway_R-HSA-1442490": "kg_pathway",
+  "kg_pathway_R-HSA-196843": "kg_pathway",
+  "kg_pathway_R-HSA-8939243": "kg_pathway",
+  "kg_pathway_R-HSA-193648": "kg_pathway",
+  "kg_pathway_R-HSA-216083": "kg_pathway",
+  "kg_disease_25483": "kg_disease",
+  "kg_disease_4953": "kg_disease",
+  "kg_disease_5051": "kg_disease",
+  "kg_disease_5590": "kg_disease"
+ },
+ "members": {
+  "amp_ADAM2": [
+   "ADAM2"
+  ],
+  "amp_ADAM9": [
+   "ADAM32",
+   "ADAM9",
+   "TM2D2"
+  ],
+  "amp_ANK1": [
+   "ANK1",
+   "KAT6A"
+  ],
+  "amp_ANKRD46": [
+   "ANKRD46",
+   "COX6C",
+   "FBXO43",
+   "FLJ42969",
+   "GRHL2",
+   "HSA-MIR-1273",
+   "MIR4471",
+   "MIR7705",
+   "NACAP1",
+   "PABPC1",
+   "POLR2K",
+   "RGS22",
+   "RNF19A",
+   "SNX31",
+   "SPAG1",
+   "VPS13B",
+   "YWHAZ",
+   "ZNF706"
+  ],
+  "mut_ARID1A": [
+   "ARID1A"
+  ],
+  "amp_ASAP1-IT2": [
+   "ADCY8",
+   "ASAP1-IT1",
+   "ASAP1-IT2",
+   "EFR3A",
+   "FAM49B",
+   "GSDMC",
+   "HHLA1",
+   "HPYR1",
+   "KCNQ3",
+   "LINC00977",
+   "LRRC6",
+   "MIR30B",
+   "MIR30D",
+   "MIR5194",
+   "MIR7848",
+   "NDRG1",
+   "OC90",
+   "PHF20L1",
+   "SLA",
+   "ST3GAL1",
+   "TG",
+   "TMEM71",
+   "WISP1",
+   "ZFAT",
+   "ZFAT-AS1"
+  ],
+  "amp_ASTN1": [
+   "ASTN1"
+  ],
+  "amp_ATP1A4": [
+   "ATP1A4",
+   "SPTA1"
+  ],
+  "amp_CACNA1E": [
+   "CACNA1E",
+   "HMCN1",
+   "QSOX1"
+  ],
+  "amp_CCND1": [
+   "ANO1",
+   "ANO1-AS2",
+   "CCND1",
+   "CTTN",
+   "FADD",
+   "FGF19",
+   "FGF3",
+   "FGF4",
+   "MIR548K",
+   "MYEOV",
+   "ORAOV1",
+   "PPFIA1"
+  ],
+  "amp_CDC42BPA": [
+   "CDC42BPA",
+   "DISP1",
+   "DNAH14",
+   "MIA3",
+   "OBSCN",
+   "PARP1",
+   "SNAP47"
+  ],
+  "mut_CDH1": [
+   "CDH1"
+  ],
+  "del_CSMD1": [
+   "CSMD1"
+  ],
+  "amp_CSMD3": [
+   "ANGPT1",
+   "CSMD3",
+   "EBAG9",
+   "EIF3E",
+   "EMC2",
+   "ENY2",
+   "KCNV1",
+   "MIR2053",
+   "NUDCD1",
+   "OXR1",
+   "PKHD1L1",
+   "RSPO2",
+   "SYBU",
+   "TMEM74",
+   "TRHR",
+   "ZFPM2"
+  ],
+  "amp_DENND3": [
+   "ADCK5",
+   "AGO2",
+   "ARC",
+   "ARHGAP39",
+   "BAI1",
+   "BOP1",
+   "BREA2",
+   "C8ORF31",
+   "C8ORF33",
+   "C8ORF82",
+   "CCDC166",
+   "CDC42P3",
+   "CHRAC1",
+   "COL22A1",
+   "COMMD5",
+   "CPSF1",
+   "CYC1",
+   "CYHR1",
+   "CYP11B1",
+   "CYP11B2",
+   "DENND3",
+   "DGAT1",
+   "EEF1D",
+   "EPPK1",
+   "EXOSC4",
+   "FAM203A",
+   "FAM83H",
+   "FBXL6",
+   "FOXH1",
+   "GLI4",
+   "GML",
+   "GPAA1",
+   "GPIHBP1",
+   "GPR20",
+   "GPT",
+   "GRINA",
+   "GSDMD",
+   "HSA-MIR-1302-7",
+   "HSA-MIR-151",
+   "HSF1",
+   "IQANK1",
+   "JRK",
+   "KCNK9",
+   "KIAA1875",
+   "KIFC2",
+   "LINC00051",
+   "LINC01300",
+   "LNCOC1",
+   "LOC100133669",
+   "LRRC14",
+   "LRRC24",
+   "LY6D",
+   "LY6E",
+   "LY6H",
+   "LY6K",
+   "LYNX1",
+   "LYPD2",
+   "MAF1",
+   "MAFA",
+   "MAPK15",
+   "MFSD3",
+   "MIR1234",
+   "MIR4472-1",
+   "MIR4664",
+   "MIR661",
+   "MIR6845",
+   "MIR6846",
+   "MIR6847",
+   "MIR6848",
+   "MIR6849",
+   "MIR6850",
+   "MIR6893",
+   "MIR7112-2",
+   "MIR937",
+   "MIR939",
+   "MROH1",
+   "MROH5",
+   "MROH6",
+   "NAPRT1",
+   "NRBP2",
+   "OPLAH",
+   "PARP10",
+   "PLEC",
+   "PPP1R16A",
+   "PSCA",
+   "PTK2",
+   "PTP4A3",
+   "PUF60",
+   "PYCRL",
+   "RECQL4",
+   "RHPN1",
+   "RHPN1-AS1",
+   "RPL8",
+   "SCRIB",
+   "SCRT1",
+   "SCXA",
+   "SCXB",
+   "SHARPIN",
+   "SLC39A4",
+   "SLC45A4",
+   "SLC52A2",
+   "SLURP1",
+   "SPATC1",
+   "THEM6",
+   "TIGD5",
+   "TMED10P1",
+   "TMEM249",
+   "TONSL",
+   "TONSL-AS1",
+   "TOP1MT",
+   "TRAPPC9",
+   "TSNARE1",
+   "TSTA3",
+   "VPS28",
+   "ZC3H3",
+   "ZFP41",
+   "ZNF16",
+   "ZNF250",
+   "ZNF251",
+   "ZNF252P",
+   "ZNF252P-AS1",
+   "ZNF34",
+   "ZNF517",
+   "ZNF623",
+   "ZNF696",
+   "ZNF7",
+   "ZNF707"
+  ],
+  "amp_DPY19L4": [
+   "CDH17",
+   "DPY19L4",
+   "ESRP1",
+   "INTS8",
+   "KIAA1429",
+   "RAD54B"
+  ],
+  "amp_EIF3H": [
+   "AARD",
+   "EIF3H",
+   "EXT1",
+   "LINC00536",
+   "MED30",
+   "MIR3610",
+   "RAD21",
+   "RAD21-AS1",
+   "SAMD12",
+   "SAMD12-AS1",
+   "SLC30A8",
+   "TNFRSF11B",
+   "TRPS1",
+   "UTP23"
+  ],
+  "amp_ERBB2": [
+   "CDK12",
+   "ERBB2",
+   "GRB7",
+   "GSDMB",
+   "IKZF3",
+   "MIEN1",
+   "MIR4728",
+   "NEUROD2",
+   "ORMDL3",
+   "PGAP3",
+   "PNMT",
+   "PPP1R1B",
+   "STARD3",
+   "TCAP",
+   "ZPBP2"
+  ],
+  "mut_ERBB2": [
+   "ERBB2"
+  ],
+  "amp_ERLIN2": [
+   "ADRB3",
+   "BRF2",
+   "ERLIN2",
+   "GOT1L1",
+   "GPR124",
+   "LOC728024",
+   "PROSC",
+   "RAB11FIP1",
+   "ZNF703"
+  ],
+  "amp_FAM72C": [
+   "FAM72C",
+   "SRGAP2D"
+  ],
+  "amp_FAM91A1": [
+   "ATAD2",
+   "C8ORF76",
+   "COL14A1",
+   "COLEC10",
+   "DEPTOR",
+   "DERL1",
+   "DSCC1",
+   "ENPP2",
+   "FAM83A",
+   "FAM83A-AS1",
+   "FAM91A1",
+   "FBXO32",
+   "FER1L6-AS1",
+   "HAS2",
+   "HAS2-AS1",
+   "HSA-MIR-548D-1",
+   "KLHL38",
+   "MAL2",
+   "MIR4663",
+   "MIR6844",
+   "MRPL13",
+   "MTBP",
+   "NDUFB9",
+   "NOV",
+   "RNF139",
+   "RNF139-AS1",
+   "SNTB1",
+   "TAF2",
+   "TATDN1",
+   "TBC1D31",
+   "TRMT12",
+   "WDYHV1",
+   "ZHX1",
+   "ZHX1-C8ORF76",
+   "ZHX2"
+  ],
+  "amp_FGFR1": [
+   "ASH2L",
+   "BAG4",
+   "C8ORF86",
+   "DDHD2",
+   "EIF4EBP1",
+   "FGFR1",
+   "HTRA4",
+   "LETM2",
+   "LSM1",
+   "PLEKHA2",
+   "PPAPDC1B",
+   "RNF5P1",
+   "STAR",
+   "TACC1",
+   "WHSC1L1"
+  ],
+  "amp_FLAD1": [
+   "ASH1L",
+   "FLAD1",
+   "GON4L",
+   "NUP210L"
+  ],
+  "mut_GATA3": [
+   "GATA3"
+  ],
+  "amp_GOLPH3L": [
+   "ADAMTSL4",
+   "ARNT",
+   "CA14",
+   "ECM1",
+   "ENSA",
+   "FLG",
+   "FLG2",
+   "GOLPH3L",
+   "HORMAD1",
+   "HRNR",
+   "RPRD2",
+   "SETDB1",
+   "TARS2",
+   "TCHH"
+  ],
+  "amp_IRF2BP2": [
+   "ACTN2",
+   "ARID4B",
+   "GNPAT",
+   "HEATR1",
+   "IRF2BP2",
+   "LYST",
+   "MTR",
+   "NID1",
+   "PCNXL2",
+   "PGBD5",
+   "RBM34",
+   "RYR2",
+   "SIPA1L2",
+   "SLC35F3",
+   "SPRTN",
+   "TARBP1",
+   "TRIM67",
+   "ZP4"
+  ],
+  "amp_KCNU1": [
+   "KCNU1"
+  ],
+  "amp_KHDRBS3": [
+   "FAM135B",
+   "KHDRBS3",
+   "LINC01591"
+  ],
+  "mut_KMT2C": [
+   "KMT2C"
+  ],
+  "mut_MAP2K4": [
+   "MAP2K4"
+  ],
+  "mut_MAP3K1": [
+   "MAP3K1"
+  ],
+  "amp_MIR7851": [
+   "MIR7851"
+  ],
+  "amp_MYC": [
+   "ANXA13",
+   "ASAP1",
+   "CASC8",
+   "CCAT1",
+   "CCAT2",
+   "FAM84B",
+   "FER1L6",
+   "FER1L6-AS2",
+   "KIAA0196",
+   "LINC00861",
+   "LINC00964",
+   "MIR1204",
+   "MIR1205",
+   "MIR1206",
+   "MIR1207",
+   "MIR1208",
+   "MTSS1",
+   "MYC",
+   "NSMCE2",
+   "PCAT1",
+   "POU5F1B",
+   "PRNCR1",
+   "PVT1",
+   "SQLE",
+   "TMEM65",
+   "TMEM75",
+   "TRIB1",
+   "ZNF572"
+  ],
+  "mut_NF1": [
+   "NF1"
+  ],
+  "amp_NFASC": [
+   "CR1",
+   "NFASC",
+   "PLXNA2"
+  ],
+  "amp_NKAIN3": [
+   "NKAIN3"
+  ],
+  "amp_NOTCH2": [
+   "BCL9",
+   "HIST2H2BE",
+   "ITGA10",
+   "NBPF10",
+   "NOTCH2",
+   "PDE4DIP",
+   "SV2A",
+   "TXNIP"
+  ],
+  "amp_PIK3CA": [
+   "PIK3CA"
+  ],
+  "mut_PIK3CA": [
+   "PIK3CA"
+  ],
+  "mut_PIK3R1": [
+   "PIK3R1"
+  ],
+  "del_PTEN": [
+   "PTEN"
+  ],
+  "mut_PTEN": [
+   "PTEN"
+  ],
+  "del_RB1": [
+   "RB1"
+  ],
+  "amp_RIMS2": [
+   "ABRA",
+   "ATP6V1C1",
+   "AZIN1",
+   "BAALC",
+   "BAALC-AS1",
+   "BAALCOS",
+   "CTHRC1",
+   "DCAF13",
+   "DCSTAMP",
+   "DPYS",
+   "FZD6",
+   "HSA-MIR-548A-3",
+   "KLF10",
+   "LRP12",
+   "MIR3151",
+   "MIR5680",
+   "NCALD",
+   "ODF1",
+   "RIMS2",
+   "RRM2B",
+   "SLC25A32",
+   "UBR5"
+  ],
+  "amp_RNU6-83P": [
+   "RNU6-83P"
+  ],
+  "mut_RUNX1": [
+   "RUNX1"
+  ],
+  "amp_RUNX1T1": [
+   "RUNX1T1"
+  ],
+  "amp_SHANK2": [
+   "SHANK2",
+   "SHANK2-AS1"
+  ],
+  "amp_STK3": [
+   "MATN2",
+   "NIPAL2",
+   "POP1",
+   "STK3"
+  ],
+  "mut_TP53": [
+   "TP53"
+  ],
+  "amp_TP53BP2": [
+   "TP53BP2"
+  ],
+  "amp_TPCN2": [
+   "HSA-MIR-3164",
+   "MRGPRF",
+   "RP11-554A11.8",
+   "TPCN2"
+  ],
+  "amp_UNC5D": [
+   "UNC5D"
+  ],
+  "amp_USH2A": [
+   "USH2A"
+  ],
+  "amp_ZFHX4": [
+   "ZFHX4"
+  ],
+  "amp_ZNF695": [
+   "ADSS",
+   "AHCTF1",
+   "AKT3",
+   "C1ORF101",
+   "CEP170",
+   "CHML",
+   "CNST",
+   "EXO1",
+   "FMN2",
+   "HNRNPU",
+   "KIF26B",
+   "KMO",
+   "NLRP3",
+   "OR11L1",
+   "OR13G1",
+   "OR14A16",
+   "OR14C36",
+   "OR14I1",
+   "OR2AK2",
+   "OR2G2",
+   "OR2G3",
+   "OR2G6",
+   "OR2L13",
+   "OR2L2",
+   "OR2T1",
+   "OR2T2",
+   "OR2T27",
+   "OR2T3",
+   "OR2T34",
+   "OR2W5",
+   "PLD5",
+   "RGS7",
+   "SDCCAG8",
+   "SMYD3",
+   "TFB2M",
+   "TRIM58",
+   "WDR64",
+   "ZNF124",
+   "ZNF496",
+   "ZNF669",
+   "ZNF692",
+   "ZNF695"
+  ],
+  "kg_pathway_R-HSA-111447": [
+   "pathway:R-HSA-111447",
+   "pathway:R-HSA-9614399"
+  ],
+  "kg_pathway_R-HSA-1358803": [
+   "pathway:R-HSA-1358803"
+  ],
+  "kg_pathway_R-HSA-199418": [
+   "pathway:R-HSA-199418",
+   "pathway:R-HSA-8948751"
+  ],
+  "kg_pathway_R-HSA-389357": [
+   "pathway:R-HSA-373753",
+   "pathway:R-HSA-389357",
+   "pathway:R-HSA-9607240"
+  ],
+  "kg_pathway_R-HSA-5628897": [
+   "pathway:R-HSA-5628897"
+  ],
+  "kg_pathway_R-HSA-6804758": [
+   "pathway:R-HSA-139915",
+   "pathway:R-HSA-6803211",
+   "pathway:R-HSA-6804758",
+   "pathway:R-HSA-6804759"
+  ],
+  "kg_pathway_R-HSA-69202": [
+   "pathway:R-HSA-69202",
+   "pathway:R-HSA-69656"
+  ],
+  "kg_pathway_R-HSA-8876198": [
+   "pathway:R-HSA-8876198"
+  ],
+  "kg_pathway_R-HSA-8941332": [
+   "pathway:R-HSA-198323",
+   "pathway:R-HSA-198693",
+   "pathway:R-HSA-211163",
+   "pathway:R-HSA-389513",
+   "pathway:R-HSA-392451",
+   "pathway:R-HSA-5218920",
+   "pathway:R-HSA-5674400",
+   "pathway:R-HSA-8941332"
+  ],
+  "kg_pathway_R-HSA-9634638": [
+   "pathway:R-HSA-9634638"
+  ],
+  "kg_pathway_R-HSA-418990": [
+   "pathway:R-HSA-418990"
+  ],
+  "kg_pathway_R-HSA-9031628": [
+   "pathway:R-HSA-9031628"
+  ],
+  "kg_pathway_R-HSA-844456": [
+   "pathway:R-HSA-844456"
+  ],
+  "kg_pathway_R-HSA-9660826": [
+   "pathway:R-HSA-9660826"
+  ],
+  "kg_pathway_R-HSA-9707564": [
+   "pathway:R-HSA-9707564"
+  ],
+  "kg_pathway_R-HSA-6784531": [
+   "pathway:R-HSA-6784531"
+  ],
+  "kg_pathway_R-HSA-196108": [
+   "pathway:R-HSA-196108"
+  ],
+  "kg_pathway_R-HSA-382556": [
+   "pathway:R-HSA-382556",
+   "pathway:R-HSA-5678895"
+  ],
+  "kg_pathway_R-HSA-5655302": [
+   "pathway:R-HSA-109704",
+   "pathway:R-HSA-5654689",
+   "pathway:R-HSA-5654695",
+   "pathway:R-HSA-5654710",
+   "pathway:R-HSA-5654720",
+   "pathway:R-HSA-5655253",
+   "pathway:R-HSA-5655302",
+   "pathway:R-HSA-8853338"
+  ],
+  "kg_pathway_R-HSA-8853336": [
+   "pathway:R-HSA-1839120",
+   "pathway:R-HSA-190374",
+   "pathway:R-HSA-75893",
+   "pathway:R-HSA-8853336"
+  ],
+  "kg_pathway_R-HSA-418555": [
+   "pathway:R-HSA-418555",
+   "pathway:R-HSA-9660821"
+  ],
+  "kg_pathway_R-HSA-418594": [
+   "pathway:R-HSA-418594"
+  ],
+  "kg_pathway_R-HSA-5689901": [
+   "pathway:R-HSA-5689901"
+  ],
+  "kg_pathway_R-HSA-8980692": [
+   "pathway:R-HSA-8980692",
+   "pathway:R-HSA-9013406"
+  ],
+  "kg_pathway_R-HSA-983168": [
+   "pathway:R-HSA-167161",
+   "pathway:R-HSA-167162",
+   "pathway:R-HSA-167172",
+   "pathway:R-HSA-674695",
+   "pathway:R-HSA-73776",
+   "pathway:R-HSA-73779",
+   "pathway:R-HSA-75953",
+   "pathway:R-HSA-76042",
+   "pathway:R-HSA-983168"
+  ],
+  "kg_pathway_R-HSA-381753": [
+   "pathway:R-HSA-381753"
+  ],
+  "kg_pathway_R-HSA-611105": [
+   "pathway:R-HSA-611105",
+   "pathway:R-HSA-8951664"
+  ],
+  "kg_pathway_R-HSA-6798695": [
+   "pathway:R-HSA-6798695"
+  ],
+  "kg_pathway_R-HSA-8877330": [
+   "pathway:R-HSA-8877330"
+  ],
+  "kg_pathway_R-HSA-3108214": [
+   "pathway:R-HSA-3108214"
+  ],
+  "kg_pathway_R-HSA-9013407": [
+   "pathway:R-HSA-9013407"
+  ],
+  "kg_pathway_R-HSA-211976": [
+   "pathway:R-HSA-211976"
+  ],
+  "kg_pathway_R-HSA-1650814": [
+   "pathway:R-HSA-1650814",
+   "pathway:R-HSA-8948216"
+  ],
+  "kg_pathway_R-HSA-114608": [
+   "pathway:R-HSA-114608"
+  ],
+  "kg_pathway_R-HSA-1227986": [
+   "pathway:R-HSA-1227986",
+   "pathway:R-HSA-1250196",
+   "pathway:R-HSA-1251932",
+   "pathway:R-HSA-1963640",
+   "pathway:R-HSA-416572",
+   "pathway:R-HSA-6785631",
+   "pathway:R-HSA-8847993",
+   "pathway:R-HSA-8863795",
+   "pathway:R-HSA-9634285",
+   "pathway:R-HSA-9652282",
+   "pathway:R-HSA-9665233",
+   "pathway:R-HSA-9665244",
+   "pathway:R-HSA-9665245",
+   "pathway:R-HSA-9665246",
+   "pathway:R-HSA-9665247",
+   "pathway:R-HSA-9665249",
+   "pathway:R-HSA-9665250",
+   "pathway:R-HSA-9665251",
+   "pathway:R-HSA-9665686",
+   "pathway:R-HSA-9665737"
+  ],
+  "kg_pathway_R-HSA-1236382": [
+   "pathway:R-HSA-112399",
+   "pathway:R-HSA-114604",
+   "pathway:R-HSA-1236382",
+   "pathway:R-HSA-1250342",
+   "pathway:R-HSA-180292",
+   "pathway:R-HSA-1839117",
+   "pathway:R-HSA-198203",
+   "pathway:R-HSA-2029485",
+   "pathway:R-HSA-2424491",
+   "pathway:R-HSA-2730905",
+   "pathway:R-HSA-388841",
+   "pathway:R-HSA-5637810",
+   "pathway:R-HSA-5655291",
+   "pathway:R-HSA-8851907",
+   "pathway:R-HSA-8853334",
+   "pathway:R-HSA-9027276",
+   "pathway:R-HSA-9028335",
+   "pathway:R-HSA-912526",
+   "pathway:R-HSA-912631",
+   "pathway:R-HSA-9603381",
+   "pathway:R-HSA-9670439",
+   "pathway:R-HSA-9673767",
+   "pathway:R-HSA-9673770",
+   "pathway:R-HSA-9703465",
+   "pathway:R-HSA-9703648"
+  ],
+  "kg_pathway_R-HSA-445144": [
+   "pathway:R-HSA-445144"
+  ],
+  "kg_pathway_R-HSA-8856828": [
+   "pathway:R-HSA-5627123",
+   "pathway:R-HSA-8856828"
+  ],
+  "kg_pathway_R-HSA-8866910": [
+   "pathway:R-HSA-8866910"
+  ],
+  "kg_pathway_R-HSA-9009391": [
+   "pathway:R-HSA-4420097",
+   "pathway:R-HSA-9009391",
+   "pathway:R-HSA-9013149",
+   "pathway:R-HSA-9013404"
+  ],
+  "kg_pathway_R-HSA-1306955": [
+   "pathway:R-HSA-1306955"
+  ],
+  "kg_pathway_R-HSA-1445148": [
+   "pathway:R-HSA-1445148",
+   "pathway:R-HSA-9604323"
+  ],
+  "kg_pathway_R-HSA-354192": [
+   "pathway:R-HSA-354192",
+   "pathway:R-HSA-450385"
+  ],
+  "kg_pathway_R-HSA-3769402": [
+   "pathway:R-HSA-3769402"
+  ],
+  "kg_pathway_R-HSA-450604": [
+   "pathway:R-HSA-450604"
+  ],
+  "kg_pathway_R-HSA-6785807": [
+   "pathway:R-HSA-6785807"
+  ],
+  "kg_pathway_R-HSA-5689896": [
+   "pathway:R-HSA-111448",
+   "pathway:R-HSA-3232118",
+   "pathway:R-HSA-390471",
+   "pathway:R-HSA-5689896",
+   "pathway:R-HSA-6804114",
+   "pathway:R-HSA-6804115",
+   "pathway:R-HSA-6804116",
+   "pathway:R-HSA-6804754",
+   "pathway:R-HSA-6811555",
+   "pathway:R-HSA-69481",
+   "pathway:R-HSA-69895",
+   "pathway:R-HSA-8852276",
+   "pathway:R-HSA-8941855"
+  ],
+  "kg_pathway_R-HSA-9018519": [
+   "pathway:R-HSA-9018519"
+  ],
+  "kg_pathway_R-HSA-2672351": [
+   "pathway:R-HSA-2672351"
+  ],
+  "kg_pathway_R-HSA-5654219": [
+   "pathway:R-HSA-1839122",
+   "pathway:R-HSA-190370",
+   "pathway:R-HSA-190373",
+   "pathway:R-HSA-5654219",
+   "pathway:R-HSA-5654687",
+   "pathway:R-HSA-5654688",
+   "pathway:R-HSA-5654693",
+   "pathway:R-HSA-5654726"
+  ],
+  "kg_pathway_R-HSA-190322": [
+   "pathway:R-HSA-1307965",
+   "pathway:R-HSA-140534",
+   "pathway:R-HSA-181429",
+   "pathway:R-HSA-181430",
+   "pathway:R-HSA-1839130",
+   "pathway:R-HSA-190322",
+   "pathway:R-HSA-190372",
+   "pathway:R-HSA-190375",
+   "pathway:R-HSA-190377",
+   "pathway:R-HSA-2033514",
+   "pathway:R-HSA-2033519",
+   "pathway:R-HSA-210500",
+   "pathway:R-HSA-212676",
+   "pathway:R-HSA-2562578",
+   "pathway:R-HSA-264642",
+   "pathway:R-HSA-3371378",
+   "pathway:R-HSA-388844",
+   "pathway:R-HSA-5213460",
+   "pathway:R-HSA-5218900",
+   "pathway:R-HSA-5357786",
+   "pathway:R-HSA-5654221",
+   "pathway:R-HSA-5654227",
+   "pathway:R-HSA-5654228",
+   "pathway:R-HSA-5654699",
+   "pathway:R-HSA-5654700",
+   "pathway:R-HSA-5654704",
+   "pathway:R-HSA-5654706",
+   "pathway:R-HSA-5654712",
+   "pathway:R-HSA-5654719",
+   "pathway:R-HSA-5654727",
+   "pathway:R-HSA-5654732",
+   "pathway:R-HSA-5654733",
+   "pathway:R-HSA-5658623",
+   "pathway:R-HSA-5675482",
+   "pathway:R-HSA-69416",
+   "pathway:R-HSA-75157",
+   "pathway:R-HSA-75158",
+   "pathway:R-HSA-9013957",
+   "pathway:R-HSA-933543",
+   "pathway:R-HSA-9693928"
+  ],
+  "kg_pathway_R-HSA-375165": [
+   "pathway:R-HSA-375165"
+  ],
+  "kg_pathway_R-HSA-72163": [
+   "pathway:R-HSA-72163"
+  ],
+  "kg_pathway_R-HSA-6794361": [
+   "pathway:R-HSA-5357905",
+   "pathway:R-HSA-6794361"
+  ],
+  "kg_pathway_R-HSA-445095": [
+   "pathway:R-HSA-445095"
+  ],
+  "kg_pathway_R-HSA-447043": [
+   "pathway:R-HSA-447043"
+  ],
+  "kg_pathway_R-HSA-6809371": [
+   "pathway:R-HSA-6809371"
+  ],
+  "kg_pathway_R-HSA-6791226": [
+   "pathway:R-HSA-6790901",
+   "pathway:R-HSA-6791226"
+  ],
+  "kg_pathway_R-HSA-6807505": [
+   "pathway:R-HSA-6807505"
+  ],
+  "kg_pathway_R-HSA-1483166": [
+   "pathway:R-HSA-1483166"
+  ],
+  "kg_pathway_R-HSA-9013148": [
+   "pathway:R-HSA-9013148",
+   "pathway:R-HSA-9013409"
+  ],
+  "kg_pathway_R-HSA-2534343": [
+   "pathway:R-HSA-2534343"
+  ],
+  "kg_pathway_R-HSA-2467813": [
+   "pathway:R-HSA-2467813",
+   "pathway:R-HSA-2500257"
+  ],
+  "kg_pathway_R-HSA-5689880": [
+   "pathway:R-HSA-5689880",
+   "pathway:R-HSA-983231"
+  ],
+  "kg_pathway_R-HSA-8939236": [
+   "pathway:R-HSA-8939236"
+  ],
+  "kg_pathway_R-HSA-156827": [
+   "pathway:R-HSA-156827",
+   "pathway:R-HSA-72649",
+   "pathway:R-HSA-72689",
+   "pathway:R-HSA-72695",
+   "pathway:R-HSA-72702",
+   "pathway:R-HSA-72706",
+   "pathway:R-HSA-9010553",
+   "pathway:R-HSA-975956",
+   "pathway:R-HSA-975957"
+  ],
+  "kg_pathway_R-HSA-1296072": [
+   "pathway:R-HSA-1296072"
+  ],
+  "kg_pathway_R-HSA-1912408": [
+   "pathway:R-HSA-1912408"
+  ],
+  "kg_pathway_R-HSA-4086398": [
+   "pathway:R-HSA-203927",
+   "pathway:R-HSA-4086398",
+   "pathway:R-HSA-5578749"
+  ],
+  "kg_pathway_R-HSA-5687128": [
+   "pathway:R-HSA-1362277",
+   "pathway:R-HSA-2122947",
+   "pathway:R-HSA-2173796",
+   "pathway:R-HSA-2644606",
+   "pathway:R-HSA-2894862",
+   "pathway:R-HSA-4411364",
+   "pathway:R-HSA-5687128",
+   "pathway:R-HSA-8866911"
+  ],
+  "kg_pathway_R-HSA-8934593": [
+   "pathway:R-HSA-8934593"
+  ],
+  "kg_pathway_R-HSA-8943723": [
+   "pathway:R-HSA-8943723",
+   "pathway:R-HSA-8986944"
+  ],
+  "kg_pathway_R-HSA-210993": [
+   "pathway:R-HSA-1433557",
+   "pathway:R-HSA-186763",
+   "pathway:R-HSA-1963642",
+   "pathway:R-HSA-210993",
+   "pathway:R-HSA-416476",
+   "pathway:R-HSA-512988",
+   "pathway:R-HSA-8853659",
+   "pathway:R-HSA-9664565",
+   "pathway:R-HSA-9665348"
+  ],
+  "kg_pathway_R-HSA-447041": [
+   "pathway:R-HSA-447041"
+  ],
+  "kg_pathway_R-HSA-6807878": [
+   "pathway:R-HSA-6807878"
+  ],
+  "kg_pathway_R-HSA-212436": [
+   "pathway:R-HSA-212436"
+  ],
+  "kg_pathway_R-HSA-9696273": [
+   "pathway:R-HSA-9696273"
+  ],
+  "kg_pathway_R-HSA-975634": [
+   "pathway:R-HSA-975634"
+  ],
+  "kg_pathway_R-HSA-3371453": [
+   "pathway:R-HSA-3371453"
+  ],
+  "kg_pathway_R-HSA-1989781": [
+   "pathway:R-HSA-1989781"
+  ],
+  "kg_pathway_R-HSA-2871796": [
+   "pathway:R-HSA-2871796"
+  ],
+  "kg_pathway_R-HSA-8951430": [
+   "pathway:R-HSA-8951430"
+  ],
+  "kg_pathway_R-HSA-9616222": [
+   "pathway:R-HSA-9616222"
+  ],
+  "kg_pathway_R-HSA-5685942": [
+   "pathway:R-HSA-5685938",
+   "pathway:R-HSA-5685942",
+   "pathway:R-HSA-5693554",
+   "pathway:R-HSA-5693568",
+   "pathway:R-HSA-5693579",
+   "pathway:R-HSA-5693607",
+   "pathway:R-HSA-5693616"
+  ],
+  "kg_pathway_R-HSA-5693565": [
+   "pathway:R-HSA-2559584",
+   "pathway:R-HSA-2559585",
+   "pathway:R-HSA-2559586",
+   "pathway:R-HSA-349425",
+   "pathway:R-HSA-5693565",
+   "pathway:R-HSA-6803207",
+   "pathway:R-HSA-6804760",
+   "pathway:R-HSA-69541"
+  ],
+  "kg_pathway_R-HSA-6804756": [
+   "pathway:R-HSA-6796648",
+   "pathway:R-HSA-6803204",
+   "pathway:R-HSA-6803205",
+   "pathway:R-HSA-6804756",
+   "pathway:R-HSA-6804757",
+   "pathway:R-HSA-69473"
+  ],
+  "kg_pathway_R-HSA-5578775": [
+   "pathway:R-HSA-5578775"
+  ],
+  "kg_pathway_R-HSA-9679191": [
+   "pathway:R-HSA-9679191"
+  ],
+  "kg_pathway_R-HSA-1474228": [
+   "pathway:R-HSA-1474228"
+  ],
+  "kg_pathway_R-HSA-427413": [
+   "pathway:R-HSA-427413",
+   "pathway:R-HSA-72203"
+  ],
+  "kg_pathway_R-HSA-1660499": [
+   "pathway:R-HSA-1660499",
+   "pathway:R-HSA-202424"
+  ],
+  "kg_pathway_R-HSA-430116": [
+   "pathway:R-HSA-430116"
+  ],
+  "kg_pathway_R-HSA-9013026": [
+   "pathway:R-HSA-9013026",
+   "pathway:R-HSA-9013106",
+   "pathway:R-HSA-9013405",
+   "pathway:R-HSA-9013408",
+   "pathway:R-HSA-9013423",
+   "pathway:R-HSA-9035034",
+   "pathway:R-HSA-9696264",
+   "pathway:R-HSA-9696270"
+  ],
+  "kg_pathway_R-HSA-2022090": [
+   "pathway:R-HSA-2022090"
+  ],
+  "kg_pathway_R-HSA-5617472": [
+   "pathway:R-HSA-5617472"
+  ],
+  "kg_pathway_R-HSA-749476": [
+   "pathway:R-HSA-749476",
+   "pathway:R-HSA-76071"
+  ],
+  "kg_pathway_R-HSA-6811434": [
+   "pathway:R-HSA-6811434",
+   "pathway:R-HSA-983189"
+  ],
+  "kg_pathway_R-HSA-3214841": [
+   "pathway:R-HSA-3214841"
+  ],
+  "kg_pathway_R-HSA-3214847": [
+   "pathway:R-HSA-3214847"
+  ],
+  "kg_pathway_R-HSA-8936459": [
+   "pathway:R-HSA-8936459"
+  ],
+  "kg_pathway_R-HSA-1221632": [
+   "pathway:R-HSA-1221632",
+   "pathway:R-HSA-2468052",
+   "pathway:R-HSA-2470946"
+  ],
+  "kg_pathway_R-HSA-69231": [
+   "pathway:R-HSA-69231",
+   "pathway:R-HSA-9661069"
+  ],
+  "kg_pathway_R-HSA-3214858": [
+   "pathway:R-HSA-3214858"
+  ],
+  "kg_pathway_R-HSA-8853884": [
+   "pathway:R-HSA-8853884"
+  ],
+  "kg_pathway_R-HSA-8878166": [
+   "pathway:R-HSA-187577",
+   "pathway:R-HSA-75815",
+   "pathway:R-HSA-8849470",
+   "pathway:R-HSA-8878166"
+  ],
+  "kg_pathway_R-HSA-8951936": [
+   "pathway:R-HSA-8951936"
+  ],
+  "kg_pathway_R-HSA-201722": [
+   "pathway:R-HSA-201722"
+  ],
+  "kg_pathway_R-HSA-2559580": [
+   "pathway:R-HSA-2559580"
+  ],
+  "kg_pathway_R-HSA-977068": [
+   "pathway:R-HSA-977068"
+  ],
+  "kg_pathway_R-HSA-5620971": [
+   "pathway:R-HSA-5620971",
+   "pathway:R-HSA-8943724"
+  ],
+  "kg_pathway_R-HSA-390522": [
+   "pathway:R-HSA-390522"
+  ],
+  "kg_pathway_R-HSA-1442490": [
+   "pathway:R-HSA-1442490"
+  ],
+  "kg_pathway_R-HSA-196843": [
+   "pathway:R-HSA-196843"
+  ],
+  "kg_pathway_R-HSA-8939243": [
+   "pathway:R-HSA-8939243"
+  ],
+  "kg_pathway_R-HSA-193648": [
+   "pathway:R-HSA-193648",
+   "pathway:R-HSA-416482"
+  ],
+  "kg_pathway_R-HSA-216083": [
+   "pathway:R-HSA-216083"
+  ],
+  "kg_disease_25483": [
+   "disease:25483"
+  ],
+  "kg_disease_4953": [
+   "disease:4953"
+  ],
+  "kg_disease_5051": [
+   "disease:5051",
+   "disease:552"
+  ],
+  "kg_disease_5590": [
+   "disease:5590"
+  ]
+ }
+}

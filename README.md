@@ -99,6 +99,27 @@ pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 ```
 
+## Neuro-symbolic reasoning and patient reports
+
+The latest iteration combines a survival GNN over the fused graph with RuleKit survival rules over clinical,
+genomic, and PrimeKG predicates. It writes a hospital-style PDF report for every patient, grouped by recorded
+progression timeline: A ≤ 12 months, B 12–24, C 24–36, D > 36, and N no progression. Each report shows the
+clinical record, the predicted risk and progression month next to the recorded outcome, the top-K
+knowledge-graph paths (scored 0.6 × GNNExplainer importance + 0.4 × cohort log-rank evidence for the PrimeKG
+fact), the rules that fire, and the molecular profile. Method, results, and limitations are in
+[neuro-symbolic reports](docs/neurosymbolic_reports.md), and the mentor walkthrough is
+[notebooks/neurosymbolic_patient_reports.ipynb](notebooks/neurosymbolic_patient_reports.ipynb).
+
+```bash
+python scripts/run_neurosymbolic_pipeline.py        # neural, symbolic, fusion, explain stages
+python scripts/build_patient_reports.py --workers 4 # outputs/patient_reports/
+python scripts/build_neurosymbolic_notebook.py      # executes the notebook
+```
+
+Every model, including GNN, rules, random survival forest, and Cox, saturates at a C-index of about 0.67 on the
+full PFS follow-up. The report model is the neuro-symbolic Cox model, chosen by the one-standard-error rule. Its
+neural and symbolic terms add explanation, not accuracy.
+
 ## Validation and limitations
 
 `unittest` tests verify patient/sample mapping, mutation edge fidelity, CNA edge fidelity, graph shape, and raw-MAF count semantics. The runtime generator validates each written graph before export, retains missing CNA-column cases with a logged reason, and does not silently collapse mutation records.

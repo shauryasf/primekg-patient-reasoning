@@ -1,0 +1,25 @@
+00:46:02 INFO Cohort 1083 patients, 145 progressions
+00:47:49 INFO graphsage fold 0 pfs AUROC 0.478 AUPRC 0.212 C-index 0.524 epochs 31
+00:49:28 INFO graphsage fold 1 pfs AUROC 0.672 AUPRC 0.387 C-index 0.678 epochs 37
+00:50:11 INFO graphsage fold 2 pfs AUROC 0.544 AUPRC 0.289 C-index 0.580 epochs 24
+00:50:42 INFO graphsage fold 3 pfs AUROC 0.659 AUPRC 0.320 C-index 0.654 epochs 20
+00:52:11 INFO graphsage fold 4 pfs AUROC 0.567 AUPRC 0.194 C-index 0.578 epochs 40
+00:52:12 INFO gnn_graphsage_cox Harrell C 0.595 (fold mean 0.603 ± 0.062) in 6.2 min
+00:54:03 INFO gcn fold 0 pfs AUROC 0.551 AUPRC 0.207 C-index 0.607 epochs 40
+00:56:32 INFO gcn fold 1 pfs AUROC 0.637 AUPRC 0.334 C-index 0.665 epochs 40
+00:59:00 INFO gcn fold 2 pfs AUROC 0.532 AUPRC 0.206 C-index 0.556 epochs 40
+01:00:19 INFO gcn fold 3 pfs AUROC 0.625 AUPRC 0.244 C-index 0.646 epochs 26
+01:01:07 INFO gcn fold 4 pfs AUROC 0.587 AUPRC 0.242 C-index 0.585 epochs 21
+01:01:08 INFO gnn_gcn_cox Harrell C 0.589 (fold mean 0.612 ± 0.044) in 8.9 min
+01:04:25 INFO rgcn fold 0 pfs AUROC 0.519 AUPRC 0.183 C-index 0.518 epochs 39
+01:07:28 INFO rgcn fold 1 pfs AUROC 0.665 AUPRC 0.297 C-index 0.613 epochs 27
+01:08:36 INFO rgcn fold 2 pfs AUROC 0.550 AUPRC 0.306 C-index 0.619 epochs 16
+01:09:52 INFO rgcn fold 3 pfs AUROC 0.632 AUPRC 0.322 C-index 0.597 epochs 15
+01:10:54 INFO rgcn fold 4 pfs AUROC 0.625 AUPRC 0.235 C-index 0.582 epochs 12
+01:10:56 INFO gnn_rgcn_cox Harrell C 0.564 (fold mean 0.586 ± 0.041) in 9.8 min
+01:11:51 INFO graphsage fold 0 pfs AUROC 0.522 AUPRC 0.188 C-index 0.571 epochs 29
+01:12:19 INFO graphsage fold 1 pfs AUROC 0.643 AUPRC 0.397 C-index 0.694 epochs 14
+01:12:39 INFO graphsage fold 2 pfs AUROC 0.558 AUPRC 0.276 C-index 0.539 epochs 12
+01:13:16 INFO graphsage fold 3 pfs AUROC 0.677 AUPRC 0.359 C-index 0.677 epochs 21
+01:13:53 INFO graphsage fold 4 pfs AUROC 0.600 AUPRC 0.226 C-index 0.629 epochs 19
+01:13:53 INFO gnn_graphsage_cindex Harrell C 0.599 (fold mean 0.622 ± 0.067) in 3.0 min

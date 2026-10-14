@@ -1,0 +1,1 @@
+{"model": "gnn_graphsage_cindex", "architecture": "graphsage", "loss": "cindex"}
