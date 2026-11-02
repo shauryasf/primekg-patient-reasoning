@@ -122,6 +122,8 @@ python scripts/build_neurosymbolic_notebook.py      # executes the walkthrough n
 python scripts/build_logic_novelty_notebook.py      # executes the logic-reasoner novelty notebook
 ```
 
+A browser demo of the fitted model is in [demo/](demo/): open `demo/index.html`, or rebuild it with `python scripts/export_demo_model.py && python demo/build_demo.py`. `node demo/check_engine.js` compares it with the pipeline's saved predictions. The panel deck and the team guide are in [presentation/](presentation/).
+
 Every model, including GNN, logic reasoners, random survival forest, and Cox, saturates at a C-index of about 0.67 on the
 full PFS follow-up. The report model is the neuro-symbolic Cox model, chosen by the one-standard-error rule. Its
 neural and logic terms add explanation, not accuracy.

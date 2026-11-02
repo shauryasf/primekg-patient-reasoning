@@ -1,0 +1,1158 @@
+\documentclass{mnnit}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{url}
+\usepackage{etoolbox}
+% Single spacing inside figures and tables (the class used to do this; see mnnit.cls).
+\AtBeginEnvironment{figure}{\def\baselinestretch{1}\normalsize}
+\AtBeginEnvironment{table}{\def\baselinestretch{1}}
+
+\graphicspath{{figures/}}
+\setlength{\emergencystretch}{2.5em}
+
+% ---------------------------------------------------------------------------
+% Group-project front matter. mnnit.cls writes the undertaking in the first
+% person singular and puts \@author inside a sentence, so both pages are
+% redefined here for four authors.
+% ---------------------------------------------------------------------------
+\newcommand{\authorsinline}{Shaurya Pratap Singh (20233262), Surya Pratap Singh (20233283), Vishesh Vigh (20233583), and Sehar Majid Abdi (20233561)}
+
+\makeatletter
+\def\undertakingpage{\newpage%
+    \renewcommand{\baselinestretch}{1.3}
+    \vspace*{\fill}
+    \centerline{\LARGE\bf UNDERTAKING}
+    \vspace{2cm}
+    \begin{center}
+    \begin{minipage}{5.2in}
+    \parindent=0pt
+    We declare that the work presented in this report titled
+    ``{\sl\@title}'', submitted to the \mbox{\@dept} Department, \@college, for
+    the award of the {\bf\emph{\@degree}} degree in \mbox{\bf\emph{\@specialization}},
+    is our original work. We have not plagiarized or submitted the same work for
+    the award of any other degree. In case this undertaking is found incorrect, we accept
+    that our degree may be unconditionally withdrawn.\par
+    \vspace*{1.5cm}
+    \@submitdate\\Prayagraj\par
+    \vspace*{1.8cm}
+    \begin{tabular}{@{}p{2.5in}p{2.5in}@{}}
+    \rule{2.1in}{0.4pt} & \rule{2.1in}{0.4pt}\\
+    Shaurya Pratap Singh (20233262) & Surya Pratap Singh (20233283)\\[1.6cm]
+    \rule{2.1in}{0.4pt} & \rule{2.1in}{0.4pt}\\
+    Vishesh Vigh (20233583) & Sehar Majid Abdi (20233561)
+    \end{tabular}
+    \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+}
+
+\long\def\signature#1{%
+\begin{center}
+\begin{minipage}{5.2in}
+\parindent=0pt
+Certified that the work contained in the report titled
+``{\sl\@title}'', by \authorsinline, has been carried out under my
+supervision and that this work has not been submitted elsewhere for a
+degree.
+\par
+\vspace{3cm}
+\hbox to 5.2in{\@submitdate\hfill
+    \vbox{\hsize 3in\vrule width 2in height0.4pt\par#1}\hss}
+\end{minipage}
+\end{center}
+}
+\makeatother
+
+% Citations. The class redefines thebibliography after loading natbib, which
+% leaves \cite unresolved (the template's own PDF prints "?"). References are
+% therefore a numbered list cited with \rc{key}, which needs no BibTeX run.
+\makeatletter
+\newcommand{\rc}[1]{[\def\rc@sep{}\@for\rc@key:=#1\do{\rc@sep\ref{ref:\rc@key}\def\rc@sep{, }}]}
+\makeatother
+
+\begin{document}
+\title{Neuro-Symbolic Reasoning over Patient-Specific Knowledge Graphs for Breast Cancer Progression Prediction}
+\author{\begin{tabular}{ll}
+Shaurya Pratap Singh & (20233262)\\
+Surya Pratap Singh & (20233283)\\
+Vishesh Vigh & (20233583)\\
+Sehar Majid Abdi & (20233561)
+\end{tabular}}
+\supervisor{Dr. Shashwati Banerjea}
+\specialization{Computer Science \& Engineering}
+
+\figurespagetrue
+\tablespagetrue
+\beforepreface
+
+\prefacesection{Abstract}
+Predicting whether and when a breast cancer will progress after treatment is a central question in oncology,
+and a prediction is only useful to a clinician if it can be explained. This project builds patient-specific
+knowledge graphs for the 1,083 breast invasive carcinoma patients of the TCGA PanCancer Atlas 2018 cohort and
+fuses each one with PrimeKG, a biomedical knowledge graph of 8.1 million relations. Every patient graph links
+the patient to their tumour sample and to their mutated and copy-number-altered genes from a 500-gene panel.
+These genes are joined to PrimeKG pathways, drugs, and breast-disease entities through their NCBI Entrez
+identifiers.
+
+On these fused graphs we benchmark seven graph neural network architectures (GCN, GraphSAGE, GATv2, R-GCN, RGAT,
+GIN, and a graph transformer) under three objectives (binary cross-entropy, a differentiable concordance index,
+and the Cox partial likelihood). We also add patient-conditioned graph structure learning. Discrimination
+saturates near a concordance index of 0.67 across every model family, and the clinical variables carry most of
+the signal.
+
+We therefore turn the system into a neuro-symbolic one. A survival GNN supplies neural edge importances. For the
+symbolic part we go beyond IF--THEN rule induction and compare four survival-aware reasoners over 422 first-order
+ground atoms, including relational PrimeKG atoms such as $\mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,w)$:
+a Markov logic network whose formula weights are learned with the Cox partial likelihood, probabilistic soft logic
+with a collective patient-similarity rule, a policy-gradient rule generator with a replication reward, and a
+hybrid in which reinforcement learning proposes the Markov logic formulas. The hybrid is the rule engine. A fused
+Cox model, chosen by the one-standard-error rule, produces each patient's risk and survival curve. Accelerated
+failure time models fitted on progressors estimate the month of progression. Each explanation path is scored as
+0.6 times its neural importance plus 0.4 times the weights of the learned formulas it grounds, and a prominence
+cutoff selects the top-K paths.
+
+The system writes a hospital-style PDF report for every patient, grouped by recorded progression timeline. All
+predictions are out-of-fold. The Markov logic engines reach a concordance of 0.63 against 0.62 for RuleKit, with
+69\% of their formulas reasoning over PrimeKG relations against 10\% of RuleKit's rules. The fused model matches the
+best clinical model (concordance 0.664 against 0.675, within one standard error). The progression-month estimate
+is within 12 months of the recorded month for 48\% of progressors, against 37\% for a constant baseline. Every
+report grounds its risk estimate in explicit knowledge-graph paths and weighted logic formulas.
+
+\prefacesection{Acknowledgements}
+We express our sincere gratitude to our supervisor, Dr.\ Shashwati Banerjea, for guidance, patience with
+our many iterations, and above all for steering the project from raw model accuracy towards neuro-symbolic
+reasoning and interpretable patient reports. This feedback shaped every milestone of this work.
+
+We thank the Department of Computer Science and Engineering, Motilal Nehru National Institute of Technology
+Allahabad, for the academic environment and resources that made this project possible. We are grateful to the
+TCGA Research Network and the cBioPortal team for making the BRCA PanCancer Atlas data public, to the Zitnik Lab
+at Harvard for PrimeKG, and to the developers of PyTorch Geometric, lifelines, scikit-survival, and RuleKit, on
+whose open-source work this project is built.
+
+\afterpreface
+
+% ===========================================================================
+\chapter{Introduction}
+% ===========================================================================
+
+Breast cancer is the most commonly diagnosed cancer worldwide, with an estimated 2.3 million new cases in 2020
+\rc{globocan}. Its course after primary treatment varies widely. Some patients never relapse, some progress within
+months, and some progress a decade later. Clinicians estimate this risk from pathological stage, lymph-node
+status, and molecular subtype \rc{pam50}. Genome-scale profiling, however, records hundreds of somatic alterations
+per tumour, and most of them have no established prognostic meaning on their own.
+
+Biomedical knowledge graphs offer a way to read those alterations in context. PrimeKG \rc{primekg} integrates
+twenty curated resources into a single graph of 129,375 nodes and over 8 million relations. It connects genes and
+proteins to pathways, drugs, diseases, and phenotypes. An altered gene in a tumour can therefore be connected to the
+pathways it participates in, to the drugs that target it, and to the breast diseases it has been linked to. Graph
+neural networks (GNNs) \rc{gcn,graphsage} can learn from such structure, and explainers such as GNNExplainer
+\rc{gnnexplainer} can say which parts of a graph drove a prediction.
+
+\section{Motivation}
+A prognostic model is only useful at the bedside if a clinician can see why it reached its conclusion.
+Purely neural models over large graphs give a score without reasons. Purely symbolic models, such as survival
+rules, are readable but cannot weigh thousands of interacting facts. Neuro-symbolic AI \rc{neurosymbolic} combines
+the two. Neural components learn from data, and symbolic components state knowledge explicitly and can be checked.
+
+This project started as a pure GNN benchmark. After several iterations, including relation-aware architectures,
+concordance training, and graph structure learning, its predictive performance saturated. Following our
+supervisor's direction, the final phase builds a neuro-symbolic layer and turns its output into per-patient
+reports. The reports explain every prediction with knowledge-graph paths and weighted logic formulas, and they group
+patients by when they progressed.
+
+\section{Problem Statement}
+Given the clinical record and the somatic mutation and copy-number profile of a breast cancer patient, together
+with the PrimeKG biomedical knowledge graph, the system must:
+\begin{enumerate}
+  \item estimate the patient's risk of disease progression and their progression-free survival curve;
+  \item estimate the month in which progression occurs, given that it occurs;
+  \item explain the estimate through explicit, verifiable knowledge-graph paths and weighted logic formulas; and
+  \item present the result as a readable clinical report, grouped by progression timeline.
+\end{enumerate}
+Outcome variables must never leak into the model inputs. Every reported prediction must come from a model that
+did not see that patient during training.
+
+\section{Objectives}
+\begin{itemize}
+  \item Build validated patient-specific graphs from the cBioPortal TCGA BRCA PanCancer Atlas 2018 study \rc{cbioportal,cbioportal2}.
+  \item Fuse each patient graph with a filtered PrimeKG neighbourhood through NCBI Entrez identifiers.
+  \item Benchmark GNN architectures and training objectives on leakage-safe progression labels.
+  \item Build a neuro-symbolic model that combines a survival GNN with survival-aware logical reasoning, comparing Markov logic \rc{mln}, probabilistic soft logic \rc{psl}, and reinforcement-learned rules against a RuleKit baseline \rc{rulekit}.
+  \item Estimate the month of progression and evaluate it against the recorded month.
+  \item Generate a hospital-style PDF report for every patient, binned by progression timeline.
+\end{itemize}
+
+\section{Contributions}
+\begin{enumerate}
+  \item A reproducible pipeline from raw cBioPortal tables to validated, leakage-checked patient graphs and PrimeKG-fused PyTorch Geometric graphs, with 58 unit tests.
+  \item A benchmark of seven GNN architectures under three objectives, a horizon sweep, graph structure learning, and an external microarray benchmark, all with out-of-fold evaluation.
+  \item A neuro-symbolic survival model. Its symbolic engine is a \emph{survival Markov logic network} whose
+        first-order formulas, including multi-hop PrimeKG conjunctions, are proposed by a reinforcement-learning
+        rule generator rewarded for replicated log-rank separation, and whose weights are learned with the Cox
+        partial likelihood. It is compared with survival probabilistic soft logic with collective inference, RL
+        rules alone, and RuleKit. Explanation paths are scored as 0.6 times their GNNExplainer importance plus 0.4
+        times the weights of the formulas they ground.
+  \item An honest model-selection procedure (the one-standard-error rule) and a progression-month estimator evaluated against recorded outcomes.
+  \item 1,083 patient reports, group summaries, a cohort overview, and an executed notebook that documents the work.
+\end{enumerate}
+
+\section{Organisation of the Report}
+Chapter~\ref{ch:related} reviews related work on cancer genomics data, knowledge graphs, graph neural networks,
+survival analysis, and rule learning. Chapter~\ref{ch:proposed} describes the proposed system, from data to
+reports. Chapter~\ref{ch:results} gives the experimental setup and analyses the results of every milestone.
+Chapter~\ref{ch:conclusion} concludes and outlines future work. The appendix lists the commands that reproduce
+every result.
+
+% ===========================================================================
+\chapter{Related Work}\label{ch:related}
+% ===========================================================================
+
+\section{Cancer Genomics Data}
+The Cancer Genome Atlas (TCGA) PanCancer Atlas re-analysed more than 10,000 tumours from 33 cancer types with
+uniform pipelines \rc{hoadley}. Liu et al.\ \rc{tcgacdr} curated its clinical data into a resource with four
+standardised endpoints: overall survival, disease-specific survival, disease-free interval, and
+progression-free interval. They recommended progression-free interval for breast cancer because of its event
+count and follow-up. cBioPortal \rc{cbioportal,cbioportal2} distributes these data as tab-delimited study
+bundles. Copy-number calls in these bundles are discretised by GISTIC2.0 \rc{gistic} into homozygous deletion,
+hemizygous deletion, neutral, gain, and high-level amplification. The PAM50 intrinsic subtypes \rc{pam50}
+(Luminal A, Luminal B, HER2-enriched, Basal-like, Normal-like) are the standard molecular classification of breast
+cancer.
+
+\section{Biomedical Knowledge Graphs}
+PrimeKG \rc{primekg} is a precision-medicine knowledge graph built from 20 resources, including Reactome pathways
+\rc{reactome}, DrugBank drug targets \rc{drugbank}, and curated disease-gene associations. It describes 17,080
+diseases with 4,050,249 relations. Its nodes keep source identifiers, such as NCBI Entrez for genes, so patient data
+can be aligned to it without fuzzy name matching. Knowledge graphs supply the symbolic, human-readable layer that
+neuro-symbolic systems reason over.
+
+\section{Graph Neural Networks}
+Graph convolutional networks (GCN) \rc{gcn} propagate degree-normalised neighbour features. GraphSAGE \rc{graphsage}
+learns separate self and neighbour transforms and generalises inductively to unseen graphs, which suits a setting
+with one graph per patient. Graph attention networks learn a weight per edge, and GATv2 \rc{gatv2} fixes the
+static-attention limitation of the original formulation. Relational GCN (R-GCN) \rc{rgcn} and relational graph
+attention (RGAT) \rc{rgat} give each relation type its own weights, which is the classical treatment of
+heterogeneous knowledge graphs. The graph isomorphism network (GIN) \rc{gin} uses sum aggregation and is as
+expressive as the Weisfeiler--Lehman test. TransformerConv \rc{transformerconv} brings multi-head dot-product
+attention with edge features to message passing. All of these are implemented in PyTorch Geometric \rc{pyg}.
+GNNExplainer \rc{gnnexplainer} learns a soft mask over edges that preserves a model's prediction, which yields an
+importance score per edge.
+
+Graph structure learning \rc{gslsurvey,lds} learns which edges a GNN should use, instead of taking the input
+graph as given. This is relevant when a knowledge-graph neighbourhood may be too large or too noisy.
+
+\section{Survival Analysis}
+Progression is a time-to-event outcome with right censoring: a patient without a recorded progression may still
+progress after their last follow-up. The Kaplan--Meier estimator \rc{km} estimates a survival curve non-parametrically.
+The log-rank test \rc{logrank} compares the curves of two groups. The Cox proportional hazards model \rc{cox}
+relates covariates to a hazard ratio and is fitted by maximising the partial likelihood. Accelerated failure time
+(AFT) models \rc{aft} instead model the logarithm of the event time directly. Random survival forests \rc{rsf}
+extend random forests to censored data. DeepSurv \rc{deepsurv} trains a neural network on the Cox partial
+likelihood, the approach our survival GNN follows.
+
+Discrimination is measured by Harrell's concordance index \rc{harrell}: among comparable pairs of patients, the
+fraction in which the one who progressed earlier received the higher risk. Uno's C \rc{uno} reweights pairs by the
+inverse probability of censoring, which removes the dependence on the censoring distribution. Python
+implementations are provided by lifelines \rc{lifelines} and scikit-survival \rc{sksurv}.
+
+\section{Rule Learning for Survival Data}
+LR-Rules \rc{lrrules} is a sequential-covering algorithm for survival data. It grows each rule by adding the
+condition that maximises the log-rank separation between covered and uncovered patients. Each rule's conclusion is
+the Kaplan--Meier curve of the patients it covers. RuleKit \rc{rulekit} packages LR-Rules, together with
+classification and regression rule learners, as a Java library with a Python interface. Survival rules are
+readable statements such as ``IF nodal stage is N3 AND aneuploidy is below 26.5 THEN the progression-free survival
+curve is \ldots'', which makes them a natural symbolic component.
+
+\section{Statistical Relational Learning: Markov Logic and Soft Logic}
+Markov logic networks (MLNs) \rc{mln} attach a real weight $w_k$ to each first-order formula $F_k$ and define a
+log-linear distribution over possible worlds, $P(x) \propto \exp\big(\sum_k w_k\, n_k(x)\big)$, where $n_k(x)$ is
+the number of true groundings of $F_k$. A formula with a large weight is a soft constraint: worlds that violate it
+are less probable but not impossible. MLN learning has two parts: structure learning finds the formulas
+\rc{mlnstructure}, and weight learning fits $w$, usually by maximising a pseudo-likelihood.
+
+Probabilistic soft logic (PSL) \rc{psl} relaxes truth values to $[0,1]$ with the {\L}ukasiewicz t-norm. A weighted
+rule $w: B \Rightarrow H$ becomes the hinge potential $w \max(0, B - H)^q$, its distance to satisfaction. The resulting
+hinge-loss Markov random field has convex MAP inference, so PSL scales to collective reasoning over many
+interrelated entities, for example propagating a label over a similarity graph.
+
+\section{Reinforcement Learning for Rules and Paths}
+Policy-gradient reinforcement learning \rc{reinforce} optimises a stochastic policy from scalar rewards without a
+differentiable objective. In knowledge-graph reasoning, DeepPath \rc{deeppath} and MINERVA \rc{minerva} train
+agents to walk relation paths, and RNNLogic \rc{rnnlogic} trains a recurrent rule generator jointly with a
+reasoning predictor that scores its rules. We follow the generator idea with a gated recurrent unit \rc{gru} that
+writes conjunctive survival rules, rewarded by log-rank separation, and we use its output as the structure learner
+of a survival MLN.
+
+\section{Neuro-Symbolic AI}
+Garcez and Lamb \rc{neurosymbolic} describe neuro-symbolic AI as the integration of neural learning with symbolic
+knowledge representation and reasoning, so that systems can both learn from data and explain themselves with
+explicit knowledge. In biomedicine this typically means grounding neural predictions in curated knowledge graphs
+and rules. Our design follows that pattern. The neural component scores knowledge-graph paths, the symbolic
+component supplies population evidence for the facts on those paths, and a survival rule learner states the
+cohort-level regularities explicitly.
+
+\section{Gene-Expression Prognosis Cohorts}
+GSE2034 \rc{gse2034} (286 lymph-node-negative patients, Affymetrix arrays) and GSE2990 \rc{gse2990} (189 patients
+with relapse-free survival) are classic external breast cancer prognosis cohorts. We use them as an external
+benchmark for the graph models.
+
+% ===========================================================================
+\chapter{Proposed Work}\label{ch:proposed}
+% ===========================================================================
+
+Figure~\ref{fig:pipeline} gives an overview of the system. Patient graphs are built from TCGA and fused with a
+filtered PrimeKG neighbourhood. A survival GNN and a survival rule learner run on the same cohort and the same
+folds. Their risks are fused into one Cox model, and every patient receives a report that combines the
+prediction with GNN-scored knowledge-graph paths and the rules that fire for them.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig_pipeline.png}
+  \caption{Overview of the neuro-symbolic progression system.}
+  \label{fig:pipeline}
+\end{figure}
+
+\section{Data}
+The study is the cBioPortal \texttt{brca\_tcga\_pan\_can\_atlas\_2018} bundle. We verified every data file
+against the official SHA-256 checksums. Four tables are used:
+\begin{itemize}
+  \item \texttt{data\_clinical\_patient.txt}: 1,084 patients, 38 columns, including the PFS status and months;
+  \item \texttt{data\_clinical\_sample.txt}: 1,084 primary tumour samples, 19 columns;
+  \item \texttt{data\_mutations.txt}: 126,252 MAF mutation records with 111 annotation columns;
+  \item \texttt{data\_cna.txt}: discrete GISTIC calls for 25,128 genes across 1,070 samples.
+\end{itemize}
+A streamed audit of all 23 tables in the bundle records their schemas and missingness. The expression,
+methylation, protein, and structural-variant modalities were inspected and deliberately excluded to keep the
+graph interpretable.
+
+\paragraph{Leakage policy.} Outcome columns (OS, DSS, DFS, and PFS status and months, the new-tumour-event flag,
+and the cancer status at last contact) are never features. A guard function rejects any feature whose name
+matches an outcome column, and tests assert it.
+
+\section{Patient Graph Construction}
+Each patient is a \texttt{networkx} \texttt{MultiDiGraph} with the schema
+Patient $\rightarrow$ Sample $\rightarrow$ Gene (Figure~\ref{fig:patientgraph}):
+\begin{itemize}
+  \item \textbf{Patient} nodes carry age, sex, PAM50 subtype, AJCC stage, and pathological M stage.
+  \item \textbf{Sample} nodes carry the tumour type, OncoTree code, aneuploidy score, and a raw MAF record count.
+  \item \textbf{Gene} nodes are keyed by HGNC symbol and Entrez identifier. The identifier pair avoids merging the
+        duplicated symbol rows of the CNA matrix.
+  \item \texttt{has\_mutation} edges preserve each MAF record (variant class, protein change, coordinates,
+        alleles, caller filters). \texttt{has\_CNA} edges carry the GISTIC value.
+\end{itemize}
+Exact duplicate CNA calls are deduplicated. Contradictory calls for the same gene and sample are withheld and
+logged rather than resolved arbitrarily. Every graph is validated before export.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.85\textwidth]{fig_patient_graph.png}
+  \caption{A Milestone~1 patient graph (TCGA-A2-A0SW): one patient, one tumour sample, and its mutated genes.}
+  \label{fig:patientgraph}
+\end{figure}
+
+\section{Gene Panel}
+To bound graph size, genes are restricted to a 500-gene panel ranked by an integrated alteration score: the number
+of samples with a mutation plus the number with an extreme CNA ($-2$ or $+2$). Twenty-seven literature breast
+cancer drivers are always included: TP53, PIK3CA, GATA3, CDH1, ERBB2, PTEN, MAP3K1, BRCA1, BRCA2, RB1, CCND1, MYC,
+ATM, ESR1, AKT1, MAP2K4, KMT2C, ARID1A, NF1, EGFR, FGFR1, FOXA1, CBFB, RUNX1, PIK3R1, SF3B1, and BAP1. For
+modelling, CNA evidence is limited to homozygous deletion and high-level amplification.
+
+\section{Fusion with PrimeKG}
+PrimeKG's 8,100,498 edges are streamed once and filtered to a 4,570-edge panel slice that keeps four relations:
+\begin{itemize}
+  \item \texttt{protein\_protein} edges between two panel genes (772);
+  \item \texttt{pathway\_protein} edges from panel genes to Reactome pathways (2,410);
+  \item \texttt{drug\_protein} edges from panel genes to DrugBank drugs (858);
+  \item \texttt{disease\_protein} edges to diseases whose name contains ``breast'' or ``mammary'' (530).
+\end{itemize}
+Patient genes join PrimeKG proteins on Entrez identifier. The fused graph (Figure~\ref{fig:fused}) adds, for each
+altered gene, its panel protein partners, its pathways, drugs, and breast-disease links, and the unaltered panel
+genes that share a pathway with it (two hops). Every relation is also stored in reverse so that three
+message-passing layers can carry pathway context back to the patient node. Over the cohort the median fused graph
+has 632 nodes and 2,526 directed edges.
+
+Node features have one width: a node-type one-hot, a 19-field clinical block on the patient node, a five-field
+alteration block on gene nodes (mutated, amplified, deleted, $\log(1+\text{mutation count})$, known driver), and a
+trainable embedding for every gene, pathway, drug, and disease.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{fig_fused_graph.png}
+  \caption{Part of a fused graph: altered genes of one patient connected to PrimeKG partner proteins, pathways, and a breast-disease node.}
+  \label{fig:fused}
+\end{figure}
+
+\section{Progression Labels}
+The target is the progression-free interval (\texttt{PFS\_STATUS}, \texttt{PFS\_MONTHS}). 1,083 patients have a
+usable status, and 145 of them have a recorded progression. A censored patient was not seen to progress during
+follow-up. Treating censoring as ``never progresses'' biases a binary model, so two endpoints are used:
+\begin{itemize}
+  \item \textbf{36-month landmark} (\texttt{pfs\_36m}): label 1 for progression at or before 36 months and 0 for
+        follow-up beyond 36 months. Patients censored before 36 months are dropped, which leaves 498 patients and
+        89 events.
+  \item \textbf{Full follow-up} (\texttt{pfs}): the time and event pair for all 1,083 patients, used by the survival
+        objectives and by the neuro-symbolic model.
+\end{itemize}
+The PFS months define the target and the comparable pairs. They are never model inputs.
+
+\section{Graph Neural Network Models}
+Seven architectures share one design: three message-passing layers of width 64, dropout 0.3, and a readout that
+concatenates the patient node with mean- and max-pooling over the patient and altered genes. A linear clinical head
+is added to the graph score through a gate that starts near zero, so training begins from the clinical score. The
+architectures are GCN, GraphSAGE, GATv2 (four heads), R-GCN and RGAT over the eight relation types, GIN (a control
+that ignores relations), and a graph transformer that reads a learned relation embedding as an edge feature. A
+multilayer perceptron over the clinical block and a 500-gene alteration multi-hot, and a clinical logistic
+regression, are the non-graph baselines.
+
+\subsection{Training Objectives}
+\begin{itemize}
+  \item \textbf{Weighted binary cross-entropy} on the landmark label.
+  \item \textbf{Differentiable C-index}: for comparable pairs $(i,j)$ with $t_i < t_j$ and $\delta_i = 1$, minimise
+        $1 - \frac{1}{|P|}\sum_{(i,j)\in P}\sigma\!\left(\frac{r_i - r_j}{\tau}\right)$ over each mini-batch.
+  \item \textbf{Cox partial likelihood} (Breslow ties):
+  \begin{equation}
+    \mathcal{L} = -\frac{1}{N_e}\sum_{i:\,\delta_i=1}\Big(r_i - \log\!\!\sum_{j:\,t_j \ge t_i}\! e^{r_j}\Big),
+  \end{equation}
+  where $r_i$ is the model's log-risk for patient $i$.
+\end{itemize}
+
+\section{Patient-Conditioned Graph Structure Learning}
+A fixed two-hop neighbourhood may include PrimeKG edges that are irrelevant to a given patient. The
+graph-structure-learning (GSL) variant retrieves up to three hops and learns a weight for every PrimeKG edge from
+the edge's endpoints, its relation, and the patient's clinical context. In the hop-prior version, edges within the
+fixed two hops start at weight 1, so training starts from the fixed graph. The third hop sits behind a
+patient-specific gate that starts closed (about 0.12) and must cross 0.5 to contribute. The learned weight
+multiplies messages in GCN, GraphSAGE, and GATv2. The relational convolutions in PyTorch Geometric accept no edge
+weight, so GSL with them is refused rather than silently ignored.
+
+\section{Neuro-Symbolic Progression Model}
+The final system has four stages, all run over one cohort (1,083 patients) and one set of stratified five-fold
+splits. Every prediction, rule, and path score for a patient therefore comes from models trained on the four
+folds that exclude that patient.
+
+\subsection{Neural Component: Survival GNN}
+GCN, GraphSAGE, and R-GCN are trained on the fused graphs with the Cox objective, and GraphSAGE also with the
+C-index objective, on the full follow-up. Mini-batches of 128 graphs are used for the Cox loss so that each batch
+holds enough events for its risk sets. Early stopping uses the validation C-index. The best model by fold-mean
+C-index supplies the neural risk. For every patient, GNNExplainer \rc{gnnexplainer}, run on the fold model that
+held that patient out, supplies a soft importance for every edge of the patient's graph.
+
+\subsection{Symbolic Baseline: Predicates and RuleKit Rules}
+Each patient is described by 188 readable predicates:
+\begin{itemize}
+  \item \textbf{Clinical (10)}: age, T stage, N stage, M stage, AJCC stage, PAM50 subtype, histology (ductal,
+        lobular, other), radiation therapy, aneuploidy score, and tumour mutational burden.
+  \item \textbf{Genomic (58)}: mutations of the 27 drivers, driver copy-number changes, amplicons, and the number of
+        altered panel genes. Co-amplified genes whose patient sets overlap with Jaccard index $\ge 0.8$ are merged
+        into one predicate named after a driver, for example ``MYC amplified (+27 co-altered genes)''. Mutations
+        of non-driver genes, mostly long passenger genes such as TTN or RYR2, are excluded.
+  \item \textbf{Knowledge-graph (120)}: ``an altered gene of this patient is annotated to Reactome pathway $P$''
+        (116) or ``\ldots is linked to breast disease $D$'' (4). Predicates are kept when 5--60\% of patients carry
+        them, and near-duplicates are merged.
+\end{itemize}
+Predicate selection uses prevalence only, never the outcome. Binary predicates enter RuleKit as ``yes'' or
+missing, so a rule can say ``TP53 mutated'' but cannot be built from the absence of a rare mutation.
+
+As a baseline, RuleKit's LR-Rules \rc{lrrules,rulekit} is fitted on each training fold (minimum coverage 5\% of new patients, at
+most three conditions per rule). A new patient's prediction is the average Kaplan--Meier curve of the rules that
+cover them. The rule risk is the negative restricted mean survival time up to 120 months:
+\begin{equation}
+  r^{\text{rule}}_i = -\int_0^{120} \hat{S}^{\text{rule}}_i(t)\,dt .
+\end{equation}
+
+\subsection{Knowledge-Graph Fact Evidence}\label{sec:kgevidence}
+For every PrimeKG pathway, drug, and disease node $v$, the fact $f_v$ is ``the patient has an altered gene directly
+annotated to $v$''. On each training fold a vectorised two-group log-rank test compares carriers with
+non-carriers, giving an observed/expected hazard-ratio estimate and a z statistic $z_v$. Facts with fewer than 15
+carriers are skipped. In total 1,053 facts receive evidence.
+
+\subsection{Logic Reasoners: Beyond IF--THEN Rules}\label{sec:logic}
+RuleKit's crisp rules cover few patients, carry no weights, and rarely use the knowledge graph. We therefore build
+four survival-aware reasoners over a shared set of first-order \emph{ground atoms} and compare them on the same
+folds.
+
+\paragraph{Ground atoms.} Every atom is a closed formula about a patient $p$, and its value $n(p)$ is its number of
+true groundings. There are 26 clinical atoms such as $\mathit{NStage}(p, \mathrm{N3})$ or
+$\mathit{Age}(p) \ge 65$, 57 genomic atoms such as $\mathit{Mutated}(p, \mathrm{TP53})$, and 339 relational PrimeKG
+atoms
+\begin{equation}
+  n_w(p) = \big|\{\, g : \mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,w) \,\}\big|,
+\end{equation}
+and likewise with $\mathit{TargetedBy}(g,d)$ for drugs and $\mathit{LinkedTo}(g,d)$ for breast diseases. Atoms
+are kept at 3--90\% prevalence, which never uses the outcome. Atoms with identical carrier sets are merged, and
+the merged atom keeps every PrimeKG node it stands for.
+
+\paragraph{Survival Markov logic network (Cox-MLN).} Every formula concludes progression,
+$w_k : \mathit{Body}_k(p) \Rightarrow \mathit{Progress}(p)$. The bodies are every atom plus up to 150
+clinical/genomic $\times$ PrimeKG conjunctions mined on the training fold. With fully observed evidence and one
+query atom per patient, MLN inference factorises patient by patient into the score
+$\eta(p) = \sum_k w_k \log\!\big(1 + n_k(p)\big)$, where $\log(1+n)$ dampens patients with many co-amplified genes in
+one pathway. The usual conditional likelihood would treat censored patients as non-progressors. We instead learn the
+weights by maximising the elastic-net-penalised Cox partial likelihood \rc{elasticnet,coxnet}
+\begin{equation}
+  \max_{w}\; \sum_{i:\,\delta_i = 1}\Big(\eta_i - \log\!\!\sum_{j:\,t_j \ge t_i}\! e^{\eta_j}\Big)
+  \;-\; \lambda\Big(\alpha\|w\|_1 + \tfrac{1-\alpha}{2}\|w\|_2^2\Big),
+\end{equation}
+with $\alpha = 0.5$ and $\lambda$ chosen by inner three-fold C-index. The $\ell_1$ term performs structure
+learning: formulas whose weight reaches zero are pruned.
+
+\paragraph{Survival probabilistic soft logic (S-PSL).} The query atom $\mathit{HighRisk}(p) = h_p \in [0,1]$ is
+inferred from the program
+\begin{align}
+  w^+_k &: \mathit{Fact}_k(p) \Rightarrow \mathit{HighRisk}(p), \nonumber\\
+  w^-_k &: \mathit{Fact}_k(p) \Rightarrow \neg\mathit{HighRisk}(p), \nonumber\\
+  s^+ &: \mathit{Similar}(p,q) \wedge \mathit{HighRisk}(q) \Rightarrow \mathit{HighRisk}(p), \nonumber\\
+  s^- &: \mathit{Similar}(p,q) \wedge \neg\mathit{HighRisk}(q) \Rightarrow \neg\mathit{HighRisk}(p),
+\end{align}
+plus a prior $\neg\mathit{HighRisk}(p)$. Facts are the 40 strongest atoms on the training fold, with PrimeKG
+counts softened to $\min(1, n/2)$. $\mathit{Similar}(p,q)$ links each patient to their ten most similar training
+patients by cosine similarity of atoms. For those neighbours $h_q$ is observed: it is a censoring-aware soft target,
+the Kaplan--Meier probability of progression by 36 months given the patient's follow-up. MAP inference minimises
+the squared-hinge energy by 40 projected-gradient steps. Inference is unrolled, so the rule weights are learned end
+to end by soft-label cross-entropy plus a Cox term.
+
+\paragraph{Reinforcement-learned rules (RL-Rules).} A GRU policy \rc{gru} writes a rule one atom at a time (up to
+three atoms, or STOP), masking atoms of an already chosen clinical variable. It is trained with REINFORCE
+\rc{reinforce}, a moving-average baseline, and an entropy bonus over 160 batches of 256 episodes per fold. The
+training fold is split into a 70\% search part, halved into $A$ and $B$, and a 30\% validation part. The reward is
+a \emph{stability reward}:
+\begin{equation}
+  R(\text{rule}) = \mathbb{1}\big[\operatorname{sign} z_A = \operatorname{sign} z_B\big]\,
+  \frac{\min\!\big(|z_A|, |z_B|, 5\big)}{5} \;-\; 0.03\,(\text{length} - 1),
+\end{equation}
+where $z_A$ and $z_B$ are the log-rank statistics of the covered patients against the rest on the two halves.
+Rules covering fewer than 4\% or more than 90\% of the fold earn nothing. Because tens of thousands of distinct rules
+are sampled, the best training rewards are a multiple-testing artefact. Only rules whose separation replicates on the
+untouched 30\% (same sign, $|z| \ge 1$) are kept, and a ridge Cox model on their activations gives the risk.
+
+\paragraph{RL-structured survival MLN (engine).} The RL search proposes up to 150 replicated multi-atom formulas.
+They are added to the Cox-MLN's candidates, and the Cox-MLN learns every weight. Reinforcement learning does the MLN's
+structure learning and the survival likelihood does its weight learning, combining two of the three families.
+
+\paragraph{Choosing the engine.} The reasoners are compared by fold-mean C-index and the one-standard-error rule
+\rc{cart}. Among reasoners within one standard error of the best, the earliest in the preference order RL-structured
+MLN $>$ MLN $>$ PSL $>$ RL rules $>$ RuleKit is the engine, which puts the richest reasoning first.
+
+\subsection{Fusion and Model Selection}
+The fused model is a ridge-penalised Cox model on the 19-field clinical block, the out-of-fold GNN risk, and the
+out-of-fold risk of the logic engine. This is cross-validated stacking \rc{stacking}. It is compared with clinical Cox models (19
+fields and an extended 27-column design), the neural and symbolic risks alone, and a random survival forest
+\rc{rsf}. The report model is chosen by the one-standard-error rule \rc{cart}. Let $\bar{C}^*$ be the best
+fold-mean C-index and $s^*$ its standard deviation over the $k=5$ folds. Every model with
+$\bar{C} \ge \bar{C}^* - s^*/\sqrt{k}$ is statistically tied with the best, and among those the most explainable
+model, the neuro-symbolic one, is chosen.
+
+\subsection{Estimating the Month of Progression}
+Most patients never progress, so the plain median of a Cox survival curve is usually undefined. The quantity
+reported is the time to progression \emph{given} that progression occurs. Three families of estimators are
+compared on held-out progressors:
+\begin{itemize}
+  \item the conditional median of the fused survival curve, the month at which $F(t)/F(\tau) = 1/2$ with
+        $F = 1 - S$, for $\tau \in \{60, 120, 180\}$ months;
+  \item log-normal and log-logistic AFT models \rc{aft} fitted on the training-fold progressors only, using the
+        extended clinical design, the GNN risk, and the logic-engine risk;
+  \item a constant baseline, the median progression month of the training-fold progressors.
+\end{itemize}
+The estimator with the lowest mean absolute error is used. Its interquartile range is reported with it, and the
+estimate is mapped to one of four windows.
+
+\subsection{Neuro-Symbolic Path Scoring and Top-K Selection}
+A candidate explanation path is a walk over stored edges of the patient's fused graph:
+patient $\rightarrow$ sample $\rightarrow$ altered gene $\rightarrow$ (protein partner) $\rightarrow$ pathway,
+drug, or breast disease. Up to 60 candidates are enumerated per patient. Let $\bar{m}(p)$ be the mean
+GNNExplainer importance of path $p$'s edges and $\operatorname{pct}(\cdot)$ its percentile among all candidate paths
+in the cohort. Let $\mathcal{F}(p)$ be the logic-engine formulas, from the fold that held the patient out, that the
+path \emph{grounds}: formulas that fire for the patient and have an atom that mentions the path's end node or
+altered gene, or a relational PrimeKG atom $\mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,w)$ whose gene $g$
+lies on the path. With $S$ the 95th percentile of $|\sum_{f} w_f|$ over all rule-matched paths,
+\begin{align}
+  \text{neural}(p) &= \operatorname{pct}\big(\bar{m}(p)\big),\\
+  \text{rule}(p) &= \min\!\Big(\big|\textstyle\sum_{f \in \mathcal{F}(p)} w_f\big| \,/\, S,\; 1\Big),\\
+  \text{NS}(p) &= 0.6\,\text{neural}(p) + 0.4\,\text{rule}(p).
+\end{align}
+The sign of $\sum_f w_f$ gives the direction (faster or slower progression). The log-rank evidence of the end fact
+(Section~\ref{sec:kgevidence}) is printed beside the path as cohort context, but no longer drives the score.
+A path is \emph{prominent} when its NS score is in the top 20\% of all candidates in the cohort. A report shows
+$K = \min(5, \text{number of prominent paths})$. At most two paths may pass through the same gene, and each gene
+route and each end node appears once. When fewer than three paths are prominent, the best remaining paths are
+added and marked as non-prominent.
+
+\section{Report Groups}
+Reports are grouped by the \emph{recorded} progression month, so a group never mixes true progressors with
+patients who were not seen to progress (Table~\ref{tab:groups}). Only 12 of the 145 progressions happen within
+six months, so the first group is ``within 12 months''.
+
+\begin{table}[htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{Report groups by recorded progression-free survival.}
+  \label{tab:groups}
+  \begin{tabular}{llr}
+    \toprule
+    Group & Recorded progression & Patients \\
+    \midrule
+    A & $\le 12$ months & 32 \\
+    B & 12--24 months & 30 \\
+    C & 24--36 months & 27 \\
+    D & $> 36$ months & 56 \\
+    N & no progression recorded (censored) & 938 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Patient Report Design}
+Each report is an A4 PDF of two to three pages, produced with ReportLab and Matplotlib. It contains:
+\begin{enumerate}
+  \item \textbf{Patient and tumour record}: demographics, PAM50 subtype, AJCC stage and TNM, histology, therapy
+        history, aneuploidy, TMB, and MSI score.
+  \item \textbf{Progression assessment}: the risk percentile and tier with a gauge, the probability of progression
+        by 12, 24, 36, and 60 months, the estimated progression month and window, the recorded outcome with a
+        tick or cross against the estimate, and the patient's survival curve against the cohort Kaplan--Meier curve.
+  \item \textbf{Neuro-symbolic reasoning}: the top-K paths drawn as chains with their neural and symbolic score
+        split, a table of the rule evidence behind each path, and the weighted logic formulas that fire for
+        the patient, with their weight, direction, source (RL-proposed, mined, or single atom), support, and the
+        Kaplan--Meier curve of the training patients for whom the strongest formula holds.
+  \item \textbf{Molecular profile and knowledge-graph context}: altered genes with protein change, PrimeKG links,
+        and GNN importance; PrimeKG drug links (research context only); and the five most similar patients by
+        cosine similarity of their predicates, with their recorded outcomes.
+\end{enumerate}
+Each progression group also gets a summary page (group statistics, frequent path end-points, frequent rules,
+common driver alterations, and a patient index) and a combined PDF. A cohort overview compares all models.
+
+% ===========================================================================
+\chapter{Experimental Setup and Results Analysis}\label{ch:results}
+% ===========================================================================
+
+\section{Experimental Setup}
+\paragraph{Hardware and software.} All experiments ran on an Apple Silicon laptop (8 CPU cores, 8 GB RAM) without a
+GPU. Software: Python 3.13, PyTorch 2.14, PyTorch Geometric 2.8, scikit-learn 1.9, lifelines 0.30, scikit-survival
+0.28, RuleKit 2.1.24 on Java 22, and ReportLab 5.0. The full neuro-symbolic pipeline runs in about 50 minutes, and
+the 1,083 reports build in about 5 minutes on six processes.
+
+\paragraph{Protocol.} All evaluation is stratified five-fold cross-validation with seed 42. Within each training
+fold, 15\% is held out for early stopping. Clinical standardisation is fitted on training folds only. Graph models
+train for up to 30--40 epochs with patience 6--8, using Adam (learning rate $10^{-3}$, weight decay $10^{-4}$).
+
+\paragraph{Metrics.} AUROC and AUPRC for the landmark label; Harrell's C (pooled, and the mean $\pm$ standard
+deviation over folds); Uno's C truncated at 120 months; time-dependent AUC at 12, 36, and 60 months; and the
+integrated Brier score up to 120 months. For the month of progression: mean and median absolute error, the share
+of estimates within 12 months, window accuracy, and interquartile-range coverage.
+
+\section{Milestone 1: Patient Graphs}
+Graphs were built and validated for every patient. A raw-PFS binary GraphSAGE model on all 1,083 patients
+reached only AUROC 0.542 and AUPRC 0.216, close to chance. Censoring makes ``no recorded progression'' an unreliable
+negative label, which motivated the landmark endpoint.
+
+\section{Milestone 2: PrimeKG Fusion and the 36-Month Benchmark}
+Table~\ref{tab:36m} shows the first fused-graph benchmark on the 36-month landmark (498 patients, 89 events;
+the prevalence, which is the AUPRC of a random ranking, is 0.179). The clinical logistic regression is the best
+model. GCN is the best graph model and comes close without beating it. The gene multi-hot MLP is the weakest,
+because the wide alteration vector adds noise. Figure~\ref{fig:roc36} shows the out-of-fold ROC curves of the
+graph models.
+
+\begin{table}[htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{36-month progression, five-fold mean $\pm$ standard deviation.}
+  \label{tab:36m}
+  \begin{tabular}{lcc}
+    \toprule
+    Model & AUROC & AUPRC \\
+    \midrule
+    Clinical logistic regression & $0.703 \pm 0.081$ & $0.463 \pm 0.133$ \\
+    GCN & $0.680 \pm 0.076$ & $0.396 \pm 0.091$ \\
+    GraphSAGE & $0.650 \pm 0.045$ & $0.379 \pm 0.091$ \\
+    GATv2 & $0.631 \pm 0.046$ & $0.355 \pm 0.060$ \\
+    MLP (clinical + gene multi-hot) & $0.562 \pm 0.098$ & $0.262 \pm 0.064$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.62\textwidth]{fig_36m_roc.png}
+  \caption{Out-of-fold ROC curves of the graph models on the 36-month endpoint.}
+  \label{fig:roc36}
+\end{figure}
+
+\paragraph{Choice of horizon.} Figure~\ref{fig:horizon} sweeps the landmark from 12 to 60 months with the clinical
+model. Short horizons have too few events (32 at 12 months). Long horizons drop too many censored patients (only
+344 remain at 60 months). The 36-month horizon balances the two.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{fig_horizon.png}
+  \caption{Clinical AUROC as a function of the progression window.}
+  \label{fig:horizon}
+\end{figure}
+
+\section{Concordance Training and the Architecture Zoo}
+Table~\ref{tab:zoo} compares the seven architectures under binary cross-entropy and under the C-index objective
+on the same folds. RGAT and GCN are the strongest graph models. GIN, which ignores relation types, is the weakest,
+so typing the edges matters. The C-index objective does not improve discrimination over cross-entropy. No graph
+model beats the clinical baseline (AUROC 0.703, C-index 0.682), and fold standard deviations of 0.05--0.15 exceed
+most of the differences.
+
+\begin{table}[htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{36-month endpoint: AUROC, AUPRC, and Harrell's C (five-fold means) under two objectives.}
+  \label{tab:zoo}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lccc|ccc}
+    \toprule
+    & \multicolumn{3}{c|}{Cross-entropy} & \multicolumn{3}{c}{C-index objective} \\
+    Model & AUROC & AUPRC & C & AUROC & AUPRC & C \\
+    \midrule
+    RGAT & 0.694 & 0.412 & 0.672 & 0.678 & 0.389 & 0.658 \\
+    GCN & 0.688 & 0.415 & 0.665 & 0.658 & 0.379 & 0.639 \\
+    GraphSAGE & 0.679 & 0.406 & 0.658 & 0.660 & 0.393 & 0.643 \\
+    GATv2 & 0.638 & 0.366 & 0.626 & 0.640 & 0.366 & 0.628 \\
+    R-GCN & 0.627 & 0.352 & 0.616 & 0.602 & 0.343 & 0.597 \\
+    Transformer & 0.613 & 0.354 & 0.607 & 0.627 & 0.376 & 0.617 \\
+    GIN & 0.590 & 0.320 & 0.581 & 0.558 & 0.263 & 0.555 \\
+    MLP & 0.570 & 0.274 & 0.562 & 0.566 & 0.263 & 0.560 \\
+    \bottomrule
+  \end{tabular}}
+\end{table}
+
+\section{Graph Structure Learning}
+Figure~\ref{fig:gsl} compares the fixed two-hop graph with two GSL variants. The first variant used free edge
+weights and let the scorer read the hop index. It closed the entire second hop (mean weight 0.24, and none of 5,745
+hop-2 edges above 0.5), and GCN's AUPRC fell from 0.396 to 0.316. The hop-prior variant starts from the fixed graph
+and gates only the third hop. Its run reported higher means (AUROC about 0.70 and AUPRC about 0.46 for all three
+models), but within the fold standard deviations. That run's directory was not kept, so those bars are transcribed
+from its report and cannot be recomputed.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig_gsl.png}
+  \caption{Graph structure learning against the fixed two-hop graph on the 36-month endpoint.}
+  \label{fig:gsl}
+\end{figure}
+
+\section{External Benchmark on GSE2034}
+On the GSE2034 microarray cohort (286 patients, bone-relapse label, a 4,712-gene PrimeKG-aligned expression graph),
+logistic regression reached AUROC $0.722 \pm 0.078$ and AUPRC 0.593. The random forest reached 0.682, GraphSAGE
+0.582, GCN 0.568, and a majority baseline 0.500. As on TCGA, the expression graph did not lift the GNNs above a
+linear baseline. A Cox model on principal components of the TCGA clinical block reached a test C-index of
+$0.659 \pm 0.019$.
+
+\section{Neuro-Symbolic Model}
+\subsection{Cohort}
+Figure~\ref{fig:pfshist} shows when the 145 recorded progressions occur. The median is 26 months, and progressions
+continue past 10 years.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{fig_pfs_hist.png}
+  \caption{Recorded progression months, with the report group boundaries at 12, 24, and 36 months.}
+  \label{fig:pfshist}
+\end{figure}
+
+\subsection{Discrimination and Model Selection}
+Table~\ref{tab:ns} and Figure~\ref{fig:modelcmp} compare all models on the full follow-up, out-of-fold, on the same
+five folds.
+
+\begin{table}[htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{Full PFS follow-up (1,083 patients, 145 events). Harrell's C is the five-fold mean $\pm$ standard
+  deviation. Uno's C is truncated at 120 months, and IBS is the integrated Brier score to 120 months (lower is better).}
+  \label{tab:ns}
+  \begin{tabular}{lccc}
+    \toprule
+    Model & Harrell's C & Uno's C & IBS \\
+    \midrule
+    Clinical Cox (19-field block) & $0.675 \pm 0.035$ & 0.616 & 0.134 \\
+    Clinical Cox (extended) & $0.667 \pm 0.042$ & 0.657 & 0.135 \\
+    \textbf{Neuro-symbolic Cox} (clin.\ + GNN + logic) & $\mathbf{0.664 \pm 0.021}$ & 0.616 & 0.134 \\
+    Neuro-symbolic Cox (ext. clinical) & $0.662 \pm 0.042$ & 0.655 & 0.135 \\
+    GNN + logic, no clinical & $0.642 \pm 0.056$ & 0.606 & 0.139 \\
+    Survival MLN (logic alone) & $0.630 \pm 0.055$ & 0.617 & -- \\
+    RL-structured MLN (logic engine alone) & $0.628 \pm 0.055$ & 0.615 & -- \\
+    GraphSAGE (C-index objective) & $0.622 \pm 0.067$ & 0.573 & -- \\
+    RuleKit survival rules & $0.619 \pm 0.048$ & 0.623 & -- \\
+    GCN (Cox objective) & $0.612 \pm 0.044$ & 0.549 & -- \\
+    GraphSAGE (Cox objective) & $0.603 \pm 0.062$ & 0.556 & -- \\
+    R-GCN (Cox objective) & $0.586 \pm 0.041$ & 0.590 & -- \\
+    Survival PSL & $0.604 \pm 0.059$ & 0.571 & -- \\
+    RL rules & $0.563 \pm 0.046$ & 0.570 & -- \\
+    Random survival forest & $0.554 \pm 0.023$ & 0.559 & 0.145 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig_model_comparison.png}
+  \caption{Fold-mean Harrell's C-index of every model. The report model is highlighted.}
+  \label{fig:modelcmp}
+\end{figure}
+
+The best fold-mean C-index is 0.675 (clinical Cox), with one standard error of 0.016. Four models clear the bar of
+0.659 and are statistically tied with it. Among them the neuro-symbolic Cox model is chosen because it is the one
+whose prediction can be explained through paths and rules.
+
+Two findings matter for interpretation:
+\begin{enumerate}
+  \item \textbf{Saturation.} GNNs (0.59--0.62), logic reasoners (0.56--0.63), forests (0.55), and Cox models
+        (0.662--0.675) all stop near the same ceiling. Without the clinical block, the neural and logic risks reach
+        0.642 together, better than either alone (0.622 and 0.628). Every Cox model that includes the clinical block
+        reaches 0.662--0.675.
+  \item \textbf{Explanation, not accuracy.} In every fold the fused model gives the GNN and logic terms hazard
+        ratios of 0.94--1.09 per standard deviation with $p > 0.28$. Once the clinical block is present they add no
+        independent prognostic information. The reports state this explicitly.
+\end{enumerate}
+
+\subsection{Symbolic Reasoners Compared}
+Table~\ref{tab:logic} and Figure~\ref{fig:logic} compare the four logic reasoners with the RuleKit baseline on the
+same folds.
+
+\begin{table}[htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{Symbolic reasoners on the full follow-up: five-fold Harrell's C (mean $\pm$ sd), Uno's C, learned formulas
+  per fold, and the share of formulas that reason over a PrimeKG relation.}
+  \label{tab:logic}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Reasoner & Harrell's C & Uno's C & Formulas/fold & PrimeKG \\
+    \midrule
+    Survival MLN (Cox-MLN) & $0.630 \pm 0.055$ & 0.617 & 32.8 & 63\% \\
+    \textbf{RL-structured survival MLN} (engine) & $\mathbf{0.628 \pm 0.055}$ & 0.615 & 35.2 & \textbf{69\%} \\
+    RuleKit LR-Rules (baseline) & $0.619 \pm 0.048$ & 0.623 & 7.8 & 10\% \\
+    Survival PSL (collective) & $0.604 \pm 0.059$ & 0.571 & 40.0 & 63\% \\
+    RL rules (policy gradient) & $0.563 \pm 0.046$ & 0.570 & 25.6 & 91\% \\
+    \bottomrule
+  \end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{fig_logic_comparison.png}
+  \caption{Fold-mean Harrell's C of the symbolic reasoners. The engine is highlighted.}
+  \label{fig:logic}
+\end{figure}
+
+\paragraph{What the comparison shows.}
+\begin{enumerate}
+  \item \textbf{Markov logic leads, but within noise.} Both MLN variants (0.630 and 0.628) are ahead of RuleKit
+        (0.619), PSL (0.604), and RL rules alone (0.563). Their margin over RuleKit is smaller than one fold standard
+        deviation, so the gain is not in discrimination. Under the one-standard-error rule (bar 0.605) MLN,
+        RL-structured MLN, and RuleKit are tied, and the preference order selects the RL-structured MLN.
+  \item \textbf{The gain is in the reasoning.} 69\% of the engine's formulas reason over PrimeKG relations, against
+        10\% of RuleKit's rules. The formulas are weighted, combinable, and multi-hop. Across the folds the engine kept
+        176 formulas: 51 single atoms, 81 mined clinical $\times$ PrimeKG pairs, and 44 multi-atom formulas proposed by
+        reinforcement learning.
+  \item \textbf{Collective inference did not help.} PSL learned a collective weight of about 0.01: in this cohort,
+        similar patients carry no outcome signal beyond their own facts.
+  \item \textbf{RL search overfits on its own.} The policy sampled 20,000--27,000 distinct rules per fold. Even with
+        the replication filter, the rules it ranks highest do not transfer well (0.563). RL is useful as the structure
+        learner of the MLN, where the Cox likelihood and its $\ell_1$ penalty decide which proposals carry weight.
+\end{enumerate}
+
+\paragraph{Learned formulas.} Clinical conditions still carry the largest single weights, for example
+$\mathit{NStage}(p,\mathrm{N0}) \Rightarrow \mathit{Progress}(p)$ (weight $-0.32$ per SD) and
+$\mathit{TStage}(p,\mathrm{T4})$ ($+0.13$). Typical PrimeKG formulas are a mined pair ($+0.15$, 43 patients),
+\begin{multline*}
+  \mathit{NStage}(p,\mathrm{N3}) \wedge \mathit{Altered}(p,g) \\
+  \wedge \mathit{LinkedTo}(g,\text{breast ductal adenocarcinoma}) \Rightarrow \mathit{Progress}(p),
+\end{multline*}
+and an RL-proposed multi-hop formula ($-0.14$, 93 patients, a protective formula; Figure~\ref{fig:rulekm}),
+\begin{multline*}
+  \mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,\text{VEGFA-VEGFR2}) \\
+  \wedge \mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,\text{Ion homeostasis}) \Rightarrow \mathit{Progress}(p).
+\end{multline*}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{fig_rule_km.png}
+  \caption{Kaplan--Meier curve of the patients for whom the RL-proposed formula
+  $\mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,\text{VEGFA-VEGFR2}) \wedge \mathit{Altered}(p,g) \wedge
+  \mathit{InPathway}(g,\text{Ion homeostasis})$ holds, against the cohort.}
+  \label{fig:rulekm}
+\end{figure}
+
+\subsection{Estimating the Month of Progression}
+Table~\ref{tab:timing} scores the estimators on the 145 held-out progressors. The conditional medians of the Cox
+curve are poor, because proportional hazards fix the shape of the curve. The AFT models fitted on progressors are
+best. The chosen log-logistic AFT model is within 12 months of the recorded month for 48\% of progressors (37\% for
+the constant baseline) and in the recorded window for 33\% (19\% for the baseline, about 25\% by chance).
+Figure~\ref{fig:timing} shows that estimates are compressed towards 15--45 months: early progressions are
+overestimated and late ones underestimated. Agreement with the recorded window is 12\% in group A, 60\% in B, 37\%
+in C, and 29\% in D. Several estimators were compared on the same progressors, so the chosen row is mildly
+optimistic.
+
+\begin{table}[htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{Estimating the month of progression on held-out progressors.}
+  \label{tab:timing}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Estimator & MAE & Median AE & $\le 12$ mo & Window & IQR cov. \\
+    \midrule
+    Constant (training progressor median) & 22.9 & 16.0 & 37\% & 19\% & 49\% \\
+    Conditional median, $\tau = 60$ & 23.3 & 18.2 & 33\% & 17\% & 37\% \\
+    Conditional median, $\tau = 120$ & 28.0 & 24.6 & 23\% & 39\% & 41\% \\
+    Conditional median, $\tau = 180$ & 59.4 & 63.1 & 7\% & 39\% & 32\% \\
+    Log-normal AFT on progressors & 20.6 & 12.9 & 48\% & 34\% & 55\% \\
+    \textbf{Log-logistic AFT on progressors} & \textbf{20.1} & \textbf{12.9} & \textbf{48\%} & \textbf{33\%} & \textbf{57\%} \\
+    \bottomrule
+  \end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{fig_timing.png}
+  \caption{Model-estimated against recorded progression month. Bars are the model's interquartile ranges, and the
+  diagonal is perfect agreement.}
+  \label{fig:timing}
+\end{figure}
+
+\subsection{Neuro-Symbolic Paths}
+The explain stage enumerated 59,598 candidate paths for 1,033 patients in about 9 minutes. The other 50 patients
+have no path, because none of their altered genes has a PrimeKG pathway, drug, or breast-disease link. The
+prominence cutoff is an NS score of 0.523 (Figure~\ref{fig:nshist}). 27.5\% of all candidate paths, and 35\% of
+the paths shown in reports, ground at least one learned formula. Most patients (801) receive $K=3$ paths, because
+they have fewer than three prominent paths and are topped up; 62 patients have five prominent paths. A median of
+three weighted formulas fires per patient, and 9.7\% of patients have none. Figure~\ref{fig:paths} shows the four
+prominent paths of patient TCGA-BH-A1EV (group A, progression at 12.0 months). All four ground formulas that raise
+the hazard. The strongest runs from the amplified gene NFASC to the pathway \emph{Neurofascin interactions}
+($\sum w = +0.134$ over two formulas).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{fig_ns_hist.png}
+  \caption{Distribution of neuro-symbolic path scores, with the prominence cutoff at the cohort's 80th percentile.}
+  \label{fig:nshist}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig_paths_example.png}
+  \caption{Top-K paths of patient TCGA-BH-A1EV. The bar on the right splits each NS score into its neural part
+  (navy) and its rule part (red: the grounded formulas raise the hazard; blue: they lower it).}
+  \label{fig:paths}
+\end{figure}
+
+\subsection{Patient Reports}
+The system wrote 1,083 patient reports, five group summaries, four combined group PDFs, and a cohort overview.
+Figures~\ref{fig:report1} to~\ref{fig:report3} show the full report of TCGA-BH-A1EV. Figure~\ref{fig:reportn}
+shows the first page of a patient without recorded progression, whose outcome tile states the follow-up length and
+that censoring is not proof of remission. Figure~\ref{fig:groupsummary} shows the summary page of group A.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig_report_p1.png}
+  \caption{Patient report, page 1: record, progression assessment, survival curve, and summary.}
+  \label{fig:report1}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig_report_p2.png}
+  \caption{Patient report, page 2: top-K knowledge-graph paths and the weighted logic formulas that fire.}
+  \label{fig:report2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig_report_p3.png}
+  \caption{Patient report, page 3: molecular profile, PrimeKG drug links, similar patients, and reading notes.}
+  \label{fig:report3}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig_report_n_p1.png}
+  \caption{First page of a report in group N (no progression recorded).}
+  \label{fig:reportn}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig_group_summary.png}
+  \caption{Summary page of group A, progression within 12 months.}
+  \label{fig:groupsummary}
+\end{figure}
+
+\section{Discussion}
+Across five milestones, every attempt to raise discrimination with graph structure ended at the same ceiling:
+relation-aware layers, concordance objectives, structure learning, and survival training on the full follow-up.
+With 145 events, nodal status, stage, age, and subtype carry most of the prognostic signal, and somatic alterations
+on a 500-gene panel add little beyond it. The PrimeKG facts are not uninformative. Several pathway facts separate
+carriers with hazard ratios around 1.5 on the training folds, and the neural and logic risks together reach a
+C-index of 0.642 without any clinical input. Their information, however, overlaps with the clinical variables. The
+logic reasoners show the same pattern from the symbolic side. Moving from crisp IF--THEN rules to weighted,
+first-order, knowledge-graph-grounded formulas changes \emph{what} the system can say about a patient much more
+than \emph{how well} it ranks patients.
+
+The neuro-symbolic system therefore earns its place through explanation. Each report states which PrimeKG facts the
+graph model attended to, which weighted logic formulas ground those paths, and which formulas fire for the
+patient. It
+does so without claiming accuracy that the evaluation does not support.
+
+% ===========================================================================
+\chapter{Conclusion and Future Work}\label{ch:conclusion}
+% ===========================================================================
+
+\section{Conclusion}
+We built a complete pipeline from raw TCGA tables to patient-specific knowledge graphs fused with PrimeKG,
+benchmarked seven graph neural network architectures under three objectives, and turned the result into a
+neuro-symbolic progression model with per-patient reports. Its symbolic engine replaces IF--THEN rule induction
+with a survival Markov logic network whose first-order, knowledge-graph-grounded formulas are proposed by
+reinforcement learning and weighted by the Cox partial likelihood. We compared it against probabilistic soft logic
+with collective inference, RL rules alone, and RuleKit. The fused model reaches a concordance index of 0.664,
+statistically tied with the best clinical model, and it estimates the month of progression to within a year for
+about half of progressors. Every prediction is out-of-fold and leakage-checked.
+Every one of the 1,083 reports explains its estimate with explicit knowledge-graph paths and weighted logic
+formulas, and
+places the patient in a progression-timeline group.
+
+The central finding is that, on this cohort, knowledge-graph structure adds explanation rather than accuracy. We
+report this result as it is, and the system is designed around it.
+
+\section{Limitations}
+\begin{itemize}
+  \item Discrimination saturates at a C-index of about 0.67 with 145 events. The neuro-symbolic terms carry close to
+        zero weight once clinical variables are present.
+  \item The month-of-progression estimate is coarse. Late progressions (beyond five years) are hard to place.
+  \item The logic engine adds reasoning, not accuracy: Markov logic matches RuleKit within noise, PSL's collective
+        rule found no signal, and RL rules alone overfit their search.
+  \item Paths explain the GNN, which is the weaker component. They are evidence, not causal claims.
+  \item PrimeKG drug links include enzymes, carriers, and transporters, and are not treatment recommendations.
+  \item One cohort, one seed, and no external validation of the reports. The fusion uses cross-validated stacking.
+\end{itemize}
+
+\section{Future Work}
+\begin{itemize}
+  \item \textbf{More modalities}: add expression, methylation, and protein data as node features, which the current
+        graph excludes by design.
+  \item \textbf{Pretrained knowledge-graph embeddings}: initialise PrimeKG node embeddings from TransE or a
+        pretrained biomedical model instead of training them from scratch.
+  \item \textbf{Richer RL reasoning}: let the policy walk multi-hop PrimeKG relation paths (as in MINERVA) rather than
+        choose atoms, and train it jointly with the MLN weights (as in RNNLogic).
+  \item \textbf{Joint MLN inference}: add formulas that link patients (shared pathway disruption) and run full MLN
+        inference instead of the factorised per-patient score.
+  \item \textbf{External validation}: apply the model and reports to METABRIC or GSE2990, whose relapse-free survival
+        times are already extracted.
+  \item \textbf{Clinician evaluation}: have oncologists rate the usefulness and correctness of the reports.
+\end{itemize}
+
+% ===========================================================================
+\appendix
+\chapter{Reproducibility}
+% ===========================================================================
+
+All code is in the project repository. From the repository root, the commands below build the Milestone~1 graphs, run the Milestone~2 benchmark, run the five neuro-symbolic stages (neural, symbolic, fusion, explain), write the reports and the notebook, draw the figures of this report, and run the 58 unit tests:
+
+\begin{verbatim}
+pip install -r requirements.txt
+python scripts/build_patient_graphs.py
+python scripts/train_and_evaluate_gnns.py \
+    --endpoint pfs_36m --skip-sensitivity
+python scripts/run_neurosymbolic_pipeline.py
+python scripts/build_patient_reports.py --workers 4
+python scripts/build_neurosymbolic_notebook.py
+python report/make_figures.py
+python -m unittest discover -s tests
+\end{verbatim}
+
+The neuro-symbolic pipeline caches each stage under \texttt{outputs/neurosymbolic/}. The reports are written to
+\texttt{outputs/patient\_reports/}, in one folder per group. The method is documented in
+\texttt{docs/neurosymbolic\_reports.md}, and the executed walkthrough is
+\texttt{notebooks/neurosymbolic\_patient\_reports.ipynb}. RuleKit needs a Java runtime, version 11 or later.
+
+\begin{table}[htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{Main source modules of the neuro-symbolic system.}
+  \label{tab:modules}
+  \begin{tabular}{>{\ttfamily}l p{7.4cm}}
+    \toprule
+    \normalfont Module & Responsibility \\
+    \midrule
+    src/dataset\_fusion.py & PrimeKG slice, neighbourhood expansion, fused PyG graphs \\
+    src/gnn\_models.py & seven GNN architectures and the clinical residual \\
+    src/survival.py & comparable pairs, C-index, Cox and C-index objectives \\
+    src/neurosymbolic/features.py & clinical, genomic, and PrimeKG predicates \\
+    src/neurosymbolic/rules.py & RuleKit baseline and readable rule text \\
+    src/neurosymbolic/logic/atoms.py & first-order ground atoms, soft survival targets \\
+    src/neurosymbolic/logic/mln.py & survival Markov logic network (Cox-MLN) \\
+    src/neurosymbolic/logic/psl.py & survival probabilistic soft logic \\
+    src/neurosymbolic/logic/rl.py & policy-gradient rule generator \\
+    src/neurosymbolic/logic/runner.py & reasoner comparison and engine choice \\
+    src/neurosymbolic/kg\_evidence.py & vectorised log-rank evidence for PrimeKG facts \\
+    src/neurosymbolic/paths.py & path scoring and top-K selection \\
+    src/neurosymbolic/timing.py & report groups and the progression-month estimators \\
+    src/neurosymbolic/report\_pdf.py & patient reports, group summaries, cohort overview \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ===========================================================================
+% References: numbered list cited with \rc{key} (see the preamble).
+% ===========================================================================
+\renewcommand{\baselinestretch}{1.1}\normalsize
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\labelenumi}{[\arabic{enumi}]}
+\begin{enumerate}
+\small
+\item\label{ref:globocan} H.~Sung, J.~Ferlay, R.~L. Siegel, et al. Global cancer statistics 2020: GLOBOCAN estimates of incidence and mortality worldwide for 36 cancers in 185 countries. \emph{CA: A Cancer Journal for Clinicians}, 71(3):209--249, 2021.
+\item\label{ref:pam50} J.~S. Parker, M.~Mullins, M.~C.~U. Cheang, et al. Supervised risk predictor of breast cancer based on intrinsic subtypes. \emph{Journal of Clinical Oncology}, 27(8):1160--1167, 2009.
+\item\label{ref:primekg} P.~Chandak, K.~Huang, and M.~Zitnik. Building a knowledge graph to enable precision medicine. \emph{Scientific Data}, 10:67, 2023.
+\item\label{ref:gcn} T.~N. Kipf and M.~Welling. Semi-supervised classification with graph convolutional networks. In \emph{International Conference on Learning Representations (ICLR)}, 2017.
+\item\label{ref:graphsage} W.~L. Hamilton, R.~Ying, and J.~Leskovec. Inductive representation learning on large graphs. In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2017.
+\item\label{ref:gnnexplainer} R.~Ying, D.~Bourgeois, J.~You, M.~Zitnik, and J.~Leskovec. GNNExplainer: Generating explanations for graph neural networks. In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2019.
+\item\label{ref:neurosymbolic} A.~d'Avila Garcez and L.~C. Lamb. Neurosymbolic AI: the 3rd wave. \emph{Artificial Intelligence Review}, 56:12387--12406, 2023.
+\item\label{ref:cbioportal} E.~Cerami, J.~Gao, U.~Dogrusoz, et al. The cBio cancer genomics portal: an open platform for exploring multidimensional cancer genomics data. \emph{Cancer Discovery}, 2(5):401--404, 2012.
+\item\label{ref:cbioportal2} J.~Gao, B.~A. Aksoy, U.~Dogrusoz, et al. Integrative analysis of complex cancer genomics and clinical profiles using the cBioPortal. \emph{Science Signaling}, 6(269):pl1, 2013.
+\item\label{ref:rulekit} A.~Gudy\'s, M.~Sikora, and \L.~Wr\'obel. RuleKit: A comprehensive suite for rule-based learning. \emph{Knowledge-Based Systems}, 194:105480, 2020.
+\item\label{ref:hoadley} K.~A. Hoadley, C.~Yau, T.~Hinoue, et al. Cell-of-origin patterns dominate the molecular classification of 10,000 tumors from 33 types of cancer. \emph{Cell}, 173(2):291--304, 2018.
+\item\label{ref:tcgacdr} J.~Liu, T.~Lichtenberg, K.~A. Hoadley, et al. An integrated TCGA pan-cancer clinical data resource to drive high-quality survival outcome analytics. \emph{Cell}, 173(2):400--416, 2018.
+\item\label{ref:gistic} C.~H. Mermel, S.~E. Schumacher, B.~Hill, et al. GISTIC2.0 facilitates sensitive and confident localization of the targets of focal somatic copy-number alteration in human cancers. \emph{Genome Biology}, 12:R41, 2011.
+\item\label{ref:reactome} B.~Jassal, L.~Matthews, G.~Viteri, et al. The Reactome pathway knowledgebase. \emph{Nucleic Acids Research}, 48(D1):D498--D503, 2020.
+\item\label{ref:drugbank} D.~S. Wishart, Y.~D. Feunang, A.~C. Guo, et al. DrugBank 5.0: a major update to the DrugBank database for 2018. \emph{Nucleic Acids Research}, 46(D1):D1074--D1082, 2018.
+\item\label{ref:gatv2} S.~Brody, U.~Alon, and E.~Yahav. How attentive are graph attention networks? In \emph{International Conference on Learning Representations (ICLR)}, 2022.
+\item\label{ref:rgcn} M.~Schlichtkrull, T.~N. Kipf, P.~Bloem, R.~van den Berg, I.~Titov, and M.~Welling. Modeling relational data with graph convolutional networks. In \emph{The Semantic Web (ESWC)}, pages 593--607, 2018.
+\item\label{ref:rgat} D.~Busbridge, D.~Sherburn, P.~Cavallo, and N.~Y. Hammerla. Relational graph attention networks. \emph{arXiv preprint arXiv:1904.05811}, 2019.
+\item\label{ref:gin} K.~Xu, W.~Hu, J.~Leskovec, and S.~Jegelka. How powerful are graph neural networks? In \emph{International Conference on Learning Representations (ICLR)}, 2019.
+\item\label{ref:transformerconv} Y.~Shi, Z.~Huang, S.~Feng, H.~Zhong, W.~Wang, and Y.~Sun. Masked label prediction: Unified message passing model for semi-supervised classification. In \emph{Proceedings of IJCAI}, pages 1548--1554, 2021.
+\item\label{ref:pyg} M.~Fey and J.~E. Lenssen. Fast graph representation learning with PyTorch Geometric. In \emph{ICLR Workshop on Representation Learning on Graphs and Manifolds}, 2019.
+\item\label{ref:gslsurvey} Y.~Zhu, W.~Xu, J.~Zhang, et al. A survey on graph structure learning: Progress and opportunities. \emph{arXiv preprint arXiv:2103.03036}, 2021.
+\item\label{ref:lds} L.~Franceschi, M.~Niepert, M.~Pontil, and X.~He. Learning discrete structures for graph neural networks. In \emph{International Conference on Machine Learning (ICML)}, pages 1972--1982, 2019.
+\item\label{ref:km} E.~L. Kaplan and P.~Meier. Nonparametric estimation from incomplete observations. \emph{Journal of the American Statistical Association}, 53(282):457--481, 1958.
+\item\label{ref:logrank} N.~Mantel. Evaluation of survival data and two new rank order statistics arising in its consideration. \emph{Cancer Chemotherapy Reports}, 50(3):163--170, 1966.
+\item\label{ref:cox} D.~R. Cox. Regression models and life-tables. \emph{Journal of the Royal Statistical Society: Series B}, 34(2):187--220, 1972.
+\item\label{ref:aft} L.~J. Wei. The accelerated failure time model: a useful alternative to the Cox regression model in survival analysis. \emph{Statistics in Medicine}, 11(14--15):1871--1879, 1992.
+\item\label{ref:rsf} H.~Ishwaran, U.~B. Kogalur, E.~H. Blackstone, and M.~S. Lauer. Random survival forests. \emph{The Annals of Applied Statistics}, 2(3):841--860, 2008.
+\item\label{ref:deepsurv} J.~L. Katzman, U.~Shaham, A.~Cloninger, J.~Bates, T.~Jiang, and Y.~Kluger. DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural network. \emph{BMC Medical Research Methodology}, 18:24, 2018.
+\item\label{ref:harrell} F.~E. Harrell, R.~M. Califf, D.~B. Pryor, K.~L. Lee, and R.~A. Rosati. Evaluating the yield of medical tests. \emph{JAMA}, 247(18):2543--2546, 1982.
+\item\label{ref:uno} H.~Uno, T.~Cai, M.~J. Pencina, R.~B. D'Agostino, and L.~J. Wei. On the C-statistics for evaluating overall adequacy of risk prediction procedures with censored survival data. \emph{Statistics in Medicine}, 30(10):1105--1117, 2011.
+\item\label{ref:lifelines} C.~Davidson-Pilon. lifelines: survival analysis in Python. \emph{Journal of Open Source Software}, 4(40):1317, 2019.
+\item\label{ref:sksurv} S.~P\"olsterl. scikit-survival: A library for time-to-event analysis built on top of scikit-learn. \emph{Journal of Machine Learning Research}, 21(212):1--6, 2020.
+\item\label{ref:lrrules} \L.~Wr\'obel, A.~Gudy\'s, and M.~Sikora. Learning rule sets from survival data. \emph{BMC Bioinformatics}, 18:285, 2017.
+\item\label{ref:gse2034} Y.~Wang, J.~G.~M. Klijn, Y.~Zhang, et al. Gene-expression profiles to predict distant metastasis of lymph-node-negative primary breast cancer. \emph{The Lancet}, 365(9460):671--679, 2005.
+\item\label{ref:gse2990} C.~Sotiriou, P.~Wirapati, S.~Loi, et al. Gene expression profiling in breast cancer: understanding the molecular basis of histologic grade to improve prognosis. \emph{Journal of the National Cancer Institute}, 98(4):262--272, 2006.
+\item\label{ref:stacking} D.~H. Wolpert. Stacked generalization. \emph{Neural Networks}, 5(2):241--259, 1992.
+\item\label{ref:mln} M.~Richardson and P.~Domingos. Markov logic networks. \emph{Machine Learning}, 62(1--2):107--136, 2006.
+\item\label{ref:mlnstructure} S.~Kok and P.~Domingos. Learning the structure of Markov logic networks. In \emph{International Conference on Machine Learning (ICML)}, pages 441--448, 2005.
+\item\label{ref:psl} S.~H. Bach, M.~Broecheler, B.~Huang, and L.~Getoor. Hinge-loss Markov random fields and probabilistic soft logic. \emph{Journal of Machine Learning Research}, 18(109):1--67, 2017.
+\item\label{ref:reinforce} R.~J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. \emph{Machine Learning}, 8(3--4):229--256, 1992.
+\item\label{ref:deeppath} W.~Xiong, T.~Hoang, and W.~Y. Wang. DeepPath: A reinforcement learning method for knowledge graph reasoning. In \emph{Proceedings of EMNLP}, pages 564--573, 2017.
+\item\label{ref:minerva} R.~Das, S.~Dhuliawala, M.~Zaheer, et al. Go for a walk and arrive at the answer: Reasoning over paths in knowledge bases using reinforcement learning. In \emph{International Conference on Learning Representations (ICLR)}, 2018.
+\item\label{ref:rnnlogic} M.~Qu, J.~Chen, L.-P. Xhonneux, Y.~Bengio, and J.~Tang. RNNLogic: Learning logic rules for reasoning on knowledge graphs. In \emph{International Conference on Learning Representations (ICLR)}, 2021.
+\item\label{ref:gru} K.~Cho, B.~van Merri\"enboer, C.~Gulcehre, et al. Learning phrase representations using RNN encoder--decoder for statistical machine translation. In \emph{Proceedings of EMNLP}, pages 1724--1734, 2014.
+\item\label{ref:elasticnet} H.~Zou and T.~Hastie. Regularization and variable selection via the elastic net. \emph{Journal of the Royal Statistical Society: Series B}, 67(2):301--320, 2005.
+\item\label{ref:coxnet} N.~Simon, J.~Friedman, T.~Hastie, and R.~Tibshirani. Regularization paths for Cox's proportional hazards model via coordinate descent. \emph{Journal of Statistical Software}, 39(5):1--13, 2011.
+\item\label{ref:cart} L.~Breiman, J.~H. Friedman, R.~A. Olshen, and C.~J. Stone. \emph{Classification and Regression Trees}. Wadsworth, Belmont, CA, 1984.
+\end{enumerate}
+
+\end{document}

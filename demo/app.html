@@ -1,0 +1,470 @@
+<title>BRCA Progression Reasoner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Layout: a clinical worksheet. Patient inputs in a narrow left rail, the model's reasoning reads top to bottom on the right. */
+:root {
+  --bg: #f5f7f9; --panel: #ffffff; --panel-2: #eef2f6; --ink: #12263a; --ink-2: #47586a; --ink-3: #6b7a89;
+  --line: #d8e0e8; --navy: #1c5cab; --navy-ink: #ffffff; --up: #c93534; --down: #1c5cab; --zone-1: #dbe7f4; --zone-2: #f3e7cf; --zone-3: #f6d9d7;
+  --gene: #2a78d6; --pathway: #12875c; --drug: #c9501f; --disease: #6250d6; --neural: #1c5cab; --rule: #c93534;
+  --serif: "IBM Plex Serif", Cambria, Georgia, serif; --sans: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif; --mono: "IBM Plex Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10171f; --panel: #18222c; --panel-2: #212d39; --ink: #e9eef3; --ink-2: #b4c0cc; --ink-3: #8e9dab;
+    --line: #2f3d4b; --navy: #6da7ec; --navy-ink: #0d1a28; --up: #e66767; --down: #6da7ec; --zone-1: #1f3550; --zone-2: #443a22; --zone-3: #4d2a2c;
+    --gene: #6da7ec; --pathway: #3cc794; --drug: #ee8a5e; --disease: #9085e9; --neural: #6da7ec; --rule: #e66767; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10171f; --panel: #18222c; --panel-2: #212d39; --ink: #e9eef3; --ink-2: #b4c0cc; --ink-3: #8e9dab;
+  --line: #2f3d4b; --navy: #6da7ec; --navy-ink: #0d1a28; --up: #e66767; --down: #6da7ec; --zone-1: #1f3550; --zone-2: #443a22; --zone-3: #4d2a2c;
+  --gene: #6da7ec; --pathway: #3cc794; --drug: #ee8a5e; --disease: #9085e9; --neural: #6da7ec; --rule: #e66767; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 20px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 16px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; }
+h1 { font: 600 1.55rem/1.2 var(--serif); margin: 0; text-wrap: balance; }
+.sub { color: var(--ink-2); margin: 2px 0 0; font-size: .92rem; }
+.warn { font-size: .8rem; color: var(--ink-2); border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; background: var(--panel); white-space: nowrap; }
+.tabs { display: flex; gap: 4px; background: var(--panel-2); padding: 4px; border-radius: 9px; }
+.tabs button { flex: 1; border: 0; background: none; color: var(--ink-2); padding: 7px 10px; border-radius: 6px; font: 500 .9rem var(--sans); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--panel); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.layout { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .warn { white-space: normal; } }
+.rail, .main { display: grid; gap: 14px; min-width: 0; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.panel h2 { font: 600 1.02rem/1.3 var(--serif); margin: 0 0 8px; }
+.panel h3 { font: 600 .74rem/1.3 var(--sans); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
+label { display: grid; gap: 3px; font-size: .8rem; color: var(--ink-2); min-width: 0; }
+select, input[type="text"], input[type="number"], textarea { width: 100%; font: 400 .92rem var(--sans); color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+textarea { font-family: var(--mono); font-size: .83rem; min-height: 74px; resize: vertical; }
+:is(select, input, textarea, button, summary):focus-visible { outline: 2px solid var(--navy); outline-offset: 1px; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; }
+.full { grid-column: 1 / -1; }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip { border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); border-radius: 999px; padding: 3px 10px; font: 500 .78rem var(--sans); cursor: pointer; }
+.chip:hover { border-color: var(--navy); }
+.chip[aria-pressed="true"] { background: var(--navy); color: var(--navy-ink); border-color: var(--navy); }
+.tag { display: inline-block; font-size: .72rem; padding: 1px 7px; border-radius: 999px; background: var(--panel-2); color: var(--ink-2); }
+.btn { border: 1px solid var(--navy); background: none; color: var(--navy); padding: 6px 12px; border-radius: 6px; font: 500 .85rem var(--sans); cursor: pointer; }
+.btn.solid { background: var(--navy); color: var(--navy-ink); }
+.note { font-size: .8rem; color: var(--ink-2); margin: 6px 0 0; }
+.note.bad { color: var(--up); }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: .86rem; margin: 0; }
+.kv dt { color: var(--ink-3); } .kv dd { margin: 0; font-variant-numeric: tabular-nums; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 640px) { .stats { grid-template-columns: minmax(0, 1fr); } }
+.big { font: 600 1.9rem/1.1 var(--serif); font-variant-numeric: tabular-nums; }
+.small { font-size: .82rem; color: var(--ink-2); }
+.lead { font-size: 1rem; margin: 0; }
+.gauge { position: relative; height: 12px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin: 8px 0 4px; }
+.gauge i { background: var(--zone-1); border-radius: 3px; } .gauge i:nth-child(2) { background: var(--zone-2); } .gauge i:nth-child(3) { background: var(--zone-3); }
+.gauge b { position: absolute; top: -3px; width: 4px; height: 18px; background: var(--ink); border-radius: 2px; transform: translateX(-2px); }
+.probs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 4px; }
+.probs div { font-variant-numeric: tabular-nums; font-weight: 600; }
+.probs span { display: block; font-weight: 400; font-size: .74rem; color: var(--ink-3); }
+.delta { font-size: .78rem; color: var(--ink-3); }
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--panel); padding: 3px 8px; border-radius: 5px; font-size: .76rem; white-space: nowrap; transform: translate(-50%, -115%); font-variant-numeric: tabular-nums; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: .78rem; color: var(--ink-2); margin-top: 4px; }
+.legend i { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 5px; border-radius: 2px; }
+.legend i.dot { width: 9px; height: 9px; border-radius: 3px; }
+.path { display: grid; gap: 5px; padding: 10px 0; border-top: 1px solid var(--line); }
+.path:first-of-type { border-top: 0; }
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.node { display: inline-flex; align-items: baseline; gap: 5px; border: 1.5px solid currentColor; border-radius: 7px; padding: 2px 8px; font-size: .84rem; max-width: 100%; overflow-wrap: anywhere; }
+.node small { font-size: .66rem; text-transform: uppercase; letter-spacing: .04em; opacity: .85; }
+.node span { color: var(--ink); }
+.node.gene { color: var(--gene); } .node.pathway { color: var(--pathway); } .node.drug { color: var(--drug); } .node.disease { color: var(--disease); }
+.rel { font-size: .72rem; color: var(--ink-3); }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.track { position: relative; height: 10px; background: var(--panel-2); border-radius: 3px; display: flex; gap: 2px; }
+.track span { display: block; height: 100%; } .track .n { background: var(--neural); border-radius: 3px 0 0 3px; } .track .r { background: var(--rule); border-radius: 0 3px 3px 0; }
+.track .cut { position: absolute; top: -3px; width: 2px; height: 16px; background: var(--ink); }
+.num { font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--ink-2); white-space: nowrap; }
+.formula { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 4px 12px; padding: 8px 0; border-top: 1px solid var(--line); align-items: start; }
+.formula:first-of-type { border-top: 0; }
+.formula code { font: 400 .8rem/1.45 var(--mono); overflow-wrap: anywhere; }
+.bar { position: relative; height: 10px; background: var(--panel-2); border-radius: 3px; margin-top: 4px; }
+.bar::after { content: ""; position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--ink-3); }
+.bar span { position: absolute; top: 0; bottom: 0; }
+.bar span.up { left: 50%; background: var(--up); border-radius: 0 3px 3px 0; } .bar span.down { right: 50%; background: var(--down); border-radius: 3px 0 0 3px; }
+details summary { cursor: pointer; font-size: .85rem; color: var(--navy); }
+details[open] summary { margin-bottom: 6px; }
+footer { font-size: .8rem; color: var(--ink-3); }
+@media (prefers-reduced-motion: no-preference) { .gauge b { transition: left .25s ease; } .track span, .bar span { transition: width .25s ease; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>BRCA Progression Reasoner</h1>
+      <p class="sub">Neuro-symbolic progression reasoning over patient graphs fused with PrimeKG. MNNIT Allahabad BTech project.</p>
+    </div>
+    <span class="warn">Research demonstration. Not for clinical use.</span>
+  </header>
+
+  <div class="layout">
+    <div class="rail">
+      <div class="tabs" role="tablist" aria-label="Patient source">
+        <button id="tabCohort" role="tab" aria-selected="true" aria-controls="railCohort">TCGA patient</button>
+        <button id="tabNew" role="tab" aria-selected="false" aria-controls="railNew">New patient</button>
+      </div>
+
+      <section class="panel" id="railCohort" role="tabpanel" aria-labelledby="tabCohort">
+        <h2>Pick a held-out patient</h2>
+        <div class="fields">
+          <label class="full">Example patients from each report group
+            <span class="chips" id="exampleChips"></span>
+          </label>
+          <label>Report group
+            <select id="groupSelect">
+              <option value="">All 1,083</option><option value="A">A: ≤ 12 months</option><option value="B">B: 12–24 months</option>
+              <option value="C">C: 24–36 months</option><option value="D">D: &gt; 36 months</option><option value="N">N: no progression</option>
+            </select>
+          </label>
+          <label>&nbsp;<button class="btn" id="randomBtn" type="button">Random patient</button></label>
+          <label class="full">Patient ID
+            <input type="text" id="patientInput" list="patientList" autocomplete="off" spellcheck="false">
+            <datalist id="patientList"></datalist>
+          </label>
+        </div>
+        <p class="note bad" id="patientError" hidden></p>
+        <dl class="kv" id="recordList" style="margin-top:10px"></dl>
+        <p class="note" id="geneList"></p>
+        <p style="margin:10px 0 0"><button class="btn" id="whatIfBtn" type="button">Change this patient</button></p>
+      </section>
+
+      <section class="panel" id="railNew" role="tabpanel" aria-labelledby="tabNew" hidden>
+        <h2>Describe a patient</h2>
+        <p class="note" style="margin:0 0 8px">Start from a synthetic example, then change anything. Results update as you type.</p>
+        <div class="chips" id="presetChips" style="margin-bottom:10px"></div>
+        <div class="fields">
+          <label>Age <input type="number" id="f_age" min="18" max="95"></label>
+          <label>Subtype (PAM50)
+            <select id="f_subtype"><option>LumA</option><option>LumB</option><option>Her2</option><option>Basal</option><option>Normal</option><option value="missing">Unknown</option></select>
+          </label>
+          <label>T stage (tumour size)
+            <select id="f_t_stage"><option>T1</option><option>T2</option><option>T3</option><option>T4</option></select>
+          </label>
+          <label>N stage (lymph nodes)
+            <select id="f_n_stage"><option>N0</option><option>N1</option><option>N2</option><option>N3</option></select>
+          </label>
+          <label>M stage (spread)
+            <select id="f_m_stage"><option>M0</option><option>M1</option><option>MX</option></select>
+          </label>
+          <label>AJCC stage
+            <select id="f_ajcc_stage"><option>I</option><option>II</option><option>III</option><option>IV</option></select>
+          </label>
+          <label>Histology
+            <select id="f_histology"><option>ductal</option><option>lobular</option><option>other</option></select>
+          </label>
+          <label>Radiation therapy
+            <select id="f_radiation_therapy"><option>yes</option><option>no</option></select>
+          </label>
+          <label class="full">Altered genes (default is mutated; add amp or del)
+            <textarea id="f_genes" spellcheck="false"></textarea>
+          </label>
+          <div class="full chips" id="geneChips" aria-label="Add a common gene"></div>
+          <details class="full">
+            <summary>Aneuploidy and mutation burden</summary>
+            <div class="fields">
+              <label>Aneuploidy score <input type="number" id="f_aneuploidy_score" min="0" max="40" step="1"></label>
+              <label>TMB (mut/Mb) <input type="number" id="f_tmb_nonsynonymous" min="0" max="50" step="0.1"></label>
+            </div>
+            <p class="note">Left at the cohort median unless you change them.</p>
+          </details>
+        </div>
+        <p class="note bad" id="geneError" hidden></p>
+        <p class="note" id="newNote"></p>
+      </section>
+    </div>
+
+    <div class="main">
+      <section class="panel" aria-live="polite">
+        <p class="lead" id="summary"></p>
+        <div class="stats" style="margin-top:12px">
+          <div>
+            <h3>Model risk</h3>
+            <div class="big" id="riskValue"></div>
+            <div class="gauge" aria-hidden="true"><i></i><i></i><i></i><b id="gaugeMark"></b></div>
+            <div class="small" id="riskTier"></div>
+            <div class="delta" id="riskDelta"></div>
+          </div>
+          <div>
+            <h3>If progression happens</h3>
+            <div class="big" id="monthValue"></div>
+            <div class="small" id="monthRange"></div>
+          </div>
+          <div>
+            <h3>Chance of progression by</h3>
+            <div class="probs" id="probs"></div>
+            <div class="small" id="recorded" style="margin-top:6px"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Progression-free survival</h2>
+        <div class="chart" id="curve"></div>
+        <div class="legend">
+          <span><i style="background:var(--navy)"></i>This patient</span>
+          <span><i style="background:var(--ink-3)"></i>Whole cohort (Kaplan–Meier)</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 id="pathTitle">Top knowledge-graph paths</h2>
+        <p class="small" style="margin:0 0 4px">Score = 0.6 × neural + 0.4 × rule. The tick marks the prominence cutoff of <span id="cutValue"></span>.</p>
+        <div class="legend" style="margin-bottom:4px">
+          <span><i class="dot" style="background:var(--neural)"></i>Neural part</span>
+          <span><i class="dot" style="background:var(--rule)"></i>Rule part</span>
+        </div>
+        <div id="paths"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Weighted logic formulas that fire</h2>
+        <p class="small" style="margin:0 0 4px" id="formulaNote"></p>
+        <div id="formulas"></div>
+        <button class="btn" id="moreFormulas" type="button" hidden style="margin-top:8px"></button>
+      </section>
+
+      <section class="panel">
+        <details>
+          <summary>How this page calculates the result</summary>
+          <p class="small" id="methodCohort">A TCGA patient is scored by the models from the fold that held that patient out, so the result is the same out-of-fold prediction the reports use. The page computes it live from exported model parameters. For all 1,083 patients it matches the pipeline's saved Cox risk to within 0.000001.</p>
+          <p class="small">A new patient is scored by averaging the five fold models. The GNN needs a trained graph network, so here its term is held at the cohort average. In the fused model that term carries almost no weight: fixing it for the TCGA patients gives a rank correlation of 0.99 with the full model and moves the median patient by 2 percentile points. The neural part of each path is the mean importance that path earned across the cohort.</p>
+          <p class="small">Fields you do not set fall back to cohort medians. Everything runs in this browser, and nothing you enter leaves the page.</p>
+        </details>
+      </section>
+    </div>
+  </div>
+
+  <footer>Trained on 1,083 TCGA BRCA patients with 145 recorded progressions. Fused model C-index 0.664 ± 0.021 (clinical Cox 0.675 ± 0.035, a statistical tie). Logic engine 0.628 ± 0.055, with 69% of its formulas using PrimeKG. The estimated month is within 12 months for 48% of held-out progressors.</footer>
+</div>
+
+<script type="application/json" id="model">/*__DATA__*/</script>
+<script>/*__ENGINE__*/</script>
+<script>
+(function () {
+  "use strict";
+  const E = window.ReasonerEngine;
+  const M = E.prepare(JSON.parse(document.getElementById("model").textContent));
+  const byId = new Map(M.patients.map((p) => [p.id, p]));
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const ordinal = (n) => { const v = n % 100; return n + (["th", "st", "nd", "rd"][(v - 20) % 10] || ["th", "st", "nd", "rd"][v] || "th"); };
+  const WINDOW = { A: "≤ 12 months", B: "12–24 months", C: "24–36 months", D: "> 36 months" };
+  const GROUP = { A: "A, progression within 12 months", B: "B, progression at 12–24 months", C: "C, progression at 24–36 months", D: "D, progression after 36 months", N: "N, no progression recorded" };
+  const RELATION = { pathway_protein: "in pathway", protein_protein: "interacts with", drug_protein: "targeted by", disease_protein: "linked to" };
+  const SOURCE = { rl: "RL-proposed", mined: "Mined pair", unary: "Single atom" };
+  const KIND_WORD = { 0: "mutated", 1: "amplified", 2: "deleted" };
+  const EXAMPLES = [["TCGA-BH-A1EV", "A"], ["TCGA-BH-A18J", "B"], ["TCGA-A2-A3XY", "C"], ["TCGA-A2-A0EW", "D"], ["TCGA-BH-A18I", "N"]];
+  const PRESETS = [
+    { name: "Early luminal A", age: 58, subtype: "LumA", t_stage: "T1", n_stage: "N0", m_stage: "M0", ajcc_stage: "I", histology: "ductal", radiation_therapy: "yes", genes: "PIK3CA, GATA3" },
+    { name: "Node-positive luminal B", age: 52, subtype: "LumB", t_stage: "T2", n_stage: "N1", m_stage: "M0", ajcc_stage: "II", histology: "ductal", radiation_therapy: "yes", genes: "TP53, KMT2C, MYC amp" },
+    { name: "Basal-like, stage III", age: 44, subtype: "Basal", t_stage: "T3", n_stage: "N2", m_stage: "M0", ajcc_stage: "III", histology: "ductal", radiation_therapy: "no", genes: "TP53, RB1 del, MYC amp" },
+    { name: "HER2-enriched, N3", age: 67, subtype: "Her2", t_stage: "T4", n_stage: "N3", m_stage: "M1", ajcc_stage: "IV", histology: "other", radiation_therapy: "no", genes: "TP53, ERBB2 amp, NOTCH2 amp" },
+  ];
+  let mode = "cohort", current = null, showAll = false, lastPercentile = null, deltaBase = null;
+
+  function renderChips() {
+    $("exampleChips").innerHTML = EXAMPLES.map(([id, g]) => `<button class="chip" type="button" data-id="${id}" aria-pressed="false">Group ${g}</button>`).join("");
+    $("presetChips").innerHTML = PRESETS.map((p, i) => `<button class="chip" type="button" data-preset="${i}" aria-pressed="false">${esc(p.name)} <span class="tag">synthetic</span></button>`).join("");
+    $("geneChips").innerHTML = ["TP53", "PIK3CA", "GATA3", "CDH1", "MAP3K1", "PTEN", "MYC amp", "ERBB2 amp", "RB1 del"].map((g) => `<button class="chip" type="button" data-gene="${g}">+ ${g}</button>`).join("");
+  }
+
+  function fillPatientList() {
+    const group = $("groupSelect").value;
+    const items = M.patients.filter((p) => !group || p.grp === group);
+    $("patientList").innerHTML = items.slice(0, 1083).map((p) => `<option value="${p.id}"></option>`).join("");
+    return items;
+  }
+
+  function normaliseCohortPaths(p) {
+    return p.top.map(([index, neural, ruleScore, ruleCount, ns, prominent]) => ({ index, neural, ruleScore, ruleCount, ns, prominent: !!prominent, symbolic: Math.min(Math.abs(ruleScore) / M.ruleScale, 1) }));
+  }
+
+  function showCohort(id) {
+    const p = byId.get(id);
+    if (!p) { $("patientError").textContent = `No patient called ${id} in the cohort. Pick one from the list.`; $("patientError").hidden = false; return; }
+    $("patientError").hidden = true;
+    $("patientInput").value = id;
+    document.querySelectorAll("#exampleChips .chip").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.id === id)));
+    current = p;
+    const c = p.c;
+    const rows = [["Age", c.age === null ? "not recorded" : c.age], ["Subtype", c.subtype], ["TNM", `${c.t_stage} ${c.n_stage} ${c.m_stage}`], ["AJCC stage", c.ajcc_stage], ["Histology", c.histology], ["Radiation", c.radiation_therapy], ["Aneuploidy", c.aneuploidy_score ?? "not recorded"], ["TMB", c.tmb_nonsynonymous === null ? "not recorded" : `${c.tmb_nonsynonymous.toFixed(2)} mut/Mb`]];
+    $("recordList").innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+    const drivers = new Set(M.driver);
+    const alts = p.alt.map((code) => ({ gene: Math.floor(code / 3), kind: code % 3 })).sort((a, b) => Number(drivers.has(b.gene)) - Number(drivers.has(a.gene)));
+    $("geneList").textContent = alts.length ? `${alts.length} panel alterations: ${alts.slice(0, 8).map((a) => `${M.genes[a.gene]} ${KIND_WORD[a.kind]}`).join(", ")}${alts.length > 8 ? ", and more" : ""}.` : "No alterations on the 500-gene panel.";
+    const result = E.predictCohort(M, p);
+    render(result, normaliseCohortPaths(p), { recorded: p, title: id });
+  }
+
+  function formInput() {
+    const c = {};
+    ["t_stage", "n_stage", "m_stage", "ajcc_stage", "subtype", "histology", "radiation_therapy"].forEach((k) => (c[k] = $("f_" + k).value));
+    c.age = Number($("f_age").value) || M.columns.median.age;
+    const number = (id, key) => { const v = $(id).value; return v === "" ? M.columns.median[key] : Number(v); };
+    c.aneuploidy_score = number("f_aneuploidy_score", "aneuploidy_score");
+    c.tmb_nonsynonymous = number("f_tmb_nonsynonymous", "tmb_nonsynonymous");
+    const parsed = E.parseGenes(M, $("f_genes").value);
+    $("geneError").hidden = !parsed.unknown.length;
+    $("geneError").textContent = parsed.unknown.length ? `Not on the 500-gene panel, so ignored: ${parsed.unknown.join(", ")}.` : "";
+    return { c, alt: parsed.codes, sex: 1, age19: c.age, sub19: c.subtype === "missing" ? "missing" : `BRCA_${c.subtype}`, st19: c.ajcc_stage, m19: c.m_stage };
+  }
+
+  function showNew() {
+    const input = formInput();
+    const result = E.predictNew(M, input);
+    const paths = E.topPathsNew(M, input, result.values);
+    $("newNote").textContent = `${input.alt.length} alterations read. ${result.formulas.length} formulas fire.`;
+    render(result, paths, { title: "this patient" });
+  }
+
+  let timer = null;
+  const queue = () => { clearTimeout(timer); timer = setTimeout(showNew, 120); };
+
+  function loadForm(values) {
+    ["age", "subtype", "t_stage", "n_stage", "m_stage", "ajcc_stage", "histology", "radiation_therapy"].forEach((k) => { $("f_" + k).value = values[k]; });
+    $("f_genes").value = values.genes;
+    $("f_aneuploidy_score").value = values.aneuploidy_score ?? "";
+    $("f_tmb_nonsynonymous").value = values.tmb_nonsynonymous ?? "";
+  }
+
+  function fromCohort(p) {
+    const pick = (value, fallback, allowed) => (allowed.includes(value) ? value : fallback);
+    const c = p.c;
+    const genes = p.alt.map((code) => `${M.genes[Math.floor(code / 3)]}${["", " amp", " del"][code % 3]}`).join(", ");
+    return { age: c.age ?? M.columns.median.age, subtype: pick(c.subtype, "missing", ["LumA", "LumB", "Her2", "Basal", "Normal"]), t_stage: pick(c.t_stage, "T2", ["T1", "T2", "T3", "T4"]), n_stage: pick(c.n_stage, "N0", ["N0", "N1", "N2", "N3"]), m_stage: c.m_stage, ajcc_stage: pick(c.ajcc_stage, "II", ["I", "II", "III", "IV"]), histology: c.histology, radiation_therapy: pick(c.radiation_therapy, "no", ["yes", "no"]), genes, aneuploidy_score: c.aneuploidy_score, tmb_nonsynonymous: c.tmb_nonsynonymous };
+  }
+
+  function setMode(next) {
+    mode = next;
+    $("tabCohort").setAttribute("aria-selected", String(next === "cohort"));
+    $("tabNew").setAttribute("aria-selected", String(next === "new"));
+    $("railCohort").hidden = next !== "cohort";
+    $("railNew").hidden = next !== "new";
+    deltaBase = null;
+  }
+
+  function render(result, paths, context) {
+    const pct = Math.round(result.percentile * 100);
+    const tier = result.percentile >= 2 / 3 ? "High" : result.percentile >= 1 / 3 ? "Intermediate" : "Low";
+    const month = Math.round(result.month);
+    $("riskValue").textContent = ordinal(pct);
+    $("gaugeMark").style.left = `${Math.min(Math.max(pct, 0), 100)}%`;
+    $("riskTier").textContent = `${tier} risk tier, cohort percentile`;
+    $("monthValue").textContent = `${month} months`;
+    $("monthRange").textContent = `Window ${WINDOW[result.windowCode]}. Model range ${Math.round(result.low)}–${Math.round(result.high)} months.`;
+    $("probs").innerHTML = E.HORIZONS.map((h, i) => `<div>${(result.progress[i] * 100).toFixed(1)}%<span>${h} mo</span></div>`).join("");
+    if (mode === "new" && lastPercentile !== null && deltaBase === "new" && pct !== lastPercentile) $("riskDelta").textContent = `Was ${ordinal(lastPercentile)} before your last change.`;
+    else $("riskDelta").textContent = "";
+    lastPercentile = pct; deltaBase = mode;
+
+    const p = context.recorded;
+    if (p) {
+      const progressed = p.e === 1;
+      $("recorded").textContent = progressed ? `Recorded: progressed at ${p.t.toFixed(1)} months (group ${p.grp}).` : p.t === null ? "Recorded: no progression, follow-up unknown." : `Recorded: no progression in ${p.t.toFixed(1)} months of follow-up.`;
+      const verdict = progressed ? (result.windowCode === p.grp ? "The estimate falls in the recorded window." : "The estimate falls outside the recorded window.") : "No progression was recorded, and that is not proof of remission.";
+      $("summary").innerHTML = `<strong>${esc(p.id)}</strong>, group ${esc(GROUP[p.grp])}. The fused model places this patient at the <strong>${ordinal(pct)} risk percentile</strong>. ${verdict}`;
+    } else {
+      $("recorded").textContent = "Hypothetical patient, so no recorded outcome.";
+      $("summary").innerHTML = `The fused model places this patient at the <strong>${ordinal(pct)} risk percentile</strong> (${tier.toLowerCase()} tier). If progression happens, the estimate is <strong>about ${month} months</strong>.`;
+    }
+    drawCurve(result, p);
+    drawPaths(paths);
+    drawFormulas(result.formulas, !!p);
+  }
+
+  function drawCurve(result, p) {
+    const W = 760, H = 250, L = 44, R = 12, T = 10, B = 34, xMax = 120;
+    const x = (t) => L + (t / xMax) * (W - L - R);
+    const lowest = Math.min(M.cohortKM[120], result.survival[120]);
+    const yMin = Math.max(0, Math.floor((lowest - 0.05) * 5) / 5);
+    const y = (s) => T + ((1 - s) / (1 - yMin)) * (H - T - B);
+    const line = (values) => values.slice(0, xMax + 1).map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join("");
+    const ticksY = []; for (let v = 1; v >= yMin - 1e-9; v -= 0.2) ticksY.push(Math.round(v * 100) / 100);
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Progression-free survival curve of this patient against the cohort">`;
+    ticksY.forEach((v) => { svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="var(--ink-3)">${Math.round(v * 100)}%</text>`; });
+    [0, 12, 24, 36, 60, 84, 120].forEach((t) => { svg += `<text x="${x(t)}" y="${H - 16}" text-anchor="middle" font-size="11" fill="var(--ink-3)">${t}</text>`; });
+    svg += `<text x="${(L + W - R) / 2}" y="${H - 2}" text-anchor="middle" font-size="11" fill="var(--ink-3)">Months since diagnosis</text>`;
+    if (p && p.e === 1 && p.t <= xMax) svg += `<line x1="${x(p.t)}" x2="${x(p.t)}" y1="${T}" y2="${H - B}" stroke="var(--up)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="${Math.min(x(p.t) + 5, W - 120)}" y="${H - B - 6}" font-size="11" fill="var(--ink-2)">recorded progression</text>`;
+    svg += `<path d="${line(M.cohortKM)}" fill="none" stroke="var(--ink-3)" stroke-width="2"/><path d="${line(result.survival)}" fill="none" stroke="var(--navy)" stroke-width="2.5"/>`;
+    svg += `<line id="cross" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="var(--ink-3)" stroke-width="1" visibility="hidden"/><circle id="crossDot" r="4.5" fill="var(--navy)" stroke="var(--panel)" stroke-width="2" visibility="hidden"/></svg><div class="tip" id="curveTip" hidden></div>`;
+    const box = $("curve");
+    box.innerHTML = svg;
+    const el = box.querySelector("svg");
+    const move = (event) => {
+      const rect = el.getBoundingClientRect();
+      const px = ((event.clientX - rect.left) / rect.width) * W;
+      const t = Math.max(0, Math.min(xMax, Math.round(((px - L) / (W - L - R)) * xMax)));
+      const cross = box.querySelector("#cross"), dot = box.querySelector("#crossDot"), tip = box.querySelector("#curveTip");
+      cross.setAttribute("x1", x(t)); cross.setAttribute("x2", x(t)); cross.setAttribute("visibility", "visible");
+      dot.setAttribute("cx", x(t)); dot.setAttribute("cy", y(result.survival[t])); dot.setAttribute("visibility", "visible");
+      tip.hidden = false;
+      tip.textContent = `${t} months: patient ${(result.survival[t] * 100).toFixed(1)}%, cohort ${(M.cohortKM[t] * 100).toFixed(1)}%`;
+      tip.style.left = `${Math.min(Math.max((x(t) / W) * rect.width, 110), rect.width - 110)}px`;
+      tip.style.top = `${(y(result.survival[t]) / H) * rect.height}px`;
+    };
+    el.addEventListener("pointermove", move);
+    el.addEventListener("pointerleave", () => { box.querySelector("#curveTip").hidden = true; box.querySelector("#cross").setAttribute("visibility", "hidden"); box.querySelector("#crossDot").setAttribute("visibility", "hidden"); });
+  }
+
+  function drawPaths(paths) {
+    $("cutValue").textContent = M.cutoff.toFixed(3);
+    $("pathTitle").textContent = paths.length ? `Top ${paths.length} knowledge-graph paths` : "Top knowledge-graph paths";
+    if (!paths.length) { $("paths").innerHTML = `<p class="small">None of this patient's altered genes has a PrimeKG pathway, drug, or breast-disease link, so no path can be drawn.</p>`; return; }
+    $("paths").innerHTML = paths.map((item) => {
+      const path = M.paths[item.index];
+      const chain = path.n.map((code, i) => {
+        const [, type, name] = M.nodes[code];
+        const rel = i < path.r.length ? `<span class="rel">${RELATION[M.relations[path.r[i]]] || ""} →</span>` : "";
+        return `<span class="node ${type}"><small>${type}</small><span>${esc(String(name).trim())}</span></span>${rel}`;
+      }).join("");
+      const direction = !item.ruleCount ? "No formula fires on this path" : item.ruleScore > 0 ? `${item.ruleCount} formula${item.ruleCount > 1 ? "s" : ""} raising the hazard` : `${item.ruleCount} formula${item.ruleCount > 1 ? "s" : ""} lowering the hazard`;
+      const n = 60 * item.neural, r = 40 * item.symbolic;
+      return `<div class="path"><div class="chain">${chain}</div><div class="split"><div class="track" aria-hidden="true"><span class="n" style="width:${n}%"></span><span class="r" style="width:${r}%"></span><span class="cut" style="left:${M.cutoff * 100}%"></span></div><span class="num">${item.ns.toFixed(3)}${item.prominent ? " prominent" : ""}</span></div><div class="small">Neural ${item.neural.toFixed(2)}, rule ${item.symbolic.toFixed(2)}. ${direction}.</div></div>`;
+    }).join("");
+  }
+
+  function drawFormulas(formulas, cohort) {
+    const sorted = formulas.slice().sort((a, b) => Math.abs(b.w) - Math.abs(a.w));
+    const limit = showAll ? sorted.length : 6;
+    const peak = Math.max(0.35, ...sorted.map((f) => Math.abs(f.w)));
+    const raises = sorted.filter((f) => f.w > 0).length;
+    $("formulaNote").textContent = sorted.length ? `${sorted.length} formulas hold for this patient: ${raises} raise the hazard and ${sorted.length - raises} lower it. Weights are per standard deviation${cohort ? "" : ", averaged over the five folds"}.` : "No learned formula holds for this patient.";
+    $("formulas").innerHTML = sorted.slice(0, limit).map((f) => {
+      const width = (Math.abs(f.w) / peak) * 50;
+      return `<div class="formula"><div><div class="num">${f.w > 0 ? "+" : "−"}${Math.abs(f.w).toFixed(3)}</div><div class="bar" aria-hidden="true"><span class="${f.w > 0 ? "up" : "down"}" style="width:${width}%"></span></div></div><div><code>${esc(f.text)}</code><div style="margin-top:3px"><span class="tag">${SOURCE[f.source]}</span> <span class="tag">${f.w > 0 ? "raises hazard" : "lowers hazard"}</span> <span class="tag">${f.support} training patients</span></div></div></div>`;
+    }).join("");
+    const button = $("moreFormulas");
+    button.hidden = sorted.length <= 6;
+    button.textContent = showAll ? "Show fewer" : `Show all ${sorted.length}`;
+  }
+
+  renderChips();
+  fillPatientList();
+
+  $("tabCohort").addEventListener("click", () => { setMode("cohort"); showCohort(current && current.id ? current.id : EXAMPLES[0][0]); });
+  $("tabNew").addEventListener("click", () => { setMode("new"); showNew(); });
+  $("exampleChips").addEventListener("click", (e) => { const b = e.target.closest("[data-id]"); if (b) showCohort(b.dataset.id); });
+  $("patientInput").addEventListener("change", (e) => showCohort(e.target.value.trim().toUpperCase()));
+  $("groupSelect").addEventListener("change", fillPatientList);
+  $("randomBtn").addEventListener("click", () => { const items = fillPatientList(); showCohort(items[Math.floor(Math.random() * items.length)].id); });
+  $("whatIfBtn").addEventListener("click", () => { if (!current) return; loadForm(fromCohort(current)); setMode("new"); document.querySelectorAll("#presetChips .chip").forEach((c) => c.setAttribute("aria-pressed", "false")); showNew(); });
+  $("presetChips").addEventListener("click", (e) => { const b = e.target.closest("[data-preset]"); if (!b) return; loadForm(PRESETS[Number(b.dataset.preset)]); document.querySelectorAll("#presetChips .chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b))); deltaBase = null; showNew(); });
+  $("geneChips").addEventListener("click", (e) => { const b = e.target.closest("[data-gene]"); if (!b) return; const box = $("f_genes"); box.value = box.value.trim() ? `${box.value.trim().replace(/,$/, "")}, ${b.dataset.gene}` : b.dataset.gene; showNew(); });
+  $("railNew").addEventListener("input", queue);
+  $("moreFormulas").addEventListener("click", () => { showAll = !showAll; if (mode === "new") showNew(); else showCohort(current.id); });
+
+  loadForm(PRESETS[2]);
+  showCohort(EXAMPLES[0][0]);
+})();
+</script>

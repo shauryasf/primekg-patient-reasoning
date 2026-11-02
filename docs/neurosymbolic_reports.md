@@ -35,7 +35,7 @@ CPU.
 
 1. **Neural.** GCN, GraphSAGE, and R-GCN on the fused patient + PrimeKG graph, trained with the Breslow Cox
    likelihood or the differentiable C-index. RGAT was dropped (over five minutes per epoch on a laptop CPU).
-2. **Symbolic baseline.** RuleKit LR-Rules (log-rank rule induction) over 187 readable predicates: extended clinical
+2. **Symbolic baseline.** RuleKit LR-Rules (log-rank rule induction) over 188 readable predicates: extended clinical
    context (T/N/M, AJCC stage, PAM50, histology, radiation, aneuploidy, TMB), driver mutations and CNAs,
    amplicons (co-amplified genes with Jaccard ≥ 0.8 merged), and PrimeKG facts ("an altered gene is annotated to
    pathway P / breast disease D"). Binary predicates enter as "yes" or missing so no rule is built from the absence

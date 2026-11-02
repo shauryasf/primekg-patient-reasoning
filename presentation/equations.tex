@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage[paperwidth=30cm,paperheight=8cm,margin=1cm]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\pagestyle{empty}
+\definecolor{ink}{HTML}{12263A}
+\newcommand{\pred}[1]{\mathit{#1}}
+\begin{document}\color{ink}\Large
+% 1 cindex
+\[C=\frac{\#\{\text{comparable pairs ranked correctly}\}}{\#\{\text{comparable pairs}\}},\qquad (i,j)\text{ comparable}\iff \delta_i=1,\ t_i<t_j\]
+\newpage % 2 cox
+\[h(t\mid x)=h_0(t)\,e^{\beta^\top x},\qquad \mathcal{L}_{\text{Cox}}=-\frac{1}{N_e}\sum_{i:\,\delta_i=1}\Big(\eta_i-\log\!\sum_{j:\,t_j\ge t_i}e^{\eta_j}\Big)\]
+\newpage % 3 soft c
+\[\mathcal{L}_{C}=1-\frac{1}{|P|}\sum_{(i,j)\in P}\sigma\Big(\frac{r_i-r_j}{\tau}\Big)\]
+\newpage % 4 mln form
+\[w_k:\ \pred{Body}_k(p)\Rightarrow\pred{Progress}(p)\qquad\qquad \eta(p)=\sum_k w_k\log\big(1+n_k(p)\big)\]
+\newpage % 5 mln objective
+\[\max_{w}\ \sum_{i:\,\delta_i=1}\Big(\eta_i-\log\!\sum_{j:\,t_j\ge t_i}e^{\eta_j}\Big)-\lambda\Big(\alpha\|w\|_1+\frac{1-\alpha}{2}\|w\|_2^2\Big)\]
+\newpage % 6 psl
+\[\phi(B\Rightarrow H)=w\,\max(0,\,B-H)^q\]
+\newpage % 7 psl collective
+\[\pred{Similar}(p,q)\wedge\pred{HighRisk}(q)\Rightarrow\pred{HighRisk}(p)\]
+\newpage % 8 rl reward
+\[R=\mathbf{1}\big[\operatorname{sign}z_A=\operatorname{sign}z_B\big]\,\frac{\min(|z_A|,|z_B|,5)}{5}-0.03\,(\text{length}-1)\]
+\newpage % 9 path
+\[\text{score}=0.6\times\text{neural}+0.4\times\text{rule},\qquad \text{rule}=\min\Big(\frac{|\sum_{f}w_f|}{S},\,1\Big)\]
+\newpage % 10 one se
+\[\text{bar}=\bar C^{*}-\frac{s^{*}}{\sqrt{k}}=0.675-\frac{0.035}{\sqrt{5}}=0.659\]
+\newpage % 11 aft
+\[\log T=\mu(x)+\sigma\varepsilon,\qquad \text{median}=e^{\mu(x)}\]
+\newpage % 12 atom
+\[n_w(p)=\big|\{\,g:\pred{Altered}(p,g)\wedge\pred{InPathway}(g,w)\,\}\big|\]
+\newpage % 13 formula 1
+\[\pred{NStage}(p,\mathrm{N3})\wedge\pred{Altered}(p,g)\wedge\pred{LinkedTo}(g,\text{breast ductal adenocarcinoma})\Rightarrow\pred{Progress}(p)\]
+\newpage % 14 formula 2
+\[\pred{Altered}(p,g)\wedge\pred{InPathway}(g,\text{VEGFA-VEGFR2})\wedge\pred{Altered}(p,g')\wedge\pred{InPathway}(g',\text{Ion homeostasis})\Rightarrow\pred{Progress}(p)\]
+\newpage % 15 formula 0
+\[\pred{NStage}(p,\mathrm{N0})\Rightarrow\pred{Progress}(p)\]
+\newpage % 16 message
+\[h_v^{(l+1)}=\sigma\Big(W^{(l)}\big[\,h_v^{(l)}\,\Vert\,\mathrm{mean}_{u\in\mathcal{N}(v)}\,h_u^{(l)}\big]\Big)\]
+\end{document}
