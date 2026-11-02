@@ -4,7 +4,9 @@
 Stages, each cached under ``--output-dir`` so a later stage can be rerun alone:
 
 - ``neural``    survival GNNs over the fused patient + PrimeKG graphs (Cox loss)
-- ``symbolic``  RuleKit survival rules over clinical, gene, and PrimeKG predicates
+- ``symbolic``  RuleKit survival rules (baseline) and PrimeKG fact evidence
+- ``logic``     survival Markov logic, probabilistic soft logic, RL rules, and
+                RL-structured Markov logic; the best becomes the rule engine
 - ``fusion``    clinical baselines, a random survival forest, and the fused Cox
                 model that stacks the neural and symbolic risks; per-patient
                 survival curves and the predicted progression window
@@ -46,6 +48,10 @@ from src.neurosymbolic.features import (  # noqa: E402
     record_table,
 )
 from src.neurosymbolic.kg_evidence import fact_carriers, fold_fact_evidence  # noqa: E402
+from src.neurosymbolic.logic.atoms import build_atoms  # noqa: E402
+from src.neurosymbolic.logic.runner import LABELS as LOGIC_LABELS  # noqa: E402
+from src.neurosymbolic.logic.runner import METHODS as LOGIC_METHODS  # noqa: E402
+from src.neurosymbolic.logic.runner import choose_engine, fold_c_index, run_reasoners  # noqa: E402
 from src.neurosymbolic.paths import explain_patient, paths_frame  # noqa: E402
 from src.neurosymbolic.rules import RULE_PARAMS, coverage_matrix, fit_rules, predict_curves, restricted_mean, rulekit_frame  # noqa: E402
 from src.neurosymbolic.timing import progression_timing  # noqa: E402
@@ -189,6 +195,66 @@ def stage_symbolic(study: StudyCohort, args, out: Path) -> None:
     LOGGER.info("PrimeKG fact evidence: %d fact-fold rows", len(evidence))
 
 
+def build_atom_table(study: StudyCohort, out: Path):
+    """Ground atoms for the logic reasoners, from the cached readable tables."""
+    tables = out / "tables"
+    clinical = pd.read_csv(tables / "clinical_extended.csv", index_col=0).loc[study.patient_ids]
+    predicates = pd.read_csv(tables / "predicates.csv", index_col=0).loc[study.patient_ids]
+    meta = json.loads((tables / "predicate_meta.json").read_text(encoding="utf-8"))
+    alterations = pd.read_csv(tables / "alterations.csv", dtype={"entrez": str})
+    return build_atoms(clinical, predicates, meta["labels"], alterations, study.prime)
+
+
+def stage_logic(study: StudyCohort, args, out: Path) -> None:
+    """Survival MLN, survival PSL, RL rules, and RL-structured MLN on the shared folds."""
+    logic_dir = out / "logic"
+    logic_dir.mkdir(parents=True, exist_ok=True)
+    atoms = build_atom_table(study, out)
+    atoms.frame().to_csv(logic_dir / "atoms.csv", index=False)
+    np.save(logic_dir / "atom_values.npy", atoms.values)
+    LOGGER.info("Ground atoms: %d (%s)", len(atoms.names), pd.Series(atoms.kinds).value_counts().to_dict())
+    risks, weights, infos, seconds = run_reasoners(atoms, study.time, study.event, study.folds, seed=args.seed, log=LOGGER.info)
+    risks["rulekit"] = pd.read_csv(out / "symbolic" / "oof_risk.csv")["rulekit"].to_numpy()
+    # Patients with identical facts differ only in the last bits of a summed score;
+    # rounding makes them exact ties here and after the CSV round trip alike.
+    risks = {method: np.round(risk, 10) for method, risk in risks.items()}
+    rules = pd.read_csv(out / "symbolic" / "rules.csv")
+    rows = []
+    for method, risk in risks.items():
+        per_fold = fold_c_index(study.time, study.event, risk, study.folds)
+        metrics = survival_metrics(study.time, study.event, risk, study.fold_id)
+        if method == "rulekit":
+            n_rules = len(rules) / len(study.folds)
+            kg_share = float((rules["n_kg_conditions"] > 0).mean())
+        else:
+            table = weights[method]
+            n_rules = len(table) / len(study.folds)
+            kg_share = float(table["uses_kg"].mean()) if len(table) else 0.0
+        rows.append(
+            {
+                "method": method,
+                "label": LOGIC_LABELS[method],
+                "c_mean": float(np.mean(per_fold)),
+                "c_std": float(np.std(per_fold, ddof=1)),
+                "c_folds": " ".join(f"{value:.3f}" for value in per_fold),
+                "uno_c_120": metrics["uno_c_120"],
+                "td_auc_mean": metrics["td_auc_mean"],
+                "rules_per_fold": n_rules,
+                "kg_rule_share": kg_share,
+                "seconds": seconds.get(method, float("nan")),
+            }
+        )
+    summary = pd.DataFrame(rows).sort_values("c_mean", ascending=False)
+    summary.to_csv(logic_dir / "metrics.csv", index=False)
+    engine, selection = choose_engine(summary, len(study.folds))
+    (logic_dir / "engine.json").write_text(json.dumps({"engine": engine, "label": LOGIC_LABELS[engine], **selection, "infos": infos}, indent=1, default=float), encoding="utf-8")
+    pd.DataFrame({"patient_id": study.patient_ids, "fold": study.fold_id, **risks}).to_csv(logic_dir / "oof_risk.csv", index=False)
+    for method, table in weights.items():
+        table.to_csv(logic_dir / f"{method}_weights.csv", index=False)
+    LOGGER.info("Logic reasoners:\n%s", summary[["method", "c_mean", "c_std", "rules_per_fold", "kg_rule_share"]].to_string(index=False))
+    LOGGER.info("Symbolic engine: %s (%s)", engine, selection)
+
+
 def _cox_fit_predict(train_x: pd.DataFrame, test_x: pd.DataFrame, time: np.ndarray, event: np.ndarray, penalizer: float = 0.1):
     """Standardised, ridge-penalised Cox model; returns test log-risk and survival on ``GRID``."""
     keep = train_x.columns[train_x.std(ddof=0) > 0]
@@ -234,13 +300,16 @@ def stage_fusion(study: StudyCohort, args, out: Path) -> None:
     neural_metrics = pd.read_csv(out / "neural" / "metrics.csv").sort_values("harrell_c_fold_mean", ascending=False)
     best_gnn = str(neural_metrics.iloc[0]["model"])
     symbolic = pd.read_csv(out / "symbolic" / "oof_risk.csv")
+    logic = pd.read_csv(out / "logic" / "oof_risk.csv")
+    engine = json.loads((out / "logic" / "engine.json").read_text(encoding="utf-8"))["engine"]
     design = cox_design_matrix(clinical)
     design.index = study.patient_ids
     binary = (predicates[[column for column in predicates.columns if column.startswith(("mut_", "amp_", "del_", "kg_"))]] == "yes").astype(float)
     # The 19-field clinical block the GNN's clinical head reads (age, sex, subtype, stage, M stage).
     clinical_19 = pd.DataFrame(study.cohort.mlp_x[:, :CLINICAL_DIM], index=study.patient_ids, columns=[f"clinical_{i}" for i in range(CLINICAL_DIM)])
     clinical_19 = clinical_19.fillna(clinical_19.mean())
-    learned = {"gnn_risk": neural[best_gnn].to_numpy(), "rule_risk": symbolic["rulekit"].to_numpy()}
+    # The rule risk is the chosen logic reasoner's out-of-fold risk (RuleKit stays as a baseline row).
+    learned = {"gnn_risk": neural[best_gnn].to_numpy(), "rule_risk": logic[engine].to_numpy()}
     inputs = {
         "clinical_cox_19": clinical_19,
         "clinical_cox_extended": design,
@@ -251,6 +320,7 @@ def stage_fusion(study: StudyCohort, args, out: Path) -> None:
     timed = np.isfinite(study.time) & (study.time > 0)
     gnn_columns = [column for column in neural.columns if column.startswith("gnn_")]
     risks = {**{column: neural[column].to_numpy() for column in gnn_columns}, "rulekit": symbolic["rulekit"].to_numpy()}
+    risks.update({f"logic_{method}": logic[method].to_numpy() for method in LOGIC_METHODS})
     curves = {name: np.ones((len(study.patient_ids), len(GRID))) for name in [*inputs, "random_survival_forest"]}
     coefficients = []
     for name, x in inputs.items():
@@ -322,7 +392,7 @@ def stage_explain(study: StudyCohort, args, out: Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--stages", default="neural,symbolic,fusion,explain")
+    parser.add_argument("--stages", default="neural,symbolic,logic,fusion,explain")
     parser.add_argument("--neural", default=",".join(DEFAULT_NEURAL), help="comma-separated arch:loss specs")
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--epochs", type=int, default=40)
@@ -343,6 +413,8 @@ def main() -> int:
         stage_neural(study, args, out)
     if "symbolic" in stages:
         stage_symbolic(study, args, out)
+    if "logic" in stages:
+        stage_logic(study, args, out)
     if "fusion" in stages:
         stage_fusion(study, args, out)
     if "explain" in stages:

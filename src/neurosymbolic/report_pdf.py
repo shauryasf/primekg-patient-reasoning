@@ -36,7 +36,7 @@ from reportlab.platypus import (
 
 from ..dataset_fusion import PrimeSlice
 from . import report_figures as figures
-from .paths import K_MAX, K_MIN, prominence_cutoff, score_paths, select_top_paths
+from .paths import K_MAX, K_MIN, prominence_cutoff, rule_scores, score_paths, select_top_paths
 from .timing import GROUP_NAMES, GROUPS, NO_PROGRESSION, window_label
 
 PAGE_W, PAGE_H = A4
@@ -159,6 +159,13 @@ class ReportContext:
     timing: dict
     report_model: str
     gnn_model: str
+    logic_engine: str = "rulekit"
+    logic_label: str = "RuleKit LR-Rules"
+    logic_weights: pd.DataFrame = field(default_factory=pd.DataFrame)
+    logic_metrics: pd.DataFrame = field(default_factory=pd.DataFrame)
+    atom_frame: pd.DataFrame = field(default_factory=pd.DataFrame)
+    atom_binary: np.ndarray = field(default_factory=lambda: np.zeros((0, 0), dtype=bool))
+    patient_index: dict[str, int] = field(default_factory=dict)
     similar: dict[str, list[tuple[str, float]]] = field(default_factory=dict)
     top_paths: dict[str, pd.DataFrame] = field(default_factory=dict)
 
@@ -167,6 +174,40 @@ class ReportContext:
             candidates = self.scored_paths[self.scored_paths["patient_id"] == patient_id]
             self.top_paths[patient_id] = select_top_paths(candidates, self.cutoff) if len(candidates) else pd.DataFrame()
         return self.top_paths[patient_id]
+
+
+def kg_atom_genes(atom_frame: pd.DataFrame, prime: PrimeSlice) -> list[set[str]]:
+    """Entrez ids of the genes behind each PrimeKG atom (its pathway members, drug targets, disease genes)."""
+    drug_genes: dict[str, set[str]] = {}
+    disease_genes: dict[str, set[str]] = {}
+    for gene, drugs in prime.gene_drugs.items():
+        for drug in drugs:
+            drug_genes.setdefault(drug, set()).add(gene)
+    for gene, diseases in prime.gene_diseases.items():
+        for disease in diseases:
+            disease_genes.setdefault(disease, set()).add(gene)
+    lookup = {"pathway": prime.pathway_genes, "drug": drug_genes, "disease": disease_genes}
+    genes = []
+    for kind, members in zip(atom_frame["kind"], atom_frame["members"]):
+        found: set[str] = set()
+        if str(kind).startswith("kg_"):
+            for member in str(members).split("|"):
+                prefix, _, node = member.partition(":")
+                found |= lookup.get(prefix, {}).get(node, set())
+        genes.append(found)
+    return genes
+
+
+def _engine_weights(weights: pd.DataFrame) -> pd.DataFrame:
+    """One schema for every reasoner: ``atoms``, ``formula``, ``weight_per_sd``, ``fold``."""
+    weights = weights.copy()
+    if "weight_per_sd" not in weights.columns:
+        weights["weight_per_sd"] = weights["net_weight"] if "net_weight" in weights.columns else weights["weight"]
+    if "formula" not in weights.columns:
+        weights["formula"] = weights["rule"]
+    if "atoms" not in weights.columns:
+        weights["atoms"] = weights["name"]
+    return weights
 
 
 def load_context(out_dir: Path) -> ReportContext:
@@ -178,13 +219,21 @@ def load_context(out_dir: Path) -> ReportContext:
     coverage = pd.read_csv(out_dir / "symbolic" / "patient_rules.csv")
     candidates = pd.read_csv(out_dir / "explain" / "candidate_paths.csv")
     evidence = pd.read_csv(out_dir / "symbolic" / "kg_evidence.csv")
-    scored = score_paths(candidates, evidence)
+    engine = json.loads((out_dir / "logic" / "engine.json").read_text(encoding="utf-8"))
+    atom_frame = pd.read_csv(out_dir / "logic" / "atoms.csv", keep_default_na=False)
+    atom_binary = np.load(out_dir / "logic" / "atom_values.npy") > 0
+    logic_weights = _engine_weights(pd.read_csv(out_dir / "logic" / f"{engine['engine']}_weights.csv"))
+    logic_risk = pd.read_csv(out_dir / "logic" / "oof_risk.csv")
+    patient_index = {pid: i for i, pid in enumerate(logic_risk["patient_id"])}
+    predictions["fold"] = logic_risk.set_index("patient_id")["fold"].reindex(predictions.index).to_numpy()
+    prime = PrimeSlice.from_frame(pd.read_csv(Path(out_dir).parents[1] / "data" / "primekg" / "primekg_panel_slice.csv", dtype=str, keep_default_na=False))
+    rule_table = rule_scores(candidates, logic_weights, atom_frame, atom_binary, patient_index, kg_atom_genes(atom_frame, prime))
+    scored = score_paths(candidates, evidence, rule_table)
     importance = pd.read_csv(out_dir / "explain" / "gene_importance.csv")
     gene_importance = {
         patient_id: list(zip(group.sort_values("importance", ascending=False)["gene"], group.sort_values("importance", ascending=False)["importance"]))
         for patient_id, group in importance.groupby("patient_id")
     }
-    slice_frame = pd.read_csv(Path(out_dir).parents[1] / "data" / "primekg" / "primekg_panel_slice.csv", dtype=str, keep_default_na=False)
     timed = predictions["time"].notna()
     kmf = KaplanMeierFitter().fit(predictions.loc[timed, "time"], predictions.loc[timed, "event"])
     curve = kmf.survival_function_.iloc[:, 0]
@@ -209,12 +258,19 @@ def load_context(out_dir: Path) -> ReportContext:
         scored_paths=scored,
         cutoff=prominence_cutoff(scored),
         gene_importance=gene_importance,
-        prime=PrimeSlice.from_frame(slice_frame),
+        prime=prime,
         cohort_km=(curve.index.to_numpy(), curve.to_numpy()),
         metrics=pd.read_csv(out_dir / "fusion" / "metrics.csv"),
         timing=timing,
         report_model=timing["report_model"],
         gnn_model=timing["best_gnn"],
+        logic_engine=engine["engine"],
+        logic_label=engine["label"],
+        logic_weights=logic_weights,
+        logic_metrics=pd.read_csv(out_dir / "logic" / "metrics.csv"),
+        atom_frame=atom_frame,
+        atom_binary=atom_binary,
+        patient_index=patient_index,
     )
     context.similar = _similar_patients(context)
     return context
@@ -373,14 +429,36 @@ def _assessment(context: ReportContext, patient_id: str) -> tuple[list, dict]:
     return [_p("2 · Progression assessment", "h1"), tile_row, Spacer(1, 4), figure, caption], facts
 
 
-def _rules_for(context: ReportContext, patient_id: str) -> pd.DataFrame:
-    rule_ids = [rule for rule in context.patient_rules.get(patient_id, []) if rule in context.rules.index]
-    if not rule_ids:
+def _formulas_for(context: ReportContext, patient_id: str) -> pd.DataFrame:
+    """Weighted formulas of the logic engine that fire for this patient, from the fold that held them out."""
+    if context.logic_weights.empty or patient_id not in context.patient_index:
         return pd.DataFrame()
-    rules = context.rules.loc[rule_ids].copy()
-    rules = rules[(rules["train_share"] <= 0.9) & np.isfinite(rules["hazard_ratio"])]
-    rules["strength"] = np.abs(np.log(rules["hazard_ratio"].clip(lower=1e-3)))
-    return rules.sort_values(["pvalue", "strength"], ascending=[True, False])
+    fold = int(context.predictions.loc[patient_id, "fold"])
+    weights = context.logic_weights[context.logic_weights["fold"] == fold]
+    position = {name: index for index, name in enumerate(context.atom_frame["atom"])}
+    truth = context.atom_binary[context.patient_index[patient_id]]
+    fired = []
+    for item in weights.to_dict("records"):
+        atoms = [position[name] for name in str(item["atoms"]).split("|") if name in position]
+        if atoms and all(truth[a] for a in atoms) and abs(float(item["weight_per_sd"])) > 1e-6:
+            item["atom_index"] = atoms
+            fired.append(item)
+    frame = pd.DataFrame(fired)
+    if frame.empty:
+        return frame
+    return frame.sort_values("weight_per_sd", key=np.abs, ascending=False)
+
+
+def _formula_km(context: ReportContext, patient_id: str, atoms: list[int]):
+    """Kaplan-Meier curve of the training-fold patients that satisfy a formula."""
+    fold = int(context.predictions.loc[patient_id, "fold"])
+    frame = context.predictions.loc[list(context.patient_index)]
+    covered = np.all(context.atom_binary[:, atoms], axis=1) & (frame["fold"].to_numpy() != fold) & frame["time"].notna().to_numpy()
+    if covered.sum() < 5:
+        return None
+    kmf = KaplanMeierFitter().fit(frame["time"].to_numpy()[covered], frame["event"].to_numpy()[covered])
+    curve = kmf.survival_function_.iloc[:, 0]
+    return curve.index.tolist(), curve.tolist(), int(covered.sum())
 
 
 def _path_text(path: dict) -> str:
@@ -417,15 +495,21 @@ def _reasoning_section(context: ReportContext, patient_id: str) -> tuple[list, d
                 f"the best remaining paths are shown so that {min(K_MIN, len(paths))} appear, and they are not marked ★."
             )
         story = [KeepTogether(story + [_png(figures.path_figure(paths.to_dict("records")), CONTENT_W)])]
-        story.append(_p(note + " NS score = 0.6 × neural percentile (GNNExplainer importance from the held-out fold model) + 0.4 × symbolic strength (|log-rank z| of the path's PrimeKG fact on the training folds, capped at 3).", "small"))
-        rows = [[_p("#", "cell_b"), _p("Path", "cell_b"), _p("Neural pct", "cell_b"), _p("PrimeKG fact evidence (training folds)", "cell_b"), _p("NS", "cell_b")]]
+        story.append(_p(note + f" NS score = 0.6 × neural percentile (GNNExplainer importance from the held-out fold model) + 0.4 × rule strength (summed weight of the {_esc(context.logic_label)} formulas that fire for this patient and mention the path's gene or end node).", "small"))
+        rows = [[_p("#", "cell_b"), _p("Path", "cell_b"), _p("Neural pct", "cell_b"), _p("Rule evidence (learned logic formulas)", "cell_b"), _p("NS", "cell_b")]]
         for path in paths.to_dict("records"):
-            if np.isfinite(path.get("fact_hazard_ratio", np.nan)):
-                arrow = "↑" if path["fact_z"] > 0 else "↓"
-                color = "#c4302f" if path["fact_z"] > 0 else "#1c5cab"
-                evidence = f"<font color='{color}'><b>{arrow} {path['evidence_direction']}</b></font><br/>HR {path['fact_hazard_ratio']:.2f}, z {path['fact_z']:+.1f}, n = {int(path['fact_carriers'])} carriers of “{_esc(path['terminal_name'])}”"
+            score = float(path.get("rule_score", 0.0) or 0.0)
+            if int(path.get("rule_count", 0) or 0) > 0:
+                arrow = "↑" if score > 0 else "↓"
+                color = "#c4302f" if score > 0 else "#1c5cab"
+                evidence = (
+                    f"<font color='{color}'><b>{arrow} {path['evidence_direction']}</b></font> · Σw {score:+.3f} over {int(path['rule_count'])} formula(s)"
+                    f"<br/><font size='6.4'>{_esc(path['rule_formula'])}</font>"
+                )
             else:
-                evidence = "Fact carried by too few training patients for a log-rank estimate."
+                evidence = "No learned formula fires on this path; its score is neural only."
+            if np.isfinite(path.get("fact_hazard_ratio", np.nan)):
+                evidence += f"<br/><font color='#8a8984' size='6.4'>cohort: HR {path['fact_hazard_ratio']:.2f}, n = {int(path['fact_carriers'])} carriers</font>"
             rows.append(
                 [
                     _p(f"{path['rank']}{' ★' if path['prominent'] else ''}", "cell_b"),
@@ -437,37 +521,45 @@ def _reasoning_section(context: ReportContext, patient_id: str) -> tuple[list, d
             )
         story.append(_table(rows, [CONTENT_W * w for w in (0.05, 0.43, 0.08, 0.36, 0.08)]))
 
-    rules = _rules_for(context, patient_id)
-    facts["rules"] = rules
-    block: list = [_p("3b · Symbolic survival rules that fire for this patient (RuleKit LR-Rules)", "h2")]
-    if rules.empty:
-        block.append(_p("No informative rule (log-rank p &lt; 0.05, covering ≤ 90% of the training fold) covers this patient; the rule model falls back to the training-fold Kaplan–Meier curve.", "body"))
+    formulas = _formulas_for(context, patient_id)
+    facts["formulas"] = formulas
+    block: list = [_p(f"3b · Weighted logic formulas that fire for this patient ({_esc(context.logic_label)})", "h2")]
+    if formulas.empty:
+        block.append(_p("No learned formula with a non-zero weight fires for this patient; the symbolic risk is the baseline of the logic model.", "body"))
         story.append(KeepTogether(block))
         return story, facts
-    rows = [[_p("Rule", "cell_b"), _p("IF …", "cell_b"), _p("Covered", "cell_b"), _p("HR vs rest", "cell_b"), _p("Median PFS", "cell_b")]]
-    for rule_id, rule in rules.head(5).iterrows():
-        up = rule["hazard_ratio"] > 1
-        pill = f"<font color='{'#c4302f' if up else '#1c5cab'}'><b>{'↑ higher' if up else '↓ lower'} risk</b></font>"
-        kg = " <font color='#1baf7a'><b>[KG]</b></font>" if int(rule.get("n_kg_conditions", 0)) > 0 else ""
-        median = "not reached" if not np.isfinite(rule["median_months"]) else f"{rule['median_months']:.0f} mo"
+    source_text = {"rl": "RL-proposed", "mined": "mined pair", "unary": "single atom"}
+    rows = [[_p("Weight", "cell_b"), _p("Formula (first-order, grounded on this patient)", "cell_b"), _p("Source", "cell_b"), _p("Support", "cell_b")]]
+    for item in formulas.head(6).to_dict("records"):
+        weight = float(item["weight_per_sd"])
+        up = weight > 0
+        pill = f"<font color='{'#c4302f' if up else '#1c5cab'}'><b>{weight:+.3f}</b><br/>{'↑ risk' if up else '↓ risk'}</font>"
+        kg = " <font color='#1baf7a'><b>[KG]</b></font>" if bool(item.get("uses_kg")) else ""
+        source = str(item.get("source", "") or "")
         rows.append(
             [
-                _p(f"{rule_id}<br/>{pill}", "cell"),
-                _p(_esc(rule["rule"]) + kg, "cell"),
-                _p(f"{int(rule['coverage'])} pts<br/>{int(rule['events'])} events", "cell"),
-                _p(f"<b>{rule['hazard_ratio']:.2f}</b><br/>p {rule['pvalue']:.1e}", "cell"),
-                _p(median, "cell"),
+                _p(pill, "cell"),
+                _p(_esc(item["formula"]) + kg, "cell"),
+                _p(source_text.get(source, source or "—"), "cell"),
+                _p(f"{int(item.get('support', 0))} pts", "cell"),
             ]
         )
-    top_id = rules.index[0]
-    top = rules.iloc[0]
-    km = context.rule_km.get(top_id)
-    table = _table(rows, [CONTENT_W * w for w in (0.12, 0.30, 0.1, 0.1, 0.1)])
-    side = _png(figures.rule_km_figure(km["times"], km["survival"], *context.cohort_km, f"{top_id} covered", top["hazard_ratio"] > 1), CONTENT_W * 0.27) if km else ""
+    table = _table(rows, [CONTENT_W * w for w in (0.1, 0.44, 0.1, 0.08)])
+    top = formulas.iloc[0]
+    km = _formula_km(context, patient_id, list(top["atom_index"]))
+    side = _png(figures.rule_km_figure(km[0], km[1], *context.cohort_km, f"top formula holds (n={km[2]})", float(top["weight_per_sd"]) > 0), CONTENT_W * 0.27) if km else ""
     layout = Table([[table, side]], colWidths=[CONTENT_W * 0.72, CONTENT_W * 0.28])
     layout.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0), ("RIGHTPADDING", (0, 0), (-1, -1), 0)]))
     block.append(layout)
-    block.append(_p("Rules were learned by RuleKit's log-rank rule induction on the four folds that exclude this patient; counts, hazard ratios, and Kaplan–Meier medians are on that training data. [KG] marks a rule whose body contains a PrimeKG fact.", "small"))
+    block.append(
+        _p(
+            "Each formula reads Body(p) ⇒ Progress(p) and carries a weight learned with the Cox partial likelihood on the four folds that exclude this patient "
+            "(per standard deviation of its grounding count; positive raises the progression hazard). Multi-atom formulas were proposed by a reinforcement-learning "
+            "rule generator rewarded for replicated log-rank separation, or mined as pairs. [KG] marks a formula with a PrimeKG relation such as "
+            "Altered(p, g) ∧ InPathway(g, w). The curve shows the training patients for whom the top formula holds.",
+            "small",
+        )
+    )
     story.append(KeepTogether(block))
     return story, facts
 
@@ -536,10 +628,10 @@ def _molecular_section(context: ReportContext, patient_id: str) -> list:
     story.append(_p("How to read this report", "h2"))
     story.append(
         _p(
-            "The risk and the survival curve come from a Cox model on the clinical block (age, sex, PAM50 subtype, AJCC stage, M stage) plus the GNN risk and the RuleKit rule risk, "
-            "all fitted on the four folds that exclude this patient. In cross-validation the GNN and rule terms carry close to zero weight once the clinical block is present, "
-            "so the risk mostly reflects clinical stage, nodal status, age, and subtype. The knowledge-graph paths and rules explain which PrimeKG facts the graph model attended to "
-            "and how patients sharing those facts fared; they are evidence, not causal claims. "
+            f"The risk and the survival curve come from a Cox model on the clinical block (age, sex, PAM50 subtype, AJCC stage, M stage) plus the GNN risk and the logic-engine risk ({context.logic_label}), "
+            "all fitted on the four folds that exclude this patient. In cross-validation the GNN and logic terms carry close to zero weight once the clinical block is present, "
+            "so the risk mostly reflects clinical stage, nodal status, age, and subtype. The paths show which PrimeKG facts the graph model attended to, and the weighted "
+            "logic formulas state which facts, alone or combined, shift the progression hazard in the training folds; they are evidence, not causal claims. "
             f"The progression-time estimate ({context.timing['chosen_estimator'].replace('_', ' ')}) is within 12 months of the recorded month for "
             f"{context.timing['chosen']['within_12_months'] * 100:.0f}% of held-out progressors and in the recorded window for {context.timing['chosen']['window_accuracy'] * 100:.0f}%; "
             "the recorded month is always shown beside it.",
@@ -556,16 +648,17 @@ def _summary_paragraph(context: ReportContext, patient_id: str, assessment: dict
         f"AJCC stage {clinical['ajcc_stage']} ({clinical['t_stage']}, {clinical['n_stage']}, {clinical['m_stage']}). "
         f"The fused neuro-symbolic model places them in the <b>{_ordinal(int(round(assessment['percentile'] * 100)))} risk percentile</b> ({assessment['tier'].lower()} tier)."
     ]
-    rules = reasoning.get("rules")
-    if rules is not None and not rules.empty:
-        top = rules.iloc[0]
-        parts.append(f" The most significant rule covering them (<i>{_esc(top['rule'])}</i>) marks a group with a progression hazard {top['hazard_ratio']:.1f}× that of the remaining patients.")
+    formulas = reasoning.get("formulas")
+    if formulas is not None and not formulas.empty:
+        top = formulas.iloc[0]
+        direction = "raises" if float(top["weight_per_sd"]) > 0 else "lowers"
+        parts.append(f" The strongest learned formula that holds for them (<i>{_esc(top['formula'])}</i>) {direction} the progression hazard (weight {float(top['weight_per_sd']):+.3f} per SD).")
     paths = reasoning.get("paths")
     if paths is not None and not paths.empty:
         best = paths.iloc[0]
         evidence = ""
-        if np.isfinite(best.get("fact_hazard_ratio", np.nan)):
-            evidence = f"; in the training folds, carriers of this PrimeKG fact showed {best['evidence_direction']} (HR {best['fact_hazard_ratio']:.2f})"
+        if int(best.get("rule_count", 0) or 0) > 0:
+            evidence = f"; the learned formulas it instantiates point to {best['evidence_direction']} (Σw {float(best['rule_score']):+.3f})"
         parts.append(f" The highest-scoring knowledge-graph path runs from <b>{_esc(best['altered_gene'])}</b> to <b>{_esc(best['terminal_name'])}</b>{evidence}.")
     if assessment["progressed"] and np.isfinite(assessment["month"]):
         parts.append(f" Progression was recorded at {assessment['recorded']:.1f} months; the model's estimate given progression was {assessment['month']:.0f} months.")
@@ -634,13 +727,18 @@ def build_group_summary(context: ReportContext, code: str, path: Path, report_fi
     layout = Table([[scatter, endpoints]], colWidths=[CONTENT_W * 0.5, CONTENT_W * 0.5])
     layout.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0)]))
     story.append(layout)
-    rule_counts = pd.Series([rule for patient_id in members.index for rule in _rules_for(context, patient_id).head(3).index]).value_counts().head(6)
-    if len(rule_counts):
-        rows = [[_p("Rules firing most often in this group", "cell_b"), _p("HR", "cell_b"), _p("Patients", "cell_b")]]
-        for rule_id, count in rule_counts.items():
-            rule = context.rules.loc[rule_id]
-            rows.append([_p(f"{rule_id}: {_esc(rule['rule'])}", "cell"), _p(f"{rule['hazard_ratio']:.2f}", "cell"), _p(str(count), "cell")])
-        story += [Spacer(1, 6), _table(rows, [CONTENT_W * 0.76, CONTENT_W * 0.1, CONTENT_W * 0.14])]
+    fired = []
+    for patient_id in members.index:
+        formulas = _formulas_for(context, patient_id)
+        if not formulas.empty:
+            fired.extend((row["formula"], float(row["weight_per_sd"])) for row in formulas.head(3).to_dict("records"))
+    if fired:
+        frame = pd.DataFrame(fired, columns=["formula", "weight"])
+        top = frame.groupby("formula").agg(patients=("weight", "size"), weight=("weight", "mean")).sort_values("patients", ascending=False).head(6)
+        rows = [[_p("Logic formulas firing most often in this group", "cell_b"), _p("Mean weight", "cell_b"), _p("Patients", "cell_b")]]
+        for formula, item in top.iterrows():
+            rows.append([_p(_esc(formula), "cell"), _p(f"{item['weight']:+.3f}", "cell"), _p(str(int(item["patients"])), "cell")])
+        story += [Spacer(1, 6), _table(rows, [CONTENT_W * 0.72, CONTENT_W * 0.13, CONTENT_W * 0.15])]
     drivers = context.alterations[context.alterations["patient_id"].isin(members.index) & context.alterations["driver"].astype(bool)]
     if not drivers.empty:
         counts = drivers.groupby(["gene", "kind"])["patient_id"].nunique().sort_values(ascending=False).head(10)
@@ -684,6 +782,22 @@ def build_cohort_overview(context: ReportContext, path: Path) -> Path:
         rows.append([_p(item.model.replace("_", " "), "cell_b" if item.model == context.report_model else "cell")] + [_p("—" if not np.isfinite(v) else f"{v:.3f}", "cell") for v in values])
     story.append(_table(rows, [CONTENT_W * w for w in (0.28, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12)]))
     story.append(_p("Lower integrated Brier score (IBS) is better; it is reported only for models that produce a survival curve.", "small"))
+    if not context.logic_metrics.empty:
+        story.append(_p("Symbolic reasoners compared", "h1"))
+        rows = [[_p(h, "cell_b") for h in ("Reasoner", "Harrell C (mean ± sd)", "Uno C", "Formulas / fold", "KG formulas")]]
+        for item in context.logic_metrics.sort_values("c_mean", ascending=False).itertuples(index=False):
+            style = "cell_b" if item.method == context.logic_engine else "cell"
+            rows.append(
+                [
+                    _p(_esc(item.label) + (" (engine)" if item.method == context.logic_engine else ""), style),
+                    _p(f"{item.c_mean:.3f} ± {item.c_std:.3f}", "cell"),
+                    _p(f"{item.uno_c_120:.3f}", "cell"),
+                    _p(f"{item.rules_per_fold:.1f}", "cell"),
+                    _p(f"{item.kg_rule_share * 100:.0f}%", "cell"),
+                ]
+            )
+        story.append(_table(rows, [CONTENT_W * w for w in (0.4, 0.18, 0.12, 0.15, 0.15)]))
+        story.append(_p("The engine is chosen with the one-standard-error rule: among reasoners within one standard error of the best fold-mean C-index, the one with the richest reasoning is preferred (RL-structured MLN, then MLN, PSL, RL rules, RuleKit).", "small"))
     story.append(_p("Predicting the month of progression", "h1"))
     rows = [[_p(h, "cell_b") for h in ("Estimator (held-out progressors)", "MAE", "Median |error|", "Within 12 mo", "Window accuracy", "IQR coverage")]]
     for name, row in context.timing["estimators"].items():

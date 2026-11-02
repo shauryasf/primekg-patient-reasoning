@@ -1,0 +1,17 @@
+20:21:32 INFO Cohort 1083 patients, 145 progressions
+20:21:33 INFO Ground atoms: 422 ({'kg_pathway': 306, 'genomic': 57, 'clinical': 26, 'kg_drug': 26, 'kg_disease': 7})
+20:21:49 INFO logic fold 0 done
+20:22:04 INFO logic fold 1 done
+20:22:20 INFO logic fold 2 done
+20:22:36 INFO logic fold 3 done
+20:22:51 INFO logic fold 4 done
+20:22:52 INFO Logic reasoners:
+ method   c_mean    c_std  rules_per_fold  kg_rule_share
+    mln 0.629931 0.055248            32.8       0.628049
+ rl_mln 0.628271 0.054845            35.2       0.693182
+rulekit 0.619057 0.048175             7.8       0.102564
+    psl 0.604056 0.059312            40.0       0.625000
+     rl 0.563105 0.046377            25.6       0.914062
+20:22:52 INFO Symbolic engine: rl_mln ({'best': 'mln', 'best_c': 0.6299305490231127, 'bar': np.float64(0.6052230838642182), 'eligible': ['mln', 'rl_mln', 'rulekit']})
+20:22:57 INFO Report model: neurosymbolic_cox (within one standard error of the best (clinical_cox_19))
+20:22:58 INFO Timing on held-out progressors: {"patients": 145, "mae_months": 20.12954993225723, "median_abs_error_months": 12.875670588541453, "within_12_months": 0.47586206896551725, "window_accuracy": 0.3310344827586207, "interval_coverage": 0.5724137931034483}

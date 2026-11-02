@@ -1,0 +1,2 @@
+Altered(p, g) ∧ InPathway(g, 'VEGFA-VEGFR2 Pathway') ∧ Altered(p, g) ∧ InPathway(g, 'Ion homeostasis') ⇒ Progress(p)
+weight -0.141 fold 0

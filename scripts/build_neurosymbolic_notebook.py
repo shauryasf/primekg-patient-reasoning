@@ -39,11 +39,12 @@ What is new in this run:
 | Step | What it does | Where |
 | --- | --- | --- |
 | 1. Survival GNNs | GCN, GraphSAGE, R-GCN trained on the **full PFS follow-up** (1,083 patients, 145 progressions) with a Cox or C-index objective instead of the 36-month binary label | `stage_neural` |
-| 2. Symbolic rules | **RuleKit LR-Rules** (log-rank rule induction) over 187 readable predicates: clinical facts, driver alterations, and **PrimeKG facts** ("an altered gene is in pathway P") | `src/neurosymbolic/rules.py` |
+| 2. Symbolic baseline | **RuleKit LR-Rules** (log-rank rule induction) over 187 readable predicates: clinical facts, driver alterations, and **PrimeKG facts** ("an altered gene is in pathway P") | `src/neurosymbolic/rules.py` |
+| 2b. Logic reasoners | Beyond IF-THEN rules: a **survival Markov logic network**, **survival probabilistic soft logic** with collective inference, **RL-generated rules**, and **RL-structured Markov logic** over 422 first-order ground atoms; the best becomes the rule engine | `src/neurosymbolic/logic/` |
 | 3. KG fact evidence | For every PrimeKG pathway / drug / disease node, a log-rank test of its carriers on the training folds | `src/neurosymbolic/kg_evidence.py` |
 | 4. Fusion | A Cox model that stacks the GNN risk and the rule risk on the clinical block, compared with clinical baselines and a random survival forest | `stage_fusion` |
 | 5. Timing | The month of progression, estimated from models fitted on training-fold progressors and checked against the recorded month | `src/neurosymbolic/timing.py` |
-| 6. Paths | Every candidate KG path scored **0.6 × neural (GNNExplainer) + 0.4 × symbolic (fact evidence)**; top-K chosen by a prominence cutoff | `src/neurosymbolic/paths.py` |
+| 6. Paths | Every candidate KG path scored **0.6 × neural (GNNExplainer) + 0.4 × rule (weights of the learned logic formulas it grounds)**; top-K chosen by a prominence cutoff | `src/neurosymbolic/paths.py` |
 | 7. Reports | Hospital-style PDF per patient, binned into progression-timeline groups A–D plus a no-progression group N | `scripts/build_patient_reports.py` |
 
 Every number below is **out-of-fold**: each patient's prediction, rule set, and path scores come from models
@@ -172,10 +173,59 @@ display(pd.concat([fold0.head(5), fold0.tail(5)])[['fact', 'name', 'carriers', '
     ),
     md(
         """
+## 3b. Beyond IF-THEN rules: Markov logic, soft logic, and reinforcement learning
+
+RuleKit's crisp IF-THEN rules were the weakest part of the symbolic story. Following the mentor's direction, four
+survival-aware reasoners were built over the **same 422 first-order ground atoms** and the **same five folds**:
+26 clinical, 57 genomic, and 339 *relational* PrimeKG atoms such as `Altered(p, g) ∧ InPathway(g, w)`, whose value
+is the number of true groundings (how many of the patient's altered genes PrimeKG places in pathway *w*).
+
+| Reasoner | Idea | What is new here |
+| --- | --- | --- |
+| **Survival MLN** | weighted first-order formulas `w : Body(p) ⇒ Progress(p)`, score ∝ Σ w·n(p) | weights learned with the **elastic-net Cox partial likelihood** (censoring-correct) instead of the usual logistic pseudo-likelihood; the L1 part is structure learning |
+| **Survival PSL** | soft truth values in [0, 1], rules become hinge potentials, convex MAP inference | a **collective rule** `Similar(p,q) ∧ HighRisk(q) ⇒ HighRisk(p)` over a patient-similarity graph with censoring-aware soft targets; weights learned end-to-end through unrolled inference |
+| **RL rules** | a GRU policy writes rules atom by atom (REINFORCE) | a **stability reward**: log-rank separation must replicate on two disjoint halves, then on a held-out 30% |
+| **RL-structured MLN** | RL proposes multi-atom formulas, the survival MLN learns their weights | MLN structure learning by reinforcement learning, weight learning by survival likelihood |
+
+The engine is chosen by the one-standard-error rule with a preference for the richest reasoning.
+"""
+    ),
+    code(
+        """
+logic = pd.read_csv(OUT / 'logic' / 'metrics.csv')
+engine = json.loads((OUT / 'logic' / 'engine.json').read_text())
+display(logic[['label', 'c_mean', 'c_std', 'c_folds', 'uno_c_120', 'rules_per_fold', 'kg_rule_share', 'seconds']].round(3))
+display(Image(F.model_comparison_figure(logic.label.tolist(), logic.c_mean.tolist(), logic.c_std.tolist(), engine['label'])))
+print(f"Engine: {engine['label']} (best by mean: {engine['best']} {engine['best_c']:.3f}; within one SE: {', '.join(engine['eligible'])})")
+rlm = pd.read_csv(OUT / 'logic' / 'rl_mln_weights.csv')
+print('Formulas kept by the RL-structured MLN, per fold and source:')
+display(rlm.groupby('fold').source.value_counts().unstack().fillna(0).astype(int))
+print('Strongest RL-proposed formulas:')
+display(rlm[rlm.source == 'rl'].sort_values('weight_per_sd', key=abs, ascending=False).head(5)[['fold', 'formula', 'weight_per_sd', 'support']].round(3))
+print('Strongest mined clinical x PrimeKG formulas:')
+display(rlm[rlm.source == 'mined'].sort_values('weight_per_sd', key=abs, ascending=False).head(4)[['fold', 'formula', 'weight_per_sd', 'support']].round(3))
+print('PSL collective-rule weights per fold (s+, s-):', [(round(i['collective_plus'], 3), round(i['collective_minus'], 3)) for i in engine['infos']['psl']])
+print('RL search per fold (episodes, distinct rules, replicated rules):', [(i['episodes'], i['distinct_rules'], i['rules']) for i in engine['infos']['rl_mln']])
+"""
+    ),
+    md(
+        """
+**Reading the comparison honestly.** Both Markov logic variants (C-index about 0.63) are ahead of RuleKit (0.62),
+PSL (0.60), and RL rules alone (0.56), but the MLN-versus-RuleKit gap is within the fold standard deviation, so
+the gain is not in accuracy. The gain is in *what the symbolic layer can say*: about 69% of the RL-structured MLN's
+formulas reason over PrimeKG relations (RuleKit: 10%), and they are weighted, can be combined, and are multi-hop,
+for example *Altered(p, g) ∧ InPathway(g, 'VEGFA-VEGFR2 Pathway') ∧ Altered(p, g) ∧ InPathway(g, 'Ion homeostasis')
+⇒ Progress(p)*. PSL learned almost no collective weight: in this cohort, similar patients do not carry outcome
+information beyond their own facts. RL alone searched about 20,000–26,000 distinct rules per fold; most of the top
+training rewards did not replicate, which is why the replication filter and the MLN weight learning matter.
+"""
+    ),
+    md(
+        """
 ## 4. Fusion and choosing the best model
 
 All models are scored on the same five folds. The fused neuro-symbolic Cox model stacks the out-of-fold GNN risk
-and RuleKit risk onto the 19-field clinical block (stacking caveat: a training patient's stacked inputs come
+and the logic engine's risk (RL-structured MLN) onto the 19-field clinical block (stacking caveat: a training patient's stacked inputs come
 from fold models that saw other folds, the standard cross-validated stacking compromise).
 """
     ),
@@ -251,8 +301,14 @@ Each candidate path is a real walk over stored edges: patient → sample → alt
 pathway / drug / breast disease. It gets
 
 * **neural** = percentile of its mean GNNExplainer edge importance (fold model that held the patient out),
-* **symbolic** = |log-rank z| of the PrimeKG fact it ends in, from that patient's training folds, capped at 3 and scaled to [0, 1],
-* **NS score** = 0.6 × neural + 0.4 × symbolic.
+* **rule** = the summed weight of the learned logic formulas the path *grounds*: formulas that fire for this patient and
+  whose atoms mention the path's end node, its altered gene, or (for relational atoms such as
+  `Altered(p, g) ∧ InPathway(g, w)`) a gene on the path; |sum| is scaled by its 95th percentile and capped at 1, and
+  the sign gives the direction,
+* **NS score** = 0.6 × neural + 0.4 × rule.
+
+The log-rank evidence of the end fact is still printed in the report as cohort context, but it no longer drives
+the score.
 
 A path is *prominent* when its NS score is in the cohort's top 20%. A report shows `min(5, prominent)` paths
 (at most two through the same gene, each gene route and end node once); when fewer than three are prominent it
@@ -294,7 +350,8 @@ pid = examples['A']
 paths = ctx.paths_for(pid)
 display(Markdown(f'**Top paths for {pid}** (group A, recorded progression at {pred.set_index("patient_id").loc[pid, "time"]:.1f} months)'))
 display(Image(F.path_figure(paths.to_dict('records'))))
-display(paths[['rank', 'altered_gene', 'terminal_name', 'neural', 'fact_hazard_ratio', 'fact_carriers', 'symbolic', 'ns_score', 'prominent']].round(3))
+display(paths[['rank', 'altered_gene', 'terminal_name', 'neural', 'rule_score', 'rule_count', 'symbolic', 'ns_score', 'prominent']].round(3))
+print(f"{(scored.rule_count > 0).mean():.1%} of candidate paths ground at least one learned formula")
 """
     ),
     md(
@@ -362,6 +419,9 @@ show_pdf(REPORTS / '00_cohort_overview.pdf', pages=(0,), zoom=1.1)
   tied with the best and explainable, not because it is more accurate.
 * **Timing is coarse.** The month estimate is right to within a year for about half of the progressors; late
   progressions are hard to place. The recorded month is always printed beside it.
+* **The logic engine adds reasoning, not accuracy.** Markov logic matches RuleKit's C-index within noise; its value
+  is weighted, multi-hop, PrimeKG-grounded formulas. RL rules alone overfit their search; they help only as the
+  structure learner of the MLN.
 * **Paths explain the GNN, which is the weaker component.** A path is evidence of what the graph model attended
   to, paired with cohort-level evidence for the PrimeKG fact; it is not a causal claim.
 * **PrimeKG drug links are not recommendations.** They include enzymes, carriers, and transporters as well as targets.
@@ -371,7 +431,7 @@ show_pdf(REPORTS / '00_cohort_overview.pdf', pages=(0,), zoom=1.1)
 Reproduce everything with:
 
 ```bash
-python scripts/run_neurosymbolic_pipeline.py          # neural, symbolic, fusion, explain (~45 min on a laptop CPU)
+python scripts/run_neurosymbolic_pipeline.py          # neural, symbolic, logic, fusion, explain (~50 min on a laptop CPU)
 python scripts/build_patient_reports.py --workers 4   # ~1,083 PDFs + group summaries
 python scripts/build_neurosymbolic_notebook.py        # this notebook
 ```

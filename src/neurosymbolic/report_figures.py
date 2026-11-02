@@ -178,10 +178,12 @@ def path_figure(paths: list[dict], width: float = 7.2) -> bytes:
         sym_color = RISK_UP if direction == "faster progression" else RISK_DOWN if direction == "slower progression" else NEUTRAL
         axis.add_patch(Rectangle((bar_x + neural_part, y - 0.06), symbolic_part, 0.12, color=sym_color, linewidth=0))
         axis.text(bar_x, y + 0.22, f"NS score {score:.2f}" + ("  ★ prominent" if path["prominent"] else ""), fontsize=6.4, color=INK, fontweight="bold")
-        if np.isfinite(path.get("fact_hazard_ratio", np.nan)):
-            evidence = f"HR {path['fact_hazard_ratio']:.2f} · n={int(path['fact_carriers'])}"
+        if int(path.get("rule_count", 0) or 0) > 0:
+            evidence = f"rules Σw {float(path['rule_score']):+.3f} ({int(path['rule_count'])})"
+        elif np.isfinite(path.get("fact_hazard_ratio", np.nan)):
+            evidence = f"no rule · cohort HR {path['fact_hazard_ratio']:.2f}"
         else:
-            evidence = "no cohort evidence"
+            evidence = "no rule fires"
         axis.text(bar_x, y - 0.26, evidence, fontsize=5.8, color=INK_2)
     legend_y = rows + 0.3
     x = 1.5
@@ -189,7 +191,7 @@ def path_figure(paths: list[dict], width: float = 7.2) -> bytes:
         axis.add_patch(Rectangle((x, legend_y - 0.07), 1.6, 0.14, color=NODE_COLORS[kind], linewidth=0))
         axis.text(x + 2.1, legend_y, NODE_LABELS[kind], fontsize=6.2, color=INK_2, va="center")
         x += 10
-    for label, color in (("neural", NAVY), ("KG evidence ↑ risk", RISK_UP), ("KG evidence ↓ risk", RISK_DOWN)):
+    for label, color in (("neural", NAVY), ("rule ↑ risk", RISK_UP), ("rule ↓ risk", RISK_DOWN)):
         axis.add_patch(Rectangle((x + 4, legend_y - 0.07), 1.6, 0.14, color=color, linewidth=0))
         axis.text(x + 6.1, legend_y, label, fontsize=6.2, color=INK_2, va="center")
         x += 15

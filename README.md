@@ -101,24 +101,30 @@ pip install -r requirements.txt
 
 ## Neuro-symbolic reasoning and patient reports
 
-The latest iteration combines a survival GNN over the fused graph with RuleKit survival rules over clinical,
-genomic, and PrimeKG predicates. It writes a hospital-style PDF report for every patient, grouped by recorded
+The latest iteration combines a survival GNN over the fused graph with a survival Markov logic network whose
+first-order formulas are proposed by a reinforcement-learning rule generator. That reasoner was compared with
+probabilistic soft logic, RL rules alone, and a RuleKit baseline, over clinical, genomic, and relational PrimeKG
+atoms. It writes a hospital-style PDF report for every patient, grouped by recorded
 progression timeline: A ≤ 12 months, B 12–24, C 24–36, D > 36, and N no progression. Each report shows the
 clinical record, the predicted risk and progression month next to the recorded outcome, the top-K
-knowledge-graph paths (scored 0.6 × GNNExplainer importance + 0.4 × cohort log-rank evidence for the PrimeKG
-fact), the rules that fire, and the molecular profile. Method, results, and limitations are in
+knowledge-graph paths (scored 0.6 × GNNExplainer importance + 0.4 × the weights of the learned logic formulas
+each path grounds), the weighted formulas that fire, and the molecular profile. Method, results, and limitations are in
 [neuro-symbolic reports](docs/neurosymbolic_reports.md), and the mentor walkthrough is
-[notebooks/neurosymbolic_patient_reports.ipynb](notebooks/neurosymbolic_patient_reports.ipynb).
+[notebooks/neurosymbolic_patient_reports.ipynb](notebooks/neurosymbolic_patient_reports.ipynb). The comparison of
+the logic reasoners, the novelty points, and the choice of the best survival model are explained in
+[notebooks/symbolic_reasoning_novelty.ipynb](notebooks/symbolic_reasoning_novelty.ipynb). The project report is
+[report/thesis.pdf](report/thesis.pdf), built from `report/thesis.tex` with figures from `report/make_figures.py`.
 
 ```bash
-python scripts/run_neurosymbolic_pipeline.py        # neural, symbolic, fusion, explain stages
+python scripts/run_neurosymbolic_pipeline.py        # neural, symbolic, logic, fusion, explain stages
 python scripts/build_patient_reports.py --workers 4 # outputs/patient_reports/
-python scripts/build_neurosymbolic_notebook.py      # executes the notebook
+python scripts/build_neurosymbolic_notebook.py      # executes the walkthrough notebook
+python scripts/build_logic_novelty_notebook.py      # executes the logic-reasoner novelty notebook
 ```
 
-Every model, including GNN, rules, random survival forest, and Cox, saturates at a C-index of about 0.67 on the
+Every model, including GNN, logic reasoners, random survival forest, and Cox, saturates at a C-index of about 0.67 on the
 full PFS follow-up. The report model is the neuro-symbolic Cox model, chosen by the one-standard-error rule. Its
-neural and symbolic terms add explanation, not accuracy.
+neural and logic terms add explanation, not accuracy.
 
 ## Validation and limitations
 

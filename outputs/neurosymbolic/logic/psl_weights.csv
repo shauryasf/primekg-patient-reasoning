@@ -1,0 +1,201 @@
+rule,name,risk_weight,protect_weight,net_weight,uses_kg,support,fold
+"TStage(p, T4) ⇒ HighRisk(p)",t_stage=T4,0.2840946912765503,0.0023348131217062473,0.2817598879337311,False,27,0
+"Altered(p, g) ∧ InPathway(g, 'Neutrophil degranulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-6798695,0.013837908394634724,0.2761492133140564,-0.26231130957603455,True,312,0
+"NStage(p, N3) ⇒ HighRisk(p)",n_stage=N3,0.24758268892765045,0.0023348131217062473,0.24524787068367004,False,61,0
+"Altered(p, g) ∧ InPathway(g, 'Transcriptional Regulation by E2F6') ⇒ HighRisk(p)",kg_pathway:R-HSA-8953750,0.15272670984268188,0.0023348131217062473,0.15039189159870148,True,36,0
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ HighRisk(p)",kg_pathway:R-HSA-1251985,0.1395236700773239,0.0023348131217062473,0.1371888518333435,True,28,0
+Age(p) < 40 ⇒ HighRisk(p),age<40,0.08674867451190948,0.0023348131217062473,0.08441386371850967,False,51,0
+"Subtype(p, Her2) ⇒ HighRisk(p)",subtype=Her2,0.07437490671873093,0.0023348131217062473,0.07204009592533112,False,58,0
+"Histology(p, other) ⇒ HighRisk(p)",histology=other,0.05655154585838318,0.0023348131217062473,0.05421673133969307,False,79,0
+LowTmb(p) ⇒ HighRisk(p),tmb_nonsynonymous_low,0.04322020336985588,0.0023348131217062473,0.04088538885116577,False,224,0
+"Stage(p, III) ⇒ HighRisk(p)",ajcc_stage=III,0.03916706517338753,0.0023348131217062473,0.03683225065469742,False,195,0
+"Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ HighRisk(p)",kg_pathway:R-HSA-447043,0.029610440135002136,0.0024819583632051945,0.02712848223745823,True,173,0
+"Altered(p, g) ∧ InPathway(g, 'Potential therapeutics for SARS') ⇒ HighRisk(p)",kg_pathway:R-HSA-9679191,0.029061293229460716,0.0037709518801420927,0.025290342047810555,True,137,0
+"Altered(p, g) ∧ InPathway(g, 'Mitochondrial tRNA aminoacylation') ⇒ HighRisk(p)",kg_pathway:R-HSA-379726,0.025130929425358772,0.0023348131217062473,0.022796116769313812,True,93,0
+"Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ HighRisk(p)",kg_drug:DB08846,0.023275382816791534,0.004826524760574102,0.018448857590556145,True,185,0
+"Altered(p, g) ∧ InPathway(g, 'Mitochondrial translation initiation') ⇒ HighRisk(p)",kg_pathway:R-HSA-5368286,0.010733569972217083,0.0023348131217062473,0.008398756384849548,True,104,0
+"Altered(p, g) ∧ InPathway(g, 'HDACs deacetylate histones') ⇒ HighRisk(p)",kg_pathway:R-HSA-3214815,0.009474728256464005,0.0023348131217062473,0.007139915134757757,True,97,0
+"Altered(p, g) ∧ InPathway(g, 'NoRC negatively regulates rRNA expression') ⇒ HighRisk(p)",kg_pathway:R-HSA-427413,0.008500910364091396,0.00224878522567451,0.006252124905586243,True,174,0
+"Altered(p, g) ∧ InPathway(g, 'SUMOylation of DNA damage response and repair proteins') ⇒ HighRisk(p)",kg_pathway:R-HSA-3108214,0.007610171101987362,0.002035475103184581,0.0055746957659721375,True,229,0
+"Altered(p, g) ∧ InPathway(g, 'TFAP2 (AP-2) family regulates transcription of growth factors and their receptors') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-8866910,0.0021810925099998713,0.005850709043443203,-0.0036696165334433317,True,254,0
+"Altered(p, g) ∧ InPathway(g, 'RMTs methylate histone arginines') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-3214858,0.000338511832524091,0.0027713007293641567,-0.0024327889550477266,True,165,0
+"Stage(p, II) ⇒ ¬HighRisk(p)",ajcc_stage=II,0.00021147662482690066,0.0023348131217062473,-0.0021233365405350924,False,481,0
+"Stage(p, I) ⇒ ¬HighRisk(p)",ajcc_stage=I,0.0002760649367701262,0.0023348131217062473,-0.0020587481558322906,False,148,0
+"NStage(p, N0) ⇒ ¬HighRisk(p)",n_stage=N0,0.0003055056440643966,0.0023348131217062473,-0.00202930741943419,False,408,0
+"Altered(p, g) ∧ InPathway(g, 'Regulation of TNFR1 signaling') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5357905,0.0003907994250766933,0.002336811274290085,-0.0019460117910057306,True,207,0
+"Altered(p, g) ∧ InPathway(g, 'Reversible hydration of carbon dioxide') ⇒ HighRisk(p)",kg_pathway:R-HSA-1475029,0.004273825790733099,0.0023348131217062473,0.0019390126690268517,True,91,0
+"Altered(p, g) ∧ InPathway(g, 'Integrin signaling') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-354192,0.0005707531236112118,0.0024886697065085173,-0.0019179165828973055,True,130,0
+"Altered(p, g) ∧ InPathway(g, 'RHO GTPases activate PAKs') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5627123,0.00042324335663579404,0.0023348131217062473,-0.0019115697359666228,True,123,0
+"Altered(p, g) ∧ InPathway(g, 'Serotonin Neurotransmitter Release Cycle') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-181429,0.00042609451338648796,0.0023348131217062473,-0.0019087186083197594,True,129,0
+"Altered(p, g) ∧ InPathway(g, 'Clathrin-mediated endocytosis') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-8856828,0.00045416445937007666,0.0021106000058352947,-0.001656435546465218,True,149,0
+"Altered(p, g) ∧ InPathway(g, 'Cargo concentration in the ER') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5694530,0.0007000238401815295,0.0023348131217062473,-0.0016347892815247178,True,91,0
+"TStage(p, T1) ⇒ ¬HighRisk(p)",t_stage=T1,0.000765263510402292,0.0023348131217062473,-0.0015695495530962944,False,225,0
+"Altered(p, g) ∧ InPathway(g, 'Sensing of DNA Double Strand Breaks') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5693548,0.0007985069532878697,0.0023348131217062473,-0.0015363062266260386,True,39,0
+"Altered(p, g) ∧ InPathway(g, 'MASTL Facilitates Mitotic Progression') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-2465910,0.0008138562552630901,0.0023348131217062473,-0.0015209568664431572,True,92,0
+"Subtype(p, LumA) ⇒ ¬HighRisk(p)",subtype=LumA,0.0008554851519875228,0.0023348131217062473,-0.0014793279115110636,False,408,0
+"Altered(p, g) ∧ InPathway(g, 'Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1474151,0.0009606567909941077,0.0023348131217062473,-0.0013741563307121396,True,35,0
+"Amplified(p, GOLPH3L) ⇒ ¬HighRisk(p)",amp_GOLPH3L,0.0015359275275841355,0.0023348131217062473,-0.0007988855941221118,False,86,0
+"Altered(p, g) ∧ InPathway(g, 'Meiotic synapsis') ⇒ HighRisk(p)",kg_pathway:R-HSA-1221632,0.0035251472145318985,0.0032030565198510885,0.00032209069468081,True,140,0
+"Mutated(p, ERBB2) ⇒ ¬HighRisk(p)",mut_ERBB2,0.0021702877711504698,0.0023348131217062473,-0.00016452535055577755,False,29,0
+"Amplified(p, NFASC) ⇒ HighRisk(p)",amp_NFASC,0.0024946455378085375,0.0023348131217062473,0.00015983241610229015,False,77,0
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Insulin-like Growth Factor (IGF) transport and uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs)') ⇒ HighRisk(p)",kg_pathway:R-HSA-381426,0.0034575480967760086,0.003411233890801668,4.631420597434044e-05,True,120,0
+"Altered(p, g) ∧ InPathway(g, 'Potential therapeutics for SARS') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-9679191,0.022104017436504364,0.5011800527572632,-0.4790760278701782,True,143,1
+"NStage(p, N3) ⇒ HighRisk(p)",n_stage=N3,0.23899200558662415,0.0027662087231874466,0.23622579872608185,False,57,1
+"TStage(p, T4) ⇒ HighRisk(p)",t_stage=T4,0.2246495485305786,0.0027662087231874466,0.22188334167003632,False,32,1
+"Altered(p, g) ∧ InPathway(g, 'SUMOylation of DNA damage response and repair proteins') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-3108214,0.024261144921183586,0.14589948952198029,-0.12163834273815155,True,236,1
+"Altered(p, g) ∧ InPathway(g, 'MASTL Facilitates Mitotic Progression') ⇒ HighRisk(p)",kg_pathway:R-HSA-2465910,0.11673108488321304,0.0027662087231874466,0.11396487802267075,True,94,1
+"Altered(p, g) ∧ InPathway(g, 'HDACs deacetylate histones') ⇒ HighRisk(p)",kg_pathway:R-HSA-3214815,0.08323614299297333,0.0027662087231874466,0.08046993613243103,True,103,1
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ HighRisk(p)",kg_pathway:R-HSA-1251985,0.07857774943113327,0.0027662087231874466,0.07581154257059097,True,29,1
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Insulin-like Growth Factor (IGF) transport and uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-381426,0.0007604901329614222,0.05419105663895607,-0.05343056470155716,True,118,1
+"Altered(p, g) ∧ InPathway(g, 'Neutrophil degranulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-6798695,0.005352483596652746,0.0487842932343483,-0.04343181103467941,True,319,1
+"Stage(p, III) ⇒ HighRisk(p)",ajcc_stage=III,0.032984960824251175,0.0027662087231874466,0.03021875210106373,False,197,1
+"Altered(p, g) ∧ InPathway(g, 'Interaction With Cumulus Cells And The Zona Pellucida') ⇒ HighRisk(p)",kg_pathway:R-HSA-2534343,0.026672039180994034,0.0038384723011404276,0.02283356711268425,True,180,1
+"Subtype(p, Her2) ⇒ HighRisk(p)",subtype=Her2,0.024774838238954544,0.0027662087231874466,0.022008629515767097,False,60,1
+"Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ HighRisk(p)",kg_pathway:R-HSA-447043,0.016476698219776154,0.002667248249053955,0.013809449970722198,True,180,1
+"Altered(p, g) ∧ InPathway(g, 'Defective B3GALTL causes Peters-plus syndrome (PpS)') ⇒ HighRisk(p)",kg_pathway:R-HSA-5083635,0.009968447498977184,0.0027662087231874466,0.007202238775789738,True,94,1
+"Altered(p, g) ∧ InPathway(g, 'Tryptophan catabolism') ⇒ HighRisk(p)",kg_pathway:R-HSA-71240,0.00907834805548191,0.0027662087231874466,0.006312139332294464,True,90,1
+"Stage(p, II) ⇒ HighRisk(p)",ajcc_stage=II,0.008881031535565853,0.0027662087231874466,0.0061148228123784065,False,487,1
+"Altered(p, g) ∧ InPathway(g, 'Amplification  of signal from unattached  kinetochores via a MAD2  inhibitory signal') ⇒ HighRisk(p)",kg_pathway:R-HSA-141444,0.008359672501683235,0.0027662087231874466,0.005593463778495789,True,113,1
+"Altered(p, g) ∧ InPathway(g, 'The NLRP3 inflammasome') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-844456,0.0005232958355918527,0.0059065124951303005,-0.00538321677595377,True,142,1
+"Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ ¬HighRisk(p)",kg_drug:DB08846,0.0027221636846661568,0.0067086052149534225,-0.003986441530287266,True,186,1
+"TStage(p, T1) ⇒ ¬HighRisk(p)",t_stage=T1,0.0002674318675417453,0.0027662087231874466,-0.0024987768847495317,False,213,1
+"NStage(p, N0) ⇒ ¬HighRisk(p)",n_stage=N0,0.00030714867170900106,0.0027662087231874466,-0.0024590599350631237,False,397,1
+"Stage(p, I) ⇒ ¬HighRisk(p)",ajcc_stage=I,0.00043701299000531435,0.0027662087231874466,-0.002329195849597454,False,141,1
+"Amplified(p, ZNF695) ⇒ ¬HighRisk(p)",amp_ZNF695,0.0005917715025134385,0.0027662087231874466,-0.002174437278881669,False,88,1
+"Altered(p, g) ∧ InPathway(g, 'POLB-Dependent Long Patch Base Excision Repair') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-110362,0.0006081319297663867,0.0027662087231874466,-0.002158076735213399,True,87,1
+"Altered(p, g) ∧ InPathway(g, 'Regulation of gene expression by Hypoxia-inducible Factor') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1234158,0.0006258011562749743,0.0027662087231874466,-0.0021404074504971504,True,91,1
+"Altered(p, g) ∧ InPathway(g, 'Toxicity of botulinum toxin type D (botD)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5250955,0.0006487684440799057,0.0027662087231874466,-0.0021174403373152018,True,90,1
+"Altered(p, g) ∧ InPathway(g, 'Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1474151,0.00071518070762977,0.0027662087231874466,-0.0020510279573500156,True,28,1
+"Altered(p, g) ∧ InPathway(g, 'RMTs methylate histone arginines') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-3214858,0.00042260924237780273,0.0024120742455124855,-0.0019894649740308523,True,163,1
+"Altered(p, g) ∧ InPathway(g, 'Regulation of FOXO transcriptional activity by acetylation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-9617629,0.0008058342500589788,0.0027662087231874466,-0.001960374414920807,True,93,1
+"Amplified(p, FAM72C) ⇒ ¬HighRisk(p)",amp_FAM72C,0.0008099658298306167,0.0027662087231874466,-0.001956242835149169,False,118,1
+"Altered(p, g) ∧ InPathway(g, 'Mitochondrial tRNA aminoacylation') ⇒ HighRisk(p)",kg_pathway:R-HSA-379726,0.00463485112413764,0.0027662087231874466,0.0018686424009501934,True,95,1
+"Amplified(p, TP53BP2) ⇒ ¬HighRisk(p)",amp_TP53BP2,0.0009146886295638978,0.0027662087231874466,-0.0018515200354158878,False,78,1
+"Altered(p, g) ∧ InPathway(g, 'Reversible hydration of carbon dioxide') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1475029,0.0009254414471797645,0.0027662087231874466,-0.0018407672178000212,True,89,1
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Complement cascade') ⇒ HighRisk(p)",kg_pathway:R-HSA-977606,0.0044561466202139854,0.0027662087231874466,0.0016899378970265388,True,86,1
+"Altered(p, g) ∧ InPathway(g, 'Sema3A PAK dependent Axon repulsion') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-399954,0.0013832347467541695,0.0027662087231874466,-0.0013829739764332771,True,92,1
+"Amplified(p, GOLPH3L) ⇒ HighRisk(p)",amp_GOLPH3L,0.004075833596289158,0.0027662087231874466,0.0013096248731017113,False,90,1
+"Altered(p, g) ∧ InPathway(g, 'Cargo concentration in the ER') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5694530,0.0014675842830911279,0.0027662087231874466,-0.0012986244400963187,True,93,1
+"Subtype(p, LumA) ⇒ ¬HighRisk(p)",subtype=LumA,0.0014786880929023027,0.0027662087231874466,-0.0012875206302851439,False,390,1
+"Altered(p, g) ∧ InPathway(g, 'Platelet Adhesion to exposed collagen') ⇒ HighRisk(p)",kg_pathway:R-HSA-75892,0.0039599682204425335,0.0027662087231874466,0.001193759497255087,True,96,1
+"Amplified(p, CACNA1E) ⇒ ¬HighRisk(p)",amp_CACNA1E,0.002190530300140381,0.0027662087231874466,-0.0005756784230470657,False,63,1
+"NStage(p, N3) ⇒ HighRisk(p)",n_stage=N3,0.3736458122730255,0.0019778369460254908,0.3716679811477661,False,58,2
+"TStage(p, T4) ⇒ HighRisk(p)",t_stage=T4,0.3115997016429901,0.0019778369460254908,0.3096218705177307,False,35,2
+"Histology(p, other) ⇒ HighRisk(p)",histology=other,0.1375477910041809,0.0019778369460254908,0.1355699598789215,False,81,2
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Complement cascade') ⇒ HighRisk(p)",kg_pathway:R-HSA-977606,0.11076363921165466,0.0019778369460254908,0.10878580063581467,True,86,2
+"Amplified(p, ADAM2) ⇒ HighRisk(p)",amp_ADAM2,0.10993333160877228,0.0019778369460254908,0.10795549303293228,False,77,2
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ HighRisk(p)",kg_pathway:R-HSA-1251985,0.1087024137377739,0.0019778369460254908,0.1067245751619339,True,26,2
+"Altered(p, g) ∧ InPathway(g, 'HDACs deacetylate histones') ⇒ HighRisk(p)",kg_pathway:R-HSA-3214815,0.08062976598739624,0.0019778369460254908,0.07865192741155624,True,100,2
+"TStage(p, T3) ⇒ HighRisk(p)",t_stage=T3,0.06487701833248138,0.0019778369460254908,0.06289917975664139,False,102,2
+"Altered(p, g) ∧ InPathway(g, 'Synthesis of IP3 and IP4 in the cytosol') ⇒ HighRisk(p)",kg_pathway:R-HSA-1855204,0.054071586579084396,0.0019778369460254908,0.0520937480032444,True,96,2
+"Stage(p, III) ⇒ HighRisk(p)",ajcc_stage=III,0.03638505935668945,0.0019778369460254908,0.03440722078084946,False,193,2
+"Stage(p, II) ⇒ HighRisk(p)",ajcc_stage=II,0.024865156039595604,0.0019778369460254908,0.022887319326400757,False,492,2
+"Altered(p, g) ∧ InPathway(g, 'Reversible hydration of carbon dioxide') ⇒ HighRisk(p)",kg_pathway:R-HSA-1475029,0.012857167981564999,0.0019778369460254908,0.010879331268370152,True,89,2
+"Altered(p, g) ∧ InPathway(g, 'HATs acetylate histones') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-3214847,0.003501773811876774,0.013278111815452576,-0.009776338003575802,True,163,2
+"Altered(p, g) ∧ InPathway(g, 'Formation of the beta-catenin:TCF transactivating complex') ⇒ HighRisk(p)",kg_pathway:R-HSA-201722,0.010112298652529716,0.002168092178180814,0.007944206707179546,True,187,2
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Insulin-like Growth Factor (IGF) transport and uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-381426,0.0018151578260585666,0.009167108684778214,-0.007351950742304325,True,116,2
+"Altered(p, g) ∧ InPathway(g, 'NoRC negatively regulates rRNA expression') ⇒ HighRisk(p)",kg_pathway:R-HSA-427413,0.007962899282574654,0.0018762388499453664,0.006086660549044609,True,176,2
+"Altered(p, g) ∧ InPathway(g, 'Platelet Adhesion to exposed collagen') ⇒ HighRisk(p)",kg_pathway:R-HSA-75892,0.005372132174670696,0.0019778369460254908,0.0033942952286452055,True,87,2
+"Subtype(p, Her2) ⇒ HighRisk(p)",subtype=Her2,0.004282464738935232,0.0019778369460254908,0.0023046277929097414,False,57,2
+"Altered(p, g) ∧ InPathway(g, 'Interaction With Cumulus Cells And The Zona Pellucida') ⇒ HighRisk(p)",kg_pathway:R-HSA-2534343,0.003957195207476616,0.002042171312496066,0.0019150238949805498,True,182,2
+"NStage(p, N0) ⇒ ¬HighRisk(p)",n_stage=N0,0.0003451791708357632,0.0019778369460254908,-0.0016326578333973885,False,413,2
+"Altered(p, g) ∧ InPathway(g, 'Sema3A PAK dependent Axon repulsion') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-399954,0.00045779510401189327,0.0019778369460254908,-0.0015200418420135975,True,95,2
+"TStage(p, T1) ⇒ ¬HighRisk(p)",t_stage=T1,0.00046231242595240474,0.0019778369460254908,-0.0015155244618654251,False,225,2
+"Altered(p, g) ∧ InPathway(g, 'SUMOylation of DNA damage response and repair proteins') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-3108214,0.002657325239852071,0.004095240496098995,-0.0014379152562469244,True,233,2
+"Stage(p, I) ⇒ ¬HighRisk(p)",ajcc_stage=I,0.0005725874216295779,0.0019778369460254908,-0.0014052495826035738,False,144,2
+"Amplified(p, NFASC) ⇒ ¬HighRisk(p)",amp_NFASC,0.0006045270711183548,0.0019778369460254908,-0.001373309874907136,False,75,2
+"Mutated(p, MAP3K1) ⇒ ¬HighRisk(p)",mut_MAP3K1,0.0006250126753002405,0.0019778369460254908,-0.0013528242707252502,False,74,2
+"Amplified(p, NOTCH2) ⇒ ¬HighRisk(p)",amp_NOTCH2,0.0006888136849738657,0.0019778369460254908,-0.001289023319259286,False,77,2
+"Altered(p, g) ∧ InPathway(g, 'Toxicity of botulinum toxin type D (botD)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5250955,0.0008084187866188586,0.0019778369460254908,-0.001169418217614293,True,82,2
+"Altered(p, g) ∧ InPathway(g, 'Regulation of FOXO transcriptional activity by acetylation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-9617629,0.000866931164637208,0.0019778369460254908,-0.0011109057813882828,True,82,2
+"Altered(p, g) ∧ InPathway(g, 'Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1474151,0.000898485304787755,0.0019778369460254908,-0.0010793516412377357,True,34,2
+"Altered(p, g) ∧ InPathway(g, 'Potential therapeutics for SARS') ⇒ HighRisk(p)",kg_pathway:R-HSA-9679191,0.007610442116856575,0.006826408207416534,0.0007840339094400406,True,141,2
+"Altered(p, g) ∧ InPathway(g, 'POLB-Dependent Long Patch Base Excision Repair') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-110362,0.001337356516160071,0.0019778369460254908,-0.0006404804298654199,True,87,2
+"Altered(p, g) ∧ InPathway(g, 'Defective B3GALTL causes Peters-plus syndrome (PpS)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5083635,0.0013766323681920767,0.0019778369460254908,-0.0006012045778334141,True,87,2
+"Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ ¬HighRisk(p)",kg_drug:DB08846,0.0019570111762732267,0.002538744593039155,-0.0005817334167659283,True,181,2
+"Amplified(p, FAM72C) ⇒ ¬HighRisk(p)",amp_FAM72C,0.0014846600824967027,0.0019778369460254908,-0.0004931768635287881,False,108,2
+"Amplified(p, GOLPH3L) ⇒ ¬HighRisk(p)",amp_GOLPH3L,0.001528690685518086,0.0019778369460254908,-0.0004491462605074048,False,83,2
+"Altered(p, g) ∧ InPathway(g, 'MASTL Facilitates Mitotic Progression') ⇒ HighRisk(p)",kg_pathway:R-HSA-2465910,0.0024012322537600994,0.0019778369460254908,0.00042339530773460865,True,89,2
+"Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-447043,0.0020131173077970743,0.002310391515493393,-0.0002972742076963186,True,178,2
+"Altered(p, g) ∧ InPathway(g, 'Cargo concentration in the ER') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5694530,0.0018581028562039137,0.0019778369460254908,-0.00011973408982157707,True,87,2
+"Subtype(p, LumA) ⇒ HighRisk(p)",subtype=LumA,0.002033497905358672,0.0019778369460254908,5.566095933318138e-05,False,402,2
+"TStage(p, T4) ⇒ HighRisk(p)",t_stage=T4,0.5277929306030273,0.002323591150343418,0.5254693627357483,False,28,3
+"NStage(p, N3) ⇒ HighRisk(p)",n_stage=N3,0.20099234580993652,0.002323591150343418,0.19866874814033508,False,61,3
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ HighRisk(p)",kg_pathway:R-HSA-1251985,0.12638255953788757,0.002323591150343418,0.12405896931886673,True,31,3
+"Altered(p, g) ∧ InPathway(g, 'Reversible hydration of carbon dioxide') ⇒ HighRisk(p)",kg_pathway:R-HSA-1475029,0.12287550419569016,0.002323591150343418,0.12055191397666931,True,90,3
+"Altered(p, g) ∧ InPathway(g, 'Collagen biosynthesis and modifying enzymes') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1650814,0.00031175551703199744,0.06583112478256226,-0.06551937013864517,True,154,3
+"Stage(p, III) ⇒ HighRisk(p)",ajcc_stage=III,0.049002017825841904,0.002323591150343418,0.04667842760682106,False,195,3
+"Altered(p, g) ∧ InPathway(g, 'Neutrophil degranulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-6798695,0.002526353346183896,0.03320000320672989,-0.030673649162054062,True,307,3
+"Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ HighRisk(p)",kg_pathway:R-HSA-447043,0.026797259226441383,0.002792395418509841,0.0240048635751009,True,170,3
+"Stage(p, II) ⇒ HighRisk(p)",ajcc_stage=II,0.024230623617768288,0.002323591150343418,0.021907031536102295,False,486,3
+"Altered(p, g) ∧ InPathway(g, 'SUMOylation of DNA damage response and repair proteins') ⇒ HighRisk(p)",kg_pathway:R-HSA-3108214,0.01646491140127182,0.00258682481944561,0.01387808658182621,True,230,3
+"Altered(p, g) ∧ InPathway(g, 'Synthesis of PIPs at the plasma membrane') ⇒ HighRisk(p)",kg_pathway:R-HSA-1660499,0.014932302758097649,0.0014174655079841614,0.013514837250113487,True,448,3
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Complement cascade') ⇒ HighRisk(p)",kg_pathway:R-HSA-977606,0.011531418189406395,0.002323591150343418,0.009207827039062977,True,88,3
+"Altered(p, g) ∧ InPathway(g, 'Endogenous sterols') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-211976,0.00048441672697663307,0.008385996334254742,-0.007901579141616821,True,177,3
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Insulin-like Growth Factor (IGF) transport and uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-381426,0.0005186034250073135,0.007643552962690592,-0.007124949712306261,True,110,3
+"Altered(p, g) ∧ InPathway(g, 'Extra-nuclear estrogen signaling') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-9009391,0.00041615962982177734,0.005861894227564335,-0.0054457345977425575,True,445,3
+"TStage(p, T1) ⇒ HighRisk(p)",t_stage=T1,0.007262889761477709,0.002323591150343418,0.004939298611134291,False,225,3
+"Altered(p, g) ∧ InPathway(g, 'Potential therapeutics for SARS') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-9679191,0.0023450215812772512,0.005726586561650038,-0.0033815649803727865,True,133,3
+"Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR2') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5654695,0.0005413840408436954,0.003233024151995778,-0.0026916400529444218,True,401,3
+"Amplified(p, FAM72C) ⇒ ¬HighRisk(p)",amp_FAM72C,0.0003081278409808874,0.002323591150343418,-0.0020154633093625307,False,110,3
+"Subtype(p, LumA) ⇒ ¬HighRisk(p)",subtype=LumA,0.00040187747799791396,0.002323591150343418,-0.0019217137014493346,False,387,3
+"Altered(p, g) ∧ InPathway(g, 'MASTL Facilitates Mitotic Progression') ⇒ HighRisk(p)",kg_pathway:R-HSA-2465910,0.004211643245071173,0.002323591150343418,0.0018880520947277546,True,90,3
+"Altered(p, g) ∧ InPathway(g, 'Platelet Adhesion to exposed collagen') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-75892,0.000532334903255105,0.002323591150343418,-0.001791256247088313,True,93,3
+"Altered(p, g) ∧ InPathway(g, 'Toxicity of botulinum toxin type D (botD)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5250955,0.0005543238949030638,0.002323591150343418,-0.0017692672554403543,True,86,3
+"Altered(p, g) ∧ InPathway(g, 'Regulation of gene expression by Hypoxia-inducible Factor') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1234158,0.000558366475161165,0.002323591150343418,-0.0017652246169745922,True,85,3
+"Amplified(p, NFASC) ⇒ ¬HighRisk(p)",amp_NFASC,0.0006196881295181811,0.002323591150343418,-0.001703903079032898,False,73,3
+"Altered(p, g) ∧ InPathway(g, 'Regulation of FOXO transcriptional activity by acetylation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-9617629,0.000641845166683197,0.002323591150343418,-0.001681745983660221,True,88,3
+"Amplified(p, ZFHX4) ⇒ ¬HighRisk(p)",amp_ZFHX4,0.0006774559151381254,0.002323591150343418,-0.0016461352352052927,False,58,3
+"Mutated(p, MAP3K1) ⇒ ¬HighRisk(p)",mut_MAP3K1,0.0007991001475602388,0.002323591150343418,-0.0015244910027831793,False,72,3
+"Altered(p, g) ∧ InPathway(g, 'Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1474151,0.0008778860792517662,0.002323591150343418,-0.001445705071091652,True,35,3
+"Altered(p, g) ∧ InPathway(g, 'Clathrin-mediated endocytosis') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-8856828,0.00045100596616975963,0.0018194200238212943,-0.0013684140285477042,True,142,3
+"Stage(p, I) ⇒ ¬HighRisk(p)",ajcc_stage=I,0.0009781280532479286,0.002323591150343418,-0.0013454630970954895,False,145,3
+"NStage(p, N0) ⇒ ¬HighRisk(p)",n_stage=N0,0.0010309260105714202,0.002323591150343418,-0.001292665139771998,False,398,3
+"Amplified(p, GOLPH3L) ⇒ ¬HighRisk(p)",amp_GOLPH3L,0.0011448777513578534,0.002323591150343418,-0.0011787133989855647,False,85,3
+"Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ ¬HighRisk(p)",kg_drug:DB08846,0.002092457376420498,0.0032411981374025345,-0.0011487407609820366,True,182,3
+"Altered(p, g) ∧ InPathway(g, 'HDACs deacetylate histones') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-3214815,0.0012552726548165083,0.002323591150343418,-0.0010683184955269098,True,96,3
+"Altered(p, g) ∧ InPathway(g, 'Defective B3GALTL causes Peters-plus syndrome (PpS)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5083635,0.0012554724235087633,0.002323591150343418,-0.0010681187268346548,True,90,3
+"Altered(p, g) ∧ InPathway(g, 'PI3K Cascade') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-109704,0.001185644418001175,0.0022190609015524387,-0.0010334164835512638,True,458,3
+"Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR1') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5654689,0.0012307163560763001,0.0022190609015524387,-0.0009883445454761386,True,457,3
+"Altered(p, g) ∧ InPathway(g, 'Cargo concentration in the ER') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5694530,0.00206679361872375,0.002323591150343418,-0.000256797531619668,True,87,3
+"Altered(p, g) ∧ InPathway(g, 'Mitochondrial tRNA aminoacylation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-379726,0.0022392980754375458,0.002323591150343418,-8.429307490587234e-05,True,94,3
+"TStage(p, T4) ⇒ HighRisk(p)",t_stage=T4,0.3924679160118103,0.0025160587392747402,0.3899518549442291,False,26,4
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Insulin-like Growth Factor (IGF) transport and uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-381426,0.0019090028945356607,0.362565815448761,-0.3606567978858948,True,124,4
+"NStage(p, N3) ⇒ HighRisk(p)",n_stage=N3,0.23439227044582367,0.0025160587392747402,0.2318762093782425,False,63,4
+"Altered(p, g) ∧ InPathway(g, 'PI5P, PP2A and IER3 Regulate PI3K/AKT Signaling') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-6811558,0.0037016330752521753,0.09147918969392776,-0.08777755498886108,True,527,4
+"Altered(p, g) ∧ InPathway(g, 'Reversible hydration of carbon dioxide') ⇒ HighRisk(p)",kg_pathway:R-HSA-1475029,0.07492426037788391,0.0025160587392747402,0.07240819931030273,True,93,4
+"Altered(p, g) ∧ InPathway(g, 'Regulation of Complement cascade') ⇒ HighRisk(p)",kg_pathway:R-HSA-977606,0.05780221149325371,0.0025160587392747402,0.05528615415096283,True,93,4
+Age(p) < 40 ⇒ HighRisk(p),age<40,0.052928682416677475,0.0025160587392747402,0.0504126250743866,False,65,4
+"Histology(p, other) ⇒ HighRisk(p)",histology=other,0.047556765377521515,0.0025160587392747402,0.04504070803523064,False,81,4
+"Altered(p, g) ∧ InPathway(g, 'RUNX1 and FOXP3 control the development of regulatory T lymphocytes (Tregs)') ⇒ HighRisk(p)",kg_pathway:R-HSA-8877330,0.031015679240226746,0.0018002298893406987,0.02921544946730137,True,167,4
+"Stage(p, III) ⇒ HighRisk(p)",ajcc_stage=III,0.02503649890422821,0.0025160587392747402,0.022520439699292183,False,200,4
+"Altered(p, g) ∧ InPathway(g, 'Platelet Adhesion to exposed collagen') ⇒ HighRisk(p)",kg_pathway:R-HSA-75892,0.021351462230086327,0.0025160587392747402,0.0188354030251503,True,92,4
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ HighRisk(p)",kg_pathway:R-HSA-1251985,0.011489278636872768,0.0025160587392747402,0.008973220363259315,True,30,4
+"Altered(p, g) ∧ InPathway(g, 'Integrin cell surface interactions') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-216083,0.006032845005393028,0.012541116215288639,-0.006508271209895611,True,188,4
+"Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ ¬HighRisk(p)",kg_drug:DB08846,0.0007495969766750932,0.0035532601177692413,-0.00280366325750947,True,186,4
+"Altered(p, g) ∧ InPathway(g, 'Signal transduction by L1') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-445144,0.000458343856735155,0.003113190410658717,-0.0026548465248197317,True,138,4
+"Amplified(p, NFASC) ⇒ ¬HighRisk(p)",amp_NFASC,0.00026079508825205266,0.0025160587392747402,-0.002255263738334179,False,77,4
+"NStage(p, N0) ⇒ ¬HighRisk(p)",n_stage=N0,0.00032053934410214424,0.0025160587392747402,-0.002195519395172596,False,388,4
+"TStage(p, T1) ⇒ HighRisk(p)",t_stage=T1,0.004690986592322588,0.0025160587392747402,0.0021749278530478477,False,212,4
+"Altered(p, g) ∧ InPathway(g, 'Regulation of gene expression by Hypoxia-inducible Factor') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1234158,0.00037011978565715253,0.0025160587392747402,-0.002145939040929079,True,91,4
+"Amplified(p, FAM72C) ⇒ ¬HighRisk(p)",amp_FAM72C,0.0003827837645076215,0.0025160587392747402,-0.0021332749165594578,False,121,4
+"Stage(p, I) ⇒ ¬HighRisk(p)",ajcc_stage=I,0.00043888995423913,0.0025160587392747402,-0.00207716878503561,False,138,4
+"Altered(p, g) ∧ InPathway(g, 'Butyrate Response Factor 1 (BRF1) binds and destabilizes mRNA') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-450385,0.000494530366268009,0.0025458543095737696,-0.0020513238850980997,True,124,4
+"Amplified(p, NOTCH2) ⇒ ¬HighRisk(p)",amp_NOTCH2,0.000498507812153548,0.0025160587392747402,-0.0020175508689135313,False,86,4
+"Altered(p, g) ∧ InPathway(g, 'Regulation of FOXO transcriptional activity by acetylation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-9617629,0.0004999882075935602,0.0025160587392747402,-0.00201607053168118,True,93,4
+"Altered(p, g) ∧ InPathway(g, 'Toxicity of botulinum toxin type D (botD)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5250955,0.0005272798589430749,0.0025160587392747402,-0.0019887788221240044,True,92,4
+"Stage(p, II) ⇒ ¬HighRisk(p)",ajcc_stage=II,0.0005568795604631305,0.0025160587392747402,-0.001959179062396288,False,482,4
+"Amplified(p, ZFHX4) ⇒ ¬HighRisk(p)",amp_ZFHX4,0.0005925759905949235,0.0025160587392747402,-0.0019234827486798167,False,55,4
+"Altered(p, g) ∧ InPathway(g, 'Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-1474151,0.0006419685087166727,0.0025160587392747402,-0.0018740901723504066,True,32,4
+"Altered(p, g) ∧ InPathway(g, 'Sensing of DNA Double Strand Breaks') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5693548,0.0006973494309931993,0.0025160587392747402,-0.0018187093082815409,True,40,4
+"Deleted(p, RB1) ⇒ ¬HighRisk(p)",del_RB1,0.0007205653819255531,0.0025160587392747402,-0.0017954932991415262,False,35,4
+"Altered(p, g) ∧ InPathway(g, 'Clathrin-mediated endocytosis') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-8856828,0.0008548643672838807,0.0024797951336950064,-0.0016249307664111257,True,155,4
+"Amplified(p, GOLPH3L) ⇒ ¬HighRisk(p)",amp_GOLPH3L,0.0009301366517320275,0.0025160587392747402,-0.0015859220875427127,False,88,4
+"Altered(p, g) ∧ InPathway(g, 'Sema3A PAK dependent Axon repulsion') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-399954,0.0010324467439204454,0.0025160587392747402,-0.0014836119953542948,True,92,4
+"Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-447043,0.0012577162124216557,0.0024050732608884573,-0.0011473570484668016,True,175,4
+"Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR1') ⇒ HighRisk(p)",kg_pathway:R-HSA-5654689,0.0039433082565665245,0.0028437788132578135,0.001099529443308711,True,443,4
+"Subtype(p, LumA) ⇒ ¬HighRisk(p)",subtype=LumA,0.001429462106898427,0.0025160587392747402,-0.0010865966323763132,False,393,4
+"Altered(p, g) ∧ InPathway(g, 'Defective B3GALTL causes Peters-plus syndrome (PpS)') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-5083635,0.0014957368839532137,0.0025160587392747402,-0.0010203218553215265,True,92,4
+"Altered(p, g) ∧ InPathway(g, 'Mitochondrial tRNA aminoacylation') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-379726,0.0016761228907853365,0.0025160587392747402,-0.0008399358484894037,True,96,4
+"Altered(p, g) ∧ InPathway(g, 'PI3K Cascade') ⇒ HighRisk(p)",kg_pathway:R-HSA-109704,0.003584272926673293,0.0028437788132578135,0.0007404941134154797,True,444,4
+"Altered(p, g) ∧ InPathway(g, 'MASTL Facilitates Mitotic Progression') ⇒ ¬HighRisk(p)",kg_pathway:R-HSA-2465910,0.0025030304677784443,0.0025160587392747402,-1.3028271496295929e-05,True,95,4

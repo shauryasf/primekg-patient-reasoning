@@ -1,0 +1,152 @@
+{
+ "engine": "rl_mln",
+ "label": "RL-structured survival MLN",
+ "best": "mln",
+ "best_c": 0.6299305490231127,
+ "bar": 0.6052230838642182,
+ "eligible": [
+  "mln",
+  "rl_mln",
+  "rulekit"
+ ],
+ "infos": {
+  "rl_mln": [
+   {
+    "episodes": 40960,
+    "distinct_rules": 21651,
+    "rules": 77,
+    "alpha": 0.0287845725685703,
+    "candidates": 626,
+    "selected": 58,
+    "inner_c": 0.6932227903209336
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 24642,
+    "rules": 8,
+    "alpha": 0.04470749719950193,
+    "candidates": 578,
+    "selected": 20,
+    "inner_c": 0.6247785992794124
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 19764,
+    "rules": 60,
+    "alpha": 0.04271685756989417,
+    "candidates": 622,
+    "selected": 33,
+    "inner_c": 0.6591609931571865
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 26525,
+    "rules": 150,
+    "alpha": 0.05995567568150438,
+    "candidates": 712,
+    "selected": 16,
+    "inner_c": 0.5965766328290611
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 25925,
+    "rules": 87,
+    "alpha": 0.032673105602076466,
+    "candidates": 638,
+    "selected": 49,
+    "inner_c": 0.6277515074310474
+   }
+  ],
+  "mln": [
+   {
+    "alpha": 0.0287845725685703,
+    "candidates": 572,
+    "selected": 47,
+    "inner_c": 0.692113551044783
+   },
+   {
+    "alpha": 0.04470749719950193,
+    "candidates": 572,
+    "selected": 20,
+    "inner_c": 0.6249323459747314
+   },
+   {
+    "alpha": 0.04271685756989417,
+    "candidates": 572,
+    "selected": 25,
+    "inner_c": 0.6590526921067449
+   },
+   {
+    "alpha": 0.04518886414971303,
+    "candidates": 572,
+    "selected": 21,
+    "inner_c": 0.5928680181001942
+   },
+   {
+    "alpha": 0.028549942892338618,
+    "candidates": 572,
+    "selected": 51,
+    "inner_c": 0.6323902472296765
+   }
+  ],
+  "psl": [
+   {
+    "collective_plus": 0.008572099730372429,
+    "collective_minus": 0.03010188229382038,
+    "prior": 0.19447268545627594,
+    "facts": 40
+   },
+   {
+    "collective_plus": 0.005338390823453665,
+    "collective_minus": 0.01825939491391182,
+    "prior": 0.14099934697151184,
+    "facts": 40
+   },
+   {
+    "collective_plus": 0.010707054287195206,
+    "collective_minus": 0.06048447638750076,
+    "prior": 0.12192605435848236,
+    "facts": 40
+   },
+   {
+    "collective_plus": 0.01132309902459383,
+    "collective_minus": 0.06040964275598526,
+    "prior": 0.026601776480674744,
+    "facts": 40
+   },
+   {
+    "collective_plus": 0.009261291474103928,
+    "collective_minus": 0.026442699134349823,
+    "prior": 0.0976501852273941,
+    "facts": 40
+   }
+  ],
+  "rl": [
+   {
+    "episodes": 40960,
+    "distinct_rules": 21651,
+    "rules": 30
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 24642,
+    "rules": 8
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 19764,
+    "rules": 30
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 26525,
+    "rules": 30
+   },
+   {
+    "episodes": 40960,
+    "distinct_rules": 25925,
+    "rules": 30
+   }
+  ]
+ }
+}

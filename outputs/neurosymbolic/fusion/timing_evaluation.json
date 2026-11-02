@@ -2,27 +2,27 @@
   "estimators": {
     "conditional_median_tau60": {
       "patients": 145,
-      "mae_months": 23.290004569,
+      "mae_months": 23.241728706931035,
       "median_abs_error_months": 18.22480849,
       "within_12_months": 0.3310344827586207,
-      "window_accuracy": 0.1724137931034483,
+      "window_accuracy": 0.1793103448275862,
       "interval_coverage": 0.36551724137931035
     },
     "conditional_median_tau120": {
       "patients": 145,
-      "mae_months": 27.97097448913793,
-      "median_abs_error_months": 24.57832791,
+      "mae_months": 27.922698627068968,
+      "median_abs_error_months": 24.55902949,
       "within_12_months": 0.23448275862068965,
       "window_accuracy": 0.38620689655172413,
-      "interval_coverage": 0.4068965517241379
+      "interval_coverage": 0.41379310344827586
     },
     "conditional_median_tau180": {
       "patients": 145,
-      "mae_months": 59.44421506527586,
-      "median_abs_error_months": 63.14547786,
+      "mae_months": 59.16835299631034,
+      "median_abs_error_months": 61.99480554,
       "within_12_months": 0.06896551724137931,
       "window_accuracy": 0.3931034482758621,
-      "interval_coverage": 0.32413793103448274
+      "interval_coverage": 0.3310344827586207
     },
     "training_progressor_median": {
       "patients": 145,
@@ -34,29 +34,29 @@
     },
     "lognormal_aft_on_progressors": {
       "patients": 145,
-      "mae_months": 21.08102727737964,
-      "median_abs_error_months": 12.571356390390173,
-      "within_12_months": 0.496551724137931,
+      "mae_months": 20.63921981196674,
+      "median_abs_error_months": 12.85805191766246,
+      "within_12_months": 0.47586206896551725,
       "window_accuracy": 0.33793103448275863,
-      "interval_coverage": 0.5586206896551724
+      "interval_coverage": 0.5448275862068965
     },
     "loglogistic_aft_on_progressors": {
       "patients": 145,
-      "mae_months": 20.425393703981953,
-      "median_abs_error_months": 11.578513367489753,
-      "within_12_months": 0.5103448275862069,
-      "window_accuracy": 0.3448275862068966,
-      "interval_coverage": 0.593103448275862
+      "mae_months": 20.12954993225723,
+      "median_abs_error_months": 12.875670588541453,
+      "within_12_months": 0.47586206896551725,
+      "window_accuracy": 0.3310344827586207,
+      "interval_coverage": 0.5724137931034483
     }
   },
   "chosen_estimator": "loglogistic_aft_on_progressors",
   "chosen": {
     "patients": 145,
-    "mae_months": 20.425393703981953,
-    "median_abs_error_months": 11.578513367489753,
-    "within_12_months": 0.5103448275862069,
-    "window_accuracy": 0.3448275862068966,
-    "interval_coverage": 0.593103448275862
+    "mae_months": 20.12954993225723,
+    "median_abs_error_months": 12.875670588541453,
+    "within_12_months": 0.47586206896551725,
+    "window_accuracy": 0.3310344827586207,
+    "interval_coverage": 0.5724137931034483
   },
   "baseline": {
     "patients": 145,

@@ -1,0 +1,165 @@
+formula,name,atoms,weight_per_sd,weight_per_grounding,arity,source,uses_kg,support,fold
+"NStage(p, N0) ⇒ Progress(p)",n_stage=N0,n_stage=N0,-0.30900489022909183,-0.8925286444549666,1,unary,False,408,0
+"Altered(p, g) ∧ TargetedBy(g, 'Flecainide') ⇒ Progress(p)",kg_drug:DB01195,kg_drug:DB01195,-0.17844560004704688,-0.6822934489894488,1,unary,True,147,0
+"TStage(p, T4) ⇒ Progress(p)",t_stage=T4,t_stage=T4,0.13235514990481825,1.0919039761352571,1,unary,False,27,0
+"TStage(p, T1) ∧ NStage(p, N1) ⇒ Progress(p)",t_stage=T1 & n_stage=N1,t_stage=T1|n_stage=N1,-0.10226560725189875,-0.5963522361248533,2,mined,False,56,0
+"Altered(p, g) ∧ InPathway(g, 'HDACs deacetylate histones') ⇒ Progress(p)",kg_pathway:R-HSA-3214815,kg_pathway:R-HSA-3214815,0.09874070400703154,0.44917585493327283,1,unary,True,97,0
+"Altered(p, g) ∧ InPathway(g, 'Sensing of DNA Double Strand Breaks') ⇒ Progress(p)",kg_pathway:R-HSA-5693548,kg_pathway:R-HSA-5693548,-0.09578173166114028,-0.6622865804814674,1,unary,True,39,0
+"NStage(p, N1) ∧ Altered(p, g) ∧ InPathway(g, 'Clathrin-mediated endocytosis') ⇒ Progress(p)",n_stage=N1 & kg_pathway:R-HSA-8856828,n_stage=N1|kg_pathway:R-HSA-8856828,-0.09213776335355875,-0.568458109952681,2,mined,True,48,0
+"Altered(p, g) ∧ InPathway(g, 'Mitochondrial translation initiation') ⇒ Progress(p)",kg_pathway:R-HSA-5368286,kg_pathway:R-HSA-5368286,0.08807772839676867,0.3887497482559464,1,unary,True,104,0
+"TStage(p, T1) ∧ Subtype(p, LumA) ⇒ Progress(p)",t_stage=T1 & subtype=LumA,t_stage=T1|subtype=LumA,-0.08519006272295811,-0.33910576446258894,2,mined,False,133,0
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'Neutrophil degranulation') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-6798695,subtype=Her2|kg_pathway:R-HSA-6798695,0.07777573350494373,0.311726082660699,2,mined,True,40,0
+Age(p) < 40 ⇒ Progress(p),age<40,age<40,0.07678066675643412,0.467712977618325,1,unary,False,51,0
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'Interaction between L1 and Ankyrins') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-445095,subtype=Her2|kg_pathway:R-HSA-445095,0.07562230265454128,0.5181909054546796,2,mined,True,27,0
+"NStage(p, N3) ⇒ Progress(p)",n_stage=N3,n_stage=N3,0.07387569163397184,0.4140635915097668,1,unary,False,61,0
+"Histology(p, other) ⇒ Progress(p)",histology=other,histology=other,0.07006039280795602,0.3490348687546136,1,unary,False,79,0
+"NStage(p, N0) ∧ Altered(p, g) ∧ InPathway(g, 'Integrin signaling') ⇒ Progress(p)",n_stage=N0 & kg_pathway:R-HSA-354192,n_stage=N0|kg_pathway:R-HSA-354192,-0.06658777602704456,-0.35904399769760315,2,mined,True,63,0
+"LowTmb(p) ∧ NStage(p, N1) ⇒ Progress(p)",tmb_nonsynonymous_low & n_stage=N1,tmb_nonsynonymous_low|n_stage=N1,0.06254645162379496,0.3047864347092946,2,mined,False,83,0
+"NStage(p, N1) ∧ Altered(p, g) ∧ InPathway(g, 'RMTs methylate histone arginines') ⇒ Progress(p)",n_stage=N1 & kg_pathway:R-HSA-3214858,n_stage=N1|kg_pathway:R-HSA-3214858,-0.06164017983490205,-0.35011551167537464,2,mined,True,51,0
+"Altered(p, g) ∧ InPathway(g, 'Transcriptional Regulation by E2F6') ⇒ Progress(p)",kg_pathway:R-HSA-8953750,kg_pathway:R-HSA-8953750,0.061463226358328446,0.4415326319846192,1,unary,True,36,0
+"Amplified(p, ZFHX4) ⇒ Progress(p)",amp_ZFHX4,amp_ZFHX4,-0.06091858100424307,-0.3613077642508941,1,unary,False,54,0
+"Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ Progress(p)",kg_drug:DB08846,kg_drug:DB08846,0.06050492220516082,0.20098884974812106,1,unary,True,185,0
+"NStage(p, N1) ∧ Altered(p, g) ∧ InPathway(g, 'Regulation of RUNX1 Expression and Activity') ⇒ Progress(p)",n_stage=N1 & kg_pathway:R-HSA-8934593,n_stage=N1|kg_pathway:R-HSA-8934593,-0.05557236679660864,-0.24787365081284352,2,mined,True,89,0
+"Altered(p, g) ∧ InPathway(g, 'Regulation of RUNX2 expression and activity') ⇒ Progress(p)",kg_pathway:R-HSA-8939902,kg_pathway:R-HSA-8939902,0.05330167997200128,0.308278102794005,1,unary,True,57,0
+"Stage(p, II) ∧ TStage(p, T1) ⇒ Progress(p)",ajcc_stage=II & t_stage=T1,ajcc_stage=II|t_stage=T1,-0.052161570930595424,-0.3177446183762642,2,mined,False,51,0
+"Stage(p, II) ⇒ Progress(p)",ajcc_stage=II,ajcc_stage=II,-0.04619625211933495,-0.134350428917856,1,unary,False,481,0
+"Radiation(p, no) ⇒ Progress(p)",radiation_therapy=no,radiation_therapy=no,0.039618170370212376,0.11634332389380238,1,unary,False,348,0
+"LowTmb(p) ∧ Altered(p, g) ∧ InPathway(g, 'TFAP2 (AP-2) family regulates transcription of growth factors and their receptors') ⇒ Progress(p)",tmb_nonsynonymous_low & kg_pathway:R-HSA-8866910,tmb_nonsynonymous_low|kg_pathway:R-HSA-8866910,0.03865231954137508,0.2603307697439132,2,mined,True,38,0
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'RUNX1 interacts with co-factors whose precise effect on RUNX1 targets is not known') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-8939243,ajcc_stage=II|kg_pathway:R-HSA-8939243,-0.038218008628947545,-0.20151163895089796,2,mined,True,68,0
+"Amplified(p, MYC) ∧ Altered(p, g) ∧ InPathway(g, 'Lectin pathway of complement activation') ⇒ Progress(p)",amp_MYC & kg_pathway:R-HSA-166662,amp_MYC|kg_pathway:R-HSA-166662,0.034970576285770695,0.1583734820138747,2,mined,True,98,0
+"Amplified(p, NFASC) ∧ Altered(p, g) ∧ InPathway(g, 'Platelet Adhesion to exposed collagen') ⇒ Progress(p)",amp_NFASC & kg_pathway:R-HSA-75892,amp_NFASC|kg_pathway:R-HSA-75892,0.033311260594857506,0.21989708851168527,2,mined,True,43,0
+"NStage(p, N0) ∧ Altered(p, g) ∧ InPathway(g, 'Butyrate Response Factor 1 (BRF1) binds and destabilizes mRNA') ⇒ Progress(p)",n_stage=N0 & kg_pathway:R-HSA-450385,n_stage=N0|kg_pathway:R-HSA-450385,-0.03200632696556716,-0.18317123042635816,2,mined,True,55,0
+"Altered(p, g) ∧ InPathway(g, 'Integrin signaling') ⇒ Progress(p)",kg_pathway:R-HSA-354192,kg_pathway:R-HSA-354192,-0.0319775846142921,-0.12548482448436596,1,unary,True,130,0
+"Amplified(p, NFASC) ∧ Altered(p, g) ∧ InPathway(g, 'Regulation of FOXO transcriptional activity by acetylation') ⇒ Progress(p)",amp_NFASC & kg_pathway:R-HSA-9617629,amp_NFASC|kg_pathway:R-HSA-9617629,0.03182354100540316,0.2100762291265765,2,mined,True,43,0
+"NStage(p, N0) ∧ Subtype(p, LumA) ⇒ Progress(p)",n_stage=N0 & subtype=LumA,n_stage=N0|subtype=LumA,-0.03165635569255972,-0.10904354853272898,2,mined,False,194,0
+"Altered(p, g) ∧ InPathway(g, 'Ion homeostasis') ⇒ Progress(p)",kg_pathway:R-HSA-5578775,kg_pathway:R-HSA-5578775,-0.025252776849472552,-0.07282951105722243,1,unary,True,182,0
+"Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",kg_pathway:R-HSA-447043,kg_pathway:R-HSA-447043,0.02414704351628409,0.08128714911028986,1,unary,True,173,0
+"NStage(p, N1) ∧ Altered(p, g) ∧ TargetedBy(g, 'Arsenic trioxide') ⇒ Progress(p)",n_stage=N1 & kg_drug:DB01169,n_stage=N1|kg_drug:DB01169,-0.023979980685067404,-0.14187296851845674,2,mined,True,51,0
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'Regulation of TNFR1 signaling') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-5357905,ajcc_stage=II|kg_pathway:R-HSA-5357905,-0.02115672142862175,-0.08581136156213313,2,mined,True,112,0
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'Regulation of RUNX1 Expression and Activity') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-8934593,ajcc_stage=II|kg_pathway:R-HSA-8934593,-0.02047458799370422,-0.07068921365147017,2,mined,True,162,0
+"Amplified(p, NFASC) ∧ Altered(p, g) ∧ InPathway(g, 'Reversible hydration of carbon dioxide') ⇒ Progress(p)",amp_NFASC & kg_pathway:R-HSA-1475029,amp_NFASC|kg_pathway:R-HSA-1475029,0.02001540900622564,0.12931721902445711,2,mined,True,45,0
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ Progress(p)",kg_pathway:R-HSA-1251985,kg_pathway:R-HSA-1251985,0.017098494797518266,0.1386011276902982,1,unary,True,28,0
+"Altered(p, g) ∧ InPathway(g, 'Butyrate Response Factor 1 (BRF1) binds and destabilizes mRNA') ⇒ Progress(p)",kg_pathway:R-HSA-450385,kg_pathway:R-HSA-450385,-0.015026754151027394,-0.06064577969895435,1,unary,True,121,0
+"LowTmb(p) ∧ Altered(p, g) ∧ InPathway(g, 'Tie2 Signaling') ⇒ Progress(p)",tmb_nonsynonymous_low & kg_pathway:R-HSA-210993,tmb_nonsynonymous_low|kg_pathway:R-HSA-210993,0.011537294561949808,0.05111774427765814,2,mined,True,87,0
+"LowTmb(p) ∧ Altered(p, g) ∧ InPathway(g, 'HATs acetylate histones') ⇒ Progress(p)",tmb_nonsynonymous_low & kg_pathway:R-HSA-3214847,tmb_nonsynonymous_low|kg_pathway:R-HSA-3214847,0.008969624713596809,0.06551470658175795,2,mined,True,30,0
+"Subtype(p, LumA) ⇒ Progress(p)",subtype=LumA,subtype=LumA,-0.007605032944124348,-0.02196635056365082,1,unary,False,408,0
+"Altered(p, g) ∧ InPathway(g, 'JNK (c-Jun kinases) phosphorylation and  activation mediated by activated human TAK1') ⇒ Progress(p)",kg_pathway:R-HSA-450321,kg_pathway:R-HSA-450321,0.007300692909305412,0.041554895546283464,1,unary,True,59,0
+"NStage(p, N1) ∧ Altered(p, g) ∧ InPathway(g, 'RHO GTPases activate PAKs') ⇒ Progress(p)",n_stage=N1 & kg_pathway:R-HSA-5627123,n_stage=N1|kg_pathway:R-HSA-5627123,-0.0041981251273898,-0.02771301584615745,2,mined,True,43,0
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'Regulation of Complement cascade') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-977606,amp_GOLPH3L|kg_pathway:R-HSA-977606,0.00023367225961964046,0.0015598322451290997,2,mined,True,42,0
+"TStage(p, T4) ⇒ Progress(p)",t_stage=T4,t_stage=T4,0.14047638608330973,1.0665478102432384,1,unary,False,32,1
+"NStage(p, N3) ⇒ Progress(p)",n_stage=N3,n_stage=N3,0.09761828917668824,0.5639762305545815,1,unary,False,57,1
+"NStage(p, N0) ⇒ Progress(p)",n_stage=N0,n_stage=N0,-0.09546591780817414,-0.2761177002990867,1,unary,False,397,1
+"Stage(p, III) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",ajcc_stage=III & kg_pathway:R-HSA-447043,ajcc_stage=III|kg_pathway:R-HSA-447043,0.08690927187782745,0.5152278296200343,2,mined,True,49,1
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'Platelet degranulation ') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-114608,subtype=Her2|kg_pathway:R-HSA-114608,0.07203163057377379,0.4247562666065893,2,mined,True,32,1
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-447043,amp_GOLPH3L|kg_pathway:R-HSA-447043,0.05843428642586378,0.3139872075060505,2,mined,True,55,1
+"Stage(p, I) ∧ Subtype(p, LumA) ⇒ Progress(p)",ajcc_stage=I & subtype=LumA,ajcc_stage=I|subtype=LumA,-0.0546138678482916,-0.26876662987202876,2,mined,False,81,1
+"Mutated(p, KMT2C) ∧ Altered(p, g) ∧ InPathway(g, 'Neutrophil degranulation') ⇒ Progress(p)",mut_KMT2C & kg_pathway:R-HSA-6798695,mut_KMT2C|kg_pathway:R-HSA-6798695,0.05339579892644361,0.2267018776712981,2,mined,True,32,1
+"TStage(p, T1) ∧ Subtype(p, LumA) ⇒ Progress(p)",t_stage=T1 & subtype=LumA,t_stage=T1|subtype=LumA,-0.05085071559284057,-0.2124887617857552,2,mined,False,118,1
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'Interaction between L1 and Ankyrins') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-445095,subtype=Her2|kg_pathway:R-HSA-445095,0.035799156331705176,0.23195550985715063,2,mined,True,27,1
+"Mutated(p, KMT2C) ∧ Altered(p, g) ∧ InPathway(g, 'RUNX1 and FOXP3 control the development of regulatory T lymphocytes (Tregs)') ⇒ Progress(p)",mut_KMT2C & kg_pathway:R-HSA-8877330,mut_KMT2C|kg_pathway:R-HSA-8877330,0.03430226825132363,0.2704811160568986,2,mined,True,28,1
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ Progress(p)",kg_pathway:R-HSA-1251985,kg_pathway:R-HSA-1251985,0.030717138429484328,0.24453538979641762,1,unary,True,29,1
+Age(p) < 40 ⇒ Progress(p),age<40,age<40,0.024709790912216496,0.14393601227369077,1,unary,False,56,1
+"Subtype(p, LumA) ⇒ Progress(p)",subtype=LumA,subtype=LumA,-0.010169388773662424,-0.029450699996739403,1,unary,False,390,1
+"Stage(p, II) ⇒ Progress(p)",ajcc_stage=II,ajcc_stage=II,-0.006353400816016055,-0.01851930998975587,1,unary,False,487,1
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'RUNX1 and FOXP3 control the development of regulatory T lymphocytes (Tregs)') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-8877330,amp_GOLPH3L|kg_pathway:R-HSA-8877330,0.0051617935337147395,0.030871617539084885,2,mined,True,48,1
+HighAneuploidy(p) ⇒ Progress(p),aneuploidy_score_high,aneuploidy_score_high,-0.004907638739564451,-0.016331980035941693,1,unary,False,214,1
+"Stage(p, III) ∧ Altered(p, g) ∧ InPathway(g, 'Presynaptic depolarization and calcium channel opening') ⇒ Progress(p)",ajcc_stage=III & kg_pathway:R-HSA-112308,ajcc_stage=III|kg_pathway:R-HSA-112308,0.0045975721564741395,0.03722597952701641,2,mined,True,28,1
+"Altered(p, g) ∧ InPathway(g, 'Defective B3GALTL causes Peters-plus syndrome (PpS)') ⇒ Progress(p)",kg_pathway:R-HSA-5083635,kg_pathway:R-HSA-5083635,0.0038062725353581587,0.01753632705914743,1,unary,True,94,1
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'Neutrophil degranulation') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-6798695,subtype=Her2|kg_pathway:R-HSA-6798695,0.0035908465794907054,0.013688349241140468,2,mined,True,45,1
+"NStage(p, N0) ⇒ Progress(p)",n_stage=N0,n_stage=N0,-0.1962929854630781,-0.5668002432386725,1,unary,False,413,2
+"NStage(p, N3) ∧ Altered(p, g) ∧ LinkedTo(g, 'breast ductal adenocarcinoma') ⇒ Progress(p)",n_stage=N3 & kg_disease:5590,n_stage=N3|kg_disease:5590,0.1551312964332675,0.7622273622385287,2,mined,True,43,2
+"TStage(p, T4) ⇒ Progress(p)",t_stage=T4,t_stage=T4,0.12220437401005349,0.8917781463814585,1,unary,False,35,2
+"Stage(p, III) ∧ Amplified(p, FAM72C) ⇒ Progress(p)",ajcc_stage=III & amp_FAM72C,ajcc_stage=III|amp_FAM72C,0.10726379838738784,0.8297072012346498,2,mined,False,31,2
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'Platelet degranulation ') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-114608,subtype=Her2|kg_pathway:R-HSA-114608,0.09850822682047183,0.609576347520615,2,mined,True,32,2
+"Amplified(p, ADAM9) ∧ Altered(p, g) ∧ InPathway(g, 'Platelet degranulation ') ⇒ Progress(p)",amp_ADAM9 & kg_pathway:R-HSA-114608,amp_ADAM9|kg_pathway:R-HSA-114608,0.09522189779985349,0.6770752254632006,2,mined,True,29,2
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ Progress(p)",kg_pathway:R-HSA-1251985,kg_pathway:R-HSA-1251985,0.054120397681121056,0.4557424757775388,1,unary,True,26,2
+"TStage(p, T1) ∧ Subtype(p, LumA) ⇒ Progress(p)",t_stage=T1 & subtype=LumA,t_stage=T1|subtype=LumA,-0.03833360747856968,-0.15288091153367342,2,mined,False,133,2
+"TStage(p, T1) ⇒ Progress(p)",t_stage=T1,t_stage=T1,-0.03702580646193825,-0.1214888277299886,1,unary,False,225,2
+"Amplified(p, ANK1) ∧ Altered(p, g) ∧ InPathway(g, 'Cytoprotection by HMOX1') ⇒ Progress(p)",amp_ANK1 & kg_pathway:R-HSA-9707564,amp_ANK1|kg_pathway:R-HSA-9707564,0.03608761790435373,0.24137748662361472,2,mined,True,34,2
+"Stage(p, II) ∧ Age(p) < 40 ⇒ Progress(p)",ajcc_stage=II & age<40,ajcc_stage=II|age<40,0.031811486158322244,0.23214216667542625,2,mined,False,35,2
+"TStage(p, T1) ∧ NStage(p, N1) ⇒ Progress(p)",t_stage=T1 & n_stage=N1,t_stage=T1|n_stage=N1,-0.028050888550737438,-0.15756072202142224,2,mined,False,61,2
+"TStage(p, T3) ⇒ Progress(p)",t_stage=T3,t_stage=T3,0.028022619794770203,0.1249765154258963,1,unary,False,102,2
+"Altered(p, g) ∧ InPathway(g, 'Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation') ⇒ Progress(p)",kg_pathway:R-HSA-1474151,kg_pathway:R-HSA-1474151,-0.02788026224635169,-0.2062994758160958,1,unary,True,34,2
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'RUNX1 and FOXP3 control the development of regulatory T lymphocytes (Tregs)') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-8877330,amp_GOLPH3L|kg_pathway:R-HSA-8877330,0.02144077983061732,0.13225197133336847,2,mined,True,45,2
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'Interaction between L1 and Ankyrins') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-445095,subtype=Her2|kg_pathway:R-HSA-445095,0.02049896680126344,0.13653952729479463,2,mined,True,28,2
+"NStage(p, N0) ∧ TStage(p, T1) ⇒ Progress(p)",n_stage=N0 & t_stage=T1,n_stage=N0|t_stage=T1,-0.01295097381720591,-0.05073369337863628,2,mined,False,139,2
+"NStage(p, N0) ∧ Stage(p, I) ⇒ Progress(p)",n_stage=N0 & ajcc_stage=I,n_stage=N0|ajcc_stage=I,-0.010559919368741599,-0.041487869116422126,2,mined,False,138,2
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-447043,amp_GOLPH3L|kg_pathway:R-HSA-447043,0.007991843120212143,0.045858439614924834,2,mined,True,50,2
+"Histology(p, other) ⇒ Progress(p)",histology=other,histology=other,0.00689424140636793,0.034034696429635254,1,unary,False,81,2
+"Altered(p, g) ∧ InPathway(g, 'Platelet Adhesion to exposed collagen') ⇒ Progress(p)",kg_pathway:R-HSA-75892,kg_pathway:R-HSA-75892,0.005050614250429147,0.024151473140989567,1,unary,True,87,2
+"Subtype(p, LumA) ∧ Mutated(p, MAP3K1) ⇒ Progress(p)",subtype=LumA & mut_MAP3K1,subtype=LumA|mut_MAP3K1,-0.0043247215146596145,-0.025274004790058664,2,mined,False,56,2
+"TStage(p, T3) ∧ NStage(p, N1) ⇒ Progress(p)",t_stage=T3 & n_stage=N1,t_stage=T3|n_stage=N1,0.004169777470321791,0.02963082956526492,2,mined,False,37,2
+"NStage(p, N0) ∧ Altered(p, g) ∧ InPathway(g, 'Pregnenolone biosynthesis') ⇒ Progress(p)",n_stage=N0 & kg_pathway:R-HSA-196108,n_stage=N0|kg_pathway:R-HSA-196108,-0.0035632596211281962,-0.018310389439671695,2,mined,True,69,2
+"Subtype(p, LumA) ∧ Altered(p, g) ∧ InPathway(g, 'MyD88:MAL(TIRAP) cascade initiated on plasma membrane') ⇒ Progress(p)",subtype=LumA & kg_pathway:R-HSA-166058,subtype=LumA|kg_pathway:R-HSA-166058,-0.0031375734198420754,-0.018185991677038025,2,mined,True,57,2
+"TStage(p, T4) ⇒ Progress(p)",t_stage=T4,t_stage=T4,0.11797130087977802,0.9562803937222576,1,unary,False,28,3
+"NStage(p, N0) ⇒ Progress(p)",n_stage=N0,n_stage=N0,-0.10779989319443158,-0.3117879655331899,1,unary,False,398,3
+"TStage(p, T1) ∧ Subtype(p, LumA) ⇒ Progress(p)",t_stage=T1 & subtype=LumA,t_stage=T1|subtype=LumA,-0.08022502036390705,-0.32868581262863356,2,mined,False,124,3
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'RUNX1 and FOXP3 control the development of regulatory T lymphocytes (Tregs)') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-8877330,amp_GOLPH3L|kg_pathway:R-HSA-8877330,0.07428488608119169,0.45993529486733553,2,mined,True,46,3
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-447043,amp_GOLPH3L|kg_pathway:R-HSA-447043,0.05437902021281228,0.3041047194657287,2,mined,True,53,3
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'PI5P, PP2A and IER3 Regulate PI3K/AKT Signaling') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-6811558,ajcc_stage=II|kg_pathway:R-HSA-6811558,-0.04933952645709412,-0.09365820784799174,2,mined,True,320,3
+"Stage(p, III) ∧ Amplified(p, FAM72C) ⇒ Progress(p)",ajcc_stage=III & amp_FAM72C,ajcc_stage=III|amp_FAM72C,0.03863548803817969,0.2893571228908259,2,mined,False,33,3
+"NStage(p, N0) ∧ Altered(p, g) ∧ TargetedBy(g, 'ATP') ⇒ Progress(p)",n_stage=N0 & kg_drug:DB00171,n_stage=N0|kg_drug:DB00171,-0.03239059345233298,-0.11696956003722273,2,mined,True,162,3
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR2') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-5654695,ajcc_stage=II|kg_pathway:R-HSA-5654695,-0.028073259839484114,-0.06834901708264275,2,mined,True,233,3
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR4') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-5654720,ajcc_stage=II|kg_pathway:R-HSA-5654720,-0.023049708878210604,-0.05600611819110726,2,mined,True,233,3
+"NStage(p, N0) ∧ Altered(p, g) ∧ InPathway(g, 'PI5P, PP2A and IER3 Regulate PI3K/AKT Signaling') ⇒ Progress(p)",n_stage=N0 & kg_pathway:R-HSA-6811558,n_stage=N0|kg_pathway:R-HSA-6811558,-0.016937001177924384,-0.0350025868009336,2,mined,True,252,3
+"NStage(p, N0) ∧ Subtype(p, LumA) ⇒ Progress(p)",n_stage=N0 & subtype=LumA,n_stage=N0|subtype=LumA,-0.01564628961661355,-0.05536864297980992,2,mined,False,180,3
+"Amplified(p, KCNU1) ∧ Altered(p, g) ∧ InPathway(g, 'RAC2 GTPase cycle') ⇒ Progress(p)",amp_KCNU1 & kg_pathway:R-HSA-9013404,amp_KCNU1|kg_pathway:R-HSA-9013404,0.013258282354792133,0.09661334377607782,2,mined,True,27,3
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ Progress(p)",kg_pathway:R-HSA-1251985,kg_pathway:R-HSA-1251985,0.013094334138883081,0.10106007585803797,1,unary,True,31,3
+"Stage(p, III) ∧ Altered(p, g) ∧ InPathway(g, 'CHL1 interactions') ⇒ Progress(p)",ajcc_stage=III & kg_pathway:R-HSA-447041,ajcc_stage=III|kg_pathway:R-HSA-447041,0.011610642578612924,0.07387981549019187,2,mined,True,40,3
+"Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ Progress(p)",kg_drug:DB08846,kg_drug:DB08846,0.010167801825037551,0.033687887172502526,1,unary,True,182,3
+"NStage(p, N2) ∧ Altered(p, g) ∧ InPathway(g, 'PKMTs methylate histone lysines') ⇒ Progress(p)",n_stage=N2 & kg_pathway:R-HSA-3214841,n_stage=N2|kg_pathway:R-HSA-3214841,0.00762054613921362,0.04024749679857944,2,mined,True,38,3
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'TFAP2 (AP-2) family regulates transcription of growth factors and their receptors') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-8866910,amp_GOLPH3L|kg_pathway:R-HSA-8866910,0.0076167869861000345,0.05215398665550325,2,mined,True,35,3
+"Stage(p, II) ⇒ Progress(p)",ajcc_stage=II,ajcc_stage=II,-0.0027845475535585823,-0.008110805275995583,1,unary,False,486,3
+"Subtype(p, LumA) ∧ Altered(p, g) ∧ InPathway(g, 'Extra-nuclear estrogen signaling') ⇒ Progress(p)",subtype=LumA & kg_pathway:R-HSA-9009391,subtype=LumA|kg_pathway:R-HSA-9009391,-0.00023622927710846345,-0.0006794791941064514,2,mined,True,243,3
+"Amplified(p, FAM72C) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",amp_FAM72C & kg_pathway:R-HSA-447043,amp_FAM72C|kg_pathway:R-HSA-447043,9.234572609277881e-05,0.0004380630353653055,2,mined,True,76,3
+"Stage(p, II) ⇒ Progress(p)",ajcc_stage=II,ajcc_stage=II,-0.17817949215525275,-0.5184359835382425,1,unary,False,482,4
+"TStage(p, T1) ∧ Subtype(p, LumA) ⇒ Progress(p)",t_stage=T1 & subtype=LumA,t_stage=T1|subtype=LumA,-0.1397722528537012,-0.5802494291367095,2,mined,False,120,4
+"TStage(p, T4) ⇒ Progress(p)",t_stage=T4,t_stage=T4,0.11972593736507735,1.005353543976647,1,unary,False,26,4
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-447043,amp_GOLPH3L|kg_pathway:R-HSA-447043,0.11736957202166497,0.6400677637335787,2,mined,True,53,4
+"Deleted(p, RB1) ⇒ Progress(p)",del_RB1,del_RB1,-0.11233535892675443,-0.8174720521459399,1,unary,False,35,4
+"NStage(p, N0) ⇒ Progress(p)",n_stage=N0,n_stage=N0,-0.09497441896203991,-0.2751884701025325,1,unary,False,388,4
+"NStage(p, N3) ∧ Altered(p, g) ∧ LinkedTo(g, 'breast ductal adenocarcinoma') ⇒ Progress(p)",n_stage=N3 & kg_disease:5590,n_stage=N3|kg_disease:5590,0.09175416783927617,0.42482020337869614,2,mined,True,50,4
+"LowTmb(p) ∧ Altered(p, g) ∧ LinkedTo(g, 'breast ductal adenocarcinoma') ⇒ Progress(p)",tmb_nonsynonymous_low & kg_disease:5590,tmb_nonsynonymous_low|kg_disease:5590,0.08829414895774294,0.3879405492192286,2,mined,True,73,4
+"Amplified(p, FAM72C) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",amp_FAM72C & kg_pathway:R-HSA-447043,amp_FAM72C|kg_pathway:R-HSA-447043,0.08495613057862804,0.3816360686376881,2,mined,True,82,4
+"Altered(p, g) ∧ InPathway(g, 'Sensing of DNA Double Strand Breaks') ⇒ Progress(p)",kg_pathway:R-HSA-5693548,kg_pathway:R-HSA-5693548,-0.0789628154868636,-0.5391540062238976,1,unary,True,40,4
+"Stage(p, III) ∧ Amplified(p, FAM72C) ⇒ Progress(p)",ajcc_stage=III & amp_FAM72C,ajcc_stage=III|amp_FAM72C,0.06963695868623772,0.4934694995596385,2,mined,False,37,4
+"Altered(p, g) ∧ TargetedBy(g, 'Flecainide') ⇒ Progress(p)",kg_drug:DB01195,kg_drug:DB01195,-0.06914856056013051,-0.2671854071036363,1,unary,True,143,4
+"Altered(p, g) ∧ InPathway(g, 'Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation') ⇒ Progress(p)",kg_pathway:R-HSA-1474151,kg_pathway:R-HSA-1474151,-0.06315700302317691,-0.4797809776250905,1,unary,True,32,4
+"Stage(p, III) ∧ Altered(p, g) ∧ InPathway(g, 'RAF/MAP kinase cascade') ⇒ Progress(p)",ajcc_stage=III & kg_pathway:R-HSA-5673001,ajcc_stage=III|kg_pathway:R-HSA-5673001,-0.062204533734450916,-0.13903079872173646,2,mined,True,134,4
+"Stage(p, I) ∧ Altered(p, g) ∧ InPathway(g, 'Regulation of TNFR1 signaling') ⇒ Progress(p)",ajcc_stage=I & kg_pathway:R-HSA-5357905,ajcc_stage=I|kg_pathway:R-HSA-5357905,-0.058180775863014705,-0.4885511902640947,2,mined,True,26,4
+Age(p) < 40 ⇒ Progress(p),age<40,age<40,0.04645058525033455,0.2527134867977747,1,unary,False,65,4
+"Subtype(p, LumA) ∧ Altered(p, g) ∧ InPathway(g, 'RAF/MAP kinase cascade') ⇒ Progress(p)",subtype=LumA & kg_pathway:R-HSA-5673001,subtype=LumA|kg_pathway:R-HSA-5673001,-0.04594122233118449,-0.08046242119942412,2,mined,True,292,4
+"Altered(p, g) ∧ InPathway(g, 'Reversible hydration of carbon dioxide') ⇒ Progress(p)",kg_pathway:R-HSA-1475029,kg_pathway:R-HSA-1475029,0.043301068354417764,0.20053824904943474,1,unary,True,93,4
+"Amplified(p, ZFHX4) ∧ Altered(p, g) ∧ InPathway(g, 'FGFR1b ligand binding and activation') ⇒ Progress(p)",amp_ZFHX4 & kg_pathway:R-HSA-190370,amp_ZFHX4|kg_pathway:R-HSA-190370,-0.041071674344334445,-0.2967348935180354,2,mined,True,26,4
+"Histology(p, lobular) ⇒ Progress(p)",histology=lobular,histology=lobular,-0.04090251825141802,-0.15348752260069073,1,unary,False,154,4
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'PI3K Cascade') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-109704,subtype=Her2|kg_pathway:R-HSA-109704,0.040365191577726243,0.2309288765996367,2,mined,True,31,4
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'RAF/MAP kinase cascade') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-5673001,ajcc_stage=II|kg_pathway:R-HSA-5673001,-0.03950797708584163,-0.06458707323503719,2,mined,True,337,4
+"Amplified(p, ATP1A4) ⇒ Progress(p)",amp_ATP1A4,amp_ATP1A4,-0.03858120753829734,-0.19548418650640956,1,unary,False,76,4
+"Histology(p, other) ⇒ Progress(p)",histology=other,histology=other,0.03727457003468642,0.18353242197013897,1,unary,False,81,4
+"NStage(p, N0) ∧ TStage(p, T1) ⇒ Progress(p)",n_stage=N0 & t_stage=T1,n_stage=N0|t_stage=T1,-0.03546832829663972,-0.1415525068279492,2,mined,False,132,4
+"Stage(p, II) ∧ Altered(p, g) ∧ LinkedTo(g, 'breast ductal adenocarcinoma') ⇒ Progress(p)",ajcc_stage=II & kg_disease:5590,ajcc_stage=II|kg_disease:5590,-0.03528359792639448,-0.07722731853171325,2,mined,True,306,4
+"Amplified(p, ZFHX4) ⇒ Progress(p)",amp_ZFHX4,amp_ZFHX4,-0.03410995279342575,-0.2004743405698869,1,unary,False,55,4
+"Altered(p, g) ∧ InPathway(g, 'Mitochondrial translation initiation') ⇒ Progress(p)",kg_pathway:R-HSA-5368286,kg_pathway:R-HSA-5368286,0.03111100000033061,0.13246405780442425,1,unary,True,113,4
+"NStage(p, N0) ∧ Stage(p, I) ⇒ Progress(p)",n_stage=N0 & ajcc_stage=I,n_stage=N0|ajcc_stage=I,-0.02881632855594306,-0.11536292537984724,2,mined,False,131,4
+"Amplified(p, NOTCH2) ∧ Altered(p, g) ∧ InPathway(g, 'Neurofascin interactions') ⇒ Progress(p)",amp_NOTCH2 & kg_pathway:R-HSA-447043,amp_NOTCH2|kg_pathway:R-HSA-447043,0.02559766286837659,0.14614871515170766,2,mined,True,47,4
+"NStage(p, N0) ∧ Altered(p, g) ∧ InPathway(g, 'Integrin signaling') ⇒ Progress(p)",n_stage=N0 & kg_pathway:R-HSA-354192,n_stage=N0|kg_pathway:R-HSA-354192,-0.02513002671922527,-0.13802076288913234,2,mined,True,62,4
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'Synthesis of PIPs at the plasma membrane') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-1660499,ajcc_stage=II|kg_pathway:R-HSA-1660499,-0.02392763670080484,-0.06726902427819981,2,mined,True,245,4
+"Altered(p, g) ∧ InPathway(g, 'Nuclear signaling by ERBB4') ⇒ Progress(p)",kg_pathway:R-HSA-1251985,kg_pathway:R-HSA-1251985,0.022375828633516608,0.17534254416667489,1,unary,True,30,4
+"Amplified(p, FAM72C) ∧ Altered(p, g) ∧ InPathway(g, 'Defective B3GALTL causes Peters-plus syndrome (PpS)') ⇒ Progress(p)",amp_FAM72C & kg_pathway:R-HSA-5083635,amp_FAM72C|kg_pathway:R-HSA-5083635,0.0221474071787754,0.11155766816914259,2,mined,True,77,4
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'PIP3 activates AKT signaling') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-1257604,subtype=Her2|kg_pathway:R-HSA-1257604,0.02095972006571633,0.07623175067566575,2,mined,True,55,4
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR4') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-5654720,subtype=Her2|kg_pathway:R-HSA-5654720,0.020908629090106594,0.13643229444622199,2,mined,True,28,4
+"Amplified(p, GOLPH3L) ∧ Amplified(p, FAM72C) ⇒ Progress(p)",amp_GOLPH3L & amp_FAM72C,amp_GOLPH3L|amp_FAM72C,0.02072958782051727,0.10441603663568139,2,mined,False,77,4
+"Subtype(p, Her2) ∧ Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR2') ⇒ Progress(p)",subtype=Her2 & kg_pathway:R-HSA-5654695,subtype=Her2|kg_pathway:R-HSA-5654695,0.020552144310168205,0.13410617176010267,2,mined,True,28,4
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'PIP3 activates AKT signaling') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-1257604,ajcc_stage=II|kg_pathway:R-HSA-1257604,-0.01934497035237951,-0.03552527482929807,2,mined,True,326,4
+"Amplified(p, MIR7851) ⇒ Progress(p)",amp_MIR7851,amp_MIR7851,-0.019102716751726978,-0.10112724409480436,1,unary,False,69,4
+"Altered(p, g) ∧ InPathway(g, 'Cooperation of PDCL (PhLP1) and TRiC/CCT in G-protein beta folding') ⇒ Progress(p)",kg_pathway:R-HSA-6814122,kg_pathway:R-HSA-6814122,-0.017784658731881203,-0.08086193669031172,1,unary,True,97,4
+HighAneuploidy(p) ⇒ Progress(p),aneuploidy_score_high,aneuploidy_score_high,-0.015912547238207522,-0.053141850226684204,1,unary,False,212,4
+"Subtype(p, LumA) ⇒ Progress(p)",subtype=LumA,subtype=LumA,-0.015620287459864457,-0.04521418361923042,1,unary,False,393,4
+"Amplified(p, FLAD1) ⇒ Progress(p)",amp_FLAD1,amp_FLAD1,-0.007389553422460894,-0.03789548255111526,1,unary,False,74,4
+"Altered(p, g) ∧ InPathway(g, 'Butyrate Response Factor 1 (BRF1) binds and destabilizes mRNA') ⇒ Progress(p)",kg_pathway:R-HSA-450385,kg_pathway:R-HSA-450385,-0.007380187860577267,-0.029846932909475325,1,unary,True,124,4
+"Altered(p, g) ∧ InPathway(g, 'Synthesis of PA') ⇒ Progress(p)",kg_pathway:R-HSA-1483166,kg_pathway:R-HSA-1483166,-0.006693635216617314,-0.022772300002776424,1,unary,True,187,4
+"Altered(p, g) ∧ InPathway(g, 'Signal transduction by L1') ⇒ Progress(p)",kg_pathway:R-HSA-445144,kg_pathway:R-HSA-445144,-0.005547883947818095,-0.021264893158990293,1,unary,True,138,4
+"Histology(p, other) ∧ LowTmb(p) ⇒ Progress(p)",histology=other & tmb_nonsynonymous_low,histology=other|tmb_nonsynonymous_low,0.0031364241716633585,0.02586024082690311,2,mined,False,27,4
+"LowTmb(p) ∧ Altered(p, g) ∧ TargetedBy(g, 'Ellagic acid') ⇒ Progress(p)",tmb_nonsynonymous_low & kg_drug:DB08846,tmb_nonsynonymous_low|kg_drug:DB08846,0.0028752180867138272,0.023706561384155563,2,mined,True,27,4
+"Stage(p, II) ∧ Altered(p, g) ∧ InPathway(g, 'PI-3K cascade:FGFR1') ⇒ Progress(p)",ajcc_stage=II & kg_pathway:R-HSA-5654689,ajcc_stage=II|kg_pathway:R-HSA-5654689,-0.0019780235744398834,-0.004570590160804702,2,mined,True,247,4
+"Amplified(p, GOLPH3L) ∧ Altered(p, g) ∧ InPathway(g, 'Regulation of Complement cascade') ⇒ Progress(p)",amp_GOLPH3L & kg_pathway:R-HSA-977606,amp_GOLPH3L|kg_pathway:R-HSA-977606,0.001974937153338856,0.01302989856290718,2,mined,True,43,4
