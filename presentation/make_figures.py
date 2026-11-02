@@ -112,18 +112,18 @@ def message_passing():
 
 def rl_loop():
     fig, ax = canvas(9.4, 3.55, (0, 14), (0, 5))
-    box(ax, 0.2, 3.1, 2.5, 1.1, "GRU policy\nwrites a rule,\none atom at a time", fill=NAVY, color="white", size=10)
-    box(ax, 3.6, 3.1, 2.5, 1.1, "Candidate rule\nA ∧ B ∧ C", fill=TINT)
-    box(ax, 7.0, 3.1, 3.0, 1.1, "Stability reward\nsame direction on two\nhalves, |z| of the weaker", fill=ORANGE_TINT, size=10)
+    box(ax, 0.2, 3.1, 2.5, 1.1, "Neural network\nwrites a rule,\none fact at a time", fill=NAVY, color="white", size=10)
+    box(ax, 3.6, 3.1, 2.5, 1.1, "Candidate rule\nA and B and C", fill=TINT)
+    box(ax, 7.0, 3.1, 3.0, 1.1, "Reward\nonly if it works on two\nseparate patient groups", fill=ORANGE_TINT, size=10)
     arrow(ax, (2.75, 3.65), (3.55, 3.65))
     arrow(ax, (6.15, 3.65), (6.95, 3.65))
     arrow(ax, (8.5, 3.05), (1.45, 3.05), color=RED, rad=-0.28)
-    ax.text(5.0, 1.72, "REINFORCE update: rules with high reward become more likely", ha="center", fontsize=10, color=RED)
-    box(ax, 11.0, 3.1, 2.8, 1.1, "Validation filter\nmust hold on the\nunseen 30%", fill=GREEN_TINT, size=10)
+    ax.text(5.0, 1.72, "Rules that earn reward become more likely", ha="center", fontsize=10, color=RED)
+    box(ax, 11.0, 3.1, 2.8, 1.1, "Final check\nmust hold on patients\nit never saw", fill=GREEN_TINT, size=10)
     arrow(ax, (10.05, 3.65), (10.95, 3.65))
-    box(ax, 11.0, 0.5, 2.8, 1.25, "Survival MLN\nlearns every weight\nand prunes the rest", fill=NAVY, color="white", size=10)
+    box(ax, 11.0, 0.5, 2.8, 1.25, "Markov logic\nlearns every weight,\ndrops the rest", fill=NAVY, color="white", size=10)
     arrow(ax, (12.4, 3.05), (12.4, 1.8))
-    ax.text(12.55, 2.42, "up to 150 rules", fontsize=9.5, color=MUTED)
+    ax.text(12.55, 2.42, "best rules", fontsize=9.5, color=MUTED)
     save(fig, "fig_rl_loop.png")
 
 
@@ -151,13 +151,13 @@ def timeline():
 def fusion():
     fig, ax = canvas(9.6, 3.1, (0, 13), (0, 4.3))
     box(ax, 0.2, 3.05, 3.6, 0.9, "Clinical block (19 fields)\nage, sex, subtype, stages", fill=TINT, size=10)
-    box(ax, 0.2, 1.75, 3.6, 0.9, "GNN risk (out-of-fold)\nGraphSAGE, C-index loss", fill=TINT, size=10)
-    box(ax, 0.2, 0.45, 3.6, 0.9, "Logic risk (out-of-fold)\nRL-structured survival MLN", fill=TINT, size=10)
-    box(ax, 5.2, 1.5, 2.8, 1.4, "Fused Cox model\nridge penalty,\nretrained per fold", fill=NAVY, color="white")
+    box(ax, 0.2, 1.75, 3.6, 0.9, "GNN risk\nGraphSAGE", fill=TINT, size=10)
+    box(ax, 0.2, 0.45, 3.6, 0.9, "Logic risk\nRL + Markov logic", fill=TINT, size=10)
+    box(ax, 5.2, 1.5, 2.8, 1.4, "One Cox model\ncombines all\nthree inputs", fill=NAVY, color="white")
     for y in (3.5, 2.2, 0.9):
         arrow(ax, (3.85, y), (5.15, 2.2))
     box(ax, 9.4, 3.05, 3.4, 0.9, "Risk and survival curve", fill=GREEN_TINT, size=10)
-    box(ax, 9.4, 1.75, 3.4, 0.9, "Month estimate\n(log-logistic AFT on progressors)", fill=ORANGE_TINT, size=9.5)
+    box(ax, 9.4, 1.75, 3.4, 0.9, "Month estimate", fill=ORANGE_TINT, size=10)
     box(ax, 9.4, 0.45, 3.4, 0.9, "Paths: 0.6 neural + 0.4 rule", fill=VIOLET_TINT, size=10)
     for y in (3.5, 2.2, 0.9):
         arrow(ax, (8.05, 2.2), (9.35, y))

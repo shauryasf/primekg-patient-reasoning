@@ -72,3 +72,6 @@ outputs/neurosymbolic/explain/candidate_paths.csv
 
 # Same page as demo/index.html, rebuilt by demo/build_demo.py for artifact publishing.
 demo/artifact.html
+
+# PowerPoint and Word lock files.
+~$*

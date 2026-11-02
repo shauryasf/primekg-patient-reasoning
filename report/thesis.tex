@@ -174,36 +174,94 @@ Reactome pathways and DrugBank targets, into 129,375 nodes and over 8 million ed
 Entrez identifiers, so patient genes can be matched exactly.
 
 \section{Background: Graph Neural Networks}
-A GNN updates every node from its neighbours' features. GCN \rc{gcn} averages neighbours, GraphSAGE \rc{graphsage}
-keeps separate self and neighbour weights, attention models such as GATv2 \rc{gatv2} learn a weight per edge, and
-R-GCN \rc{rgcn} learns one weight matrix per relation type. GNNExplainer \rc{gnnexplainer} finds which edges a trained
-model relied on for a prediction, which gives every edge an importance score.
+A GNN updates every node from its neighbours' features. Let $h_v^{(l)}$ be the vector of node $v$ at layer $l$,
+$\mathcal{N}(v)$ its neighbours, and $d_v$ its degree. GCN \rc{gcn} averages neighbours with degree normalisation, and
+GraphSAGE \rc{graphsage} keeps separate self and neighbour information:
+\begin{align}
+  h_v^{(l+1)} &= \sigma\Big(\sum_{u\in\mathcal{N}(v)\cup\{v\}} \frac{1}{\sqrt{d_u d_v}}\, W^{(l)} h_u^{(l)}\Big), \\
+  h_v^{(l+1)} &= \sigma\Big(W^{(l)}\big[\,h_v^{(l)} \,\Vert\, \operatorname{mean}_{u\in\mathcal{N}(v)} h_u^{(l)}\big]\Big).
+\end{align}
+GATv2 \rc{gatv2} learns an attention weight for each edge, and R-GCN \rc{rgcn} learns one weight matrix per relation
+type $r$, with a normalising constant $c_{v,r}$:
+\begin{align}
+  \alpha_{vu} &= \frac{\exp\big(a^\top \operatorname{LeakyReLU}(W[h_v\Vert h_u])\big)}{\sum_{k\in\mathcal{N}(v)}\exp\big(a^\top \operatorname{LeakyReLU}(W[h_v\Vert h_k])\big)}, \\
+  h_v^{(l+1)} &= \sigma\Big(W_0^{(l)}h_v^{(l)}+\sum_{r}\sum_{u\in\mathcal{N}_r(v)}\frac{1}{c_{v,r}}W_r^{(l)}h_u^{(l)}\Big).
+\end{align}
+GNNExplainer \rc{gnnexplainer} learns a soft edge mask $M$ that keeps a trained model's prediction $Y$ for graph $G$:
+\begin{equation}
+  \min_M\; -\log P\big(Y\mid G\odot\sigma(M)\big).
+\end{equation}
+The value $\sigma(M_e)$ is the importance of edge $e$.
 
 \section{Background: Survival Analysis}
 Progression is a time-to-event outcome with \emph{censoring}: a patient with no recorded progression may still
-progress after their last visit. The Kaplan--Meier curve \rc{km} estimates the share of patients still
-progression-free over time, and the log-rank test \rc{logrank} compares two such curves. The Cox model \rc{cox} turns
-patient features into a risk score and is fitted by the partial likelihood. Accelerated failure time (AFT) models
-\rc{aft} predict the event time directly. Models are compared with the concordance index (C-index) \rc{harrell}: the
-share of patient pairs in which the patient who progressed first received the higher risk. A C-index of 0.5 is a coin
-flip and 1.0 is perfect.
+progress after their last visit. Each patient $i$ has a time $t_i$ and an event flag $\delta_i$, which is 1 for a
+recorded progression and 0 for censoring.
+
+The Kaplan--Meier curve \rc{km} estimates the share of patients still progression-free, where $d_i$ is the number of
+events at time $t_i$ and $n_i$ the number still at risk. The log-rank test \rc{logrank} compares two groups through
+their observed events $O_{1i}$, expected events $E_{1i}$, and variance $V_{1i}$:
+\begin{equation}
+  \hat S(t)=\prod_{t_i\le t}\Big(1-\frac{d_i}{n_i}\Big), \qquad
+  z=\frac{\sum_i (O_{1i}-E_{1i})}{\sqrt{\sum_i V_{1i}}}.
+\end{equation}
+The Cox model \rc{cox} assumes a shared baseline hazard $h_0(t)$ scaled by a log-risk $\eta=\beta^\top x$. A
+coefficient $\beta_j$ gives the hazard ratio $\exp(\beta_j)$. The model is fitted by the partial likelihood, which keeps
+censored patients in the risk sets for as long as they were followed:
+\begin{equation}
+  h(t\mid x)=h_0(t)\,e^{\eta}, \qquad
+  \mathcal{L}(\beta)=\prod_{i:\,\delta_i=1}\frac{e^{\eta_i}}{\sum_{j:\,t_j\ge t_i}e^{\eta_j}}.
+\end{equation}
+With the cumulative baseline hazard $H_0(t)$, a patient's survival curve is $S(t\mid x)=\exp\big(-H_0(t)\,e^{\eta}\big)$.
+
+Accelerated failure time (AFT) models \rc{aft} predict the event time directly, $\log T=\mu(x)+\sigma\varepsilon$. With
+logistic noise, $T$ is log-logistic with shape $\rho=1/\sigma$, and a share $p$ of patients remain event-free at
+\begin{equation}
+  t_{(p)}=e^{\mu(x)}\Big(\frac{1}{p}-1\Big)^{1/\rho},
+\end{equation}
+so the median is $e^{\mu(x)}$.
+
+Models are compared with the concordance index (C-index) \rc{harrell}. A pair is comparable when $\delta_i=1$ and
+$t_i<t_j$, so we know that $i$ progressed first. For risk scores $r$,
+\begin{equation}
+  C=\frac{\sum_{(i,j)\text{ comparable}}\big[\mathbf{1}(r_i>r_j)+\tfrac12\mathbf{1}(r_i=r_j)\big]}{\#\{\text{comparable pairs}\}}.
+\end{equation}
+A C-index of 0.5 is a coin flip and 1.0 is perfect. Uno's C \rc{uno} reweights pairs by the inverse probability of
+censoring $\hat G$. The integrated Brier score (IBS) averages the censoring-weighted squared error of predicted survival
+up to a horizon $\tau$, and lower is better:
+\begin{equation}
+  \mathrm{IBS}=\frac{1}{\tau}\int_0^{\tau}\frac1N\sum_i\Big[\frac{\hat S(t\mid x_i)^2\,\mathbf{1}(t_i\le t,\delta_i=1)}{\hat G(t_i)}+\frac{(1-\hat S(t\mid x_i))^2\,\mathbf{1}(t_i>t)}{\hat G(t)}\Big]dt.
+\end{equation}
 
 \section{Background: Rules and Logic}
 \textbf{Survival rules.} RuleKit's LR-Rules \rc{lrrules,rulekit} grows IF--THEN rules such as ``IF nodal stage is N0
 AND age $\ge$ 41.5 THEN low risk'' by maximising the log-rank separation of the patients a rule covers. The rules are
 crisp: a rule either fires or it does not, and it carries no weight.
 
-\textbf{Markov logic networks (MLNs)} \rc{mln} attach a weight to each logic formula. A world that breaks a formula
-with a large weight becomes less likely but is still possible. Learning an MLN means finding the formulas (structure
-learning) and their weights.
+\textbf{Markov logic networks (MLNs)} \rc{mln} attach a weight $w_k$ to each logic formula and define a probability over
+possible worlds $x$, where $n_k(x)$ counts the true groundings of formula $k$:
+\begin{equation}
+  P(X=x)=\frac{1}{Z}\exp\Big(\sum_k w_k\,n_k(x)\Big).
+\end{equation}
+A world that breaks a formula with a large weight becomes less likely but is still possible. Learning an MLN means
+finding the formulas (structure learning \rc{mlnstructure}) and their weights.
 
-\textbf{Probabilistic soft logic (PSL)} \rc{psl} allows truth values between 0 and 1 and turns each rule into a penalty
-for how far it is from being satisfied. Inference is then a convex optimisation, which allows \emph{collective}
-reasoning, for example letting similar patients influence each other.
+\textbf{Probabilistic soft logic (PSL)} \rc{psl} allows truth values between 0 and 1, with the \L{}ukasiewicz operators
+\begin{equation}
+  a\,\tilde\wedge\, b=\max(a+b-1,0),\qquad a\,\tilde\vee\, b=\min(a+b,1),\qquad \tilde\neg\, a=1-a.
+\end{equation}
+A rule $w: B\Rightarrow H$ becomes a penalty for how far it is from being satisfied, $\phi=w\max(0,\,B-H)^q$. Inference
+minimises the sum of these penalties, which is a convex optimisation. That allows \emph{collective} reasoning, for
+example letting similar patients influence each other.
 
-\textbf{Reinforcement learning (RL) for rules.} A policy-gradient agent \rc{reinforce} learns from rewards rather than
-labels. In knowledge-graph reasoning, agents have been trained to walk relation paths \rc{deeppath,minerva} and to
-write logic rules \rc{rnnlogic}. We use RL to write survival rules.
+\textbf{Reinforcement learning (RL) for rules.} A policy-gradient agent learns from rewards rather than labels. With
+REINFORCE \rc{reinforce}, a policy $\pi_\theta$ that samples a rule $a_{1:T}$ with reward $R$ is updated by
+\begin{equation}
+  \nabla_\theta J=\mathbb{E}\Big[(R-b)\sum_{t}\nabla_\theta\log\pi_\theta(a_t\mid a_{1:t-1})\Big]+\beta_H\nabla_\theta\mathcal{H}(\pi_\theta),
+\end{equation}
+where $b$ is a moving-average baseline and the entropy $\mathcal{H}$ keeps the agent exploring. In knowledge-graph
+reasoning, agents have been trained to walk relation paths \rc{deeppath,minerva} and to write logic rules \rc{rnnlogic}.
+We use RL to write survival rules.
 
 % ===========================================================================
 \chapter{Proposed Work}\label{ch:proposed}
@@ -244,11 +302,35 @@ drugs, and breast-disease links (Figure~\ref{fig:fused}). The median fused graph
 \end{figure}
 
 \section{Neural Part: Graph Neural Networks}
-All GNNs share three message-passing layers of width 64, a readout over the patient and altered-gene nodes, and a
-clinical shortcut. On the landmark endpoint they are trained with cross-entropy or a smooth C-index loss. On the full
-follow-up they are trained with the Cox partial likelihood, as in DeepSurv \rc{deepsurv}. The best survival GNN
-supplies a neural risk. GNNExplainer, run on the fold model that held the patient out, gives every edge of the
-patient's graph an importance score.
+All GNNs share three message-passing layers of width 64, dropout 0.3, and a readout over the patient and altered-gene
+nodes. A linear head on the clinical block $c_p$ is added to the graph score through a gate $g$ that starts near 0.12,
+so training begins from the clinical score:
+\begin{equation}
+  r_p=w^\top c_p+g\,f_{\text{graph}}(G_p).
+\end{equation}
+Three objectives were tested. On the landmark endpoint, models use weighted cross-entropy or a smooth C-index over the
+comparable pairs $P$ of a mini-batch, with temperature $\tau_c$. On the full follow-up, they use the Cox partial
+likelihood, as in DeepSurv \rc{deepsurv}:
+\begin{align}
+  \mathcal{L}_{\text{BCE}}&=-\frac1N\sum_i\big[w_+y_i\log\hat y_i+(1-y_i)\log(1-\hat y_i)\big], \\
+  \mathcal{L}_{C}&=1-\frac{1}{|P|}\sum_{(i,j)\in P}\sigma\Big(\frac{r_i-r_j}{\tau_c}\Big), \\
+  \mathcal{L}_{\text{Cox}}&=-\frac{1}{N_e}\sum_{i:\,\delta_i=1}\Big(r_i-\log\!\sum_{j:\,t_j\ge t_i}e^{r_j}\Big).
+\end{align}
+The best survival GNN supplies a neural risk. GNNExplainer, run on the fold model that held the patient out, gives every
+edge of the patient's graph an importance score.
+
+\section{Graph Structure Learning: Evaluated, Not Adopted}\label{sec:gsl}
+Graph structure learning (GSL) \rc{gslsurvey} learns which edges a GNN should use. Our version retrieved up to three
+hops and gave each PrimeKG edge $e$ a learned weight, computed from its endpoints, its relation, and the patient's
+clinical context, that multiplies the message on that edge. The first version also let the scorer read the hop number.
+The second removed that input. Edges within two hops start at weight 1, and the third hop stays closed behind a
+patient-specific gate $g_p$ that starts near 0.12 and must pass 0.5:
+\begin{equation}
+  w_e=2\,\sigma\big(\text{logit}_e/T\big), \quad T=4, \qquad\qquad
+  w_e^{(3)}=\mathbf{1}\big(g_p>0.5\big)\,w_e.
+\end{equation}
+Training therefore starts identical to the fixed graph. Section~\ref{sec:gslresults} explains why the final system keeps
+the fixed two-hop graph.
 
 \section{Symbolic Part: From IF--THEN Rules to Learned Logic}\label{sec:logic}
 \paragraph{Baseline.} RuleKit LR-Rules over 188 readable predicates gives about 8 crisp rules per fold. Only 10\% of
@@ -258,59 +340,110 @@ them mention the knowledge graph, and none of them carry a weight.
 such as $\mathit{NStage}(p,\mathrm{N3})$, 57 genomic atoms such as $\mathit{Mutated}(p,\mathrm{TP53})$, and 339
 knowledge-graph atoms such as
 \[
-  \mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,\text{PI3K Cascade}),
+  \mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,\text{PI3K Cascade}).
 \]
-whose value is the number of the patient's altered genes in that pathway. Atoms are chosen by prevalence (3--90\% of
-patients), never by outcome.
+The value of such an atom is its number of true groundings, the count of the patient's altered genes in pathway $w$:
+\begin{equation}
+  n_w(p)=\big|\{\,g:\mathit{Altered}(p,g)\wedge\mathit{InPathway}(g,w)\,\}\big|.
+\end{equation}
+Atoms are chosen by prevalence (3--90\% of patients), never by outcome.
 
 \paragraph{1. Survival Markov logic network.} Every formula has the form
 $w_k: \mathit{Body}_k(p) \Rightarrow \mathit{Progress}(p)$. A body is one atom or a clinical $\times$ knowledge-graph
-pair found on the training fold. A patient's risk is the weighted count of the formulas that hold for them:
+pair found on the training fold, chosen from the 25 strongest context atoms and the 60 strongest knowledge atoms by
+log-rank strength, up to 150 pairs. With all evidence observed and one query atom per patient, MLN inference factorises
+into a sum over formulas. A patient's risk is the weighted count of the formulas that hold for them:
 \begin{equation}
-  \eta(p) = \sum_k w_k \log\big(1 + n_k(p)\big),
+  \eta(p) = \sum_k w_k\, \frac{\log\big(1 + n_k(p)\big)-\mu_k}{s_k},
 \end{equation}
-where $n_k(p)$ is the number of ways formula $k$ is true for patient $p$. The novelty is in how $w$ is learned. A
-standard MLN would treat every patient who has not relapsed \emph{yet} as a non-progressor. We instead learn $w$ with
-the Cox partial likelihood, which uses each patient's follow-up time correctly, plus an elastic-net penalty
-\rc{coxnet}. The penalty sets the weight of useless formulas to exactly zero, which performs structure learning.
+where $n_k(p)$ is the number of ways formula $k$ is true for patient $p$, and $\mu_k$ and $s_k$ are its training-fold mean
+and standard deviation. The logarithm stops a patient with many co-amplified genes from dominating one formula.
 
-\paragraph{2. Survival PSL.} Truth values are soft. The program has a rule per fact (``fact $\Rightarrow$ high risk''
-and ``fact $\Rightarrow$ low risk'') and a collective rule, $\mathit{Similar}(p,q) \wedge \mathit{HighRisk}(q)
-\Rightarrow \mathit{HighRisk}(p)$, that links each patient to their ten most similar training patients. Censoring is
-handled with soft targets: a patient censored at 20 months gets the Kaplan--Meier probability of progressing before 36
-months, given that they were still progression-free at 20.
+The novelty is in how $w$ is learned. A standard MLN would treat every patient who has not relapsed \emph{yet} as a
+non-progressor. We instead maximise the Cox partial likelihood, which uses each patient's follow-up time correctly, with
+an elastic-net penalty \rc{elasticnet,coxnet}:
+\begin{equation}
+  \max_{w}\ \sum_{i:\,\delta_i=1}\Big(\eta_i-\log\!\sum_{j:\,t_j\ge t_i}e^{\eta_j}\Big)-\lambda\Big(\alpha\|w\|_1+\frac{1-\alpha}{2}\|w\|_2^2\Big).
+\end{equation}
+We use $\alpha=0.5$ and choose $\lambda$ by an inner three-fold C-index. The $\ell_1$ term sets the weight of useless
+formulas to exactly zero, which performs structure learning.
 
-\paragraph{3. Reinforcement-learned rules.} A small recurrent network writes a rule one atom at a time (up to three
-atoms) and is trained with REINFORCE \rc{reinforce}. Its reward measures \emph{stability}. The training fold is split
-into two halves, and a rule is rewarded only if it separates fast from slow progressors in the same direction in both
-halves. A rule is kept only if it also separates them on a further 30\% of the fold that the search never saw.
+\paragraph{2. Survival PSL.} The query atom is a soft value $\mathit{HighRisk}(p)=h_p\in[0,1]$. For each of the 40 strongest
+facts, with counts softened to $\min(1,n/2)$, the program has a risk rule and a protective rule, plus a prior
+$\neg\mathit{HighRisk}(p)$ and two collective rules over each patient's ten most similar training patients:
+\begin{align}
+  w^+_k &: \mathit{Fact}_k(p)\Rightarrow\mathit{HighRisk}(p), \nonumber\\
+  w^-_k &: \mathit{Fact}_k(p)\Rightarrow\neg\mathit{HighRisk}(p), \nonumber\\
+  s^+ &: \mathit{Similar}(p,q)\wedge\mathit{HighRisk}(q)\Rightarrow\mathit{HighRisk}(p), \nonumber\\
+  s^- &: \mathit{Similar}(p,q)\wedge\neg\mathit{HighRisk}(q)\Rightarrow\neg\mathit{HighRisk}(p).
+\end{align}
+Censoring is handled with soft targets. A neighbour censored at $c<36$ months gets the Kaplan--Meier probability of
+progressing by 36 months, given that they were progression-free at $c$:
+\begin{equation}
+  h_q=\frac{\hat S(c)-\hat S(36)}{\hat S(c)}.
+\end{equation}
+Inference minimises the squared-hinge energy by 40 projected-gradient steps. Those steps are unrolled, so rule weights
+are learned end to end with soft-label cross-entropy plus a Cox term.
+
+\paragraph{3. Reinforcement-learned rules.} A GRU policy \rc{gru} writes a rule one atom at a time (up to three atoms) and
+is trained with REINFORCE \rc{reinforce} for 40,960 episodes per fold. Its reward measures \emph{stability}. A 70\% search
+part of the training fold is halved into $A$ and $B$, and $z_A$, $z_B$ are the log-rank statistics of the covered
+patients against the rest:
+\begin{equation}
+  R=\mathbf{1}\big[\operatorname{sign}z_A=\operatorname{sign}z_B\big]\,\frac{\min(|z_A|,|z_B|,5)}{5}-0.03\,(\text{length}-1).
+\end{equation}
+Rules covering under 4\% or over 90\% of the fold earn nothing. A rule is kept only if it also separates patients on the
+remaining 30\% of the fold, which the search never saw, with the same sign and $|z|\ge1$.
 
 \paragraph{4. RL-structured survival MLN (the engine).} The rules that survive RL's filter are added to the MLN's
 candidate formulas, and the survival MLN learns every weight. RL does the structure learning and the survival
-likelihood does the weight learning. Reasoners within one standard error of the best mean C-index are treated as tied
-\rc{cart}, and among them the one with the richest reasoning becomes the engine.
+likelihood does the weight learning.
+
+\paragraph{Choosing the engine.} With $k=5$ folds, best mean C-index $\bar C^*$, and its fold standard deviation $s^*$,
+any reasoner above the bar below is treated as tied with the best \rc{cart}:
+\begin{equation}
+  \text{bar}=\bar C^*-\frac{s^*}{\sqrt{k}}.
+\end{equation}
+Among tied reasoners, the one with the richest reasoning becomes the engine, in the order RL-structured MLN, MLN, PSL,
+RL, RuleKit. The bar for the reasoners is $0.630-0.055/\sqrt5=0.605$.
 
 \section{Fusion, Model Choice, and Month of Progression}
-The final risk comes from a Cox model on three inputs: the 19 clinical fields, the GNN risk, and the logic-engine
-risk. It is compared with clinical-only Cox models and a random survival forest \rc{rsf}. Among the models tied with
-the best, we choose the one that can explain its prediction.
+The final risk comes from cross-validated stacking \rc{stacking}: a Cox model with ridge penalty 0.1 on the 19 clinical
+fields $c_i$, the out-of-fold GNN risk, and the out-of-fold logic-engine risk, all standardised on the training fold:
+\begin{equation}
+  \eta_i=\beta_c^\top c_i+\beta_g\,r^{\text{gnn}}_i+\beta_l\,r^{\text{logic}}_i.
+\end{equation}
+It is compared with clinical-only Cox models and a random survival forest \rc{rsf}. Among the models tied with the best
+under the same one-standard-error bar, we choose the one that can explain its prediction. As a symbolic baseline, a
+RuleKit patient's risk is the negative restricted mean survival time of the rules that cover them,
+$r^{\text{rule}}_i=-\int_0^{120}\hat S^{\text{rule}}_i(t)\,dt$.
 
-Most patients never progress, so we estimate the month of progression \emph{given} that progression happens. A
-log-logistic AFT model is fitted on the training-fold progressors and checked against the recorded months of held-out
-progressors.
+Most patients never progress, so the median of their survival curve is usually undefined, and we estimate the month of
+progression \emph{given} that progression happens. Two families were compared on held-out progressors. The first is the
+conditional median of the fused curve, the month $t$ at which
+\begin{equation}
+  \frac{F(t)}{F(\tau)}=\frac12, \qquad F=1-S,
+\end{equation}
+for $\tau$ of 60, 120, and 180 months. The second is an AFT model with $\mu(x)=\alpha_0+\alpha^\top x$, fitted on
+training-fold progressors only with penalty 0.5, on the extended clinical design, GNN risk, and logic risk. The
+log-logistic form was best, so its median $e^{\mu(x)}$ is the reported month, and $t_{(0.75)}$ and $t_{(0.25)}$ give the
+reported range.
 
 \section{Explanation Paths: 0.6 Neural + 0.4 Rule}
 A candidate path is a real walk in the patient's fused graph: patient $\rightarrow$ sample $\rightarrow$ altered gene
 $\rightarrow$ (partner protein) $\rightarrow$ pathway, drug, or breast disease. Its score combines the two halves of
 the system:
-\begin{equation}
-  \text{score}(\text{path}) = 0.6 \times \text{neural} + 0.4 \times \text{rule}.
-\end{equation}
-\emph{Neural} is the percentile of the path's mean GNNExplainer edge importance. \emph{Rule} is the summed weight of
-the engine's formulas that the path supports, scaled to the range 0 to 1. A formula counts when it holds for the
-patient and mentions the path's end node, its altered gene, or a gene on the path. Its sign shows whether the evidence
-points to faster or slower progression. A path is \emph{prominent} if its score is in the top 20\% of the cohort. A
-report shows $K = \min(5, \text{prominent paths})$ paths and tops up to at least three.
+\begin{align}
+  \text{neural}(\pi)&=\operatorname{pct}\big(\bar m(\pi)\big), \\
+  \text{rule}(\pi)&=\min\Big(\frac{\big|\sum_{f\in\mathcal{F}(\pi)}w_f\big|}{S},\,1\Big), \\
+  \text{score}(\pi)&=0.6\times\text{neural}(\pi)+0.4\times\text{rule}(\pi).
+\end{align}
+Here $\bar m(\pi)$ is the mean GNNExplainer importance of the path's edges, and pct is its percentile among all candidate
+paths. $\mathcal{F}(\pi)$ holds the engine's formulas, from the fold that held the patient out, that the path grounds: the
+formula holds for the patient and mentions the path's end node, its altered gene, or a gene on the path. $S$ is the 95th
+percentile of $|\sum w_f|$ over all rule-matched paths. The sign of $\sum w_f$ shows whether the evidence points to faster
+or slower progression. A path is \emph{prominent} if its score is in the top 20\% of the cohort. A report shows
+$K = \min(5, \text{prominent paths})$ paths and tops up to at least three.
 
 \section{Patient Reports}
 Reports are grouped by the recorded progression month: A ($\le$12 months, 32 patients), B (12--24, 30), C (24--36, 27),
@@ -332,9 +465,9 @@ folds that exclude that patient. The full pipeline takes about 50 minutes, and t
 
 \section{Graph Neural Networks: Accuracy Saturates}
 Table~\ref{tab:gnn} summarises the GNN benchmark on the 36-month landmark. The clinical logistic regression is the
-strongest model. GCN comes close, and the gene-only network is weakest. Relation-aware models, a C-index loss, and
-graph structure learning \rc{gslsurvey}, which learns which PrimeKG edges to keep, all stayed within the fold-to-fold
-noise. On an external microarray cohort (GSE2034 \rc{gse2034}) the graph models also did not beat a linear baseline.
+strongest model. GCN comes close, and the gene-only network is weakest. Relation-aware models and a C-index loss stayed
+within the fold-to-fold noise. On an external microarray cohort (GSE2034 \rc{gse2034}) the graph models also did not beat
+a linear baseline.
 
 \begin{table}[!htbp]
   \centering
@@ -354,6 +487,32 @@ noise. On an external microarray cohort (GSE2034 \rc{gse2034}) the graph models 
     \bottomrule
   \end{tabular}
 \end{table}
+
+\section{Why Graph Structure Learning Was Not Adopted}\label{sec:gslresults}
+The first GSL version closed the entire second hop: the mean edge weight was 0.24, and none of the 5,745 hop-2 edges
+passed 0.5. Table~\ref{tab:gsl} shows that GCN's AUPRC fell as a result. The hop-prior version reported AUROC near 0.70 and
+AUPRC near 0.46, within the fold standard deviations. The output folder of that run was not kept, so those two numbers
+are quoted from its report and cannot be recomputed.
+
+\begin{table}[!htbp]
+  \centering
+  \small\setlength{\tabcolsep}{5pt}
+  \caption{36-month AUPRC of the fixed two-hop graph against the first GSL version.}
+  \label{tab:gsl}
+  \begin{tabular}{lcc}
+    \toprule
+    Model & Fixed two hops & GSL, version 1 \\
+    \midrule
+    GCN & 0.396 & 0.316 \\
+    GraphSAGE & 0.379 & 0.383 \\
+    GATv2 & 0.355 & 0.366 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+We left GSL out for three reasons. It gave no reliable gain. The final system's explanations rely on real, stored PrimeKG
+edges, and learned weights would add one more thing to justify. PyTorch Geometric's R-GCN, RGAT, GIN, and TransformerConv
+also accept no edge weight, so GSL could run with only three of the seven models.
 
 \section{Symbolic Reasoners Compared}\label{sec:logicresults}
 Table~\ref{tab:logic} and Figure~\ref{fig:logic} compare the four reasoners with RuleKit on the full follow-up.
@@ -417,6 +576,32 @@ An RL-proposed two-pathway formula is protective ($-0.14$, 93 patients; Figure~\
   \label{fig:rulekm}
 \end{figure}
 
+\paragraph{A worked example.} Table~\ref{tab:worked} shows the logic risk of patient TCGA-BH-A1EV (Her2, T3 N1 M0), scored
+by the fold that held the patient out. In the first row, $\mu=0.051$ and $s=0.250$ give
+$0.079\times(\log 4-0.051)/0.250=0.42$. The third row shows that lacking a protective fact also raises risk relative to the
+average training patient: $-0.304\times(0-0.331)/0.346=+0.29$.
+
+\begin{table}[!htbp]
+  \centering
+  \small\setlength{\tabcolsep}{4pt}
+  \caption{Contributions to the logic risk of TCGA-BH-A1EV. Each is $w_k(\log(1+n_k)-\mu_k)/s_k$.}
+  \label{tab:worked}
+  \begin{tabular}{p{8.2cm}rrr}
+    \toprule
+    Formula & $w_k$ & $n_k$ & Contribution \\
+    \midrule
+    Her2 $\wedge$ altered gene in Neutrophil degranulation & $+0.079$ & 3 & $+0.422$ \\
+    Her2 $\wedge$ altered gene in L1--Ankyrins interaction & $+0.055$ & 2 & $+0.404$ \\
+    N0 stage (false for this patient) & $-0.304$ & 0 & $+0.290$ \\
+    Altered gene targeted by Ellagic acid & $+0.082$ & 1 & $+0.147$ \\
+    GOLPH3L amplified $\wedge$ altered gene in Complement cascade & $+0.018$ & 1 & $+0.079$ \\
+    All remaining formulas & & & $+0.087$ \\
+    \midrule
+    \textbf{Logic risk} $\eta$ & & & $\mathbf{+1.429}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \section{The Best Survival Model}
 Table~\ref{tab:ns} compares the main models on the full follow-up. The best mean C-index is 0.675 (clinical Cox), with
 one standard error of 0.016. Every model above 0.659 is statistically tied with it. Among the tied models we chose the
@@ -446,7 +631,8 @@ formulas.
 Two findings matter. First, every model family (GNN, logic, forest, and Cox) stops near a C-index of 0.67. With 145
 events, stage, nodal status, age, and subtype carry most of the signal. Second, without clinical inputs the GNN and
 logic risks together reach 0.642, better than either alone, but once the clinical fields are present they add no
-independent information. The neuro-symbolic layer therefore adds \emph{explanation, not accuracy}. We state this
+independent information: in every fold their hazard ratios lie between 0.94 and 1.09 per standard deviation, with
+$p>0.28$. The neuro-symbolic layer therefore adds \emph{explanation, not accuracy}. We state this
 plainly in the report and in every patient report.
 
 \section{Month of Progression}
@@ -454,6 +640,28 @@ On the 145 held-out progressors, the log-logistic AFT model is within 12 months 
 patients, against 37\% for a constant guess. It places 33\% of them in the correct 12-month window, against 19\% for the
 constant guess and 25\% by chance. Its median error is 12.9 months (Figure~\ref{fig:timing}). Estimates are pulled
 towards 15--45 months: very early progressions are overestimated and very late ones underestimated.
+Table~\ref{tab:timing} compares the estimators. The conditional medians do poorly because proportional hazards fix the
+shape of the curve.
+
+\begin{table}[!htbp]
+  \centering
+  \small\setlength{\tabcolsep}{5pt}
+  \caption{Month estimators on 145 held-out progressors: mean and median absolute error in months, share within 12 months,
+  and window accuracy.}
+  \label{tab:timing}
+  \begin{tabular}{lcccc}
+    \toprule
+    Estimator & MAE & Median & $\le 12$ mo & Window \\
+    \midrule
+    Constant (training progressor median) & 22.9 & 16.0 & 37\% & 19\% \\
+    Conditional median, $\tau=60$ & 23.2 & 18.2 & 33\% & 18\% \\
+    Conditional median, $\tau=120$ & 27.9 & 24.6 & 23\% & 39\% \\
+    Conditional median, $\tau=180$ & 59.2 & 62.0 & 7\% & 39\% \\
+    Log-normal AFT & 20.6 & 12.9 & 48\% & 34\% \\
+    \textbf{Log-logistic AFT (chosen)} & \textbf{20.1} & \textbf{12.9} & \textbf{48\%} & \textbf{33\%} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \begin{figure}[!htbp]
   \centering
@@ -563,6 +771,11 @@ repository: \path{notebooks/neurosymbolic_patient_reports.ipynb} walks through t
 \item\label{ref:sksurv} S.~P\"olsterl. scikit-survival: A library for time-to-event analysis built on top of scikit-learn. \emph{Journal of Machine Learning Research}, 21(212):1--6, 2020.
 \item\label{ref:gslsurvey} Y.~Zhu, W.~Xu, J.~Zhang, et al. A survey on graph structure learning: Progress and opportunities. \emph{arXiv preprint arXiv:2103.03036}, 2021.
 \item\label{ref:gse2034} Y.~Wang, J.~G.~M. Klijn, Y.~Zhang, et al. Gene-expression profiles to predict distant metastasis of lymph-node-negative primary breast cancer. \emph{The Lancet}, 365(9460):671--679, 2005.
+\item\label{ref:uno} H.~Uno, T.~Cai, M.~J. Pencina, R.~B. D'Agostino, and L.~J. Wei. On the C-statistics for evaluating overall adequacy of risk prediction procedures with censored survival data. \emph{Statistics in Medicine}, 30(10):1105--1117, 2011.
+\item\label{ref:mlnstructure} S.~Kok and P.~Domingos. Learning the structure of Markov logic networks. In \emph{ICML}, pages 441--448, 2005.
+\item\label{ref:elasticnet} H.~Zou and T.~Hastie. Regularization and variable selection via the elastic net. \emph{Journal of the Royal Statistical Society: Series B}, 67(2):301--320, 2005.
+\item\label{ref:gru} K.~Cho, B.~van Merri\"enboer, C.~Gulcehre, et al. Learning phrase representations using RNN encoder--decoder for statistical machine translation. In \emph{EMNLP}, pages 1724--1734, 2014.
+\item\label{ref:stacking} D.~H. Wolpert. Stacked generalization. \emph{Neural Networks}, 5(2):241--259, 1992.
 \end{enumerate}
 
 \end{document}
