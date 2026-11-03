@@ -62,7 +62,7 @@ async function main() {
     ],
   });
   ["1", "2", "3", "4", "B"].forEach((part) => {
-    const label = part === "B" ? "Backup" : `Part ${part}: ${SPEAKERS[Number(part) - 1]}`;
+    const label = part === "B" ? "Backup" : `Part ${part}: ${PARTS[Number(part) - 1]}`;
     pres.defineSlideMaster({
       title: `CONTENT${part}`,
       background: { color: C.background1 },
@@ -259,18 +259,32 @@ async function main() {
   // ===== Part 3 =====
   pres.addSection({ title: SEC[2] });
   s = content(3, 2);
-  s.addText("IF-THEN rules were readable, but limited", { placeholder: "title" });
-  card(s, 0.6, 1.55, 12.13, 1.3);
-  text(s, "Example rule from RuleKit, our baseline", 0.85, 1.68, 11.6, 0.35, { fontSize: 14, bold: true, color: C.accent6 });
-  text(s, "IF nodal stage is N3 AND aneuploidy is below 26.5 THEN higher risk", 0.85, 2.05, 11.6, 0.6, { fontSize: 22, fontFace: "+mj-lt" });
-  stat(s, "8", "rules per fold", 0.6, 3.1, 2.9, 1.85);
-  stat(s, "10%", "used the knowledge graph", 3.68, 3.1, 2.9, 1.85);
-  stat(s, "0", "weights: a rule is on or off", 6.76, 3.1, 2.9, 1.85);
-  card(s, 9.84, 3.1, 2.89, 3.3, C.text2);
-  text(s, "Our supervisor's direction", 10.04, 3.27, 2.5, 0.8, { bold: true, color: C.background1, fontSize: 18 });
-  text(s, "Try Markov logic, soft logic, and reinforcement learning.", 10.04, 4.15, 2.5, 2.0, { fontSize: 17, color: C.background1 });
-  text(s, "We built a knowledge graph, but the rules hardly used it.", 0.6, 5.2, 9.0, 0.8, { fontSize: 20, bold: true, color: C.text2 });
-  s.addNotes("Thank you, Surya. Our first logic layer used RuleKit, which gives readable rules like this one. But it kept only about eight rules, they had no weights, and just 10 percent used the knowledge graph. Our supervisor suggested three directions: Markov logic, soft logic, and reinforcement learning. We built all three.");
+  s.addText("How a survival rule works, and where it falls short", { placeholder: "title" });
+  const node = (x, y, w, h, fill, lines, name) => {
+    card(s, x, y, w, h, fill, name);
+    s.addText(lines, { x: x + 0.15, y, w: w - 0.3, h, margin: 0, valign: "middle", align: "center", isTextBox: true, objectName: `${name} text` });
+  };
+  const link = (x, y, w, h, flipH, label, lx) => {
+    s.addShape(pres.shapes.LINE, { x, y, w, h, flipH, line: { color: THEME.colors.accent6, width: 1.75, endArrowType: "triangle" }, objectName: `Arrow ${label}` });
+    text(s, label, lx, y + 0.1, 0.6, 0.35, { fontSize: 15, bold: true, color: C.accent6, align: "center" });
+  };
+  node(2.3, 1.5, 4.0, 0.72, C.text2, [{ text: "865 training patients", options: { fontSize: 18, bold: true, color: C.background1 } }], "All patients");
+  s.addShape(pres.shapes.LINE, { x: 4.3, y: 2.22, w: 0, h: 0.38, line: { color: THEME.colors.accent6, width: 1.75, endArrowType: "triangle" }, objectName: "Arrow to rule" });
+  node(0.75, 2.6, 7.1, 0.95, C.background2, [{ text: "IF nodal stage is N3 AND aneuploidy is below 26.5", options: { fontSize: 19, bold: true, color: C.text2, fontFace: "+mj-lt" } }], "Rule");
+  link(2.32, 3.55, 1.98, 0.7, true, "yes", 2.45);
+  link(4.3, 3.55, 1.82, 0.7, false, "no", 5.55);
+  node(0.6, 4.25, 3.45, 1.6, "F9E3E2", [{ text: "Rule holds", options: { fontSize: 15, bold: true, color: C.accent2, breakLine: true } }, { text: "46 patients", options: { fontSize: 24, bold: true, color: C.text1, fontFace: "+mj-lt", breakLine: true } }, { text: "13 progressed: 5 times the hazard", options: { fontSize: 15, color: C.text1 } }], "Covered group");
+  node(4.4, 4.25, 3.45, 1.6, C.background2, [{ text: "Rule does not hold", options: { fontSize: 15, bold: true, color: C.accent6, breakLine: true } }, { text: "819 patients", options: { fontSize: 24, bold: true, color: C.text1, fontFace: "+mj-lt", breakLine: true } }, { text: "everyone else", options: { fontSize: 15, color: C.text1 } }], "Other group");
+  text(s, "RuleKit picks the conditions that split survival most sharply.", 0.6, 6.05, 7.25, 0.5, { fontSize: 16, color: C.accent6 });
+  head(s, "Where IF-THEN falls short", 8.4, 1.5, 4.33);
+  [["8", "rules per fold"], ["10%", "use the knowledge graph"], ["0", "weights: a rule is on or off"]].forEach(([value, label], i) => {
+    const y = 2.05 + i * 1.18;
+    card(s, 8.4, y, 4.33, 1.02, C.background2, `Limit ${label}`);
+    text(s, value, 8.6, y, 1.3, 1.02, { fontFace: "+mj-lt", fontSize: 32, bold: true, color: C.text2, valign: "middle" });
+    text(s, label, 9.9, y, 2.7, 1.02, { fontSize: 16, valign: "middle" });
+  });
+  text(s, "Readable, but the rules hardly used our knowledge graph.", 8.4, 5.7, 4.33, 0.85, { fontSize: 17, bold: true, color: C.text2 });
+  s.addNotes("Thank you, Surya. Let me start with what a survival rule does. A rule takes all the training patients and splits them into two groups. Here is a real rule our baseline learned: if nodal stage is N3 and aneuploidy is below 26.5. It picks out 46 of 865 patients, and 13 of them progressed, at about five times the hazard of everyone else. RuleKit learns rules like this by choosing the conditions that split survival most sharply, and that is why rules are attractive: a doctor can read them. But they have limits. RuleKit kept only about eight rules per fold, each one is simply on or off with no weight, and only 10 percent used the knowledge graph we had built. Our supervisor suggested three ways to go further: Markov logic, soft logic, and reinforcement learning. We built all three.");
 
   s = content(3, 2);
   s.addText("Idea 1: Markov logic gives every rule a weight", { placeholder: "title" });
