@@ -78,7 +78,7 @@ Supervisor: Dr.\ Shashwati Banerjea\par
 \subsection{The project in one minute}
 Doctors want to know two things after breast cancer treatment: will this cancer come back or get worse, and when? We took 1,083 real patients from a public cancer study and built a small knowledge graph for each one, connecting the patient to the genes altered in their tumour. We then connected those genes to PrimeKG, a large public map of biomedical knowledge covering pathways, drugs, and diseases.
 
-We trained graph neural networks on these graphs. They did not beat a plain statistical model that uses only clinical information such as stage and age. Every model we tried stopped at a concordance index of about 0.67. So we changed the goal from \emph{more accuracy} to \emph{better explanation}.
+We trained graph neural networks on these graphs. They did not beat a plain statistical model that uses only clinical information such as stage and age. Every model we tried stopped at a concordance index of about 0.67. So we moved to our next objective: \emph{reasoning} that explains each prediction.
 
 The final system is \textbf{neuro-symbolic}. A neural network says which parts of the graph mattered. A logic engine learns weighted rules such as ``high nodal stage and an altered gene linked to ductal carcinoma raises risk''. A Cox model combines them with clinical data, and the system writes an explained PDF report for every patient. The result is as accurate as the best clinical model, within statistical noise, and it can also say why.
 

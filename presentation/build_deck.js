@@ -251,10 +251,10 @@ async function main() {
   s.addText("Every model family stops near 0.67", { placeholder: "title" });
   await fit(s, FIG("fig_saturation.png"), 0.6, 1.4, 8.0, 5.3, "C-index of twelve models with spread and the tie bar at 0.659");
   card(s, 8.85, 1.55, 3.88, 4.95, C.text2);
-  text(s, "So we changed the goal", 9.08, 1.78, 3.45, 0.8, { fontSize: 22, bold: true, color: C.background1, fontFace: "+mj-lt" });
+  text(s, "Next objective: reasoning", 9.08, 1.78, 3.45, 0.8, { fontSize: 22, bold: true, color: C.background1, fontFace: "+mj-lt" });
   text(s, "With 145 events, clinical facts carry most of the signal.", 9.08, 2.75, 3.45, 1.2, { fontSize: 17, color: C.background1 });
-  text(s, "More model power did not help, so explanation became the goal.", 9.08, 4.1, 3.45, 1.6, { fontSize: 17, color: C.background1 });
-  s.addNotes("This is our main finding. GNNs, logic, forests, and Cox models all finish in the same range, and the lines overlap. With only 145 events, clinical facts carry most of the signal. We accepted that instead of chasing noise. Following our supervisor's direction, the question changed from how to raise the score to how to explain it. Shaurya will explain how.");
+  text(s, "More model power did not help, so we moved to our next objective: reasoning that explains each prediction.", 9.08, 4.1, 3.45, 1.6, { fontSize: 17, color: C.background1 });
+  s.addNotes("This is our main finding. GNNs, logic, forests, and Cox models all finish in the same range, and the lines overlap. With only 145 events, clinical facts carry most of the signal. We accepted that instead of chasing noise. Following our supervisor's direction, we moved to our next objective: reasoning, so that every prediction comes with reasons a doctor can check. Shaurya will explain how.");
 
   // ===== Part 3 =====
   pres.addSection({ title: SEC[2] });
