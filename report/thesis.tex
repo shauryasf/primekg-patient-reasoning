@@ -310,7 +310,7 @@ knowledge-graph paths, each scored by GNN importance and by the weighted logic f
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{fig_pipeline.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_pipeline.png}
   \caption{Overview of the neuro-symbolic progression system.}
   \label{fig:pipeline}
 \end{figure}
@@ -348,7 +348,7 @@ logged rather than resolved arbitrarily. Every graph is validated before export.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.85\textwidth]{fig_patient_graph.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_patient_graph.png}
   \caption{A Milestone~1 patient graph (TCGA-A2-A0SW): one patient, one tumour sample, and its mutated genes.}
   \label{fig:patientgraph}
 \end{figure}
@@ -380,7 +380,7 @@ trainable embedding for every gene, pathway, drug, and disease.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.9\textwidth]{fig_fused_graph.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_fused_graph.png}
   \caption{Part of a fused graph: altered genes of one patient connected to PrimeKG partner proteins, pathways, and a breast-disease node.}
   \label{fig:fused}
 \end{figure}
@@ -673,7 +673,7 @@ graph models.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.62\textwidth]{fig_36m_roc.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_36m_roc.png}
   \caption{Out-of-fold ROC curves of the graph models on the 36-month endpoint.}
   \label{fig:roc36}
 \end{figure}
@@ -684,7 +684,7 @@ model. Short horizons have too few events (32 at 12 months). Long horizons drop 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{fig_horizon.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_horizon.png}
   \caption{Clinical AUROC as a function of the progression window.}
   \label{fig:horizon}
 \end{figure}
@@ -729,7 +729,7 @@ from its report and cannot be recomputed.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{fig_gsl.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_gsl.png}
   \caption{Graph structure learning against the fixed two-hop graph on the 36-month endpoint.}
   \label{fig:gsl}
 \end{figure}
@@ -748,7 +748,7 @@ continue past 10 years.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.9\textwidth]{fig_pfs_hist.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_pfs_hist.png}
   \caption{Recorded progression months, with the report group boundaries at 12, 24, and 36 months.}
   \label{fig:pfshist}
 \end{figure}
@@ -788,7 +788,7 @@ five folds.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{fig_model_comparison.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_model_comparison.png}
   \caption{Fold-mean Harrell's C-index of every model. The report model is highlighted.}
   \label{fig:modelcmp}
 \end{figure}
@@ -834,7 +834,7 @@ same folds.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.9\textwidth]{fig_logic_comparison.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_logic_comparison.png}
   \caption{Fold-mean Harrell's C of the symbolic reasoners. The engine is highlighted.}
   \label{fig:logic}
 \end{figure}
@@ -871,7 +871,7 @@ and an RL-proposed multi-hop formula ($-0.14$, 93 patients, a protective formula
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\textwidth]{fig_rule_km.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_rule_km.png}
   \caption{Kaplan--Meier curve of the patients for whom the RL-proposed formula
   $\mathit{Altered}(p,g) \wedge \mathit{InPathway}(g,\text{VEGFA-VEGFR2}) \wedge \mathit{Altered}(p,g) \wedge
   \mathit{InPathway}(g,\text{Ion homeostasis})$ holds, against the cohort.}
@@ -910,7 +910,7 @@ optimistic.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\textwidth]{fig_timing.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_timing.png}
   \caption{Model-estimated against recorded progression month. Bars are the model's interquartile ranges, and the
   diagonal is perfect agreement.}
   \label{fig:timing}
@@ -929,14 +929,14 @@ the hazard. The strongest runs from the amplified gene NFASC to the pathway \emp
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.9\textwidth]{fig_ns_hist.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_ns_hist.png}
   \caption{Distribution of neuro-symbolic path scores, with the prominence cutoff at the cohort's 80th percentile.}
   \label{fig:nshist}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{fig_paths_example.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_paths_example.png}
   \caption{Top-K paths of patient TCGA-BH-A1EV. The bar on the right splits each NS score into its neural part
   (navy) and its rule part (red: the grounded formulas raise the hazard; blue: they lower it).}
   \label{fig:paths}
@@ -950,35 +950,35 @@ that censoring is not proof of remission. Figure~\ref{fig:groupsummary} shows th
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{fig_report_p1.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_report_p1.png}
   \caption{Patient report, page 1: record, progression assessment, survival curve, and summary.}
   \label{fig:report1}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{fig_report_p2.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_report_p2.png}
   \caption{Patient report, page 2: top-K knowledge-graph paths and the weighted logic formulas that fire.}
   \label{fig:report2}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{fig_report_p3.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_report_p3.png}
   \caption{Patient report, page 3: molecular profile, PrimeKG drug links, similar patients, and reading notes.}
   \label{fig:report3}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{fig_report_n_p1.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_report_n_p1.png}
   \caption{First page of a report in group N (no progression recorded).}
   \label{fig:reportn}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{fig_group_summary.png}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{fig_group_summary.png}
   \caption{Summary page of group A, progression within 12 months.}
   \label{fig:groupsummary}
 \end{figure}

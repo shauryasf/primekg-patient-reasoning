@@ -112,9 +112,26 @@ def ns_histogram(ctx) -> None:
     plt.close(fig)
 
 
-def render_page(pdf: Path, page: int, name: str, zoom: float = 2.0) -> None:
-    doc = pymupdf.open(pdf)
-    doc[page].get_pixmap(matrix=pymupdf.Matrix(zoom, zoom)).save(FIGURES / name)
+def render_page(pdf: Path, page: int, name: str, zoom: float = 3.0, margin: int = 24) -> None:
+    """Render one PDF page and crop it to its content, so the figure is not mostly blank paper."""
+    from PIL import Image, ImageChops
+
+    pixmap = pymupdf.open(pdf)[page].get_pixmap(matrix=pymupdf.Matrix(zoom, zoom))
+    image = Image.frombytes("RGB", (pixmap.width, pixmap.height), pixmap.samples)
+    ink = ImageChops.difference(image, Image.new("RGB", image.size, "white")).convert("L").point(lambda v: 255 if v > 12 else 0)
+    box = ink.getbbox()
+    if box:
+        left, top, right, bottom = box
+        # A short page ends in a long blank stretch above the footer; stop at the first such gap.
+        rows = [ink.crop((0, y, ink.width, y + 1)).getbbox() is not None for y in range(top, bottom)]
+        gap, longest = 0, int(0.06 * image.height)
+        for offset, filled in enumerate(rows):
+            gap = 0 if filled else gap + 1
+            if gap > longest:
+                bottom = top + offset - gap + 1
+                break
+        image = image.crop((max(left - margin, 0), max(top - margin, 0), min(right + margin, image.width), min(bottom + margin, image.height)))
+    image.save(FIGURES / name)
 
 
 def main() -> int:
